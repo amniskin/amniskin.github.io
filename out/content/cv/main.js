@@ -1,4 +1,4 @@
-// Compiled by ClojureScript 0.0-3308 {:static-fns true, :optimize-constants true}
+// Compiled by ClojureScript 0.0-3308 {}
 goog.provide('content.cv.main');
 goog.require('cljs.core');
 goog.require('ui.style');
@@ -9,39 +9,32 @@ goog.require('tailrecursion.javelin');
  * @param {...*} var_args
  */
 content.cv.main.content = (function() { 
-var content$cv$main$content__delegate = function (args__10403__auto__){
-var vec__86296 = tailrecursion.hoplon.parse_args(args__10403__auto__);
-var _ = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__86296,(0),null);
-var ___$1 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__86296,(1),null);
-return ui.style.page.cljs$core$IFn$_invoke$arity$variadic(cljs.core.array_seq([cljs.core.constant$keyword$name,"cv",(function (){var G__86297 = cljs.core.constant$keyword$width;
-var G__86298 = "100%";
-var G__86299 = cljs.core.constant$keyword$height;
-var G__86300 = tailrecursion.javelin.formula(((function (G__86297,G__86298,G__86299,vec__86296,_,___$1){
-return (function (G__86305){
-return (G__86305 - (50));
-});})(G__86297,G__86298,G__86299,vec__86296,_,___$1))
-).call(null,ui.info.screen_height);
-var G__86301 = cljs.core.constant$keyword$src;
-var G__86302 = "pdf/My_CV.pdf";
-var G__86303 = cljs.core.constant$keyword$frameborder;
-var G__86304 = "0";
-return (tailrecursion.hoplon.iframe.cljs$core$IFn$_invoke$arity$8 ? tailrecursion.hoplon.iframe.cljs$core$IFn$_invoke$arity$8(G__86297,G__86298,G__86299,G__86300,G__86301,G__86302,G__86303,G__86304) : tailrecursion.hoplon.iframe.call(null,G__86297,G__86298,G__86299,G__86300,G__86301,G__86302,G__86303,G__86304));
-})()], 0));
+var content$cv$main$content__delegate = function (args__5784__auto__){
+var vec__13166 = tailrecursion.hoplon.parse_args.call(null,args__5784__auto__);
+var _ = cljs.core.nth.call(null,vec__13166,(0),null);
+var ___$1 = cljs.core.nth.call(null,vec__13166,(1),null);
+return ui.style.page.call(null,new cljs.core.Keyword(null,"name","name",1843675177),"cv",tailrecursion.hoplon.iframe.call(null,new cljs.core.Keyword(null,"width","width",-384071477),"100%",new cljs.core.Keyword(null,"height","height",1025178622),tailrecursion.javelin.formula.call(null,((function (vec__13166,_,___$1){
+return (function (G__13167){
+return (G__13167 - (50));
+});})(vec__13166,_,___$1))
+).call(null,ui.info.screen_height),new cljs.core.Keyword(null,"src","src",-1651076051),"pdf/My_CV.pdf",new cljs.core.Keyword(null,"frameborder","frameborder",-7707960),"0"));
 };
 var content$cv$main$content = function (var_args){
-var args__10403__auto__ = null;
+var args__5784__auto__ = null;
 if (arguments.length > 0) {
-var G__86306__i = 0, G__86306__a = new Array(arguments.length -  0);
-while (G__86306__i < G__86306__a.length) {G__86306__a[G__86306__i] = arguments[G__86306__i + 0]; ++G__86306__i;}
-  args__10403__auto__ = new cljs.core.IndexedSeq(G__86306__a,0);
+var G__13168__i = 0, G__13168__a = new Array(arguments.length -  0);
+while (G__13168__i < G__13168__a.length) {G__13168__a[G__13168__i] = arguments[G__13168__i + 0]; ++G__13168__i;}
+  args__5784__auto__ = new cljs.core.IndexedSeq(G__13168__a,0);
 } 
-return content$cv$main$content__delegate.call(this,args__10403__auto__);};
+return content$cv$main$content__delegate.call(this,args__5784__auto__);};
 content$cv$main$content.cljs$lang$maxFixedArity = 0;
-content$cv$main$content.cljs$lang$applyTo = (function (arglist__86307){
-var args__10403__auto__ = cljs.core.seq(arglist__86307);
-return content$cv$main$content__delegate(args__10403__auto__);
+content$cv$main$content.cljs$lang$applyTo = (function (arglist__13169){
+var args__5784__auto__ = cljs.core.seq(arglist__13169);
+return content$cv$main$content__delegate(args__5784__auto__);
 });
 content$cv$main$content.cljs$core$IFn$_invoke$arity$variadic = content$cv$main$content__delegate;
 return content$cv$main$content;
 })()
 ;
+
+//# sourceMappingURL=main.js.map

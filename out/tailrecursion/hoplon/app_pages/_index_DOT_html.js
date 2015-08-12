@@ -1,4 +1,4 @@
-// Compiled by ClojureScript 0.0-3308 {:static-fns true, :optimize-constants true}
+// Compiled by ClojureScript 0.0-3308 {}
 goog.provide('tailrecursion.hoplon.app_pages._index_DOT_html');
 goog.require('cljs.core');
 goog.require('ui.navbar');
@@ -10,60 +10,9 @@ goog.require('tailrecursion.javelin');
 goog.require('content.cv.main');
 goog.require('content.footer.main');
 goog.require('ui.info');
-tailrecursion.hoplon.app_pages._index_DOT_html.location = tailrecursion.javelin.cell(ui.info.location);
-tailrecursion.hoplon.html.cljs$core$IFn$_invoke$arity$variadic(cljs.core.array_seq([cljs.core.constant$keyword$lang,"en",(function (){var G__86042 = (function (){var G__86046 = "Home of a Mathema-Niskin!";
-return (tailrecursion.hoplon.title.cljs$core$IFn$_invoke$arity$1 ? tailrecursion.hoplon.title.cljs$core$IFn$_invoke$arity$1(G__86046) : tailrecursion.hoplon.title.call(null,G__86046));
-})();
-var G__86043 = (function (){var G__86047 = cljs.core.constant$keyword$name;
-var G__86048 = "viewport";
-var G__86049 = cljs.core.constant$keyword$content;
-var G__86050 = "width=device-width, initial-scale=1";
-return (tailrecursion.hoplon.html_meta.cljs$core$IFn$_invoke$arity$4 ? tailrecursion.hoplon.html_meta.cljs$core$IFn$_invoke$arity$4(G__86047,G__86048,G__86049,G__86050) : tailrecursion.hoplon.html_meta.call(null,G__86047,G__86048,G__86049,G__86050));
-})();
-var G__86044 = (function (){var G__86051 = cljs.core.constant$keyword$REL;
-var G__86052 = "stylesheet";
-var G__86053 = cljs.core.constant$keyword$href;
-var G__86054 = "css/bootstrap.css";
-var G__86055 = cljs.core.constant$keyword$type;
-var G__86056 = "text/css";
-return (tailrecursion.hoplon.link.cljs$core$IFn$_invoke$arity$6 ? tailrecursion.hoplon.link.cljs$core$IFn$_invoke$arity$6(G__86051,G__86052,G__86053,G__86054,G__86055,G__86056) : tailrecursion.hoplon.link.call(null,G__86051,G__86052,G__86053,G__86054,G__86055,G__86056));
-})();
-var G__86045 = (function (){var G__86057 = cljs.core.constant$keyword$type;
-var G__86058 = "text/javascript";
-var G__86059 = cljs.core.constant$keyword$src;
-var G__86060 = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
-return (tailrecursion.hoplon.script.cljs$core$IFn$_invoke$arity$4 ? tailrecursion.hoplon.script.cljs$core$IFn$_invoke$arity$4(G__86057,G__86058,G__86059,G__86060) : tailrecursion.hoplon.script.call(null,G__86057,G__86058,G__86059,G__86060));
-})();
-return (tailrecursion.hoplon.head.cljs$core$IFn$_invoke$arity$4 ? tailrecursion.hoplon.head.cljs$core$IFn$_invoke$arity$4(G__86042,G__86043,G__86044,G__86045) : tailrecursion.hoplon.head.call(null,G__86042,G__86043,G__86044,G__86045));
-})(),(function (){var G__86061 = cljs.core.constant$keyword$height;
-var G__86062 = "100vh";
-var G__86063 = ui.navbar.bar.cljs$core$IFn$_invoke$arity$variadic(cljs.core.array_seq([ui.navbar.header2.cljs$core$IFn$_invoke$arity$variadic(cljs.core.array_seq([ui.navbar.nav_button.cljs$core$IFn$_invoke$arity$variadic(cljs.core.array_seq([(function (){var G__86065 = cljs.core.constant$keyword$style;
-var G__86066 = "color:black;";
-var G__86067 = cljs.core.constant$keyword$class;
-var G__86068 = tailrecursion.javelin.formula(((function (G__86065,G__86066,G__86067,G__86061,G__86062){
-return (function (G__86070,G__86069,G__86071){
-return new cljs.core.PersistentArrayMap(null, 3, [cljs.core.constant$keyword$glyphicon,true,cljs.core.constant$keyword$glyphicon_DASH_chevron_DASH_down,(function (){var G__86072 = (function (){var G__86073 = "menu";
-var G__86074 = G__86071;
-return (G__86070.cljs$core$IFn$_invoke$arity$2 ? G__86070.cljs$core$IFn$_invoke$arity$2(G__86073,G__86074) : G__86070.call(null,G__86073,G__86074));
-})();
-return (G__86069.cljs$core$IFn$_invoke$arity$1 ? G__86069.cljs$core$IFn$_invoke$arity$1(G__86072) : G__86069.call(null,G__86072));
-})(),cljs.core.constant$keyword$glyphicon_DASH_chevron_DASH_up,(function (){var G__86075 = "menu";
-var G__86076 = G__86071;
-return (G__86070.cljs$core$IFn$_invoke$arity$2 ? G__86070.cljs$core$IFn$_invoke$arity$2(G__86075,G__86076) : G__86070.call(null,G__86075,G__86076));
-})()], null);
-});})(G__86065,G__86066,G__86067,G__86061,G__86062))
-).call(null,cljs.core._EQ_,cljs.core.not,ui.info.nav_active);
-return (tailrecursion.hoplon.span.cljs$core$IFn$_invoke$arity$4 ? tailrecursion.hoplon.span.cljs$core$IFn$_invoke$arity$4(G__86065,G__86066,G__86067,G__86068) : tailrecursion.hoplon.span.call(null,G__86065,G__86066,G__86067,G__86068));
-})(),cljs.core.constant$keyword$name,"menu"], 0)),ui.navbar.brand.cljs$core$IFn$_invoke$arity$variadic(cljs.core.array_seq(["\u039Baron Niskin"], 0))], 0)),ui.navbar.menu2.cljs$core$IFn$_invoke$arity$variadic(cljs.core.array_seq([ui.navbar.item.cljs$core$IFn$_invoke$arity$variadic(cljs.core.array_seq([cljs.core.constant$keyword$name,"Home"], 0)),ui.navbar.item.cljs$core$IFn$_invoke$arity$variadic(cljs.core.array_seq([cljs.core.constant$keyword$name,"SICP"], 0)),ui.navbar.item.cljs$core$IFn$_invoke$arity$variadic(cljs.core.array_seq([cljs.core.constant$keyword$name,"CV"], 0))], 0))], 0));
-var G__86064 = (function (){var G__86077 = (function (){var G__86082 = cljs.core.constant$keyword$style;
-var G__86083 = "height:50px;";
-return (tailrecursion.hoplon.div.cljs$core$IFn$_invoke$arity$2 ? tailrecursion.hoplon.div.cljs$core$IFn$_invoke$arity$2(G__86082,G__86083) : tailrecursion.hoplon.div.call(null,G__86082,G__86083));
-})();
-var G__86078 = content.home.main.content();
-var G__86079 = content.sicp.main.content();
-var G__86080 = content.cv.main.content();
-var G__86081 = content.footer.main.content();
-return (tailrecursion.hoplon.div.cljs$core$IFn$_invoke$arity$5 ? tailrecursion.hoplon.div.cljs$core$IFn$_invoke$arity$5(G__86077,G__86078,G__86079,G__86080,G__86081) : tailrecursion.hoplon.div.call(null,G__86077,G__86078,G__86079,G__86080,G__86081));
-})();
-return (tailrecursion.hoplon.body.cljs$core$IFn$_invoke$arity$4 ? tailrecursion.hoplon.body.cljs$core$IFn$_invoke$arity$4(G__86061,G__86062,G__86063,G__86064) : tailrecursion.hoplon.body.call(null,G__86061,G__86062,G__86063,G__86064));
-})()], 0));
+tailrecursion.hoplon.app_pages._index_DOT_html.location = tailrecursion.javelin.cell.call(null,ui.info.location);
+tailrecursion.hoplon.html.call(null,new cljs.core.Keyword(null,"lang","lang",-1819677104),"en",tailrecursion.hoplon.head.call(null,tailrecursion.hoplon.title.call(null,"Home of a Mathema-Niskin!"),tailrecursion.hoplon.html_meta.call(null,new cljs.core.Keyword(null,"name","name",1843675177),"viewport",new cljs.core.Keyword(null,"content","content",15833224),"width=device-width, initial-scale=1"),tailrecursion.hoplon.link.call(null,new cljs.core.Keyword(null,"REL","REL",1754926964),"stylesheet",new cljs.core.Keyword(null,"href","href",-793805698),"css/bootstrap.css",new cljs.core.Keyword(null,"type","type",1174270348),"text/css"),tailrecursion.hoplon.script.call(null,new cljs.core.Keyword(null,"type","type",1174270348),"text/javascript",new cljs.core.Keyword(null,"src","src",-1651076051),"https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML")),tailrecursion.hoplon.body.call(null,new cljs.core.Keyword(null,"height","height",1025178622),"100vh",ui.navbar.bar.call(null,ui.navbar.header2.call(null,ui.navbar.nav_button.call(null,tailrecursion.hoplon.span.call(null,new cljs.core.Keyword(null,"style","style",-496642736),"color:black;",new cljs.core.Keyword(null,"class","class",-2030961996),tailrecursion.javelin.formula.call(null,(function (G__13114,G__13113,G__13115){
+return new cljs.core.PersistentArrayMap(null, 3, [new cljs.core.Keyword(null,"glyphicon","glyphicon",-2083132161),true,new cljs.core.Keyword(null,"glyphicon-chevron-down","glyphicon-chevron-down",-1437611070),G__13113.call(null,G__13114.call(null,"menu",G__13115)),new cljs.core.Keyword(null,"glyphicon-chevron-up","glyphicon-chevron-up",-1645226574),G__13114.call(null,"menu",G__13115)], null);
+})).call(null,cljs.core._EQ_,cljs.core.not,ui.info.nav_active)),new cljs.core.Keyword(null,"name","name",1843675177),"menu"),ui.navbar.brand.call(null,"\u039Baron Niskin")),ui.navbar.menu2.call(null,ui.navbar.item.call(null,new cljs.core.Keyword(null,"name","name",1843675177),"Home"),ui.navbar.item.call(null,new cljs.core.Keyword(null,"name","name",1843675177),"SICP"),ui.navbar.item.call(null,new cljs.core.Keyword(null,"name","name",1843675177),"CV"))),tailrecursion.hoplon.div.call(null,tailrecursion.hoplon.div.call(null,new cljs.core.Keyword(null,"style","style",-496642736),"height:50px;"),content.home.main.content.call(null),content.sicp.main.content.call(null),content.cv.main.content.call(null),content.footer.main.content.call(null))));
+
+//# sourceMappingURL=_index_DOT_html.js.map
