@@ -1,0 +1,28 @@
+// Compiled by ClojureScript 1.7.48 {:static-fns true, :optimize-constants true}
+goog.provide('tailrecursion.hoplon.app_pages._book_SLASH_sicp_DOT_html');
+goog.require('cljs.core');
+goog.require('book.sicp.texts.ch1sect2');
+goog.require('book.sicp.texts.about');
+goog.require('book.sicp.texts.ch2sect2');
+goog.require('general.navbar');
+goog.require('book.sicp.book_data');
+goog.require('tailrecursion.hoplon');
+goog.require('book.sicp.texts.ch1');
+goog.require('book.sicp.texts.ch2');
+goog.require('tailrecursion.javelin');
+goog.require('book.sicp.texts.ch1sect1');
+goog.require('general.sections');
+goog.require('general.head');
+goog.require('general.bootstrap');
+goog.require('general.footer');
+goog.require('book.sicp.texts.ch1sect3');
+goog.require('book.sicp.texts.ch2sect1');
+tailrecursion.hoplon.html.cljs$core$IFn$_invoke$arity$variadic(cljs.core.array_seq([(function (){var G__159638 = (tailrecursion.hoplon.title.cljs$core$IFn$_invoke$arity$1 ? tailrecursion.hoplon.title.cljs$core$IFn$_invoke$arity$1("SICP... Now in Clojure!") : tailrecursion.hoplon.title.call(null,"SICP... Now in Clojure!"));
+var G__159639 = general.head.bootstrap();
+var G__159640 = general.head.viewport();
+var G__159641 = general.head.mathjax();
+return (tailrecursion.hoplon.head.cljs$core$IFn$_invoke$arity$4 ? tailrecursion.hoplon.head.cljs$core$IFn$_invoke$arity$4(G__159638,G__159639,G__159640,G__159641) : tailrecursion.hoplon.head.call(null,G__159638,G__159639,G__159640,G__159641));
+})(),(function (){var G__159642 = general.navbar.fixed();
+var G__159643 = general.bootstrap.container.cljs$core$IFn$_invoke$arity$variadic(cljs.core.array_seq([general.sections.sidebar.cljs$core$IFn$_invoke$arity$variadic(cljs.core.array_seq([book.sicp.book_data.toc()], 0)),general.sections.content_with_sidebar.cljs$core$IFn$_invoke$arity$variadic(cljs.core.array_seq([book.sicp.book_data.content.cljs$core$IFn$_invoke$arity$variadic(cljs.core.array_seq([book.sicp.texts.about.content(),book.sicp.texts.ch1.content(),book.sicp.texts.ch1sect1.content(),book.sicp.texts.ch1sect2.content(),book.sicp.texts.ch1sect3.content(),book.sicp.texts.ch2.content(),book.sicp.texts.ch2sect1.content(),book.sicp.texts.ch2sect2.content(),general.footer.content()], 0))], 0))], 0));
+return (tailrecursion.hoplon.body.cljs$core$IFn$_invoke$arity$2 ? tailrecursion.hoplon.body.cljs$core$IFn$_invoke$arity$2(G__159642,G__159643) : tailrecursion.hoplon.body.call(null,G__159642,G__159643));
+})()], 0));
