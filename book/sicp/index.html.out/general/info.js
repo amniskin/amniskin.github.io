@@ -166,9 +166,9 @@ return (((e_top__$1 <= s_bot__$1)) && ((s_bot__$1 <= e_bot__$1))) || (((e_top__$
 });})(e_top,e_bot,s_top,s_bot))
 ).call(null,general.info.screen_height,jQuery,general.info.scroll_top,elem);
 return general.info.do_watch.cljs$core$IFn$_invoke$arity$2(c,((function (e_top,e_bot,s_top,s_bot,c){
-return (function (p1__2925_SHARP_,p2__2924_SHARP_){
+return (function (p1__5577_SHARP_,p2__5576_SHARP_){
 var G__181350 = elem;
-var G__181351 = cljs.core.boolean$(p2__2924_SHARP_);
+var G__181351 = cljs.core.boolean$(p2__5576_SHARP_);
 return (callback.cljs$core$IFn$_invoke$arity$2 ? callback.cljs$core$IFn$_invoke$arity$2(G__181350,G__181351) : callback.call(null,G__181350,G__181351));
 });})(e_top,e_bot,s_top,s_bot,c))
 );
@@ -206,10 +206,10 @@ return null;
 });})(e,e_top,e_bot,begin,end,prcnt))
 ).call(null,prcnt);
 return general.info.do_watch.cljs$core$IFn$_invoke$arity$2(c,((function (e,e_top,e_bot,begin,end,prcnt,c){
-return (function (p1__2927_SHARP_,p2__2926_SHARP_){
+return (function (p1__5579_SHARP_,p2__5578_SHARP_){
 var G__181375 = elem;
 var G__181376 = prcnt;
-var G__181377 = cljs.core.boolean$(p2__2926_SHARP_);
+var G__181377 = cljs.core.boolean$(p2__5578_SHARP_);
 return (callback.cljs$core$IFn$_invoke$arity$3 ? callback.cljs$core$IFn$_invoke$arity$3(G__181375,G__181376,G__181377) : callback.call(null,G__181375,G__181376,G__181377));
 });})(e,e_top,e_bot,begin,end,prcnt,c))
 );
@@ -230,8 +230,8 @@ return ((e_top__$1 <= ((50) + G__181386))) && ((((50) + G__181386) <= e_bot__$1)
 });})(e_top,e_bot))
 ).call(null,jQuery,general.info.scroll_top,elem);
 return general.info.do_watch.cljs$core$IFn$_invoke$arity$2(c,((function (e_top,e_bot,c){
-return (function (p1__2929_SHARP_,p2__2928_SHARP_){
-var G__181387 = cljs.core.boolean$(p2__2928_SHARP_);
+return (function (p1__5581_SHARP_,p2__5580_SHARP_){
+var G__181387 = cljs.core.boolean$(p2__5580_SHARP_);
 return (callback.cljs$core$IFn$_invoke$arity$1 ? callback.cljs$core$IFn$_invoke$arity$1(G__181387) : callback.call(null,G__181387));
 });})(e_top,e_bot,c))
 );
