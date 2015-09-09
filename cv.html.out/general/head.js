@@ -8,22 +8,22 @@ goog.require('tailrecursion.javelin');
  */
 general.head.bootstrap = (function() { 
 var general$head$bootstrap__delegate = function (args__8262__auto__){
-var vec__13385 = tailrecursion.hoplon.parse_args(args__8262__auto__);
-var _ = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__13385,(0),null);
-var ___$1 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__13385,(1),null);
+var vec__9535 = tailrecursion.hoplon.parse_args(args__8262__auto__);
+var _ = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__9535,(0),null);
+var ___$1 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__9535,(1),null);
 return (tailrecursion.hoplon.link.cljs$core$IFn$_invoke$arity$6 ? tailrecursion.hoplon.link.cljs$core$IFn$_invoke$arity$6(cljs.core.cst$kw$REL,"stylesheet",cljs.core.cst$kw$href,"/css/bootstrap.css",cljs.core.cst$kw$type,"text/css") : tailrecursion.hoplon.link.call(null,cljs.core.cst$kw$REL,"stylesheet",cljs.core.cst$kw$href,"/css/bootstrap.css",cljs.core.cst$kw$type,"text/css"));
 };
 var general$head$bootstrap = function (var_args){
 var args__8262__auto__ = null;
 if (arguments.length > 0) {
-var G__13386__i = 0, G__13386__a = new Array(arguments.length -  0);
-while (G__13386__i < G__13386__a.length) {G__13386__a[G__13386__i] = arguments[G__13386__i + 0]; ++G__13386__i;}
-  args__8262__auto__ = new cljs.core.IndexedSeq(G__13386__a,0);
+var G__9536__i = 0, G__9536__a = new Array(arguments.length -  0);
+while (G__9536__i < G__9536__a.length) {G__9536__a[G__9536__i] = arguments[G__9536__i + 0]; ++G__9536__i;}
+  args__8262__auto__ = new cljs.core.IndexedSeq(G__9536__a,0);
 } 
 return general$head$bootstrap__delegate.call(this,args__8262__auto__);};
 general$head$bootstrap.cljs$lang$maxFixedArity = 0;
-general$head$bootstrap.cljs$lang$applyTo = (function (arglist__13387){
-var args__8262__auto__ = cljs.core.seq(arglist__13387);
+general$head$bootstrap.cljs$lang$applyTo = (function (arglist__9537){
+var args__8262__auto__ = cljs.core.seq(arglist__9537);
 return general$head$bootstrap__delegate(args__8262__auto__);
 });
 general$head$bootstrap.cljs$core$IFn$_invoke$arity$variadic = general$head$bootstrap__delegate;
@@ -35,22 +35,22 @@ return general$head$bootstrap;
  */
 general.head.viewport = (function() { 
 var general$head$viewport__delegate = function (args__8262__auto__){
-var vec__13389 = tailrecursion.hoplon.parse_args(args__8262__auto__);
-var _ = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__13389,(0),null);
-var ___$1 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__13389,(1),null);
+var vec__9539 = tailrecursion.hoplon.parse_args(args__8262__auto__);
+var _ = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__9539,(0),null);
+var ___$1 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__9539,(1),null);
 return (tailrecursion.hoplon.html_meta.cljs$core$IFn$_invoke$arity$4 ? tailrecursion.hoplon.html_meta.cljs$core$IFn$_invoke$arity$4(cljs.core.cst$kw$name,"viewport",cljs.core.cst$kw$content,"width=device-width, initial-scale=1") : tailrecursion.hoplon.html_meta.call(null,cljs.core.cst$kw$name,"viewport",cljs.core.cst$kw$content,"width=device-width, initial-scale=1"));
 };
 var general$head$viewport = function (var_args){
 var args__8262__auto__ = null;
 if (arguments.length > 0) {
-var G__13390__i = 0, G__13390__a = new Array(arguments.length -  0);
-while (G__13390__i < G__13390__a.length) {G__13390__a[G__13390__i] = arguments[G__13390__i + 0]; ++G__13390__i;}
-  args__8262__auto__ = new cljs.core.IndexedSeq(G__13390__a,0);
+var G__9540__i = 0, G__9540__a = new Array(arguments.length -  0);
+while (G__9540__i < G__9540__a.length) {G__9540__a[G__9540__i] = arguments[G__9540__i + 0]; ++G__9540__i;}
+  args__8262__auto__ = new cljs.core.IndexedSeq(G__9540__a,0);
 } 
 return general$head$viewport__delegate.call(this,args__8262__auto__);};
 general$head$viewport.cljs$lang$maxFixedArity = 0;
-general$head$viewport.cljs$lang$applyTo = (function (arglist__13391){
-var args__8262__auto__ = cljs.core.seq(arglist__13391);
+general$head$viewport.cljs$lang$applyTo = (function (arglist__9541){
+var args__8262__auto__ = cljs.core.seq(arglist__9541);
 return general$head$viewport__delegate(args__8262__auto__);
 });
 general$head$viewport.cljs$core$IFn$_invoke$arity$variadic = general$head$viewport__delegate;
@@ -62,22 +62,22 @@ return general$head$viewport;
  */
 general.head.mathjax = (function() { 
 var general$head$mathjax__delegate = function (args__8262__auto__){
-var vec__13393 = tailrecursion.hoplon.parse_args(args__8262__auto__);
-var _ = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__13393,(0),null);
-var ___$1 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__13393,(1),null);
+var vec__9543 = tailrecursion.hoplon.parse_args(args__8262__auto__);
+var _ = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__9543,(0),null);
+var ___$1 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__9543,(1),null);
 return (tailrecursion.hoplon.script.cljs$core$IFn$_invoke$arity$4 ? tailrecursion.hoplon.script.cljs$core$IFn$_invoke$arity$4(cljs.core.cst$kw$type,"text/javascript",cljs.core.cst$kw$src,"https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML") : tailrecursion.hoplon.script.call(null,cljs.core.cst$kw$type,"text/javascript",cljs.core.cst$kw$src,"https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"));
 };
 var general$head$mathjax = function (var_args){
 var args__8262__auto__ = null;
 if (arguments.length > 0) {
-var G__13394__i = 0, G__13394__a = new Array(arguments.length -  0);
-while (G__13394__i < G__13394__a.length) {G__13394__a[G__13394__i] = arguments[G__13394__i + 0]; ++G__13394__i;}
-  args__8262__auto__ = new cljs.core.IndexedSeq(G__13394__a,0);
+var G__9544__i = 0, G__9544__a = new Array(arguments.length -  0);
+while (G__9544__i < G__9544__a.length) {G__9544__a[G__9544__i] = arguments[G__9544__i + 0]; ++G__9544__i;}
+  args__8262__auto__ = new cljs.core.IndexedSeq(G__9544__a,0);
 } 
 return general$head$mathjax__delegate.call(this,args__8262__auto__);};
 general$head$mathjax.cljs$lang$maxFixedArity = 0;
-general$head$mathjax.cljs$lang$applyTo = (function (arglist__13395){
-var args__8262__auto__ = cljs.core.seq(arglist__13395);
+general$head$mathjax.cljs$lang$applyTo = (function (arglist__9545){
+var args__8262__auto__ = cljs.core.seq(arglist__9545);
 return general$head$mathjax__delegate(args__8262__auto__);
 });
 general$head$mathjax.cljs$core$IFn$_invoke$arity$variadic = general$head$mathjax__delegate;
@@ -90,22 +90,22 @@ general.head.google_analytics_text = "(function(i,s,o,g,r,a,m){i['GoogleAnalytic
  */
 general.head.google_analytics = (function() { 
 var general$head$google_analytics__delegate = function (args__8262__auto__){
-var vec__13397 = tailrecursion.hoplon.parse_args(args__8262__auto__);
-var _ = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__13397,(0),null);
-var ___$1 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__13397,(1),null);
+var vec__9547 = tailrecursion.hoplon.parse_args(args__8262__auto__);
+var _ = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__9547,(0),null);
+var ___$1 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__9547,(1),null);
 return (tailrecursion.hoplon.script.cljs$core$IFn$_invoke$arity$1 ? tailrecursion.hoplon.script.cljs$core$IFn$_invoke$arity$1(general.head.google_analytics_text) : tailrecursion.hoplon.script.call(null,general.head.google_analytics_text));
 };
 var general$head$google_analytics = function (var_args){
 var args__8262__auto__ = null;
 if (arguments.length > 0) {
-var G__13398__i = 0, G__13398__a = new Array(arguments.length -  0);
-while (G__13398__i < G__13398__a.length) {G__13398__a[G__13398__i] = arguments[G__13398__i + 0]; ++G__13398__i;}
-  args__8262__auto__ = new cljs.core.IndexedSeq(G__13398__a,0);
+var G__9548__i = 0, G__9548__a = new Array(arguments.length -  0);
+while (G__9548__i < G__9548__a.length) {G__9548__a[G__9548__i] = arguments[G__9548__i + 0]; ++G__9548__i;}
+  args__8262__auto__ = new cljs.core.IndexedSeq(G__9548__a,0);
 } 
 return general$head$google_analytics__delegate.call(this,args__8262__auto__);};
 general$head$google_analytics.cljs$lang$maxFixedArity = 0;
-general$head$google_analytics.cljs$lang$applyTo = (function (arglist__13399){
-var args__8262__auto__ = cljs.core.seq(arglist__13399);
+general$head$google_analytics.cljs$lang$applyTo = (function (arglist__9549){
+var args__8262__auto__ = cljs.core.seq(arglist__9549);
 return general$head$google_analytics__delegate(args__8262__auto__);
 });
 general$head$google_analytics.cljs$core$IFn$_invoke$arity$variadic = general$head$google_analytics__delegate;
