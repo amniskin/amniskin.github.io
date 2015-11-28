@@ -1,4 +1,4 @@
-// Compiled by ClojureScript 1.7.48 {}
+// Compiled by ClojureScript 1.7.48 {:static-fns true, :optimize-constants true}
 goog.provide('tailrecursion.hoplon.app_pages._index_DOT_html');
 goog.require('cljs.core');
 goog.require('content.home.subjects');
@@ -14,6 +14,28 @@ goog.require('general.head');
 goog.require('content.home.top');
 goog.require('general.footer');
 goog.require('content.home.testimonials');
-tailrecursion.hoplon.html.call(null,new cljs.core.Keyword(null,"lang","lang",-1819677104),"en",tailrecursion.hoplon.head.call(null,tailrecursion.hoplon.title.call(null,"Home of a Mathema-Niskin!"),tailrecursion.hoplon.html_meta.call(null,new cljs.core.Keyword(null,"name","name",1843675177),"keywords",new cljs.core.Keyword(null,"content","content",15833224),"Aaron, Niskin, Math, Tutor, Miami, Florida, Education, Computer, Computing, Science, Physics, calculus, algebra, set theory"),tailrecursion.hoplon.html_meta.call(null,new cljs.core.Keyword(null,"name","name",1843675177),"description",new cljs.core.Keyword(null,"content","content",15833224),"This is my personal site. I have a blog and a translation of SICP into the more modern Clojure (with Clojure core adaptation)."),general.head.viewport.call(null),general.head.google_analytics.call(null),general.head.bootstrap.call(null)),tailrecursion.hoplon.body.call(null,general.navbar.fixed.call(null),tailrecursion.hoplon.div.call(null,new cljs.core.Keyword(null,"class","class",-2030961996),"fade-bg",content.home.top.content.call(null),content.home.subjects.content.call(null),general.sections.divider.call(null),content.home.fiu.content.call(null),general.sections.divider.call(null),content.home.testimonials.content.call(null),general.sections.divider.call(null),content.home.um.content.call(null),general.sections.divider.call(null),content.home.contact.content.call(null),general.footer.content.call(null))));
-
-//# sourceMappingURL=_index_DOT_html.js.map
+tailrecursion.hoplon.html.cljs$core$IFn$_invoke$arity$variadic(cljs.core.array_seq([cljs.core.cst$kw$lang,"en",(function (){var G__9663 = (tailrecursion.hoplon.title.cljs$core$IFn$_invoke$arity$1 ? tailrecursion.hoplon.title.cljs$core$IFn$_invoke$arity$1("Home of a Mathema-Niskin!") : tailrecursion.hoplon.title.call(null,"Home of a Mathema-Niskin!"));
+var G__9664 = (tailrecursion.hoplon.html_meta.cljs$core$IFn$_invoke$arity$4 ? tailrecursion.hoplon.html_meta.cljs$core$IFn$_invoke$arity$4(cljs.core.cst$kw$name,"keywords",cljs.core.cst$kw$content,"Aaron, Niskin, Math, Tutor, Miami, Florida, Education, Computer, Computing, Science, Physics, calculus, algebra, set theory") : tailrecursion.hoplon.html_meta.call(null,cljs.core.cst$kw$name,"keywords",cljs.core.cst$kw$content,"Aaron, Niskin, Math, Tutor, Miami, Florida, Education, Computer, Computing, Science, Physics, calculus, algebra, set theory"));
+var G__9665 = (tailrecursion.hoplon.html_meta.cljs$core$IFn$_invoke$arity$4 ? tailrecursion.hoplon.html_meta.cljs$core$IFn$_invoke$arity$4(cljs.core.cst$kw$name,"description",cljs.core.cst$kw$content,"This is my personal site. I have a blog and a translation of SICP into the more modern Clojure (with Clojure core adaptation).") : tailrecursion.hoplon.html_meta.call(null,cljs.core.cst$kw$name,"description",cljs.core.cst$kw$content,"This is my personal site. I have a blog and a translation of SICP into the more modern Clojure (with Clojure core adaptation)."));
+var G__9666 = general.head.viewport();
+var G__9667 = general.head.google_analytics();
+var G__9668 = general.head.bootstrap();
+return (tailrecursion.hoplon.head.cljs$core$IFn$_invoke$arity$6 ? tailrecursion.hoplon.head.cljs$core$IFn$_invoke$arity$6(G__9663,G__9664,G__9665,G__9666,G__9667,G__9668) : tailrecursion.hoplon.head.call(null,G__9663,G__9664,G__9665,G__9666,G__9667,G__9668));
+})(),(function (){var G__9669 = general.navbar.fixed();
+var G__9670 = (function (){var G__9671 = cljs.core.cst$kw$class;
+var G__9672 = "fade-bg";
+var G__9673 = content.home.top.content();
+var G__9674 = content.home.subjects.content();
+var G__9675 = general.sections.divider();
+var G__9676 = content.home.fiu.content();
+var G__9677 = general.sections.divider();
+var G__9678 = content.home.testimonials.content();
+var G__9679 = general.sections.divider();
+var G__9680 = content.home.um.content();
+var G__9681 = general.sections.divider();
+var G__9682 = content.home.contact.content();
+var G__9683 = general.footer.content();
+return (tailrecursion.hoplon.div.cljs$core$IFn$_invoke$arity$13 ? tailrecursion.hoplon.div.cljs$core$IFn$_invoke$arity$13(G__9671,G__9672,G__9673,G__9674,G__9675,G__9676,G__9677,G__9678,G__9679,G__9680,G__9681,G__9682,G__9683) : tailrecursion.hoplon.div.call(null,G__9671,G__9672,G__9673,G__9674,G__9675,G__9676,G__9677,G__9678,G__9679,G__9680,G__9681,G__9682,G__9683));
+})();
+return (tailrecursion.hoplon.body.cljs$core$IFn$_invoke$arity$2 ? tailrecursion.hoplon.body.cljs$core$IFn$_invoke$arity$2(G__9669,G__9670) : tailrecursion.hoplon.body.call(null,G__9669,G__9670));
+})()], 0));
