@@ -1,0 +1,16 @@
+goog.addDependency("base.js", ['goog'], []);
+goog.addDependency("../jquery.inc.js", ['cljsjs.jquery'], []);
+goog.addDependency("../cljs/core.js", ['cljs.core'], ['goog.string', 'goog.object', 'goog.string.StringBuffer', 'goog.array']);
+goog.addDependency("../cljs/reader.js", ['cljs.reader'], ['goog.string', 'cljs.core', 'goog.string.StringBuffer']);
+goog.addDependency("../tailrecursion/priority_map.js", ['tailrecursion.priority_map'], ['cljs.core', 'cljs.reader']);
+goog.addDependency("../tailrecursion/javelin.js", ['tailrecursion.javelin'], ['cljs.core', 'tailrecursion.priority_map']);
+goog.addDependency("../clojure/string.js", ['clojure.string'], ['goog.string', 'cljs.core', 'goog.string.StringBuffer']);
+goog.addDependency("../tailrecursion/hoplon.js", ['tailrecursion.hoplon'], ['cljsjs.jquery', 'cljs.core', 'tailrecursion.javelin', 'clojure.string', 'cljs.reader']);
+goog.addDependency("../tailrecursion/hoplon/app_pages/_book_SLASH_index_DOT_html.js", ['tailrecursion.hoplon.app_pages._book_SLASH_index_DOT_html'], ['tailrecursion.hoplon', 'cljs.core', 'tailrecursion.javelin']);
+goog.addDependency("../adzerk/boot_reload/reload.js", ['adzerk.boot_reload.reload'], ['goog.net.jsloader', 'goog.Uri', 'cljs.core', 'goog.async.DeferredList', 'clojure.string']);
+goog.addDependency("../clojure/browser/event.js", ['clojure.browser.event'], ['cljs.core', 'goog.events.EventTarget', 'goog.events.EventType', 'goog.events']);
+goog.addDependency("../clojure/browser/net.js", ['clojure.browser.net'], ['goog.net.xpc.CfgFields', 'goog.net.XhrIo', 'goog.json', 'goog.Uri', 'cljs.core', 'goog.net.EventType', 'goog.net.xpc.CrossPageChannel', 'goog.net.WebSocket', 'clojure.browser.event']);
+goog.addDependency("../adzerk/boot_reload/websocket.js", ['adzerk.boot_reload.websocket'], ['cljs.core', 'clojure.browser.net', 'goog.net.WebSocket', 'clojure.browser.event']);
+goog.addDependency("../adzerk/boot_reload/client.js", ['adzerk.boot_reload.client'], ['adzerk.boot_reload.reload', 'goog.net.jsloader', 'cljs.core', 'adzerk.boot_reload.websocket', 'clojure.browser.net', 'cljs.reader', 'clojure.browser.event']);
+goog.addDependency("../adzerk/boot_reload.js", ['adzerk.boot_reload'], ['cljs.core', 'adzerk.boot_reload.client']);
+goog.addDependency("../boot/cljs/main819.js", ['boot.cljs.main819'], ['tailrecursion.hoplon.app_pages._book_SLASH_index_DOT_html', 'adzerk.boot_reload', 'cljs.core']);

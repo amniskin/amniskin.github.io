@@ -1,4 +1,4 @@
-// Compiled by ClojureScript 1.7.48 {:static-fns true, :optimize-constants true}
+// Compiled by ClojureScript 1.7.48 {}
 goog.provide('tailrecursion.hoplon.app_pages._book_SLASH_sicp_SLASH_index_DOT_html');
 goog.require('cljs.core');
 goog.require('book.sicp.texts.ch1sect2');
@@ -7,6 +7,7 @@ goog.require('book.sicp.texts.ch2sect2');
 goog.require('general.navbar');
 goog.require('book.sicp.texts.ch2sect3');
 goog.require('book.sicp.book_data');
+goog.require('book.sicp.texts.ch2sect4');
 goog.require('tailrecursion.hoplon');
 goog.require('book.sicp.texts.ch1');
 goog.require('book.sicp.texts.ch2');
@@ -18,15 +19,6 @@ goog.require('general.bootstrap');
 goog.require('general.footer');
 goog.require('book.sicp.texts.ch1sect3');
 goog.require('book.sicp.texts.ch2sect1');
-tailrecursion.hoplon.html.cljs$core$IFn$_invoke$arity$variadic(cljs.core.array_seq([(function (){var G__182959 = (tailrecursion.hoplon.title.cljs$core$IFn$_invoke$arity$1 ? tailrecursion.hoplon.title.cljs$core$IFn$_invoke$arity$1("SICP... Now in Clojure!") : tailrecursion.hoplon.title.call(null,"SICP... Now in Clojure!"));
-var G__182960 = (tailrecursion.hoplon.html_meta.cljs$core$IFn$_invoke$arity$4 ? tailrecursion.hoplon.html_meta.cljs$core$IFn$_invoke$arity$4(cljs.core.cst$kw$name,"keywords",cljs.core.cst$kw$content,"Aaron, Niskin, Clojure, SICP, Structure and Interpretation of Computer Programs, Functional, programming, computing, learn") : tailrecursion.hoplon.html_meta.call(null,cljs.core.cst$kw$name,"keywords",cljs.core.cst$kw$content,"Aaron, Niskin, Clojure, SICP, Structure and Interpretation of Computer Programs, Functional, programming, computing, learn"));
-var G__182961 = (tailrecursion.hoplon.html_meta.cljs$core$IFn$_invoke$arity$4 ? tailrecursion.hoplon.html_meta.cljs$core$IFn$_invoke$arity$4(cljs.core.cst$kw$name,"description",cljs.core.cst$kw$content,"SICP translated into Clojure and augmented by the introduction of Clojure core functions in appropriate locations. All exercises have solutions.") : tailrecursion.hoplon.html_meta.call(null,cljs.core.cst$kw$name,"description",cljs.core.cst$kw$content,"SICP translated into Clojure and augmented by the introduction of Clojure core functions in appropriate locations. All exercises have solutions."));
-var G__182962 = general.head.bootstrap();
-var G__182963 = general.head.viewport();
-var G__182964 = general.head.google_analytics();
-var G__182965 = general.head.mathjax();
-return (tailrecursion.hoplon.head.cljs$core$IFn$_invoke$arity$7 ? tailrecursion.hoplon.head.cljs$core$IFn$_invoke$arity$7(G__182959,G__182960,G__182961,G__182962,G__182963,G__182964,G__182965) : tailrecursion.hoplon.head.call(null,G__182959,G__182960,G__182961,G__182962,G__182963,G__182964,G__182965));
-})(),(function (){var G__182966 = general.navbar.fixed();
-var G__182967 = general.bootstrap.container.cljs$core$IFn$_invoke$arity$variadic(cljs.core.array_seq([general.sections.sidebar.cljs$core$IFn$_invoke$arity$variadic(cljs.core.array_seq([book.sicp.book_data.toc()], 0)),general.sections.content_with_sidebar.cljs$core$IFn$_invoke$arity$variadic(cljs.core.array_seq([book.sicp.book_data.content.cljs$core$IFn$_invoke$arity$variadic(cljs.core.array_seq([book.sicp.texts.about.content(),book.sicp.texts.ch1.content(),book.sicp.texts.ch1sect1.content(),book.sicp.texts.ch1sect2.content(),book.sicp.texts.ch1sect3.content(),book.sicp.texts.ch2.content(),book.sicp.texts.ch2sect1.content(),book.sicp.texts.ch2sect2.content(),book.sicp.texts.ch2sect3.content(),general.footer.content()], 0))], 0))], 0));
-return (tailrecursion.hoplon.body.cljs$core$IFn$_invoke$arity$2 ? tailrecursion.hoplon.body.cljs$core$IFn$_invoke$arity$2(G__182966,G__182967) : tailrecursion.hoplon.body.call(null,G__182966,G__182967));
-})()], 0));
+tailrecursion.hoplon.html.call(null,tailrecursion.hoplon.head.call(null,tailrecursion.hoplon.title.call(null,"SICP... Now in Clojure!"),tailrecursion.hoplon.html_meta.call(null,new cljs.core.Keyword(null,"name","name",1843675177),"keywords",new cljs.core.Keyword(null,"content","content",15833224),"Aaron, Niskin, Clojure, SICP, Structure and Interpretation of Computer Programs, Functional, programming, computing, learn"),tailrecursion.hoplon.html_meta.call(null,new cljs.core.Keyword(null,"name","name",1843675177),"description",new cljs.core.Keyword(null,"content","content",15833224),"SICP translated into Clojure and augmented by the introduction of Clojure core functions in appropriate locations. All exercises have solutions."),general.head.bootstrap.call(null),general.head.viewport.call(null),general.head.google_analytics.call(null),general.head.mathjax.call(null)),tailrecursion.hoplon.body.call(null,general.navbar.fixed.call(null),general.bootstrap.container.call(null,general.sections.sidebar.call(null,book.sicp.book_data.toc.call(null)),general.sections.content_with_sidebar.call(null,book.sicp.book_data.content.call(null,book.sicp.texts.about.content.call(null),book.sicp.texts.ch1.content.call(null),book.sicp.texts.ch1sect1.content.call(null),book.sicp.texts.ch1sect2.content.call(null),book.sicp.texts.ch1sect3.content.call(null),book.sicp.texts.ch2.content.call(null),book.sicp.texts.ch2sect1.content.call(null),book.sicp.texts.ch2sect2.content.call(null),book.sicp.texts.ch2sect3.content.call(null),book.sicp.texts.ch2sect4.content.call(null),general.footer.content.call(null))))));
+
+//# sourceMappingURL=_book_SLASH_sicp_SLASH_index_DOT_html.js.map

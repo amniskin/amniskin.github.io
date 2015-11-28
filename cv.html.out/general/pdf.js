@@ -1,4 +1,4 @@
-// Compiled by ClojureScript 1.7.48 {:static-fns true, :optimize-constants true}
+// Compiled by ClojureScript 1.7.48 {}
 goog.provide('general.pdf');
 goog.require('cljs.core');
 goog.require('general.navbar');
@@ -9,40 +9,34 @@ goog.require('tailrecursion.javelin');
  * @param {...*} var_args
  */
 general.pdf.viewer = (function() { 
-var general$pdf$viewer__delegate = function (args__8262__auto__){
-var vec__9257 = tailrecursion.hoplon.parse_args(args__8262__auto__);
-var map__9258 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__9257,(0),null);
-var map__9258__$1 = ((((!((map__9258 == null)))?((((map__9258.cljs$lang$protocol_mask$partition0$ & (64))) || (map__9258.cljs$core$ISeq$))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__9258):map__9258);
-var src = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__9258__$1,cljs.core.cst$kw$src);
-var _ = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__9257,(1),null);
-var G__9262 = cljs.core.cst$kw$width;
-var G__9263 = "100%";
-var G__9264 = cljs.core.cst$kw$height;
-var G__9265 = tailrecursion.javelin.formula(((function (G__9262,G__9263,G__9264,vec__9257,map__9258,map__9258__$1,src,_){
-return (function (G__9271,G__9270){
-return (G__9270 - G__9271);
-});})(G__9262,G__9263,G__9264,vec__9257,map__9258,map__9258__$1,src,_))
-).call(null,general.navbar.height,general.info.screen_height);
-var G__9266 = cljs.core.cst$kw$src;
-var G__9267 = src;
-var G__9268 = cljs.core.cst$kw$frameborder;
-var G__9269 = "0";
-return (tailrecursion.hoplon.iframe.cljs$core$IFn$_invoke$arity$8 ? tailrecursion.hoplon.iframe.cljs$core$IFn$_invoke$arity$8(G__9262,G__9263,G__9264,G__9265,G__9266,G__9267,G__9268,G__9269) : tailrecursion.hoplon.iframe.call(null,G__9262,G__9263,G__9264,G__9265,G__9266,G__9267,G__9268,G__9269));
+var general$pdf$viewer__delegate = function (args__6627__auto__){
+var vec__12805 = tailrecursion.hoplon.parse_args.call(null,args__6627__auto__);
+var map__12806 = cljs.core.nth.call(null,vec__12805,(0),null);
+var map__12806__$1 = ((((!((map__12806 == null)))?((((map__12806.cljs$lang$protocol_mask$partition0$ & (64))) || (map__12806.cljs$core$ISeq$))?true:false):false))?cljs.core.apply.call(null,cljs.core.hash_map,map__12806):map__12806);
+var src = cljs.core.get.call(null,map__12806__$1,new cljs.core.Keyword(null,"src","src",-1651076051));
+var _ = cljs.core.nth.call(null,vec__12805,(1),null);
+return tailrecursion.hoplon.iframe.call(null,new cljs.core.Keyword(null,"width","width",-384071477),"100%",new cljs.core.Keyword(null,"height","height",1025178622),tailrecursion.javelin.formula.call(null,((function (vec__12805,map__12806,map__12806__$1,src,_){
+return (function (G__12809,G__12808){
+return (G__12808 - G__12809);
+});})(vec__12805,map__12806,map__12806__$1,src,_))
+).call(null,general.navbar.height,general.info.screen_height),new cljs.core.Keyword(null,"src","src",-1651076051),src,new cljs.core.Keyword(null,"frameborder","frameborder",-7707960),"0");
 };
 var general$pdf$viewer = function (var_args){
-var args__8262__auto__ = null;
+var args__6627__auto__ = null;
 if (arguments.length > 0) {
-var G__9272__i = 0, G__9272__a = new Array(arguments.length -  0);
-while (G__9272__i < G__9272__a.length) {G__9272__a[G__9272__i] = arguments[G__9272__i + 0]; ++G__9272__i;}
-  args__8262__auto__ = new cljs.core.IndexedSeq(G__9272__a,0);
+var G__12810__i = 0, G__12810__a = new Array(arguments.length -  0);
+while (G__12810__i < G__12810__a.length) {G__12810__a[G__12810__i] = arguments[G__12810__i + 0]; ++G__12810__i;}
+  args__6627__auto__ = new cljs.core.IndexedSeq(G__12810__a,0);
 } 
-return general$pdf$viewer__delegate.call(this,args__8262__auto__);};
+return general$pdf$viewer__delegate.call(this,args__6627__auto__);};
 general$pdf$viewer.cljs$lang$maxFixedArity = 0;
-general$pdf$viewer.cljs$lang$applyTo = (function (arglist__9273){
-var args__8262__auto__ = cljs.core.seq(arglist__9273);
-return general$pdf$viewer__delegate(args__8262__auto__);
+general$pdf$viewer.cljs$lang$applyTo = (function (arglist__12811){
+var args__6627__auto__ = cljs.core.seq(arglist__12811);
+return general$pdf$viewer__delegate(args__6627__auto__);
 });
 general$pdf$viewer.cljs$core$IFn$_invoke$arity$variadic = general$pdf$viewer__delegate;
 return general$pdf$viewer;
 })()
 ;
+
+//# sourceMappingURL=pdf.js.map

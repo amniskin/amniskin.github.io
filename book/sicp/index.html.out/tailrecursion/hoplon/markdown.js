@@ -1,4 +1,4 @@
-// Compiled by ClojureScript 1.7.48 {:static-fns true, :optimize-constants true}
+// Compiled by ClojureScript 1.7.48 {}
 goog.provide('tailrecursion.hoplon.markdown');
 goog.require('cljs.core');
 goog.require('tailrecursion.hoplon');
@@ -12,24 +12,24 @@ tailrecursion.hoplon.markdown._STAR_current_table_column_STAR_ = null;
  * @param {...*} var_args
  */
 tailrecursion.hoplon.markdown.abbreviation_node = (function() { 
-var tailrecursion$hoplon$markdown$abbreviation_node__delegate = function (args__8262__auto__){
-var vec__184261 = tailrecursion.hoplon.parse_args(args__8262__auto__);
-var attr = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__184261,(0),null);
-var kids = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__184261,(1),null);
+var tailrecursion$hoplon$markdown$abbreviation_node__delegate = function (args__6627__auto__){
+var vec__84592 = tailrecursion.hoplon.parse_args.call(null,args__6627__auto__);
+var attr = cljs.core.nth.call(null,vec__84592,(0),null);
+var kids = cljs.core.nth.call(null,vec__84592,(1),null);
 return null;
 };
 var tailrecursion$hoplon$markdown$abbreviation_node = function (var_args){
-var args__8262__auto__ = null;
+var args__6627__auto__ = null;
 if (arguments.length > 0) {
-var G__184262__i = 0, G__184262__a = new Array(arguments.length -  0);
-while (G__184262__i < G__184262__a.length) {G__184262__a[G__184262__i] = arguments[G__184262__i + 0]; ++G__184262__i;}
-  args__8262__auto__ = new cljs.core.IndexedSeq(G__184262__a,0);
+var G__84593__i = 0, G__84593__a = new Array(arguments.length -  0);
+while (G__84593__i < G__84593__a.length) {G__84593__a[G__84593__i] = arguments[G__84593__i + 0]; ++G__84593__i;}
+  args__6627__auto__ = new cljs.core.IndexedSeq(G__84593__a,0);
 } 
-return tailrecursion$hoplon$markdown$abbreviation_node__delegate.call(this,args__8262__auto__);};
+return tailrecursion$hoplon$markdown$abbreviation_node__delegate.call(this,args__6627__auto__);};
 tailrecursion$hoplon$markdown$abbreviation_node.cljs$lang$maxFixedArity = 0;
-tailrecursion$hoplon$markdown$abbreviation_node.cljs$lang$applyTo = (function (arglist__184263){
-var args__8262__auto__ = cljs.core.seq(arglist__184263);
-return tailrecursion$hoplon$markdown$abbreviation_node__delegate(args__8262__auto__);
+tailrecursion$hoplon$markdown$abbreviation_node.cljs$lang$applyTo = (function (arglist__84594){
+var args__6627__auto__ = cljs.core.seq(arglist__84594);
+return tailrecursion$hoplon$markdown$abbreviation_node__delegate(args__6627__auto__);
 });
 tailrecursion$hoplon$markdown$abbreviation_node.cljs$core$IFn$_invoke$arity$variadic = tailrecursion$hoplon$markdown$abbreviation_node__delegate;
 return tailrecursion$hoplon$markdown$abbreviation_node;
@@ -39,26 +39,26 @@ return tailrecursion$hoplon$markdown$abbreviation_node;
  * @param {...*} var_args
  */
 tailrecursion.hoplon.markdown.auto_link_node = (function() { 
-var tailrecursion$hoplon$markdown$auto_link_node__delegate = function (args__8262__auto__){
-var vec__184266 = tailrecursion.hoplon.parse_args(args__8262__auto__);
-var attr = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__184266,(0),null);
-var vec__184267 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__184266,(1),null);
-var url = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__184267,(0),null);
-var _ = cljs.core.nthnext(vec__184267,(1));
-return (tailrecursion.hoplon.a.cljs$core$IFn$_invoke$arity$3 ? tailrecursion.hoplon.a.cljs$core$IFn$_invoke$arity$3(cljs.core.cst$kw$href,url,url) : tailrecursion.hoplon.a.call(null,cljs.core.cst$kw$href,url,url));
+var tailrecursion$hoplon$markdown$auto_link_node__delegate = function (args__6627__auto__){
+var vec__84597 = tailrecursion.hoplon.parse_args.call(null,args__6627__auto__);
+var attr = cljs.core.nth.call(null,vec__84597,(0),null);
+var vec__84598 = cljs.core.nth.call(null,vec__84597,(1),null);
+var url = cljs.core.nth.call(null,vec__84598,(0),null);
+var _ = cljs.core.nthnext.call(null,vec__84598,(1));
+return tailrecursion.hoplon.a.call(null,new cljs.core.Keyword(null,"href","href",-793805698),url,url);
 };
 var tailrecursion$hoplon$markdown$auto_link_node = function (var_args){
-var args__8262__auto__ = null;
+var args__6627__auto__ = null;
 if (arguments.length > 0) {
-var G__184268__i = 0, G__184268__a = new Array(arguments.length -  0);
-while (G__184268__i < G__184268__a.length) {G__184268__a[G__184268__i] = arguments[G__184268__i + 0]; ++G__184268__i;}
-  args__8262__auto__ = new cljs.core.IndexedSeq(G__184268__a,0);
+var G__84599__i = 0, G__84599__a = new Array(arguments.length -  0);
+while (G__84599__i < G__84599__a.length) {G__84599__a[G__84599__i] = arguments[G__84599__i + 0]; ++G__84599__i;}
+  args__6627__auto__ = new cljs.core.IndexedSeq(G__84599__a,0);
 } 
-return tailrecursion$hoplon$markdown$auto_link_node__delegate.call(this,args__8262__auto__);};
+return tailrecursion$hoplon$markdown$auto_link_node__delegate.call(this,args__6627__auto__);};
 tailrecursion$hoplon$markdown$auto_link_node.cljs$lang$maxFixedArity = 0;
-tailrecursion$hoplon$markdown$auto_link_node.cljs$lang$applyTo = (function (arglist__184269){
-var args__8262__auto__ = cljs.core.seq(arglist__184269);
-return tailrecursion$hoplon$markdown$auto_link_node__delegate(args__8262__auto__);
+tailrecursion$hoplon$markdown$auto_link_node.cljs$lang$applyTo = (function (arglist__84600){
+var args__6627__auto__ = cljs.core.seq(arglist__84600);
+return tailrecursion$hoplon$markdown$auto_link_node__delegate(args__6627__auto__);
 });
 tailrecursion$hoplon$markdown$auto_link_node.cljs$core$IFn$_invoke$arity$variadic = tailrecursion$hoplon$markdown$auto_link_node__delegate;
 return tailrecursion$hoplon$markdown$auto_link_node;
@@ -74,29 +74,29 @@ tailrecursion.hoplon.markdown.definition_term_node = tailrecursion.hoplon.dt;
  * @param {...*} var_args
  */
 tailrecursion.hoplon.markdown.exp_image_node = (function() { 
-var tailrecursion$hoplon$markdown$exp_image_node__delegate = function (args__8262__auto__){
-var vec__184274 = tailrecursion.hoplon.parse_args(args__8262__auto__);
-var map__184275 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__184274,(0),null);
-var map__184275__$1 = ((((!((map__184275 == null)))?((((map__184275.cljs$lang$protocol_mask$partition0$ & (64))) || (map__184275.cljs$core$ISeq$))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__184275):map__184275);
-var url = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__184275__$1,cljs.core.cst$kw$url);
-var title = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__184275__$1,cljs.core.cst$kw$title);
-var vec__184276 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__184274,(1),null);
-var alt = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__184276,(0),null);
-var _ = cljs.core.nthnext(vec__184276,(1));
-return (tailrecursion.hoplon.img.cljs$core$IFn$_invoke$arity$6 ? tailrecursion.hoplon.img.cljs$core$IFn$_invoke$arity$6(cljs.core.cst$kw$src,url,cljs.core.cst$kw$title,title,cljs.core.cst$kw$alt,alt) : tailrecursion.hoplon.img.call(null,cljs.core.cst$kw$src,url,cljs.core.cst$kw$title,title,cljs.core.cst$kw$alt,alt));
+var tailrecursion$hoplon$markdown$exp_image_node__delegate = function (args__6627__auto__){
+var vec__84605 = tailrecursion.hoplon.parse_args.call(null,args__6627__auto__);
+var map__84606 = cljs.core.nth.call(null,vec__84605,(0),null);
+var map__84606__$1 = ((((!((map__84606 == null)))?((((map__84606.cljs$lang$protocol_mask$partition0$ & (64))) || (map__84606.cljs$core$ISeq$))?true:false):false))?cljs.core.apply.call(null,cljs.core.hash_map,map__84606):map__84606);
+var url = cljs.core.get.call(null,map__84606__$1,new cljs.core.Keyword(null,"url","url",276297046));
+var title = cljs.core.get.call(null,map__84606__$1,new cljs.core.Keyword(null,"title","title",636505583));
+var vec__84607 = cljs.core.nth.call(null,vec__84605,(1),null);
+var alt = cljs.core.nth.call(null,vec__84607,(0),null);
+var _ = cljs.core.nthnext.call(null,vec__84607,(1));
+return tailrecursion.hoplon.img.call(null,new cljs.core.Keyword(null,"src","src",-1651076051),url,new cljs.core.Keyword(null,"title","title",636505583),title,new cljs.core.Keyword(null,"alt","alt",-3214426),alt);
 };
 var tailrecursion$hoplon$markdown$exp_image_node = function (var_args){
-var args__8262__auto__ = null;
+var args__6627__auto__ = null;
 if (arguments.length > 0) {
-var G__184278__i = 0, G__184278__a = new Array(arguments.length -  0);
-while (G__184278__i < G__184278__a.length) {G__184278__a[G__184278__i] = arguments[G__184278__i + 0]; ++G__184278__i;}
-  args__8262__auto__ = new cljs.core.IndexedSeq(G__184278__a,0);
+var G__84609__i = 0, G__84609__a = new Array(arguments.length -  0);
+while (G__84609__i < G__84609__a.length) {G__84609__a[G__84609__i] = arguments[G__84609__i + 0]; ++G__84609__i;}
+  args__6627__auto__ = new cljs.core.IndexedSeq(G__84609__a,0);
 } 
-return tailrecursion$hoplon$markdown$exp_image_node__delegate.call(this,args__8262__auto__);};
+return tailrecursion$hoplon$markdown$exp_image_node__delegate.call(this,args__6627__auto__);};
 tailrecursion$hoplon$markdown$exp_image_node.cljs$lang$maxFixedArity = 0;
-tailrecursion$hoplon$markdown$exp_image_node.cljs$lang$applyTo = (function (arglist__184279){
-var args__8262__auto__ = cljs.core.seq(arglist__184279);
-return tailrecursion$hoplon$markdown$exp_image_node__delegate(args__8262__auto__);
+tailrecursion$hoplon$markdown$exp_image_node.cljs$lang$applyTo = (function (arglist__84610){
+var args__6627__auto__ = cljs.core.seq(arglist__84610);
+return tailrecursion$hoplon$markdown$exp_image_node__delegate(args__6627__auto__);
 });
 tailrecursion$hoplon$markdown$exp_image_node.cljs$core$IFn$_invoke$arity$variadic = tailrecursion$hoplon$markdown$exp_image_node__delegate;
 return tailrecursion$hoplon$markdown$exp_image_node;
@@ -106,27 +106,27 @@ return tailrecursion$hoplon$markdown$exp_image_node;
  * @param {...*} var_args
  */
 tailrecursion.hoplon.markdown.exp_link_node = (function() { 
-var tailrecursion$hoplon$markdown$exp_link_node__delegate = function (args__8262__auto__){
-var vec__184283 = tailrecursion.hoplon.parse_args(args__8262__auto__);
-var map__184284 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__184283,(0),null);
-var map__184284__$1 = ((((!((map__184284 == null)))?((((map__184284.cljs$lang$protocol_mask$partition0$ & (64))) || (map__184284.cljs$core$ISeq$))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__184284):map__184284);
-var url = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__184284__$1,cljs.core.cst$kw$url);
-var title = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__184284__$1,cljs.core.cst$kw$title);
-var kids = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__184283,(1),null);
-return cljs.core.apply.cljs$core$IFn$_invoke$arity$variadic(tailrecursion.hoplon.a,cljs.core.cst$kw$href,url,cljs.core.cst$kw$title,title,cljs.core.array_seq([kids], 0));
+var tailrecursion$hoplon$markdown$exp_link_node__delegate = function (args__6627__auto__){
+var vec__84614 = tailrecursion.hoplon.parse_args.call(null,args__6627__auto__);
+var map__84615 = cljs.core.nth.call(null,vec__84614,(0),null);
+var map__84615__$1 = ((((!((map__84615 == null)))?((((map__84615.cljs$lang$protocol_mask$partition0$ & (64))) || (map__84615.cljs$core$ISeq$))?true:false):false))?cljs.core.apply.call(null,cljs.core.hash_map,map__84615):map__84615);
+var url = cljs.core.get.call(null,map__84615__$1,new cljs.core.Keyword(null,"url","url",276297046));
+var title = cljs.core.get.call(null,map__84615__$1,new cljs.core.Keyword(null,"title","title",636505583));
+var kids = cljs.core.nth.call(null,vec__84614,(1),null);
+return cljs.core.apply.call(null,tailrecursion.hoplon.a,new cljs.core.Keyword(null,"href","href",-793805698),url,new cljs.core.Keyword(null,"title","title",636505583),title,kids);
 };
 var tailrecursion$hoplon$markdown$exp_link_node = function (var_args){
-var args__8262__auto__ = null;
+var args__6627__auto__ = null;
 if (arguments.length > 0) {
-var G__184286__i = 0, G__184286__a = new Array(arguments.length -  0);
-while (G__184286__i < G__184286__a.length) {G__184286__a[G__184286__i] = arguments[G__184286__i + 0]; ++G__184286__i;}
-  args__8262__auto__ = new cljs.core.IndexedSeq(G__184286__a,0);
+var G__84617__i = 0, G__84617__a = new Array(arguments.length -  0);
+while (G__84617__i < G__84617__a.length) {G__84617__a[G__84617__i] = arguments[G__84617__i + 0]; ++G__84617__i;}
+  args__6627__auto__ = new cljs.core.IndexedSeq(G__84617__a,0);
 } 
-return tailrecursion$hoplon$markdown$exp_link_node__delegate.call(this,args__8262__auto__);};
+return tailrecursion$hoplon$markdown$exp_link_node__delegate.call(this,args__6627__auto__);};
 tailrecursion$hoplon$markdown$exp_link_node.cljs$lang$maxFixedArity = 0;
-tailrecursion$hoplon$markdown$exp_link_node.cljs$lang$applyTo = (function (arglist__184287){
-var args__8262__auto__ = cljs.core.seq(arglist__184287);
-return tailrecursion$hoplon$markdown$exp_link_node__delegate(args__8262__auto__);
+tailrecursion$hoplon$markdown$exp_link_node.cljs$lang$applyTo = (function (arglist__84618){
+var args__6627__auto__ = cljs.core.seq(arglist__84618);
+return tailrecursion$hoplon$markdown$exp_link_node__delegate(args__6627__auto__);
 });
 tailrecursion$hoplon$markdown$exp_link_node.cljs$core$IFn$_invoke$arity$variadic = tailrecursion$hoplon$markdown$exp_link_node__delegate;
 return tailrecursion$hoplon$markdown$exp_link_node;
@@ -136,26 +136,26 @@ return tailrecursion$hoplon$markdown$exp_link_node;
  * @param {...*} var_args
  */
 tailrecursion.hoplon.markdown.header_node = (function() { 
-var tailrecursion$hoplon$markdown$header_node__delegate = function (args__8262__auto__){
-var vec__184291 = tailrecursion.hoplon.parse_args(args__8262__auto__);
-var map__184292 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__184291,(0),null);
-var map__184292__$1 = ((((!((map__184292 == null)))?((((map__184292.cljs$lang$protocol_mask$partition0$ & (64))) || (map__184292.cljs$core$ISeq$))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__184292):map__184292);
-var level = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__184292__$1,cljs.core.cst$kw$level);
-var kids = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__184291,(1),null);
-return cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.nth.cljs$core$IFn$_invoke$arity$2(cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.PersistentVector(null, 6, 5, cljs.core.PersistentVector.EMPTY_NODE, [tailrecursion.hoplon.h6,tailrecursion.hoplon.h1,tailrecursion.hoplon.h2,tailrecursion.hoplon.h3,tailrecursion.hoplon.h4,tailrecursion.hoplon.h5], null),cljs.core.repeat.cljs$core$IFn$_invoke$arity$1(tailrecursion.hoplon.h6)),level),kids);
+var tailrecursion$hoplon$markdown$header_node__delegate = function (args__6627__auto__){
+var vec__84622 = tailrecursion.hoplon.parse_args.call(null,args__6627__auto__);
+var map__84623 = cljs.core.nth.call(null,vec__84622,(0),null);
+var map__84623__$1 = ((((!((map__84623 == null)))?((((map__84623.cljs$lang$protocol_mask$partition0$ & (64))) || (map__84623.cljs$core$ISeq$))?true:false):false))?cljs.core.apply.call(null,cljs.core.hash_map,map__84623):map__84623);
+var level = cljs.core.get.call(null,map__84623__$1,new cljs.core.Keyword(null,"level","level",1290497552));
+var kids = cljs.core.nth.call(null,vec__84622,(1),null);
+return cljs.core.apply.call(null,cljs.core.nth.call(null,cljs.core.concat.call(null,new cljs.core.PersistentVector(null, 6, 5, cljs.core.PersistentVector.EMPTY_NODE, [tailrecursion.hoplon.h6,tailrecursion.hoplon.h1,tailrecursion.hoplon.h2,tailrecursion.hoplon.h3,tailrecursion.hoplon.h4,tailrecursion.hoplon.h5], null),cljs.core.repeat.call(null,tailrecursion.hoplon.h6)),level),kids);
 };
 var tailrecursion$hoplon$markdown$header_node = function (var_args){
-var args__8262__auto__ = null;
+var args__6627__auto__ = null;
 if (arguments.length > 0) {
-var G__184294__i = 0, G__184294__a = new Array(arguments.length -  0);
-while (G__184294__i < G__184294__a.length) {G__184294__a[G__184294__i] = arguments[G__184294__i + 0]; ++G__184294__i;}
-  args__8262__auto__ = new cljs.core.IndexedSeq(G__184294__a,0);
+var G__84625__i = 0, G__84625__a = new Array(arguments.length -  0);
+while (G__84625__i < G__84625__a.length) {G__84625__a[G__84625__i] = arguments[G__84625__i + 0]; ++G__84625__i;}
+  args__6627__auto__ = new cljs.core.IndexedSeq(G__84625__a,0);
 } 
-return tailrecursion$hoplon$markdown$header_node__delegate.call(this,args__8262__auto__);};
+return tailrecursion$hoplon$markdown$header_node__delegate.call(this,args__6627__auto__);};
 tailrecursion$hoplon$markdown$header_node.cljs$lang$maxFixedArity = 0;
-tailrecursion$hoplon$markdown$header_node.cljs$lang$applyTo = (function (arglist__184295){
-var args__8262__auto__ = cljs.core.seq(arglist__184295);
-return tailrecursion$hoplon$markdown$header_node__delegate(args__8262__auto__);
+tailrecursion$hoplon$markdown$header_node.cljs$lang$applyTo = (function (arglist__84626){
+var args__6627__auto__ = cljs.core.seq(arglist__84626);
+return tailrecursion$hoplon$markdown$header_node__delegate(args__6627__auto__);
 });
 tailrecursion$hoplon$markdown$header_node.cljs$core$IFn$_invoke$arity$variadic = tailrecursion$hoplon$markdown$header_node__delegate;
 return tailrecursion$hoplon$markdown$header_node;
@@ -166,29 +166,26 @@ tailrecursion.hoplon.markdown.list_item_node = tailrecursion.hoplon.li;
  * @param {...*} var_args
  */
 tailrecursion.hoplon.markdown.mail_link_node = (function() { 
-var tailrecursion$hoplon$markdown$mail_link_node__delegate = function (args__8262__auto__){
-var vec__184302 = tailrecursion.hoplon.parse_args(args__8262__auto__);
-var map__184303 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__184302,(0),null);
-var map__184303__$1 = ((((!((map__184303 == null)))?((((map__184303.cljs$lang$protocol_mask$partition0$ & (64))) || (map__184303.cljs$core$ISeq$))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__184303):map__184303);
-var text = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__184303__$1,cljs.core.cst$kw$text);
-var _ = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__184302,(1),null);
-var G__184305 = cljs.core.cst$kw$href;
-var G__184306 = [cljs.core.str("mailto:"),cljs.core.str(text)].join('');
-var G__184307 = text;
-return (tailrecursion.hoplon.a.cljs$core$IFn$_invoke$arity$3 ? tailrecursion.hoplon.a.cljs$core$IFn$_invoke$arity$3(G__184305,G__184306,G__184307) : tailrecursion.hoplon.a.call(null,G__184305,G__184306,G__184307));
+var tailrecursion$hoplon$markdown$mail_link_node__delegate = function (args__6627__auto__){
+var vec__84630 = tailrecursion.hoplon.parse_args.call(null,args__6627__auto__);
+var map__84631 = cljs.core.nth.call(null,vec__84630,(0),null);
+var map__84631__$1 = ((((!((map__84631 == null)))?((((map__84631.cljs$lang$protocol_mask$partition0$ & (64))) || (map__84631.cljs$core$ISeq$))?true:false):false))?cljs.core.apply.call(null,cljs.core.hash_map,map__84631):map__84631);
+var text = cljs.core.get.call(null,map__84631__$1,new cljs.core.Keyword(null,"text","text",-1790561697));
+var _ = cljs.core.nth.call(null,vec__84630,(1),null);
+return tailrecursion.hoplon.a.call(null,new cljs.core.Keyword(null,"href","href",-793805698),[cljs.core.str("mailto:"),cljs.core.str(text)].join(''),text);
 };
 var tailrecursion$hoplon$markdown$mail_link_node = function (var_args){
-var args__8262__auto__ = null;
+var args__6627__auto__ = null;
 if (arguments.length > 0) {
-var G__184308__i = 0, G__184308__a = new Array(arguments.length -  0);
-while (G__184308__i < G__184308__a.length) {G__184308__a[G__184308__i] = arguments[G__184308__i + 0]; ++G__184308__i;}
-  args__8262__auto__ = new cljs.core.IndexedSeq(G__184308__a,0);
+var G__84633__i = 0, G__84633__a = new Array(arguments.length -  0);
+while (G__84633__i < G__84633__a.length) {G__84633__a[G__84633__i] = arguments[G__84633__i + 0]; ++G__84633__i;}
+  args__6627__auto__ = new cljs.core.IndexedSeq(G__84633__a,0);
 } 
-return tailrecursion$hoplon$markdown$mail_link_node__delegate.call(this,args__8262__auto__);};
+return tailrecursion$hoplon$markdown$mail_link_node__delegate.call(this,args__6627__auto__);};
 tailrecursion$hoplon$markdown$mail_link_node.cljs$lang$maxFixedArity = 0;
-tailrecursion$hoplon$markdown$mail_link_node.cljs$lang$applyTo = (function (arglist__184309){
-var args__8262__auto__ = cljs.core.seq(arglist__184309);
-return tailrecursion$hoplon$markdown$mail_link_node__delegate(args__8262__auto__);
+tailrecursion$hoplon$markdown$mail_link_node.cljs$lang$applyTo = (function (arglist__84634){
+var args__6627__auto__ = cljs.core.seq(arglist__84634);
+return tailrecursion$hoplon$markdown$mail_link_node__delegate(args__6627__auto__);
 });
 tailrecursion$hoplon$markdown$mail_link_node.cljs$core$IFn$_invoke$arity$variadic = tailrecursion$hoplon$markdown$mail_link_node__delegate;
 return tailrecursion$hoplon$markdown$mail_link_node;
@@ -198,74 +195,66 @@ tailrecursion.hoplon.markdown.ordered_list_node = tailrecursion.hoplon.ol;
 tailrecursion.hoplon.markdown.para_node = tailrecursion.hoplon.p;
 if(typeof tailrecursion.hoplon.markdown.quoted_node !== 'undefined'){
 } else {
-tailrecursion.hoplon.markdown.quoted_node = (function (){var method_table__5916__auto__ = (function (){var G__184310 = cljs.core.PersistentArrayMap.EMPTY;
-return (cljs.core.atom.cljs$core$IFn$_invoke$arity$1 ? cljs.core.atom.cljs$core$IFn$_invoke$arity$1(G__184310) : cljs.core.atom.call(null,G__184310));
-})();
-var prefer_table__5917__auto__ = (function (){var G__184311 = cljs.core.PersistentArrayMap.EMPTY;
-return (cljs.core.atom.cljs$core$IFn$_invoke$arity$1 ? cljs.core.atom.cljs$core$IFn$_invoke$arity$1(G__184311) : cljs.core.atom.call(null,G__184311));
-})();
-var method_cache__5918__auto__ = (function (){var G__184312 = cljs.core.PersistentArrayMap.EMPTY;
-return (cljs.core.atom.cljs$core$IFn$_invoke$arity$1 ? cljs.core.atom.cljs$core$IFn$_invoke$arity$1(G__184312) : cljs.core.atom.call(null,G__184312));
-})();
-var cached_hierarchy__5919__auto__ = (function (){var G__184313 = cljs.core.PersistentArrayMap.EMPTY;
-return (cljs.core.atom.cljs$core$IFn$_invoke$arity$1 ? cljs.core.atom.cljs$core$IFn$_invoke$arity$1(G__184313) : cljs.core.atom.call(null,G__184313));
-})();
-var hierarchy__5920__auto__ = cljs.core.get.cljs$core$IFn$_invoke$arity$3(cljs.core.PersistentArrayMap.EMPTY,cljs.core.cst$kw$hierarchy,cljs.core.get_global_hierarchy());
-return (new cljs.core.MultiFn(cljs.core.symbol.cljs$core$IFn$_invoke$arity$2("tailrecursion.hoplon.markdown","quoted-node"),((function (method_table__5916__auto__,prefer_table__5917__auto__,method_cache__5918__auto__,cached_hierarchy__5919__auto__,hierarchy__5920__auto__){
-return (function (p__184314,kids){
-var map__184315 = p__184314;
-var map__184315__$1 = ((((!((map__184315 == null)))?((((map__184315.cljs$lang$protocol_mask$partition0$ & (64))) || (map__184315.cljs$core$ISeq$))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__184315):map__184315);
-var type = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__184315__$1,cljs.core.cst$kw$type);
+tailrecursion.hoplon.markdown.quoted_node = (function (){var method_table__5916__auto__ = cljs.core.atom.call(null,cljs.core.PersistentArrayMap.EMPTY);
+var prefer_table__5917__auto__ = cljs.core.atom.call(null,cljs.core.PersistentArrayMap.EMPTY);
+var method_cache__5918__auto__ = cljs.core.atom.call(null,cljs.core.PersistentArrayMap.EMPTY);
+var cached_hierarchy__5919__auto__ = cljs.core.atom.call(null,cljs.core.PersistentArrayMap.EMPTY);
+var hierarchy__5920__auto__ = cljs.core.get.call(null,cljs.core.PersistentArrayMap.EMPTY,new cljs.core.Keyword(null,"hierarchy","hierarchy",-1053470341),cljs.core.get_global_hierarchy.call(null));
+return (new cljs.core.MultiFn(cljs.core.symbol.call(null,"tailrecursion.hoplon.markdown","quoted-node"),((function (method_table__5916__auto__,prefer_table__5917__auto__,method_cache__5918__auto__,cached_hierarchy__5919__auto__,hierarchy__5920__auto__){
+return (function (p__84635,kids){
+var map__84636 = p__84635;
+var map__84636__$1 = ((((!((map__84636 == null)))?((((map__84636.cljs$lang$protocol_mask$partition0$ & (64))) || (map__84636.cljs$core$ISeq$))?true:false):false))?cljs.core.apply.call(null,cljs.core.hash_map,map__84636):map__84636);
+var type = cljs.core.get.call(null,map__84636__$1,new cljs.core.Keyword(null,"type","type",1174270348));
 return type;
 });})(method_table__5916__auto__,prefer_table__5917__auto__,method_cache__5918__auto__,cached_hierarchy__5919__auto__,hierarchy__5920__auto__))
-,cljs.core.cst$kw$default,hierarchy__5920__auto__,method_table__5916__auto__,prefer_table__5917__auto__,method_cache__5918__auto__,cached_hierarchy__5919__auto__));
+,new cljs.core.Keyword(null,"default","default",-1987822328),hierarchy__5920__auto__,method_table__5916__auto__,prefer_table__5917__auto__,method_cache__5918__auto__,cached_hierarchy__5919__auto__));
 })();
 }
-tailrecursion.hoplon.markdown.quoted_node.cljs$core$IMultiFn$_add_method$arity$3(null,cljs.core.cst$kw$double_DASH_angle,(function (_,kids){
-return cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, ["\u00AB"], null),kids,cljs.core.array_seq([new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, ["\u00BB"], null)], 0));
+cljs.core._add_method.call(null,tailrecursion.hoplon.markdown.quoted_node,new cljs.core.Keyword(null,"double-angle","double-angle",-1539114060),(function (_,kids){
+return cljs.core.concat.call(null,new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, ["\u00AB"], null),kids,new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, ["\u00BB"], null));
 }));
-tailrecursion.hoplon.markdown.quoted_node.cljs$core$IMultiFn$_add_method$arity$3(null,cljs.core.cst$kw$double,(function (_,kids){
-return cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, ["\u201C"], null),kids,cljs.core.array_seq([new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, ["\u201D"], null)], 0));
+cljs.core._add_method.call(null,tailrecursion.hoplon.markdown.quoted_node,new cljs.core.Keyword(null,"double","double",884886883),(function (_,kids){
+return cljs.core.concat.call(null,new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, ["\u201C"], null),kids,new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, ["\u201D"], null));
 }));
-tailrecursion.hoplon.markdown.quoted_node.cljs$core$IMultiFn$_add_method$arity$3(null,cljs.core.cst$kw$single,(function (_,kids){
-return cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, ["\u2018"], null),kids,cljs.core.array_seq([new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, ["\u2019"], null)], 0));
+cljs.core._add_method.call(null,tailrecursion.hoplon.markdown.quoted_node,new cljs.core.Keyword(null,"single","single",1551466437),(function (_,kids){
+return cljs.core.concat.call(null,new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, ["\u2018"], null),kids,new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, ["\u2019"], null));
 }));
 /**
  * @param {...*} var_args
  */
 tailrecursion.hoplon.markdown.ref_image_node = (function() { 
-var tailrecursion$hoplon$markdown$ref_image_node__delegate = function (args__8262__auto__){
-var vec__184323 = tailrecursion.hoplon.parse_args(args__8262__auto__);
-var map__184324 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__184323,(0),null);
-var map__184324__$1 = ((((!((map__184324 == null)))?((((map__184324.cljs$lang$protocol_mask$partition0$ & (64))) || (map__184324.cljs$core$ISeq$))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__184324):map__184324);
-var rk = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__184324__$1,cljs.core.cst$kw$reference_DASH_key);
-var ss = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__184324__$1,cljs.core.cst$kw$separator_DASH_space);
-var vec__184325 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__184323,(1),null);
-var alt = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__184325,(0),null);
-var _ = cljs.core.nthnext(vec__184325,(1));
-var kids = vec__184325;
-var map__184327 = (tailrecursion.hoplon.markdown._STAR_references_STAR_.cljs$core$IFn$_invoke$arity$1 ? tailrecursion.hoplon.markdown._STAR_references_STAR_.cljs$core$IFn$_invoke$arity$1(rk) : tailrecursion.hoplon.markdown._STAR_references_STAR_.call(null,rk));
-var map__184327__$1 = ((((!((map__184327 == null)))?((((map__184327.cljs$lang$protocol_mask$partition0$ & (64))) || (map__184327.cljs$core$ISeq$))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__184327):map__184327);
-var title = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__184327__$1,cljs.core.cst$kw$title);
-var url = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__184327__$1,cljs.core.cst$kw$url);
+var tailrecursion$hoplon$markdown$ref_image_node__delegate = function (args__6627__auto__){
+var vec__84644 = tailrecursion.hoplon.parse_args.call(null,args__6627__auto__);
+var map__84645 = cljs.core.nth.call(null,vec__84644,(0),null);
+var map__84645__$1 = ((((!((map__84645 == null)))?((((map__84645.cljs$lang$protocol_mask$partition0$ & (64))) || (map__84645.cljs$core$ISeq$))?true:false):false))?cljs.core.apply.call(null,cljs.core.hash_map,map__84645):map__84645);
+var rk = cljs.core.get.call(null,map__84645__$1,new cljs.core.Keyword(null,"reference-key","reference-key",1667211677));
+var ss = cljs.core.get.call(null,map__84645__$1,new cljs.core.Keyword(null,"separator-space","separator-space",1127241784));
+var vec__84646 = cljs.core.nth.call(null,vec__84644,(1),null);
+var alt = cljs.core.nth.call(null,vec__84646,(0),null);
+var _ = cljs.core.nthnext.call(null,vec__84646,(1));
+var kids = vec__84646;
+var map__84648 = tailrecursion.hoplon.markdown._STAR_references_STAR_.call(null,rk);
+var map__84648__$1 = ((((!((map__84648 == null)))?((((map__84648.cljs$lang$protocol_mask$partition0$ & (64))) || (map__84648.cljs$core$ISeq$))?true:false):false))?cljs.core.apply.call(null,cljs.core.hash_map,map__84648):map__84648);
+var title = cljs.core.get.call(null,map__84648__$1,new cljs.core.Keyword(null,"title","title",636505583));
+var url = cljs.core.get.call(null,map__84648__$1,new cljs.core.Keyword(null,"url","url",276297046));
 if(cljs.core.truth_(url)){
-return (tailrecursion.hoplon.img.cljs$core$IFn$_invoke$arity$6 ? tailrecursion.hoplon.img.cljs$core$IFn$_invoke$arity$6(cljs.core.cst$kw$src,url,cljs.core.cst$kw$title,title,cljs.core.cst$kw$alt,alt) : tailrecursion.hoplon.img.call(null,cljs.core.cst$kw$src,url,cljs.core.cst$kw$title,title,cljs.core.cst$kw$alt,alt));
+return tailrecursion.hoplon.img.call(null,new cljs.core.Keyword(null,"src","src",-1651076051),url,new cljs.core.Keyword(null,"title","title",636505583),title,new cljs.core.Keyword(null,"alt","alt",-3214426),alt);
 } else {
-return cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, ["!["], null),kids,cljs.core.array_seq([new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, ["]"], null),(cljs.core.truth_(rk)?new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [ss,"[",rk,"]"], null):null)], 0));
+return cljs.core.concat.call(null,new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, ["!["], null),kids,new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, ["]"], null),(cljs.core.truth_(rk)?new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [ss,"[",rk,"]"], null):null));
 }
 };
 var tailrecursion$hoplon$markdown$ref_image_node = function (var_args){
-var args__8262__auto__ = null;
+var args__6627__auto__ = null;
 if (arguments.length > 0) {
-var G__184329__i = 0, G__184329__a = new Array(arguments.length -  0);
-while (G__184329__i < G__184329__a.length) {G__184329__a[G__184329__i] = arguments[G__184329__i + 0]; ++G__184329__i;}
-  args__8262__auto__ = new cljs.core.IndexedSeq(G__184329__a,0);
+var G__84650__i = 0, G__84650__a = new Array(arguments.length -  0);
+while (G__84650__i < G__84650__a.length) {G__84650__a[G__84650__i] = arguments[G__84650__i + 0]; ++G__84650__i;}
+  args__6627__auto__ = new cljs.core.IndexedSeq(G__84650__a,0);
 } 
-return tailrecursion$hoplon$markdown$ref_image_node__delegate.call(this,args__8262__auto__);};
+return tailrecursion$hoplon$markdown$ref_image_node__delegate.call(this,args__6627__auto__);};
 tailrecursion$hoplon$markdown$ref_image_node.cljs$lang$maxFixedArity = 0;
-tailrecursion$hoplon$markdown$ref_image_node.cljs$lang$applyTo = (function (arglist__184330){
-var args__8262__auto__ = cljs.core.seq(arglist__184330);
-return tailrecursion$hoplon$markdown$ref_image_node__delegate(args__8262__auto__);
+tailrecursion$hoplon$markdown$ref_image_node.cljs$lang$applyTo = (function (arglist__84651){
+var args__6627__auto__ = cljs.core.seq(arglist__84651);
+return tailrecursion$hoplon$markdown$ref_image_node__delegate(args__6627__auto__);
 });
 tailrecursion$hoplon$markdown$ref_image_node.cljs$core$IFn$_invoke$arity$variadic = tailrecursion$hoplon$markdown$ref_image_node__delegate;
 return tailrecursion$hoplon$markdown$ref_image_node;
@@ -275,37 +264,35 @@ return tailrecursion$hoplon$markdown$ref_image_node;
  * @param {...*} var_args
  */
 tailrecursion.hoplon.markdown.ref_link_node = (function() { 
-var tailrecursion$hoplon$markdown$ref_link_node__delegate = function (args__8262__auto__){
-var vec__184338 = tailrecursion.hoplon.parse_args(args__8262__auto__);
-var map__184339 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__184338,(0),null);
-var map__184339__$1 = ((((!((map__184339 == null)))?((((map__184339.cljs$lang$protocol_mask$partition0$ & (64))) || (map__184339.cljs$core$ISeq$))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__184339):map__184339);
-var rk = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__184339__$1,cljs.core.cst$kw$reference_DASH_key);
-var ss = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__184339__$1,cljs.core.cst$kw$separator_DASH_space);
-var kids = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__184338,(1),null);
-var map__184341 = (tailrecursion.hoplon.markdown._STAR_references_STAR_.cljs$core$IFn$_invoke$arity$1 ? tailrecursion.hoplon.markdown._STAR_references_STAR_.cljs$core$IFn$_invoke$arity$1(rk) : tailrecursion.hoplon.markdown._STAR_references_STAR_.call(null,rk));
-var map__184341__$1 = ((((!((map__184341 == null)))?((((map__184341.cljs$lang$protocol_mask$partition0$ & (64))) || (map__184341.cljs$core$ISeq$))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__184341):map__184341);
-var title = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__184341__$1,cljs.core.cst$kw$title);
-var url = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__184341__$1,cljs.core.cst$kw$url);
+var tailrecursion$hoplon$markdown$ref_link_node__delegate = function (args__6627__auto__){
+var vec__84657 = tailrecursion.hoplon.parse_args.call(null,args__6627__auto__);
+var map__84658 = cljs.core.nth.call(null,vec__84657,(0),null);
+var map__84658__$1 = ((((!((map__84658 == null)))?((((map__84658.cljs$lang$protocol_mask$partition0$ & (64))) || (map__84658.cljs$core$ISeq$))?true:false):false))?cljs.core.apply.call(null,cljs.core.hash_map,map__84658):map__84658);
+var rk = cljs.core.get.call(null,map__84658__$1,new cljs.core.Keyword(null,"reference-key","reference-key",1667211677));
+var ss = cljs.core.get.call(null,map__84658__$1,new cljs.core.Keyword(null,"separator-space","separator-space",1127241784));
+var kids = cljs.core.nth.call(null,vec__84657,(1),null);
+var map__84660 = tailrecursion.hoplon.markdown._STAR_references_STAR_.call(null,rk);
+var map__84660__$1 = ((((!((map__84660 == null)))?((((map__84660.cljs$lang$protocol_mask$partition0$ & (64))) || (map__84660.cljs$core$ISeq$))?true:false):false))?cljs.core.apply.call(null,cljs.core.hash_map,map__84660):map__84660);
+var title = cljs.core.get.call(null,map__84660__$1,new cljs.core.Keyword(null,"title","title",636505583));
+var url = cljs.core.get.call(null,map__84660__$1,new cljs.core.Keyword(null,"url","url",276297046));
 if(cljs.core.truth_(url)){
-var G__184343 = new cljs.core.PersistentArrayMap(null, 2, [cljs.core.cst$kw$href,url,cljs.core.cst$kw$title,title], null);
-var G__184344 = kids;
-return (tailrecursion.hoplon.a.cljs$core$IFn$_invoke$arity$2 ? tailrecursion.hoplon.a.cljs$core$IFn$_invoke$arity$2(G__184343,G__184344) : tailrecursion.hoplon.a.call(null,G__184343,G__184344));
+return tailrecursion.hoplon.a.call(null,new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null,"href","href",-793805698),url,new cljs.core.Keyword(null,"title","title",636505583),title], null),kids);
 } else {
-return cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, ["["], null),kids,cljs.core.array_seq([new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, ["]"], null),(cljs.core.truth_(rk)?new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [ss,"[",rk,"]"], null):null)], 0));
+return cljs.core.concat.call(null,new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, ["["], null),kids,new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, ["]"], null),(cljs.core.truth_(rk)?new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [ss,"[",rk,"]"], null):null));
 }
 };
 var tailrecursion$hoplon$markdown$ref_link_node = function (var_args){
-var args__8262__auto__ = null;
+var args__6627__auto__ = null;
 if (arguments.length > 0) {
-var G__184345__i = 0, G__184345__a = new Array(arguments.length -  0);
-while (G__184345__i < G__184345__a.length) {G__184345__a[G__184345__i] = arguments[G__184345__i + 0]; ++G__184345__i;}
-  args__8262__auto__ = new cljs.core.IndexedSeq(G__184345__a,0);
+var G__84662__i = 0, G__84662__a = new Array(arguments.length -  0);
+while (G__84662__i < G__84662__a.length) {G__84662__a[G__84662__i] = arguments[G__84662__i + 0]; ++G__84662__i;}
+  args__6627__auto__ = new cljs.core.IndexedSeq(G__84662__a,0);
 } 
-return tailrecursion$hoplon$markdown$ref_link_node__delegate.call(this,args__8262__auto__);};
+return tailrecursion$hoplon$markdown$ref_link_node__delegate.call(this,args__6627__auto__);};
 tailrecursion$hoplon$markdown$ref_link_node.cljs$lang$maxFixedArity = 0;
-tailrecursion$hoplon$markdown$ref_link_node.cljs$lang$applyTo = (function (arglist__184346){
-var args__8262__auto__ = cljs.core.seq(arglist__184346);
-return tailrecursion$hoplon$markdown$ref_link_node__delegate(args__8262__auto__);
+tailrecursion$hoplon$markdown$ref_link_node.cljs$lang$applyTo = (function (arglist__84663){
+var args__6627__auto__ = cljs.core.seq(arglist__84663);
+return tailrecursion$hoplon$markdown$ref_link_node__delegate(args__6627__auto__);
 });
 tailrecursion$hoplon$markdown$ref_link_node.cljs$core$IFn$_invoke$arity$variadic = tailrecursion$hoplon$markdown$ref_link_node__delegate;
 return tailrecursion$hoplon$markdown$ref_link_node;
@@ -315,24 +302,24 @@ return tailrecursion$hoplon$markdown$ref_link_node;
  * @param {...*} var_args
  */
 tailrecursion.hoplon.markdown.reference_node = (function() { 
-var tailrecursion$hoplon$markdown$reference_node__delegate = function (args__8262__auto__){
-var vec__184348 = tailrecursion.hoplon.parse_args(args__8262__auto__);
-var attr = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__184348,(0),null);
-var kids = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__184348,(1),null);
+var tailrecursion$hoplon$markdown$reference_node__delegate = function (args__6627__auto__){
+var vec__84665 = tailrecursion.hoplon.parse_args.call(null,args__6627__auto__);
+var attr = cljs.core.nth.call(null,vec__84665,(0),null);
+var kids = cljs.core.nth.call(null,vec__84665,(1),null);
 return null;
 };
 var tailrecursion$hoplon$markdown$reference_node = function (var_args){
-var args__8262__auto__ = null;
+var args__6627__auto__ = null;
 if (arguments.length > 0) {
-var G__184349__i = 0, G__184349__a = new Array(arguments.length -  0);
-while (G__184349__i < G__184349__a.length) {G__184349__a[G__184349__i] = arguments[G__184349__i + 0]; ++G__184349__i;}
-  args__8262__auto__ = new cljs.core.IndexedSeq(G__184349__a,0);
+var G__84666__i = 0, G__84666__a = new Array(arguments.length -  0);
+while (G__84666__i < G__84666__a.length) {G__84666__a[G__84666__i] = arguments[G__84666__i + 0]; ++G__84666__i;}
+  args__6627__auto__ = new cljs.core.IndexedSeq(G__84666__a,0);
 } 
-return tailrecursion$hoplon$markdown$reference_node__delegate.call(this,args__8262__auto__);};
+return tailrecursion$hoplon$markdown$reference_node__delegate.call(this,args__6627__auto__);};
 tailrecursion$hoplon$markdown$reference_node.cljs$lang$maxFixedArity = 0;
-tailrecursion$hoplon$markdown$reference_node.cljs$lang$applyTo = (function (arglist__184350){
-var args__8262__auto__ = cljs.core.seq(arglist__184350);
-return tailrecursion$hoplon$markdown$reference_node__delegate(args__8262__auto__);
+tailrecursion$hoplon$markdown$reference_node.cljs$lang$applyTo = (function (arglist__84667){
+var args__6627__auto__ = cljs.core.seq(arglist__84667);
+return tailrecursion$hoplon$markdown$reference_node__delegate(args__6627__auto__);
 });
 tailrecursion$hoplon$markdown$reference_node.cljs$core$IFn$_invoke$arity$variadic = tailrecursion$hoplon$markdown$reference_node__delegate;
 return tailrecursion$hoplon$markdown$reference_node;
@@ -340,48 +327,40 @@ return tailrecursion$hoplon$markdown$reference_node;
 ;
 if(typeof tailrecursion.hoplon.markdown.simple_node !== 'undefined'){
 } else {
-tailrecursion.hoplon.markdown.simple_node = (function (){var method_table__5916__auto__ = (function (){var G__184351 = cljs.core.PersistentArrayMap.EMPTY;
-return (cljs.core.atom.cljs$core$IFn$_invoke$arity$1 ? cljs.core.atom.cljs$core$IFn$_invoke$arity$1(G__184351) : cljs.core.atom.call(null,G__184351));
-})();
-var prefer_table__5917__auto__ = (function (){var G__184352 = cljs.core.PersistentArrayMap.EMPTY;
-return (cljs.core.atom.cljs$core$IFn$_invoke$arity$1 ? cljs.core.atom.cljs$core$IFn$_invoke$arity$1(G__184352) : cljs.core.atom.call(null,G__184352));
-})();
-var method_cache__5918__auto__ = (function (){var G__184353 = cljs.core.PersistentArrayMap.EMPTY;
-return (cljs.core.atom.cljs$core$IFn$_invoke$arity$1 ? cljs.core.atom.cljs$core$IFn$_invoke$arity$1(G__184353) : cljs.core.atom.call(null,G__184353));
-})();
-var cached_hierarchy__5919__auto__ = (function (){var G__184354 = cljs.core.PersistentArrayMap.EMPTY;
-return (cljs.core.atom.cljs$core$IFn$_invoke$arity$1 ? cljs.core.atom.cljs$core$IFn$_invoke$arity$1(G__184354) : cljs.core.atom.call(null,G__184354));
-})();
-var hierarchy__5920__auto__ = cljs.core.get.cljs$core$IFn$_invoke$arity$3(cljs.core.PersistentArrayMap.EMPTY,cljs.core.cst$kw$hierarchy,cljs.core.get_global_hierarchy());
-return (new cljs.core.MultiFn(cljs.core.symbol.cljs$core$IFn$_invoke$arity$2("tailrecursion.hoplon.markdown","simple-node"),((function (method_table__5916__auto__,prefer_table__5917__auto__,method_cache__5918__auto__,cached_hierarchy__5919__auto__,hierarchy__5920__auto__){
-return (function (p__184355,_){
-var map__184356 = p__184355;
-var map__184356__$1 = ((((!((map__184356 == null)))?((((map__184356.cljs$lang$protocol_mask$partition0$ & (64))) || (map__184356.cljs$core$ISeq$))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__184356):map__184356);
-var type = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__184356__$1,cljs.core.cst$kw$type);
+tailrecursion.hoplon.markdown.simple_node = (function (){var method_table__5916__auto__ = cljs.core.atom.call(null,cljs.core.PersistentArrayMap.EMPTY);
+var prefer_table__5917__auto__ = cljs.core.atom.call(null,cljs.core.PersistentArrayMap.EMPTY);
+var method_cache__5918__auto__ = cljs.core.atom.call(null,cljs.core.PersistentArrayMap.EMPTY);
+var cached_hierarchy__5919__auto__ = cljs.core.atom.call(null,cljs.core.PersistentArrayMap.EMPTY);
+var hierarchy__5920__auto__ = cljs.core.get.call(null,cljs.core.PersistentArrayMap.EMPTY,new cljs.core.Keyword(null,"hierarchy","hierarchy",-1053470341),cljs.core.get_global_hierarchy.call(null));
+return (new cljs.core.MultiFn(cljs.core.symbol.call(null,"tailrecursion.hoplon.markdown","simple-node"),((function (method_table__5916__auto__,prefer_table__5917__auto__,method_cache__5918__auto__,cached_hierarchy__5919__auto__,hierarchy__5920__auto__){
+return (function (p__84668,_){
+var map__84669 = p__84668;
+var map__84669__$1 = ((((!((map__84669 == null)))?((((map__84669.cljs$lang$protocol_mask$partition0$ & (64))) || (map__84669.cljs$core$ISeq$))?true:false):false))?cljs.core.apply.call(null,cljs.core.hash_map,map__84669):map__84669);
+var type = cljs.core.get.call(null,map__84669__$1,new cljs.core.Keyword(null,"type","type",1174270348));
 return type;
 });})(method_table__5916__auto__,prefer_table__5917__auto__,method_cache__5918__auto__,cached_hierarchy__5919__auto__,hierarchy__5920__auto__))
-,cljs.core.cst$kw$default,hierarchy__5920__auto__,method_table__5916__auto__,prefer_table__5917__auto__,method_cache__5918__auto__,cached_hierarchy__5919__auto__));
+,new cljs.core.Keyword(null,"default","default",-1987822328),hierarchy__5920__auto__,method_table__5916__auto__,prefer_table__5917__auto__,method_cache__5918__auto__,cached_hierarchy__5919__auto__));
 })();
 }
-tailrecursion.hoplon.markdown.simple_node.cljs$core$IMultiFn$_add_method$arity$3(null,cljs.core.cst$kw$apostrophe,(function (_,___$1){
+cljs.core._add_method.call(null,tailrecursion.hoplon.markdown.simple_node,new cljs.core.Keyword(null,"apostrophe","apostrophe",-1476834636),(function (_,___$1){
 return "'";
 }));
-tailrecursion.hoplon.markdown.simple_node.cljs$core$IMultiFn$_add_method$arity$3(null,cljs.core.cst$kw$ellipsis,(function (_,___$1){
+cljs.core._add_method.call(null,tailrecursion.hoplon.markdown.simple_node,new cljs.core.Keyword(null,"ellipsis","ellipsis",998505738),(function (_,___$1){
 return "\u2026";
 }));
-tailrecursion.hoplon.markdown.simple_node.cljs$core$IMultiFn$_add_method$arity$3(null,cljs.core.cst$kw$emdash,(function (_,___$1){
+cljs.core._add_method.call(null,tailrecursion.hoplon.markdown.simple_node,new cljs.core.Keyword(null,"emdash","emdash",-1917302467),(function (_,___$1){
 return "\u2014";
 }));
-tailrecursion.hoplon.markdown.simple_node.cljs$core$IMultiFn$_add_method$arity$3(null,cljs.core.cst$kw$endash,(function (_,___$1){
+cljs.core._add_method.call(null,tailrecursion.hoplon.markdown.simple_node,new cljs.core.Keyword(null,"endash","endash",-1084701295),(function (_,___$1){
 return "\u2013";
 }));
-tailrecursion.hoplon.markdown.simple_node.cljs$core$IMultiFn$_add_method$arity$3(null,cljs.core.cst$kw$h_DASH_rule,(function (_,___$1){
-return (tailrecursion.hoplon.hr.cljs$core$IFn$_invoke$arity$0 ? tailrecursion.hoplon.hr.cljs$core$IFn$_invoke$arity$0() : tailrecursion.hoplon.hr.call(null));
+cljs.core._add_method.call(null,tailrecursion.hoplon.markdown.simple_node,new cljs.core.Keyword(null,"h-rule","h-rule",1902373554),(function (_,___$1){
+return tailrecursion.hoplon.hr.call(null);
 }));
-tailrecursion.hoplon.markdown.simple_node.cljs$core$IMultiFn$_add_method$arity$3(null,cljs.core.cst$kw$linebreak,(function (_,___$1){
-return (tailrecursion.hoplon.br.cljs$core$IFn$_invoke$arity$0 ? tailrecursion.hoplon.br.cljs$core$IFn$_invoke$arity$0() : tailrecursion.hoplon.br.call(null));
+cljs.core._add_method.call(null,tailrecursion.hoplon.markdown.simple_node,new cljs.core.Keyword(null,"linebreak","linebreak",-1133865138),(function (_,___$1){
+return tailrecursion.hoplon.br.call(null);
 }));
-tailrecursion.hoplon.markdown.simple_node.cljs$core$IMultiFn$_add_method$arity$3(null,cljs.core.cst$kw$nbsp,(function (_,___$1){
+cljs.core._add_method.call(null,tailrecursion.hoplon.markdown.simple_node,new cljs.core.Keyword(null,"nbsp","nbsp",588425146),(function (_,___$1){
 return "\u00A0";
 }));
 tailrecursion.hoplon.markdown.strike_node = tailrecursion.hoplon.del;
@@ -389,32 +368,32 @@ tailrecursion.hoplon.markdown.strike_node = tailrecursion.hoplon.del;
  * @param {...*} var_args
  */
 tailrecursion.hoplon.markdown.strong_emph_super_node = (function() { 
-var tailrecursion$hoplon$markdown$strong_emph_super_node__delegate = function (args__8262__auto__){
-var vec__184361 = tailrecursion.hoplon.parse_args(args__8262__auto__);
-var map__184362 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__184361,(0),null);
-var map__184362__$1 = ((((!((map__184362 == null)))?((((map__184362.cljs$lang$protocol_mask$partition0$ & (64))) || (map__184362.cljs$core$ISeq$))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__184362):map__184362);
-var chars = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__184362__$1,cljs.core.cst$kw$chars);
-var closed_QMARK_ = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__184362__$1,cljs.core.cst$kw$closed);
-var strong_QMARK_ = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__184362__$1,cljs.core.cst$kw$strong);
-var kids = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__184361,(1),null);
-if(cljs.core.not(closed_QMARK_)){
-return cljs.core.into.cljs$core$IFn$_invoke$arity$2(new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [chars], null),kids);
+var tailrecursion$hoplon$markdown$strong_emph_super_node__delegate = function (args__6627__auto__){
+var vec__84674 = tailrecursion.hoplon.parse_args.call(null,args__6627__auto__);
+var map__84675 = cljs.core.nth.call(null,vec__84674,(0),null);
+var map__84675__$1 = ((((!((map__84675 == null)))?((((map__84675.cljs$lang$protocol_mask$partition0$ & (64))) || (map__84675.cljs$core$ISeq$))?true:false):false))?cljs.core.apply.call(null,cljs.core.hash_map,map__84675):map__84675);
+var chars = cljs.core.get.call(null,map__84675__$1,new cljs.core.Keyword(null,"chars","chars",-1094630317));
+var closed_QMARK_ = cljs.core.get.call(null,map__84675__$1,new cljs.core.Keyword(null,"closed","closed",-919675359));
+var strong_QMARK_ = cljs.core.get.call(null,map__84675__$1,new cljs.core.Keyword(null,"strong","strong",269529000));
+var kids = cljs.core.nth.call(null,vec__84674,(1),null);
+if(cljs.core.not.call(null,closed_QMARK_)){
+return cljs.core.into.call(null,new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [chars], null),kids);
 } else {
-return cljs.core.apply.cljs$core$IFn$_invoke$arity$2(((cljs.core.not(strong_QMARK_))?tailrecursion.hoplon.em:tailrecursion.hoplon.strong),kids);
+return cljs.core.apply.call(null,((cljs.core.not.call(null,strong_QMARK_))?tailrecursion.hoplon.em:tailrecursion.hoplon.strong),kids);
 }
 };
 var tailrecursion$hoplon$markdown$strong_emph_super_node = function (var_args){
-var args__8262__auto__ = null;
+var args__6627__auto__ = null;
 if (arguments.length > 0) {
-var G__184364__i = 0, G__184364__a = new Array(arguments.length -  0);
-while (G__184364__i < G__184364__a.length) {G__184364__a[G__184364__i] = arguments[G__184364__i + 0]; ++G__184364__i;}
-  args__8262__auto__ = new cljs.core.IndexedSeq(G__184364__a,0);
+var G__84677__i = 0, G__84677__a = new Array(arguments.length -  0);
+while (G__84677__i < G__84677__a.length) {G__84677__a[G__84677__i] = arguments[G__84677__i + 0]; ++G__84677__i;}
+  args__6627__auto__ = new cljs.core.IndexedSeq(G__84677__a,0);
 } 
-return tailrecursion$hoplon$markdown$strong_emph_super_node__delegate.call(this,args__8262__auto__);};
+return tailrecursion$hoplon$markdown$strong_emph_super_node__delegate.call(this,args__6627__auto__);};
 tailrecursion$hoplon$markdown$strong_emph_super_node.cljs$lang$maxFixedArity = 0;
-tailrecursion$hoplon$markdown$strong_emph_super_node.cljs$lang$applyTo = (function (arglist__184365){
-var args__8262__auto__ = cljs.core.seq(arglist__184365);
-return tailrecursion$hoplon$markdown$strong_emph_super_node__delegate(args__8262__auto__);
+tailrecursion$hoplon$markdown$strong_emph_super_node.cljs$lang$applyTo = (function (arglist__84678){
+var args__6627__auto__ = cljs.core.seq(arglist__84678);
+return tailrecursion$hoplon$markdown$strong_emph_super_node__delegate(args__6627__auto__);
 });
 tailrecursion$hoplon$markdown$strong_emph_super_node.cljs$core$IFn$_invoke$arity$variadic = tailrecursion$hoplon$markdown$strong_emph_super_node__delegate;
 return tailrecursion$hoplon$markdown$strong_emph_super_node;
@@ -424,24 +403,24 @@ return tailrecursion$hoplon$markdown$strong_emph_super_node;
  * @param {...*} var_args
  */
 tailrecursion.hoplon.markdown.table_body_node = (function() { 
-var tailrecursion$hoplon$markdown$table_body_node__delegate = function (args__8262__auto__){
-var vec__184367 = tailrecursion.hoplon.parse_args(args__8262__auto__);
-var attr = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__184367,(0),null);
-var kids = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__184367,(1),null);
+var tailrecursion$hoplon$markdown$table_body_node__delegate = function (args__6627__auto__){
+var vec__84680 = tailrecursion.hoplon.parse_args.call(null,args__6627__auto__);
+var attr = cljs.core.nth.call(null,vec__84680,(0),null);
+var kids = cljs.core.nth.call(null,vec__84680,(1),null);
 return null;
 };
 var tailrecursion$hoplon$markdown$table_body_node = function (var_args){
-var args__8262__auto__ = null;
+var args__6627__auto__ = null;
 if (arguments.length > 0) {
-var G__184368__i = 0, G__184368__a = new Array(arguments.length -  0);
-while (G__184368__i < G__184368__a.length) {G__184368__a[G__184368__i] = arguments[G__184368__i + 0]; ++G__184368__i;}
-  args__8262__auto__ = new cljs.core.IndexedSeq(G__184368__a,0);
+var G__84681__i = 0, G__84681__a = new Array(arguments.length -  0);
+while (G__84681__i < G__84681__a.length) {G__84681__a[G__84681__i] = arguments[G__84681__i + 0]; ++G__84681__i;}
+  args__6627__auto__ = new cljs.core.IndexedSeq(G__84681__a,0);
 } 
-return tailrecursion$hoplon$markdown$table_body_node__delegate.call(this,args__8262__auto__);};
+return tailrecursion$hoplon$markdown$table_body_node__delegate.call(this,args__6627__auto__);};
 tailrecursion$hoplon$markdown$table_body_node.cljs$lang$maxFixedArity = 0;
-tailrecursion$hoplon$markdown$table_body_node.cljs$lang$applyTo = (function (arglist__184369){
-var args__8262__auto__ = cljs.core.seq(arglist__184369);
-return tailrecursion$hoplon$markdown$table_body_node__delegate(args__8262__auto__);
+tailrecursion$hoplon$markdown$table_body_node.cljs$lang$applyTo = (function (arglist__84682){
+var args__6627__auto__ = cljs.core.seq(arglist__84682);
+return tailrecursion$hoplon$markdown$table_body_node__delegate(args__6627__auto__);
 });
 tailrecursion$hoplon$markdown$table_body_node.cljs$core$IFn$_invoke$arity$variadic = tailrecursion$hoplon$markdown$table_body_node__delegate;
 return tailrecursion$hoplon$markdown$table_body_node;
@@ -451,24 +430,24 @@ return tailrecursion$hoplon$markdown$table_body_node;
  * @param {...*} var_args
  */
 tailrecursion.hoplon.markdown.table_caption_node = (function() { 
-var tailrecursion$hoplon$markdown$table_caption_node__delegate = function (args__8262__auto__){
-var vec__184371 = tailrecursion.hoplon.parse_args(args__8262__auto__);
-var attr = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__184371,(0),null);
-var kids = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__184371,(1),null);
+var tailrecursion$hoplon$markdown$table_caption_node__delegate = function (args__6627__auto__){
+var vec__84684 = tailrecursion.hoplon.parse_args.call(null,args__6627__auto__);
+var attr = cljs.core.nth.call(null,vec__84684,(0),null);
+var kids = cljs.core.nth.call(null,vec__84684,(1),null);
 return null;
 };
 var tailrecursion$hoplon$markdown$table_caption_node = function (var_args){
-var args__8262__auto__ = null;
+var args__6627__auto__ = null;
 if (arguments.length > 0) {
-var G__184372__i = 0, G__184372__a = new Array(arguments.length -  0);
-while (G__184372__i < G__184372__a.length) {G__184372__a[G__184372__i] = arguments[G__184372__i + 0]; ++G__184372__i;}
-  args__8262__auto__ = new cljs.core.IndexedSeq(G__184372__a,0);
+var G__84685__i = 0, G__84685__a = new Array(arguments.length -  0);
+while (G__84685__i < G__84685__a.length) {G__84685__a[G__84685__i] = arguments[G__84685__i + 0]; ++G__84685__i;}
+  args__6627__auto__ = new cljs.core.IndexedSeq(G__84685__a,0);
 } 
-return tailrecursion$hoplon$markdown$table_caption_node__delegate.call(this,args__8262__auto__);};
+return tailrecursion$hoplon$markdown$table_caption_node__delegate.call(this,args__6627__auto__);};
 tailrecursion$hoplon$markdown$table_caption_node.cljs$lang$maxFixedArity = 0;
-tailrecursion$hoplon$markdown$table_caption_node.cljs$lang$applyTo = (function (arglist__184373){
-var args__8262__auto__ = cljs.core.seq(arglist__184373);
-return tailrecursion$hoplon$markdown$table_caption_node__delegate(args__8262__auto__);
+tailrecursion$hoplon$markdown$table_caption_node.cljs$lang$applyTo = (function (arglist__84686){
+var args__6627__auto__ = cljs.core.seq(arglist__84686);
+return tailrecursion$hoplon$markdown$table_caption_node__delegate(args__6627__auto__);
 });
 tailrecursion$hoplon$markdown$table_caption_node.cljs$core$IFn$_invoke$arity$variadic = tailrecursion$hoplon$markdown$table_caption_node__delegate;
 return tailrecursion$hoplon$markdown$table_caption_node;
@@ -478,24 +457,24 @@ return tailrecursion$hoplon$markdown$table_caption_node;
  * @param {...*} var_args
  */
 tailrecursion.hoplon.markdown.table_cell_node = (function() { 
-var tailrecursion$hoplon$markdown$table_cell_node__delegate = function (args__8262__auto__){
-var vec__184375 = tailrecursion.hoplon.parse_args(args__8262__auto__);
-var attr = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__184375,(0),null);
-var kids = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__184375,(1),null);
+var tailrecursion$hoplon$markdown$table_cell_node__delegate = function (args__6627__auto__){
+var vec__84688 = tailrecursion.hoplon.parse_args.call(null,args__6627__auto__);
+var attr = cljs.core.nth.call(null,vec__84688,(0),null);
+var kids = cljs.core.nth.call(null,vec__84688,(1),null);
 return null;
 };
 var tailrecursion$hoplon$markdown$table_cell_node = function (var_args){
-var args__8262__auto__ = null;
+var args__6627__auto__ = null;
 if (arguments.length > 0) {
-var G__184376__i = 0, G__184376__a = new Array(arguments.length -  0);
-while (G__184376__i < G__184376__a.length) {G__184376__a[G__184376__i] = arguments[G__184376__i + 0]; ++G__184376__i;}
-  args__8262__auto__ = new cljs.core.IndexedSeq(G__184376__a,0);
+var G__84689__i = 0, G__84689__a = new Array(arguments.length -  0);
+while (G__84689__i < G__84689__a.length) {G__84689__a[G__84689__i] = arguments[G__84689__i + 0]; ++G__84689__i;}
+  args__6627__auto__ = new cljs.core.IndexedSeq(G__84689__a,0);
 } 
-return tailrecursion$hoplon$markdown$table_cell_node__delegate.call(this,args__8262__auto__);};
+return tailrecursion$hoplon$markdown$table_cell_node__delegate.call(this,args__6627__auto__);};
 tailrecursion$hoplon$markdown$table_cell_node.cljs$lang$maxFixedArity = 0;
-tailrecursion$hoplon$markdown$table_cell_node.cljs$lang$applyTo = (function (arglist__184377){
-var args__8262__auto__ = cljs.core.seq(arglist__184377);
-return tailrecursion$hoplon$markdown$table_cell_node__delegate(args__8262__auto__);
+tailrecursion$hoplon$markdown$table_cell_node.cljs$lang$applyTo = (function (arglist__84690){
+var args__6627__auto__ = cljs.core.seq(arglist__84690);
+return tailrecursion$hoplon$markdown$table_cell_node__delegate(args__6627__auto__);
 });
 tailrecursion$hoplon$markdown$table_cell_node.cljs$core$IFn$_invoke$arity$variadic = tailrecursion$hoplon$markdown$table_cell_node__delegate;
 return tailrecursion$hoplon$markdown$table_cell_node;
@@ -505,24 +484,24 @@ return tailrecursion$hoplon$markdown$table_cell_node;
  * @param {...*} var_args
  */
 tailrecursion.hoplon.markdown.table_column_node = (function() { 
-var tailrecursion$hoplon$markdown$table_column_node__delegate = function (args__8262__auto__){
-var vec__184379 = tailrecursion.hoplon.parse_args(args__8262__auto__);
-var attr = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__184379,(0),null);
-var kids = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__184379,(1),null);
+var tailrecursion$hoplon$markdown$table_column_node__delegate = function (args__6627__auto__){
+var vec__84692 = tailrecursion.hoplon.parse_args.call(null,args__6627__auto__);
+var attr = cljs.core.nth.call(null,vec__84692,(0),null);
+var kids = cljs.core.nth.call(null,vec__84692,(1),null);
 return null;
 };
 var tailrecursion$hoplon$markdown$table_column_node = function (var_args){
-var args__8262__auto__ = null;
+var args__6627__auto__ = null;
 if (arguments.length > 0) {
-var G__184380__i = 0, G__184380__a = new Array(arguments.length -  0);
-while (G__184380__i < G__184380__a.length) {G__184380__a[G__184380__i] = arguments[G__184380__i + 0]; ++G__184380__i;}
-  args__8262__auto__ = new cljs.core.IndexedSeq(G__184380__a,0);
+var G__84693__i = 0, G__84693__a = new Array(arguments.length -  0);
+while (G__84693__i < G__84693__a.length) {G__84693__a[G__84693__i] = arguments[G__84693__i + 0]; ++G__84693__i;}
+  args__6627__auto__ = new cljs.core.IndexedSeq(G__84693__a,0);
 } 
-return tailrecursion$hoplon$markdown$table_column_node__delegate.call(this,args__8262__auto__);};
+return tailrecursion$hoplon$markdown$table_column_node__delegate.call(this,args__6627__auto__);};
 tailrecursion$hoplon$markdown$table_column_node.cljs$lang$maxFixedArity = 0;
-tailrecursion$hoplon$markdown$table_column_node.cljs$lang$applyTo = (function (arglist__184381){
-var args__8262__auto__ = cljs.core.seq(arglist__184381);
-return tailrecursion$hoplon$markdown$table_column_node__delegate(args__8262__auto__);
+tailrecursion$hoplon$markdown$table_column_node.cljs$lang$applyTo = (function (arglist__84694){
+var args__6627__auto__ = cljs.core.seq(arglist__84694);
+return tailrecursion$hoplon$markdown$table_column_node__delegate(args__6627__auto__);
 });
 tailrecursion$hoplon$markdown$table_column_node.cljs$core$IFn$_invoke$arity$variadic = tailrecursion$hoplon$markdown$table_column_node__delegate;
 return tailrecursion$hoplon$markdown$table_column_node;
@@ -532,24 +511,24 @@ return tailrecursion$hoplon$markdown$table_column_node;
  * @param {...*} var_args
  */
 tailrecursion.hoplon.markdown.table_header_node = (function() { 
-var tailrecursion$hoplon$markdown$table_header_node__delegate = function (args__8262__auto__){
-var vec__184383 = tailrecursion.hoplon.parse_args(args__8262__auto__);
-var attr = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__184383,(0),null);
-var kids = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__184383,(1),null);
+var tailrecursion$hoplon$markdown$table_header_node__delegate = function (args__6627__auto__){
+var vec__84696 = tailrecursion.hoplon.parse_args.call(null,args__6627__auto__);
+var attr = cljs.core.nth.call(null,vec__84696,(0),null);
+var kids = cljs.core.nth.call(null,vec__84696,(1),null);
 return null;
 };
 var tailrecursion$hoplon$markdown$table_header_node = function (var_args){
-var args__8262__auto__ = null;
+var args__6627__auto__ = null;
 if (arguments.length > 0) {
-var G__184384__i = 0, G__184384__a = new Array(arguments.length -  0);
-while (G__184384__i < G__184384__a.length) {G__184384__a[G__184384__i] = arguments[G__184384__i + 0]; ++G__184384__i;}
-  args__8262__auto__ = new cljs.core.IndexedSeq(G__184384__a,0);
+var G__84697__i = 0, G__84697__a = new Array(arguments.length -  0);
+while (G__84697__i < G__84697__a.length) {G__84697__a[G__84697__i] = arguments[G__84697__i + 0]; ++G__84697__i;}
+  args__6627__auto__ = new cljs.core.IndexedSeq(G__84697__a,0);
 } 
-return tailrecursion$hoplon$markdown$table_header_node__delegate.call(this,args__8262__auto__);};
+return tailrecursion$hoplon$markdown$table_header_node__delegate.call(this,args__6627__auto__);};
 tailrecursion$hoplon$markdown$table_header_node.cljs$lang$maxFixedArity = 0;
-tailrecursion$hoplon$markdown$table_header_node.cljs$lang$applyTo = (function (arglist__184385){
-var args__8262__auto__ = cljs.core.seq(arglist__184385);
-return tailrecursion$hoplon$markdown$table_header_node__delegate(args__8262__auto__);
+tailrecursion$hoplon$markdown$table_header_node.cljs$lang$applyTo = (function (arglist__84698){
+var args__6627__auto__ = cljs.core.seq(arglist__84698);
+return tailrecursion$hoplon$markdown$table_header_node__delegate(args__6627__auto__);
 });
 tailrecursion$hoplon$markdown$table_header_node.cljs$core$IFn$_invoke$arity$variadic = tailrecursion$hoplon$markdown$table_header_node__delegate;
 return tailrecursion$hoplon$markdown$table_header_node;
@@ -559,24 +538,24 @@ return tailrecursion$hoplon$markdown$table_header_node;
  * @param {...*} var_args
  */
 tailrecursion.hoplon.markdown.table_node = (function() { 
-var tailrecursion$hoplon$markdown$table_node__delegate = function (args__8262__auto__){
-var vec__184387 = tailrecursion.hoplon.parse_args(args__8262__auto__);
-var attr = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__184387,(0),null);
-var kids = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__184387,(1),null);
+var tailrecursion$hoplon$markdown$table_node__delegate = function (args__6627__auto__){
+var vec__84700 = tailrecursion.hoplon.parse_args.call(null,args__6627__auto__);
+var attr = cljs.core.nth.call(null,vec__84700,(0),null);
+var kids = cljs.core.nth.call(null,vec__84700,(1),null);
 return null;
 };
 var tailrecursion$hoplon$markdown$table_node = function (var_args){
-var args__8262__auto__ = null;
+var args__6627__auto__ = null;
 if (arguments.length > 0) {
-var G__184388__i = 0, G__184388__a = new Array(arguments.length -  0);
-while (G__184388__i < G__184388__a.length) {G__184388__a[G__184388__i] = arguments[G__184388__i + 0]; ++G__184388__i;}
-  args__8262__auto__ = new cljs.core.IndexedSeq(G__184388__a,0);
+var G__84701__i = 0, G__84701__a = new Array(arguments.length -  0);
+while (G__84701__i < G__84701__a.length) {G__84701__a[G__84701__i] = arguments[G__84701__i + 0]; ++G__84701__i;}
+  args__6627__auto__ = new cljs.core.IndexedSeq(G__84701__a,0);
 } 
-return tailrecursion$hoplon$markdown$table_node__delegate.call(this,args__8262__auto__);};
+return tailrecursion$hoplon$markdown$table_node__delegate.call(this,args__6627__auto__);};
 tailrecursion$hoplon$markdown$table_node.cljs$lang$maxFixedArity = 0;
-tailrecursion$hoplon$markdown$table_node.cljs$lang$applyTo = (function (arglist__184389){
-var args__8262__auto__ = cljs.core.seq(arglist__184389);
-return tailrecursion$hoplon$markdown$table_node__delegate(args__8262__auto__);
+tailrecursion$hoplon$markdown$table_node.cljs$lang$applyTo = (function (arglist__84702){
+var args__6627__auto__ = cljs.core.seq(arglist__84702);
+return tailrecursion$hoplon$markdown$table_node__delegate(args__6627__auto__);
 });
 tailrecursion$hoplon$markdown$table_node.cljs$core$IFn$_invoke$arity$variadic = tailrecursion$hoplon$markdown$table_node__delegate;
 return tailrecursion$hoplon$markdown$table_node;
@@ -586,24 +565,24 @@ return tailrecursion$hoplon$markdown$table_node;
  * @param {...*} var_args
  */
 tailrecursion.hoplon.markdown.table_row_node = (function() { 
-var tailrecursion$hoplon$markdown$table_row_node__delegate = function (args__8262__auto__){
-var vec__184391 = tailrecursion.hoplon.parse_args(args__8262__auto__);
-var attr = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__184391,(0),null);
-var kids = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__184391,(1),null);
+var tailrecursion$hoplon$markdown$table_row_node__delegate = function (args__6627__auto__){
+var vec__84704 = tailrecursion.hoplon.parse_args.call(null,args__6627__auto__);
+var attr = cljs.core.nth.call(null,vec__84704,(0),null);
+var kids = cljs.core.nth.call(null,vec__84704,(1),null);
 return null;
 };
 var tailrecursion$hoplon$markdown$table_row_node = function (var_args){
-var args__8262__auto__ = null;
+var args__6627__auto__ = null;
 if (arguments.length > 0) {
-var G__184392__i = 0, G__184392__a = new Array(arguments.length -  0);
-while (G__184392__i < G__184392__a.length) {G__184392__a[G__184392__i] = arguments[G__184392__i + 0]; ++G__184392__i;}
-  args__8262__auto__ = new cljs.core.IndexedSeq(G__184392__a,0);
+var G__84705__i = 0, G__84705__a = new Array(arguments.length -  0);
+while (G__84705__i < G__84705__a.length) {G__84705__a[G__84705__i] = arguments[G__84705__i + 0]; ++G__84705__i;}
+  args__6627__auto__ = new cljs.core.IndexedSeq(G__84705__a,0);
 } 
-return tailrecursion$hoplon$markdown$table_row_node__delegate.call(this,args__8262__auto__);};
+return tailrecursion$hoplon$markdown$table_row_node__delegate.call(this,args__6627__auto__);};
 tailrecursion$hoplon$markdown$table_row_node.cljs$lang$maxFixedArity = 0;
-tailrecursion$hoplon$markdown$table_row_node.cljs$lang$applyTo = (function (arglist__184393){
-var args__8262__auto__ = cljs.core.seq(arglist__184393);
-return tailrecursion$hoplon$markdown$table_row_node__delegate(args__8262__auto__);
+tailrecursion$hoplon$markdown$table_row_node.cljs$lang$applyTo = (function (arglist__84706){
+var args__6627__auto__ = cljs.core.seq(arglist__84706);
+return tailrecursion$hoplon$markdown$table_row_node__delegate(args__6627__auto__);
 });
 tailrecursion$hoplon$markdown$table_row_node.cljs$core$IFn$_invoke$arity$variadic = tailrecursion$hoplon$markdown$table_row_node__delegate;
 return tailrecursion$hoplon$markdown$table_row_node;
@@ -613,26 +592,28 @@ return tailrecursion$hoplon$markdown$table_row_node;
  * @param {...*} var_args
  */
 tailrecursion.hoplon.markdown.wiki_link_node = (function() { 
-var tailrecursion$hoplon$markdown$wiki_link_node__delegate = function (args__8262__auto__){
-var vec__184395 = tailrecursion.hoplon.parse_args(args__8262__auto__);
-var attr = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__184395,(0),null);
-var kids = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__184395,(1),null);
+var tailrecursion$hoplon$markdown$wiki_link_node__delegate = function (args__6627__auto__){
+var vec__84708 = tailrecursion.hoplon.parse_args.call(null,args__6627__auto__);
+var attr = cljs.core.nth.call(null,vec__84708,(0),null);
+var kids = cljs.core.nth.call(null,vec__84708,(1),null);
 return null;
 };
 var tailrecursion$hoplon$markdown$wiki_link_node = function (var_args){
-var args__8262__auto__ = null;
+var args__6627__auto__ = null;
 if (arguments.length > 0) {
-var G__184396__i = 0, G__184396__a = new Array(arguments.length -  0);
-while (G__184396__i < G__184396__a.length) {G__184396__a[G__184396__i] = arguments[G__184396__i + 0]; ++G__184396__i;}
-  args__8262__auto__ = new cljs.core.IndexedSeq(G__184396__a,0);
+var G__84709__i = 0, G__84709__a = new Array(arguments.length -  0);
+while (G__84709__i < G__84709__a.length) {G__84709__a[G__84709__i] = arguments[G__84709__i + 0]; ++G__84709__i;}
+  args__6627__auto__ = new cljs.core.IndexedSeq(G__84709__a,0);
 } 
-return tailrecursion$hoplon$markdown$wiki_link_node__delegate.call(this,args__8262__auto__);};
+return tailrecursion$hoplon$markdown$wiki_link_node__delegate.call(this,args__6627__auto__);};
 tailrecursion$hoplon$markdown$wiki_link_node.cljs$lang$maxFixedArity = 0;
-tailrecursion$hoplon$markdown$wiki_link_node.cljs$lang$applyTo = (function (arglist__184397){
-var args__8262__auto__ = cljs.core.seq(arglist__184397);
-return tailrecursion$hoplon$markdown$wiki_link_node__delegate(args__8262__auto__);
+tailrecursion$hoplon$markdown$wiki_link_node.cljs$lang$applyTo = (function (arglist__84710){
+var args__6627__auto__ = cljs.core.seq(arglist__84710);
+return tailrecursion$hoplon$markdown$wiki_link_node__delegate(args__6627__auto__);
 });
 tailrecursion$hoplon$markdown$wiki_link_node.cljs$core$IFn$_invoke$arity$variadic = tailrecursion$hoplon$markdown$wiki_link_node__delegate;
 return tailrecursion$hoplon$markdown$wiki_link_node;
 })()
 ;
+
+//# sourceMappingURL=markdown.js.map
