@@ -24,22 +24,22 @@ var G__11607 = cljs.core.cst$kw$target;
 var G__11608 = "_self";
 var G__11609 = cljs.core.cst$kw$onsubmit;
 var G__11610 = "";
-var G__11611 = general.bootstrap.row.cljs$core$IFn$_invoke$arity$variadic(cljs.core.array_seq([(function (){var good_QMARK_ = tailrecursion.javelin.cell(null);
+var G__11611 = general.bootstrap.row.cljs$core$IFn$_invoke$arity$variadic(cljs.core.array_seq([(function (){var valid_QMARK_ = tailrecursion.javelin.cell(null);
 var G__11626 = cljs.core.cst$kw$class;
 var G__11627 = "col-xs-12 col-sm-6 col-md-6";
 var G__11628 = (function (){var G__11629 = cljs.core.cst$kw$class;
-var G__11630 = tailrecursion.javelin.formula(((function (G__11629,G__11626,G__11627,good_QMARK_,G__11601,G__11602,G__11603,G__11604,G__11605,G__11606,G__11607,G__11608,G__11609,G__11610,G__11552,G__11553,vec__11421,attr,kids){
+var G__11630 = tailrecursion.javelin.formula(((function (G__11629,G__11626,G__11627,valid_QMARK_,G__11601,G__11602,G__11603,G__11604,G__11605,G__11606,G__11607,G__11608,G__11609,G__11610,G__11552,G__11553,vec__11421,attr,kids){
 return (function (){
 return new cljs.core.PersistentArrayMap(null, 4, [cljs.core.cst$kw$form_DASH_group,true,cljs.core.cst$kw$has_DASH_success,false,cljs.core.cst$kw$has_DASH_error,false,cljs.core.cst$kw$has_DASH_feedback,true], null);
-});})(G__11629,G__11626,G__11627,good_QMARK_,G__11601,G__11602,G__11603,G__11604,G__11605,G__11606,G__11607,G__11608,G__11609,G__11610,G__11552,G__11553,vec__11421,attr,kids))
+});})(G__11629,G__11626,G__11627,valid_QMARK_,G__11601,G__11602,G__11603,G__11604,G__11605,G__11606,G__11607,G__11608,G__11609,G__11610,G__11552,G__11553,vec__11421,attr,kids))
 ).call(null);
 var G__11631 = (tailrecursion.hoplon.label.cljs$core$IFn$_invoke$arity$5 ? tailrecursion.hoplon.label.cljs$core$IFn$_invoke$arity$5(cljs.core.cst$kw$for,"entry.1351197672",cljs.core.cst$kw$class,"control-label","First Name") : tailrecursion.hoplon.label.call(null,cljs.core.cst$kw$for,"entry.1351197672",cljs.core.cst$kw$class,"control-label","First Name"));
 var G__11632 = (tailrecursion.hoplon.input.cljs$core$IFn$_invoke$arity$12 ? tailrecursion.hoplon.input.cljs$core$IFn$_invoke$arity$12(cljs.core.cst$kw$type,"text",cljs.core.cst$kw$class,"form-control",cljs.core.cst$kw$id,"entry.1351197672",cljs.core.cst$kw$placeholder,"First",cljs.core.cst$kw$aria_DASH_describedby,"first-nameStatus",cljs.core.cst$kw$name,"entry.1351197672") : tailrecursion.hoplon.input.call(null,cljs.core.cst$kw$type,"text",cljs.core.cst$kw$class,"form-control",cljs.core.cst$kw$id,"entry.1351197672",cljs.core.cst$kw$placeholder,"First",cljs.core.cst$kw$aria_DASH_describedby,"first-nameStatus",cljs.core.cst$kw$name,"entry.1351197672"));
 var G__11633 = (function (){var G__11635 = cljs.core.cst$kw$class;
-var G__11636 = tailrecursion.javelin.formula(((function (G__11635,G__11629,G__11630,G__11631,G__11632,G__11626,G__11627,good_QMARK_,G__11601,G__11602,G__11603,G__11604,G__11605,G__11606,G__11607,G__11608,G__11609,G__11610,G__11552,G__11553,vec__11421,attr,kids){
+var G__11636 = tailrecursion.javelin.formula(((function (G__11635,G__11629,G__11630,G__11631,G__11632,G__11626,G__11627,valid_QMARK_,G__11601,G__11602,G__11603,G__11604,G__11605,G__11606,G__11607,G__11608,G__11609,G__11610,G__11552,G__11553,vec__11421,attr,kids){
 return (function (){
 return new cljs.core.PersistentArrayMap(null, 4, [cljs.core.cst$kw$glyphicon,true,cljs.core.cst$kw$glyphicon_DASH_ok,false,cljs.core.cst$kw$glyphicon_DASH_remove,false,cljs.core.cst$kw$form_DASH_control_DASH_feedback,true], null);
-});})(G__11635,G__11629,G__11630,G__11631,G__11632,G__11626,G__11627,good_QMARK_,G__11601,G__11602,G__11603,G__11604,G__11605,G__11606,G__11607,G__11608,G__11609,G__11610,G__11552,G__11553,vec__11421,attr,kids))
+});})(G__11635,G__11629,G__11630,G__11631,G__11632,G__11626,G__11627,valid_QMARK_,G__11601,G__11602,G__11603,G__11604,G__11605,G__11606,G__11607,G__11608,G__11609,G__11610,G__11552,G__11553,vec__11421,attr,kids))
 ).call(null);
 var G__11637 = cljs.core.cst$kw$aria_DASH_hidden;
 var G__11638 = "true";

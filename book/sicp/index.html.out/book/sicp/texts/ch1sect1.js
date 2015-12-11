@@ -2786,7 +2786,7 @@ try{return new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector
 var G__261184 = (function (){var G__261185 = new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$style,"line-height: 125%"], null);
 var G__261186 = "(";
 var G__261187 = (function (){var G__261192 = new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$style,"color: #008000; font-weight: bold"], null);
-var G__261193 = "defn ";
+var G__261193 = "def ";
 return (tailrecursion.hoplon.span.cljs$core$IFn$_invoke$arity$2 ? tailrecursion.hoplon.span.cljs$core$IFn$_invoke$arity$2(G__261192,G__261193) : tailrecursion.hoplon.span.call(null,G__261192,G__261193));
 })();
 var G__261188 = (function (){var G__261194 = new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$style,"color: #19177C"], null);
@@ -2848,7 +2848,7 @@ try{return new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector
 var G__261231 = (function (){var G__261232 = new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$style,"line-height: 125%"], null);
 var G__261233 = "(";
 var G__261234 = (function (){var G__261242 = new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$style,"color: #008000; font-weight: bold"], null);
-var G__261243 = "defn ";
+var G__261243 = "def ";
 return (tailrecursion.hoplon.span.cljs$core$IFn$_invoke$arity$2 ? tailrecursion.hoplon.span.cljs$core$IFn$_invoke$arity$2(G__261242,G__261243) : tailrecursion.hoplon.span.call(null,G__261242,G__261243));
 })();
 var G__261235 = (function (){var G__261244 = new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$style,"color: #19177C"], null);

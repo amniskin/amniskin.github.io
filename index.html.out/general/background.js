@@ -17,8 +17,8 @@ var G__10361 = cljs.core.cst$kw$style;
 var G__10362 = [cljs.core.str("display: block;\n                    background-image:url('"),cljs.core.str(url),cljs.core.str("');\n                    background-size:length:auto 100vh;\n                    background-repeat: no-repeat;\n                    background-attachment:fixed;")].join('');
 var G__10363 = cljs.core.cst$kw$on_DASH_screen_STAR_;
 var G__10364 = ((function (G__10361,G__10362,G__10363,vec__10358,map__10359,map__10359__$1,url,kids){
-return (function (p1__5415_SHARP_,p2__5416_SHARP_){
-return p1__5415_SHARP_.style.backgroundPosition = [cljs.core.str("50% +"),cljs.core.str(((1000) * p2__5416_SHARP_)),cljs.core.str("+ %")].join('');
+return (function (p1__5904_SHARP_,p2__5905_SHARP_){
+return p1__5904_SHARP_.style.backgroundPosition = [cljs.core.str("50% +"),cljs.core.str(((1000) * p2__5905_SHARP_)),cljs.core.str("+ %")].join('');
 });})(G__10361,G__10362,G__10363,vec__10358,map__10359,map__10359__$1,url,kids))
 ;
 var G__10365 = kids;
