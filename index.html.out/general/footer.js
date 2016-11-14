@@ -8,31 +8,31 @@ goog.require('tailrecursion.javelin');
  * @param {...*} var_args
  */
 general.footer.content = (function() { 
-var general$footer$content__delegate = function (args__8262__auto__){
-var vec__10010 = tailrecursion.hoplon.parse_args(args__8262__auto__);
-var _ = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__10010,(0),null);
-var ___$1 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__10010,(1),null);
-var G__10014 = cljs.core.cst$kw$class;
-var G__10015 = "col-sm-12";
-var G__10016 = (function (){var G__10017 = cljs.core.cst$kw$style;
-var G__10018 = "text-align:center;";
-var G__10019 = [cljs.core.str("\u00A9 "),cljs.core.str(general.info.date.getFullYear()),cljs.core.str(" Aaron Niskin. All rights reserved.")].join('');
-return (tailrecursion.hoplon.div.cljs$core$IFn$_invoke$arity$3 ? tailrecursion.hoplon.div.cljs$core$IFn$_invoke$arity$3(G__10017,G__10018,G__10019) : tailrecursion.hoplon.div.call(null,G__10017,G__10018,G__10019));
+var general$footer$content__delegate = function (args__8082__auto__){
+var vec__9830 = tailrecursion.hoplon.parse_args(args__8082__auto__);
+var _ = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__9830,(0),null);
+var ___$1 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__9830,(1),null);
+var G__9834 = cljs.core.cst$kw$class;
+var G__9835 = "col-sm-12";
+var G__9836 = (function (){var G__9837 = cljs.core.cst$kw$style;
+var G__9838 = "text-align:center;";
+var G__9839 = [cljs.core.str("\u00A9 "),cljs.core.str(general.info.date.getFullYear()),cljs.core.str(" Aaron Niskin. All rights reserved.")].join('');
+return (tailrecursion.hoplon.div.cljs$core$IFn$_invoke$arity$3 ? tailrecursion.hoplon.div.cljs$core$IFn$_invoke$arity$3(G__9837,G__9838,G__9839) : tailrecursion.hoplon.div.call(null,G__9837,G__9838,G__9839));
 })();
-return (tailrecursion.hoplon.div.cljs$core$IFn$_invoke$arity$3 ? tailrecursion.hoplon.div.cljs$core$IFn$_invoke$arity$3(G__10014,G__10015,G__10016) : tailrecursion.hoplon.div.call(null,G__10014,G__10015,G__10016));
+return (tailrecursion.hoplon.div.cljs$core$IFn$_invoke$arity$3 ? tailrecursion.hoplon.div.cljs$core$IFn$_invoke$arity$3(G__9834,G__9835,G__9836) : tailrecursion.hoplon.div.call(null,G__9834,G__9835,G__9836));
 };
 var general$footer$content = function (var_args){
-var args__8262__auto__ = null;
+var args__8082__auto__ = null;
 if (arguments.length > 0) {
-var G__10020__i = 0, G__10020__a = new Array(arguments.length -  0);
-while (G__10020__i < G__10020__a.length) {G__10020__a[G__10020__i] = arguments[G__10020__i + 0]; ++G__10020__i;}
-  args__8262__auto__ = new cljs.core.IndexedSeq(G__10020__a,0);
+var G__9840__i = 0, G__9840__a = new Array(arguments.length -  0);
+while (G__9840__i < G__9840__a.length) {G__9840__a[G__9840__i] = arguments[G__9840__i + 0]; ++G__9840__i;}
+  args__8082__auto__ = new cljs.core.IndexedSeq(G__9840__a,0);
 } 
-return general$footer$content__delegate.call(this,args__8262__auto__);};
+return general$footer$content__delegate.call(this,args__8082__auto__);};
 general$footer$content.cljs$lang$maxFixedArity = 0;
-general$footer$content.cljs$lang$applyTo = (function (arglist__10021){
-var args__8262__auto__ = cljs.core.seq(arglist__10021);
-return general$footer$content__delegate(args__8262__auto__);
+general$footer$content.cljs$lang$applyTo = (function (arglist__9841){
+var args__8082__auto__ = cljs.core.seq(arglist__9841);
+return general$footer$content__delegate(args__8082__auto__);
 });
 general$footer$content.cljs$core$IFn$_invoke$arity$variadic = general$footer$content__delegate;
 return general$footer$content;

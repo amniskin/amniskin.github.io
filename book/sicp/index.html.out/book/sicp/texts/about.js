@@ -9,55 +9,55 @@ goog.require('tailrecursion.javelin');
  * @param {...*} var_args
  */
 book.sicp.texts.about.content = (function() { 
-var book$sicp$texts$about$content__delegate = function (args__8262__auto__){
-var vec__395438 = tailrecursion.hoplon.parse_args(args__8262__auto__);
-var attr = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__395438,(0),null);
-var kids = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__395438,(1),null);
-return book.sicp.book_data.about.cljs$core$IFn$_invoke$arity$variadic(cljs.core.array_seq([cljs.core.PersistentArrayMap.EMPTY,(function (){var _STAR_references_STAR_395439 = tailrecursion.hoplon.markdown._STAR_references_STAR_;
-var _STAR_abbreviations_STAR_395440 = tailrecursion.hoplon.markdown._STAR_abbreviations_STAR_;
+var book$sicp$texts$about$content__delegate = function (args__8082__auto__){
+var vec__395258 = tailrecursion.hoplon.parse_args(args__8082__auto__);
+var attr = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__395258,(0),null);
+var kids = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__395258,(1),null);
+return book.sicp.book_data.about.cljs$core$IFn$_invoke$arity$variadic(cljs.core.array_seq([cljs.core.PersistentArrayMap.EMPTY,(function (){var _STAR_references_STAR_395259 = tailrecursion.hoplon.markdown._STAR_references_STAR_;
+var _STAR_abbreviations_STAR_395260 = tailrecursion.hoplon.markdown._STAR_abbreviations_STAR_;
 tailrecursion.hoplon.markdown._STAR_references_STAR_ = cljs.core.merge.cljs$core$IFn$_invoke$arity$variadic(cljs.core.array_seq([tailrecursion.hoplon.markdown._STAR_references_STAR_,null], 0));
 
 tailrecursion.hoplon.markdown._STAR_abbreviations_STAR_ = cljs.core.merge.cljs$core$IFn$_invoke$arity$variadic(cljs.core.array_seq([tailrecursion.hoplon.markdown._STAR_abbreviations_STAR_,null], 0));
 
-try{var _STAR_references_STAR_395441 = tailrecursion.hoplon.markdown._STAR_references_STAR_;
-var _STAR_abbreviations_STAR_395442 = tailrecursion.hoplon.markdown._STAR_abbreviations_STAR_;
+try{var _STAR_references_STAR_395261 = tailrecursion.hoplon.markdown._STAR_references_STAR_;
+var _STAR_abbreviations_STAR_395262 = tailrecursion.hoplon.markdown._STAR_abbreviations_STAR_;
 tailrecursion.hoplon.markdown._STAR_references_STAR_ = cljs.core.merge.cljs$core$IFn$_invoke$arity$variadic(cljs.core.array_seq([tailrecursion.hoplon.markdown._STAR_references_STAR_,cljs.core.PersistentArrayMap.EMPTY], 0));
 
 tailrecursion.hoplon.markdown._STAR_abbreviations_STAR_ = cljs.core.merge.cljs$core$IFn$_invoke$arity$variadic(cljs.core.array_seq([tailrecursion.hoplon.markdown._STAR_abbreviations_STAR_,cljs.core.List.EMPTY], 0));
 
-try{return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [(function (){var G__395443 = cljs.core.PersistentArrayMap.EMPTY;
-var G__395444 = new cljs.core.PersistentVector(null, 7, 5, cljs.core.PersistentVector.EMPTY_NODE, ["This site is designed to be used on its own by people who want to learn to program from the textbook, ",(function (){var G__395445 = new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$type,cljs.core.cst$kw$double], null);
-var G__395446 = new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, ["Structure and Interpretation of Computer Programs"], null);
-return (tailrecursion.hoplon.markdown.quoted_node.cljs$core$IFn$_invoke$arity$2 ? tailrecursion.hoplon.markdown.quoted_node.cljs$core$IFn$_invoke$arity$2(G__395445,G__395446) : tailrecursion.hoplon.markdown.quoted_node.call(null,G__395445,G__395446));
-})()," (SICP) by Harold Abelson and Gerald Jay Sussman with Julie Sussman. SICP is licensed under a ",tailrecursion.hoplon.markdown.exp_link_node.cljs$core$IFn$_invoke$arity$variadic(cljs.core.array_seq([new cljs.core.PersistentArrayMap(null, 2, [cljs.core.cst$kw$url,"\"http://creativecommons.org/licenses/by-sa/4.0/\"",cljs.core.cst$kw$title,""], null),new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, ["Creative Commons Attribution-ShareAlike 4.0 International License"], null)], 0))," by the MIT Press. I have included ",(function (){var G__395447 = new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$type,cljs.core.cst$kw$double], null);
-var G__395448 = new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, ["translations"], null);
-return (tailrecursion.hoplon.markdown.quoted_node.cljs$core$IFn$_invoke$arity$2 ? tailrecursion.hoplon.markdown.quoted_node.cljs$core$IFn$_invoke$arity$2(G__395447,G__395448) : tailrecursion.hoplon.markdown.quoted_node.call(null,G__395447,G__395448));
+try{return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [(function (){var G__395263 = cljs.core.PersistentArrayMap.EMPTY;
+var G__395264 = new cljs.core.PersistentVector(null, 7, 5, cljs.core.PersistentVector.EMPTY_NODE, ["This site is designed to be used on its own by people who want to learn to program from the textbook, ",(function (){var G__395265 = new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$type,cljs.core.cst$kw$double], null);
+var G__395266 = new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, ["Structure and Interpretation of Computer Programs"], null);
+return (tailrecursion.hoplon.markdown.quoted_node.cljs$core$IFn$_invoke$arity$2 ? tailrecursion.hoplon.markdown.quoted_node.cljs$core$IFn$_invoke$arity$2(G__395265,G__395266) : tailrecursion.hoplon.markdown.quoted_node.call(null,G__395265,G__395266));
+})()," (SICP) by Harold Abelson and Gerald Jay Sussman with Julie Sussman. SICP is licensed under a ",tailrecursion.hoplon.markdown.exp_link_node.cljs$core$IFn$_invoke$arity$variadic(cljs.core.array_seq([new cljs.core.PersistentArrayMap(null, 2, [cljs.core.cst$kw$url,"\"http://creativecommons.org/licenses/by-sa/4.0/\"",cljs.core.cst$kw$title,""], null),new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, ["Creative Commons Attribution-ShareAlike 4.0 International License"], null)], 0))," by the MIT Press. I have included ",(function (){var G__395267 = new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$type,cljs.core.cst$kw$double], null);
+var G__395268 = new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, ["translations"], null);
+return (tailrecursion.hoplon.markdown.quoted_node.cljs$core$IFn$_invoke$arity$2 ? tailrecursion.hoplon.markdown.quoted_node.cljs$core$IFn$_invoke$arity$2(G__395267,G__395268) : tailrecursion.hoplon.markdown.quoted_node.call(null,G__395267,G__395268));
 })()," of the textbook into Clojure, and have included Clojure solutions to the problems."], null);
-return (tailrecursion.hoplon.markdown.para_node.cljs$core$IFn$_invoke$arity$2 ? tailrecursion.hoplon.markdown.para_node.cljs$core$IFn$_invoke$arity$2(G__395443,G__395444) : tailrecursion.hoplon.markdown.para_node.call(null,G__395443,G__395444));
-})(),(function (){var G__395449 = cljs.core.PersistentArrayMap.EMPTY;
-var G__395450 = new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, ["If you do not have a Clojure REPL already in place, go ahead and get ",tailrecursion.hoplon.markdown.exp_link_node.cljs$core$IFn$_invoke$arity$variadic(cljs.core.array_seq([new cljs.core.PersistentArrayMap(null, 2, [cljs.core.cst$kw$url,"http://boot-clj.com/",cljs.core.cst$kw$title,""], null),new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, ["boot"], null)], 0)),". Most importantly, Lisp can do it!"], null);
-return (tailrecursion.hoplon.markdown.para_node.cljs$core$IFn$_invoke$arity$2 ? tailrecursion.hoplon.markdown.para_node.cljs$core$IFn$_invoke$arity$2(G__395449,G__395450) : tailrecursion.hoplon.markdown.para_node.call(null,G__395449,G__395450));
+return (tailrecursion.hoplon.markdown.para_node.cljs$core$IFn$_invoke$arity$2 ? tailrecursion.hoplon.markdown.para_node.cljs$core$IFn$_invoke$arity$2(G__395263,G__395264) : tailrecursion.hoplon.markdown.para_node.call(null,G__395263,G__395264));
+})(),(function (){var G__395269 = cljs.core.PersistentArrayMap.EMPTY;
+var G__395270 = new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, ["If you do not have a Clojure REPL already in place, go ahead and get ",tailrecursion.hoplon.markdown.exp_link_node.cljs$core$IFn$_invoke$arity$variadic(cljs.core.array_seq([new cljs.core.PersistentArrayMap(null, 2, [cljs.core.cst$kw$url,"http://boot-clj.com/",cljs.core.cst$kw$title,""], null),new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, ["boot"], null)], 0)),". Most importantly, Lisp can do it!"], null);
+return (tailrecursion.hoplon.markdown.para_node.cljs$core$IFn$_invoke$arity$2 ? tailrecursion.hoplon.markdown.para_node.cljs$core$IFn$_invoke$arity$2(G__395269,G__395270) : tailrecursion.hoplon.markdown.para_node.call(null,G__395269,G__395270));
 })()], null);
-}finally {tailrecursion.hoplon.markdown._STAR_abbreviations_STAR_ = _STAR_abbreviations_STAR_395442;
+}finally {tailrecursion.hoplon.markdown._STAR_abbreviations_STAR_ = _STAR_abbreviations_STAR_395262;
 
-tailrecursion.hoplon.markdown._STAR_references_STAR_ = _STAR_references_STAR_395441;
-}}finally {tailrecursion.hoplon.markdown._STAR_abbreviations_STAR_ = _STAR_abbreviations_STAR_395440;
+tailrecursion.hoplon.markdown._STAR_references_STAR_ = _STAR_references_STAR_395261;
+}}finally {tailrecursion.hoplon.markdown._STAR_abbreviations_STAR_ = _STAR_abbreviations_STAR_395260;
 
-tailrecursion.hoplon.markdown._STAR_references_STAR_ = _STAR_references_STAR_395439;
+tailrecursion.hoplon.markdown._STAR_references_STAR_ = _STAR_references_STAR_395259;
 }})()], 0));
 };
 var book$sicp$texts$about$content = function (var_args){
-var args__8262__auto__ = null;
+var args__8082__auto__ = null;
 if (arguments.length > 0) {
-var G__395451__i = 0, G__395451__a = new Array(arguments.length -  0);
-while (G__395451__i < G__395451__a.length) {G__395451__a[G__395451__i] = arguments[G__395451__i + 0]; ++G__395451__i;}
-  args__8262__auto__ = new cljs.core.IndexedSeq(G__395451__a,0);
+var G__395271__i = 0, G__395271__a = new Array(arguments.length -  0);
+while (G__395271__i < G__395271__a.length) {G__395271__a[G__395271__i] = arguments[G__395271__i + 0]; ++G__395271__i;}
+  args__8082__auto__ = new cljs.core.IndexedSeq(G__395271__a,0);
 } 
-return book$sicp$texts$about$content__delegate.call(this,args__8262__auto__);};
+return book$sicp$texts$about$content__delegate.call(this,args__8082__auto__);};
 book$sicp$texts$about$content.cljs$lang$maxFixedArity = 0;
-book$sicp$texts$about$content.cljs$lang$applyTo = (function (arglist__395452){
-var args__8262__auto__ = cljs.core.seq(arglist__395452);
-return book$sicp$texts$about$content__delegate(args__8262__auto__);
+book$sicp$texts$about$content.cljs$lang$applyTo = (function (arglist__395272){
+var args__8082__auto__ = cljs.core.seq(arglist__395272);
+return book$sicp$texts$about$content__delegate(args__8082__auto__);
 });
 book$sicp$texts$about$content.cljs$core$IFn$_invoke$arity$variadic = book$sicp$texts$about$content__delegate;
 return book$sicp$texts$about$content;
