@@ -1,6 +1,5 @@
 ---
 title: A dirty little ditty on Finite Automata
-date: 2017-02-18 09:45:44.000000000 -05:00
 category: Mathematics
 excerpt: |
   A basic yet formal introduction to Finite Automata and how strings act on them.
@@ -14,14 +13,17 @@ tags:
 - maths
 - nfa
 - intro
+feature_image: "/assets/pics/2015/12/03-DFA_banner.PNG"
 ---
+
+This post builds on the previous post about [Formal Languages]({{ site.baseurl }}/mathematics/2015/11/30/whats-in-a-language/).
 
 ### Some Formal Definitions
 
 #### A Deterministic Finite Automata (DFA) is
 
 - A set \\(  \mathcal{Q} \\) called "states"
-- A set \\(  \Sigma \\) called "symbols"
+- A set \\(  \Sigma \\) called "symbols" or "alphabet"
 - A function \\(  \delta_F:\mathcal{Q}\times\Sigma \to \mathcal{Q} \\)
 - A designated state \\(  q_0\in\mathcal{Q} \\) called the start point
 - A subset \\(  F\subseteq\mathcal{Q} \\) called the "accepting states"
@@ -45,7 +47,7 @@ And in this way, we have defined how DFAs can interpret strings of symbols rathe
 
 #### The language of a DFA
 
-Given a DFA, \\(  A=(\mathcal{Q}, \Sigma, \delta, q_0, F) \\), we can define "the language of \\(  A \\)", denoted \\(  L(A) \\), as \\(  \{w\in\Sigma^*|\delta(q_0,w)\in F\} \\).
+Given a DFA, \\(  A=(\mathcal{Q}, \Sigma, \delta, q_0, F) \\), we can define "the language of \\(  A \\)", denoted \\(  L(A) \\), as \\(  \{w\in\Sigma^*\|\delta(q_0,w)\in F\} \\).
 
 ### Some Examples, Maybe?
 

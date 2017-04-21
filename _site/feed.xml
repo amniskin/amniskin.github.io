@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-04-21T09:00:04-04:00</updated><id>http://localhost:4000/</id><title type="html">Aaron Niskin’s Blog</title><subtitle>Not just another blog! Now with more... Aaron!</subtitle><author><name>amniskin</name></author><entry><title type="html">Markov Chain Monte Carlo</title><link href="http://localhost:4000/statistics/2017/04/19/MCMC/" rel="alternate" type="text/html" title="Markov Chain Monte Carlo" /><published>2017-04-19T16:52:39-04:00</published><updated>2017-04-19T16:52:39-04:00</updated><id>http://localhost:4000/statistics/2017/04/19/MCMC</id><content type="html" xml:base="http://localhost:4000/statistics/2017/04/19/MCMC/">&lt;!--
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-04-21T09:35:23-04:00</updated><id>http://localhost:4000/</id><title type="html">Aaron Niskin’s Blog</title><subtitle>Not just another blog! Now with more... Aaron!</subtitle><author><name>amniskin</name></author><entry><title type="html">Markov Chain Monte Carlo</title><link href="http://localhost:4000/statistics/2017/04/19/MCMC/" rel="alternate" type="text/html" title="Markov Chain Monte Carlo" /><published>2017-04-19T16:52:39-04:00</published><updated>2017-04-19T16:52:39-04:00</updated><id>http://localhost:4000/statistics/2017/04/19/MCMC</id><content type="html" xml:base="http://localhost:4000/statistics/2017/04/19/MCMC/">&lt;!--
 ```python
 import numpy as np
 import matplotlib.pyplot as plt
@@ -679,76 +679,7 @@ for the following, assume we’ve done that.&lt;/p&gt;
 
 &lt;p&gt;Maybe next time I’ll post about how we can find these coefficients given some data using gradient descent, or some modification thereof.&lt;/p&gt;
 
-&lt;p&gt;Till next time, I hope you enjoyed this post. Please, let me know if something could be clearer or if you have any requests.&lt;/p&gt;</content><author><name>amniskin</name></author><category term="Statistics" /><category term="Prediction" /><category term="Regression" /><summary type="html">The basics Yeah. It’s not a good sign if I’m starting out already repeating myself. But that’s how things seem to be with linear regression, so I guess it’s fitting. It seems like every day one of my professors will talk about linear regression, and it’s not due to laziness or lack of coordination. Indeed, it’s an intentional part of the curriculum here at New College of Florida because of how ubiquitous linear regression is. Not only is it an extremely simple yet expressive formulation, it’s also the theoretical basis of a whole slew of other tactics. Let’s just get right into it, shall we?</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/pics/logo.png" /></entry><entry><title type="html">A dirty little ditty on Finite Automata</title><link href="http://localhost:4000/mathematics/2017/02/18/a-dirty-little-ditty-on-finite-automata/" rel="alternate" type="text/html" title="A dirty little ditty on Finite Automata" /><published>2017-02-18T09:45:44-05:00</published><updated>2017-02-18T09:45:44-05:00</updated><id>http://localhost:4000/mathematics/2017/02/18/a-dirty-little-ditty-on-finite-automata</id><content type="html" xml:base="http://localhost:4000/mathematics/2017/02/18/a-dirty-little-ditty-on-finite-automata/">&lt;h3 id=&quot;some-formal-definitions&quot;&gt;Some Formal Definitions&lt;/h3&gt;
-
-&lt;h4 id=&quot;a-deterministic-finite-automata-dfa-is&quot;&gt;A Deterministic Finite Automata (DFA) is&lt;/h4&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;A set \(  \mathcal{Q} \) called “states”&lt;/li&gt;
-  &lt;li&gt;A set \(  \Sigma \) called “symbols”&lt;/li&gt;
-  &lt;li&gt;A function \(  \delta_F:\mathcal{Q}\times\Sigma \to \mathcal{Q} \)&lt;/li&gt;
-  &lt;li&gt;A designated state \(  q_0\in\mathcal{Q} \) called the start point&lt;/li&gt;
-  &lt;li&gt;A subset \(  F\subseteq\mathcal{Q} \) called the “accepting states”&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;The DFA is then often referred to as the ordered quintuple \(  A=(\mathcal{Q},\Sigma,\delta_F,q_0,F) \).&lt;/p&gt;
-
-&lt;!-- more --&gt;
-
-&lt;h4 id=&quot;defining-how-strings-act-on-dfas&quot;&gt;Defining how strings act on DFAs.&lt;/h4&gt;
-
-&lt;p&gt;Given a DFA, \(  A=(\mathcal{Q}, \Sigma, \delta, q_0, F) \), a state \(  q_i\in\mathcal{Q} \), and a string \(  w\in\Sigma^* \), we can define \(  \delta(q_i,w) \) like so:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;If \(  w \) only has one symbol, we can consider \(  w \) to be the symbol and define \(  \delta(q_i,w) \) to be the same as if we considered \(  w \) as the symbol&lt;/li&gt;
-  &lt;li&gt;If \(  w=xv \), where \(  x\in\Sigma \) and \(  v\in\Sigma^* \), then \(  \delta(q_i, w)=\delta(\delta(q_i,x),v) \)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;And in this way, we have defined how DFAs can interpret strings of symbols rather than just single symbols.&lt;/p&gt;
-
-&lt;h4 id=&quot;the-language-of-a-dfa&quot;&gt;The language of a DFA&lt;/h4&gt;
-
-&lt;table&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Given a DFA, \(  A=(\mathcal{Q}, \Sigma, \delta, q_0, F) \), we can define “the language of \(  A \)”, denoted \(  L(A) \), as \(  {w\in\Sigma^*&lt;/td&gt;
-      &lt;td&gt;\delta(q_0,w)\in F} \).&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;h3 id=&quot;some-examples-maybe&quot;&gt;Some Examples, Maybe?&lt;/h3&gt;
-
-&lt;h4 id=&quot;example-1&quot;&gt;Example 1:&lt;/h4&gt;
-
-&lt;p&gt;Let’s construct a  DFA that accepts only strings beginning with a 1 that, when interpreted as binary numbers, are multiples of 5. So some examples of strings that would be in \(  L(A) \) are 101, 1010, 1111&lt;/p&gt;
-
-&lt;h3 id=&quot;some-more-formal-definitions&quot;&gt;Some More Formal Definitions&lt;/h3&gt;
-
-&lt;h4 id=&quot;a-nondeterministic-finite-automata-nfa-is&quot;&gt;A Nondeterministic Finite Automata (NFA) is&lt;/h4&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;A set \(  \mathcal{Q} \) called “states”&lt;/li&gt;
-  &lt;li&gt;A set \(  \Sigma \) called “symbols”&lt;/li&gt;
-  &lt;li&gt;A function \(  \delta_N:\mathcal{Q}\times\Sigma \to \mathcal{P}\left(\mathcal{Q}\right) \)&lt;/li&gt;
-  &lt;li&gt;A designated state \(  q_0\in\mathcal{Q} \) called the start point&lt;/li&gt;
-  &lt;li&gt;A subset \(  F\subseteq\mathcal{Q} \) called the “accepting states”&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;The NFA is then often referred to as the ordered quintuple \(  A=(\mathcal{Q},\Sigma,\delta_N,q_0,F) \).&lt;/p&gt;
-
-&lt;h4 id=&quot;defining-how-strings-act-on-nfas&quot;&gt;Defining how strings act on NFAs.&lt;/h4&gt;
-
-&lt;p&gt;Given an NFA, \(  N=(\mathcal{Q}, \Sigma, \delta, q_0, F) \), a collection of states \(  \mathcal{S}\subseteq\mathcal{Q} \), and a string \(  w\in\Sigma^* \), we can define \(  \delta(\mathcal{S},w) \) like so:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;If \(  w \) only has one symbol, then we can consider \(  w \) to be the symbol and define \(  \delta(\mathcal{S},w):=\bigcup\limits_{s\in\mathcal{S}}\delta(s,w) \)&lt;/li&gt;
-  &lt;li&gt;If \(  w=xv \), where \(  x\in\Sigma \) and \(  v\in\Sigma^* \), then \(  \delta(\mathcal{S}, w)=\bigcup\limits_{s\in\mathcal{S}}\delta(\delta(s,x),v) \)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;And in this way, we have defined how NFAs can interpret strings of symbols rather than just single symbols.&lt;/p&gt;
-
-&lt;h3 id=&quot;maybe-in-another-post-well-get-past-the-definitions--&quot;&gt;Maybe in another post, we’ll get past the definitions! :-/&lt;/h3&gt;</content><author><name>amniskin</name></author><category term="Mathematics" /><category term="dfa" /><category term="dfa nfa equivalence" /><category term="finite automata" /><category term="formal languages" /><category term="math" /><category term="mathematics" /><category term="maths" /><category term="nfa" /><category term="intro" /><summary type="html">A basic yet formal introduction to Finite Automata and how strings act on them.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/pics/logo.png" /></entry><entry><title type="html">Probability – A Measure Theoretic Approach</title><link href="http://localhost:4000/probability/2017/02/18/probability-a-measure-theoretic-approach/" rel="alternate" type="text/html" title="Probability -- A Measure Theoretic Approach" /><published>2017-02-18T09:42:55-05:00</published><updated>2017-02-18T09:42:55-05:00</updated><id>http://localhost:4000/probability/2017/02/18/probability-a-measure-theoretic-approach</id><content type="html" xml:base="http://localhost:4000/probability/2017/02/18/probability-a-measure-theoretic-approach/">&lt;h2 id=&quot;probability-using-measure-theory&quot;&gt;Probability using Measure Theory&lt;/h2&gt;
+&lt;p&gt;Till next time, I hope you enjoyed this post. Please, let me know if something could be clearer or if you have any requests.&lt;/p&gt;</content><author><name>amniskin</name></author><category term="Statistics" /><category term="Prediction" /><category term="Regression" /><summary type="html">The basics Yeah. It’s not a good sign if I’m starting out already repeating myself. But that’s how things seem to be with linear regression, so I guess it’s fitting. It seems like every day one of my professors will talk about linear regression, and it’s not due to laziness or lack of coordination. Indeed, it’s an intentional part of the curriculum here at New College of Florida because of how ubiquitous linear regression is. Not only is it an extremely simple yet expressive formulation, it’s also the theoretical basis of a whole slew of other tactics. Let’s just get right into it, shall we?</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/pics/logo.png" /></entry><entry><title type="html">Probability – A Measure Theoretic Approach</title><link href="http://localhost:4000/probability/2017/02/18/probability-a-measure-theoretic-approach/" rel="alternate" type="text/html" title="Probability -- A Measure Theoretic Approach" /><published>2017-02-18T09:42:55-05:00</published><updated>2017-02-18T09:42:55-05:00</updated><id>http://localhost:4000/probability/2017/02/18/probability-a-measure-theoretic-approach</id><content type="html" xml:base="http://localhost:4000/probability/2017/02/18/probability-a-measure-theoretic-approach/">&lt;h2 id=&quot;probability-using-measure-theory&quot;&gt;Probability using Measure Theory&lt;/h2&gt;
 
 &lt;p&gt;A mathematically rigorous definition of probability, and some examples therein.&lt;/p&gt;
 
@@ -840,25 +771,71 @@ for the following, assume we’ve done that.&lt;/p&gt;
 
 &lt;h5 id=&quot;odds-or-evens&quot;&gt;Odds or evens&lt;/h5&gt;
 
-&lt;p&gt;Try to do this one yourself. I’m going to go get some sleep now. Please feel free to contact me with any questions. I love doing this stuff, so don’t be shy!&lt;/p&gt;</content><author><name>amniskin</name></author><category term="math" /><category term="measure theory" /><category term="Probability" /><category term="statistics" /><summary type="html">Probability using Measure Theory A mathematically rigorous definition of probability, and some examples therein.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/pics/logo.png" /></entry><entry><title type="html">Description of a Pot Still</title><link href="http://localhost:4000/general/2016/08/29/example-post-three/" rel="alternate" type="text/html" title="Description of a Pot Still" /><published>2016-08-29T00:00:00-04:00</published><updated>2016-08-29T00:00:00-04:00</updated><id>http://localhost:4000/general/2016/08/29/example-post-three</id><content type="html" xml:base="http://localhost:4000/general/2016/08/29/example-post-three/">&lt;p&gt;A pot still is a type of still used in distilling spirits such as whisky or brandy. Heat is applied directly to the pot containing the wash (for whisky) or wine (for brandy). This is called a batch distillation (as opposed to a continuous distillation).&lt;/p&gt;
+&lt;p&gt;Try to do this one yourself. I’m going to go get some sleep now. Please feel free to contact me with any questions. I love doing this stuff, so don’t be shy!&lt;/p&gt;</content><author><name>amniskin</name></author><category term="math" /><category term="measure theory" /><category term="Probability" /><category term="statistics" /><summary type="html">Probability using Measure Theory A mathematically rigorous definition of probability, and some examples therein.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/pics/logo.png" /></entry><entry><title type="html">A dirty little ditty on Finite Automata</title><link href="http://localhost:4000/mathematics/2015/12/03/a-dirty-little-ditty-on-finite-automata/" rel="alternate" type="text/html" title="A dirty little ditty on Finite Automata" /><published>2015-12-03T00:00:00-05:00</published><updated>2015-12-03T00:00:00-05:00</updated><id>http://localhost:4000/mathematics/2015/12/03/a-dirty-little-ditty-on-finite-automata</id><content type="html" xml:base="http://localhost:4000/mathematics/2015/12/03/a-dirty-little-ditty-on-finite-automata/">&lt;p&gt;This post builds on the previous post about &lt;a href=&quot;/mathematics/2015/11/30/whats-in-a-language/&quot;&gt;Formal Languages&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;At standard atmospheric pressure, alcohol boils at 78 °C (172 °F), while water boils at 100 °C (212 °F). During distillation, the vapour contains more alcohol than the liquid. When the vapours are condensed, the resulting liquid contains a higher concentration of alcohol. In the pot still, the alcohol and water vapour combine with esters and flow from the still through the condensing coil. There they condense into the first distillation liquid, the so-called “low wines”. The low wines have a strength of about 25–35% alcohol by volume, and flow into a second still. It is then distilled a second time to produce the colourless spirit, collected at about 70% alcohol by volume. Colour is added through maturation in an oak aging barrel, and develops over time.&lt;/p&gt;
+&lt;h3 id=&quot;some-formal-definitions&quot;&gt;Some Formal Definitions&lt;/h3&gt;
 
-&lt;p&gt;The modern pot still is a descendant of the alembic, an earlier distillation device.&lt;/p&gt;</content><author><name>amniskin</name></author><category term="General" /><summary type="html">A pot still is a type of still used in distilling spirits such as whisky or brandy. Heat is applied directly to the pot containing the wash (for whisky) or wine (for brandy).</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://unsplash.it/1200/400?image=1048" /></entry><entry><title type="html">History of the Alembic</title><link href="http://localhost:4000/history/2016/08/28/example-post-two/" rel="alternate" type="text/html" title="History of the Alembic" /><published>2016-08-28T00:00:00-04:00</published><updated>2016-08-28T00:00:00-04:00</updated><id>http://localhost:4000/history/2016/08/28/example-post-two</id><content type="html" xml:base="http://localhost:4000/history/2016/08/28/example-post-two/">&lt;p&gt;Dioscorides’ ambix (described in his De materia medica) is a helmet-shaped lid for gathering condensed mercury. For Athenaeus (~ 225 C.E.) it is a bottle or flask. For later chemists it denotes various parts of crude distillation devices.&lt;/p&gt;
+&lt;h4 id=&quot;a-deterministic-finite-automata-dfa-is&quot;&gt;A Deterministic Finite Automata (DFA) is&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;A set \(  \mathcal{Q} \) called “states”&lt;/li&gt;
+  &lt;li&gt;A set \(  \Sigma \) called “symbols” or “alphabet”&lt;/li&gt;
+  &lt;li&gt;A function \(  \delta_F:\mathcal{Q}\times\Sigma \to \mathcal{Q} \)&lt;/li&gt;
+  &lt;li&gt;A designated state \(  q_0\in\mathcal{Q} \) called the start point&lt;/li&gt;
+  &lt;li&gt;A subset \(  F\subseteq\mathcal{Q} \) called the “accepting states”&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The DFA is then often referred to as the ordered quintuple \(  A=(\mathcal{Q},\Sigma,\delta_F,q_0,F) \).&lt;/p&gt;
 
 &lt;!-- more --&gt;
 
-&lt;p&gt;Alembic drawings appear in works of Cleopatra the Alchemist, Synesius, and Zosimos of Panopolis. There were alembics with two (dibikos) and three (tribikos) receivers.[4] According to Zosimos of Panopolis, the alembic was invented by Mary the Jewess.[5]&lt;/p&gt;
+&lt;h4 id=&quot;defining-how-strings-act-on-dfas&quot;&gt;Defining how strings act on DFAs.&lt;/h4&gt;
 
-&lt;p&gt;The anbik is described by Ibn al-Awwam in his Kitab al-Filaha (Book of Agriculture), where he explains how rose-water is distilled. Amongst others, it is mentioned in the Mafatih al-Ulum (Key of Sciences) of Khwarizmi and the Kitab al-Asrar (Book of Secrets) of Al-Razi. Some illustrations occur in the Latin translations of works which are attributed to Geber.[2]&lt;/p&gt;
+&lt;p&gt;Given a DFA, \(  A=(\mathcal{Q}, \Sigma, \delta, q_0, F) \), a state \(  q_i\in\mathcal{Q} \), and a string \(  w\in\Sigma^* \), we can define \(  \delta(q_i,w) \) like so:&lt;/p&gt;
 
-&lt;p&gt;&lt;em&gt;Originally from &lt;a href=&quot;https://en.wikipedia.org/wiki/Alembic&quot;&gt;Alembic - Wikipedia&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;</content><author><name>amniskin</name></author><category term="History" /><summary type="html">Dioscorides’ ambix (described in his De materia medica) is a helmet-shaped lid for gathering condensed mercury. For Athenaeus (~ 225 C.E.) it is a bottle or flask. For later chemists it denotes various parts of crude distillation devices.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/pics/logo.png" /></entry><entry><title type="html">Description of an Alembic</title><link href="http://localhost:4000/general/2016/08/27/example-post-one/" rel="alternate" type="text/html" title="Description of an Alembic" /><published>2016-08-27T00:00:00-04:00</published><updated>2016-08-27T00:00:00-04:00</updated><id>http://localhost:4000/general/2016/08/27/example-post-one</id><content type="html" xml:base="http://localhost:4000/general/2016/08/27/example-post-one/">&lt;p&gt;The complete distilling apparatus consists of three parts: the “cucurbit” (Arabic ḳarʿa, Greek βίκος), the still pot containing the liquid to be distilled, which is heated by a flame; the “head” or “cap” (Arabic anbiḳ, Greek ἄμβιξ) which fits over the mouth of the cucurbit to receive the vapors, with an attached downward-sloping “tube” (Greek σωλήν), leading to the “receiver” (Arabic ḳābila, Greek ἄγγος or φιάλη) container.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;If \(  w \) only has one symbol, we can consider \(  w \) to be the symbol and define \(  \delta(q_i,w) \) to be the same as if we considered \(  w \) as the symbol&lt;/li&gt;
+  &lt;li&gt;If \(  w=xv \), where \(  x\in\Sigma \) and \(  v\in\Sigma^* \), then \(  \delta(q_i, w)=\delta(\delta(q_i,x),v) \)&lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;!-- more --&gt;
+&lt;p&gt;And in this way, we have defined how DFAs can interpret strings of symbols rather than just single symbols.&lt;/p&gt;
 
-&lt;p&gt;Retorts have the “cap” and the “cucurbit” made into one. The anbik is also called the raʾs (head) of the cucurbit. The liquid in the cucurbit is heated or boiled; the vapour rises into the anbik, where it cools by contact with the walls and condenses, running down the spout into the receiver. A modern descendant of the alembic is the pot still, used to produce distilled beverages.&lt;/p&gt;
+&lt;h4 id=&quot;the-language-of-a-dfa&quot;&gt;The language of a DFA&lt;/h4&gt;
 
-&lt;p&gt;&lt;em&gt;Originally from &lt;a href=&quot;https://en.wikipedia.org/wiki/Alembic&quot;&gt;Alembic - Wikipedia&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;</content><author><name>amniskin</name></author><category term="General" /><summary type="html">The complete distilling apparatus consists of three parts: the “cucurbit” (Arabic ḳarʿa, Greek βίκος), the still pot containing the liquid to be distilled, which is heated by a flame; the “head” or “cap” (Arabic anbiḳ, Greek ἄμβιξ) which fits over the mouth of the cucurbit to receive the vapors, with an attached downward-sloping “tube” (Greek σωλήν), leading to the “receiver” (Arabic ḳābila, Greek ἄγγος or φιάλη) container.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/pics/logo.png" /></entry><entry><title type="html">What’s in a language?</title><link href="http://localhost:4000/mathematics/2015/11/30/whats-in-a-language/" rel="alternate" type="text/html" title="What's in a language?" /><published>2015-11-30T01:36:29-05:00</published><updated>2015-11-30T01:36:29-05:00</updated><id>http://localhost:4000/mathematics/2015/11/30/whats-in-a-language</id><content type="html" xml:base="http://localhost:4000/mathematics/2015/11/30/whats-in-a-language/">&lt;h2 id=&quot;languages-in-abstraction&quot;&gt;Languages in abstraction&lt;/h2&gt;
+&lt;p&gt;Given a DFA, \(  A=(\mathcal{Q}, \Sigma, \delta, q_0, F) \), we can define “the language of \(  A \)”, denoted \(  L(A) \), as \(  {w\in\Sigma^*|\delta(q_0,w)\in F} \).&lt;/p&gt;
+
+&lt;h3 id=&quot;some-examples-maybe&quot;&gt;Some Examples, Maybe?&lt;/h3&gt;
+
+&lt;h4 id=&quot;example-1&quot;&gt;Example 1:&lt;/h4&gt;
+
+&lt;p&gt;Let’s construct a  DFA that accepts only strings beginning with a 1 that, when interpreted as binary numbers, are multiples of 5. So some examples of strings that would be in \(  L(A) \) are 101, 1010, 1111&lt;/p&gt;
+
+&lt;h3 id=&quot;some-more-formal-definitions&quot;&gt;Some More Formal Definitions&lt;/h3&gt;
+
+&lt;h4 id=&quot;a-nondeterministic-finite-automata-nfa-is&quot;&gt;A Nondeterministic Finite Automata (NFA) is&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;A set \(  \mathcal{Q} \) called “states”&lt;/li&gt;
+  &lt;li&gt;A set \(  \Sigma \) called “symbols”&lt;/li&gt;
+  &lt;li&gt;A function \(  \delta_N:\mathcal{Q}\times\Sigma \to \mathcal{P}\left(\mathcal{Q}\right) \)&lt;/li&gt;
+  &lt;li&gt;A designated state \(  q_0\in\mathcal{Q} \) called the start point&lt;/li&gt;
+  &lt;li&gt;A subset \(  F\subseteq\mathcal{Q} \) called the “accepting states”&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The NFA is then often referred to as the ordered quintuple \(  A=(\mathcal{Q},\Sigma,\delta_N,q_0,F) \).&lt;/p&gt;
+
+&lt;h4 id=&quot;defining-how-strings-act-on-nfas&quot;&gt;Defining how strings act on NFAs.&lt;/h4&gt;
+
+&lt;p&gt;Given an NFA, \(  N=(\mathcal{Q}, \Sigma, \delta, q_0, F) \), a collection of states \(  \mathcal{S}\subseteq\mathcal{Q} \), and a string \(  w\in\Sigma^* \), we can define \(  \delta(\mathcal{S},w) \) like so:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;If \(  w \) only has one symbol, then we can consider \(  w \) to be the symbol and define \(  \delta(\mathcal{S},w):=\bigcup\limits_{s\in\mathcal{S}}\delta(s,w) \)&lt;/li&gt;
+  &lt;li&gt;If \(  w=xv \), where \(  x\in\Sigma \) and \(  v\in\Sigma^* \), then \(  \delta(\mathcal{S}, w)=\bigcup\limits_{s\in\mathcal{S}}\delta(\delta(s,x),v) \)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;And in this way, we have defined how NFAs can interpret strings of symbols rather than just single symbols.&lt;/p&gt;
+
+&lt;h3 id=&quot;maybe-in-another-post-well-get-past-the-definitions--&quot;&gt;Maybe in another post, we’ll get past the definitions! :-/&lt;/h3&gt;</content><author><name>amniskin</name></author><category term="Mathematics" /><category term="dfa" /><category term="dfa nfa equivalence" /><category term="finite automata" /><category term="formal languages" /><category term="math" /><category term="mathematics" /><category term="maths" /><category term="nfa" /><category term="intro" /><summary type="html">A basic yet formal introduction to Finite Automata and how strings act on them.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/pics/logo.png" /></entry><entry><title type="html">What’s in a language?</title><link href="http://localhost:4000/mathematics/2015/11/30/whats-in-a-language/" rel="alternate" type="text/html" title="What's in a language?" /><published>2015-11-30T01:36:29-05:00</published><updated>2015-11-30T01:36:29-05:00</updated><id>http://localhost:4000/mathematics/2015/11/30/whats-in-a-language</id><content type="html" xml:base="http://localhost:4000/mathematics/2015/11/30/whats-in-a-language/">&lt;h2 id=&quot;languages-in-abstraction&quot;&gt;Languages in abstraction&lt;/h2&gt;
 
 &lt;p&gt;This post is about Languages from a mathematical and abstract linguistics point of view. Not much more to say about that, so let’s get right to it!&lt;/p&gt;
 
