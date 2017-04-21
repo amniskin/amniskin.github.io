@@ -8,6 +8,7 @@ tags:
 - intro
 - language
 - math
+feature_image: "/assets/pics/2015/11/Romance-lg-classification-en.png"
 ---
 
 ## Languages in abstraction
