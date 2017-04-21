@@ -1,0 +1,892 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-04-20T21:18:58-04:00</updated><id>http://localhost:4000/</id><title type="html">Aaron Niskin’s Blog</title><subtitle>Not just another blog! Now with more... Aaron!</subtitle><author><name>amniskin</name></author><entry><title type="html">Markov Chain Monte Carlo</title><link href="http://localhost:4000/statistics/2017/04/19/MCMC/" rel="alternate" type="text/html" title="Markov Chain Monte Carlo" /><published>2017-04-19T16:52:39-04:00</published><updated>2017-04-19T16:52:39-04:00</updated><id>http://localhost:4000/statistics/2017/04/19/MCMC</id><content type="html" xml:base="http://localhost:4000/statistics/2017/04/19/MCMC/">&lt;!--
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+import matplotlib.pylab as plb
+import seaborn
+import pandas as pd
+
+np.random.seed(1234)
+
+from IPython.core.interactiveshell import InteractiveShell
+InteractiveShell.ast_node_interactivity = &quot;last_expr&quot;
+```
+
+
+```bash
+if [ ! -d tmp ]
+then
+mkdir tmp
+fi
+```
+--&gt;
+
+&lt;h1 id=&quot;text--mc2&quot;&gt;&lt;script type=&quot;math/tex&quot;&gt;\text{???} = (MC)^2&lt;/script&gt;&lt;/h1&gt;
+
+&lt;h2 id=&quot;background&quot;&gt;Background&lt;/h2&gt;
+
+&lt;p&gt;What if we know the relative likelihood, but want the probability distribution?&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\mathbb{P}(X=x) = \frac{f(x)}{\int_{-\infty}^\infty f(x)dx}&lt;/script&gt;
+
+&lt;p&gt;But what if \( \int f(x)dx \) is hard, or you can’t sample from \( f \) directly?&lt;/p&gt;
+
+&lt;p&gt;This is the problem we will be trying to solve.&lt;/p&gt;
+
+&lt;!-- more --&gt;
+
+&lt;h2 id=&quot;first-approach&quot;&gt;First approach&lt;/h2&gt;
+&lt;p&gt;If space if bounded (integral is between \( a,b \)) we can use Monte Carlo to estimate \( \int\limits_a^b f(x)dx \)&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Pick \( \alpha \in (a,b) \)&lt;/li&gt;
+  &lt;li&gt;Compute \( f(\alpha)/(b-a) \)&lt;/li&gt;
+  &lt;li&gt;Repeat as necessary&lt;/li&gt;
+  &lt;li&gt;Compute the expected value of the computed values&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;what-if-its-a-big-ol-bag-of-nope&quot;&gt;What if it’s a big ol’ bag of nope?&lt;/h2&gt;
+
+&lt;p&gt;What if we can’t sample from \( f(x) \) but can only determine likelihood ratios?&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\frac{f(x)}{f(y)}&lt;/script&gt;
+
+&lt;p&gt;Enter Markov Chain Monte Carlo&lt;/p&gt;
+
+&lt;h1 id=&quot;the-obligatory-basics&quot;&gt;The obligatory basics&lt;/h1&gt;
+
+&lt;p&gt;A &lt;strong&gt;Markov Chain&lt;/strong&gt; is a stochastic process (a collection of indexed random variables) such that \( \mathbb{P}(X_n=x|X_0,X_1,…,X_{n-1}) = \mathbb{P}(X_n=x|X_{n-1}) \).&lt;/p&gt;
+
+&lt;p&gt;In other words, the conditional probabilities only depend on the last state, not on any deeper history.&lt;/p&gt;
+
+&lt;p&gt;We call the set of all possible values of \( X_i \) the &lt;strong&gt;state space&lt;/strong&gt; and denote it by, \( \chi \).&lt;/p&gt;
+
+&lt;h3 id=&quot;transition-matrix&quot;&gt;Transition Matrix&lt;/h3&gt;
+&lt;p&gt;Let \( p_{ij} = \mathbb{P}(X_1 = j | X_0 = i) \). We call the matrix \( (p_{ij}) \) the &lt;strong&gt;Transition Matrix&lt;/strong&gt; of \( X \) and denote it \( P \).&lt;/p&gt;
+
+&lt;p&gt;Let \( \mu_n = \left(\mathbb{P}(X_n=0), \mathbb{P}(X_n=1),…, \mathbb{P}(X_n=l)\right) \) be the row vector corresponding to the “probabilities” of being at each state at the \( n \)th point in time (iteration).&lt;/p&gt;
+
+&lt;p&gt;Claim: \( \mu_{i+1} = \mu_0P^{i+1} \)&lt;/p&gt;
+
+&lt;p&gt;Proof:&lt;/p&gt;
+
+&lt;p&gt;if \( i = 0 \):&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align*}
+(\mu_0 P)_j =&amp; \sum\limits_{i=1}^l\mu_0(i)p_{ij}\\
+=&amp;\sum\limits_{i=1}^l\mathbb{P}(X_0=i)\mathbb{P}(X_1=j | X_0=i)\\
+=&amp;\mathbb{P}(X_1 = j)\\
+=&amp;\mu_1(j)
+\end{align*} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;So: \( \mu_1 = \mu_0P \)&lt;/p&gt;
+
+&lt;p&gt;if \( i &amp;gt; 0 \):&lt;/p&gt;
+
+&lt;p&gt;Then, \( \mu_{i+1} = \mu_iP = (\mu_0P^i)P = \mu_0P^{i+1} \)&lt;/p&gt;
+
+&lt;h3 id=&quot;stationary-distributions&quot;&gt;Stationary Distributions&lt;/h3&gt;
+&lt;p&gt;We say that a distribution \( \pi \) is &lt;strong&gt;stationary&lt;/strong&gt; if&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\begin{gather*}\pi P = \pi\end{gather*}&lt;/script&gt;
+
+&lt;h3 id=&quot;main-theorem&quot;&gt;Main Theorem:&lt;/h3&gt;
+&lt;p&gt;An irreducible, ergotic Markov Chain \( {X_n} \) has a unique stationary distribution, \( \pi \). The limiting distribution exists and is equal to \( \pi \). And furthermore, if \( g \) is any bounded function, then with probability 1:&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\lim\limits_{N\to\infty}\frac{1}{N}\sum\limits_{n=1}^Ng(X_n) \rightarrow E_\pi(g)&lt;/script&gt;
+
+&lt;p&gt;This really just means that if our Markov Chain has certain properties (basically just that any state can be gotten to from any other state at any time), then we can sample from this Markov Chain, and it’ll have the same distribution as a generic sample from our desired distribution.&lt;/p&gt;
+
+&lt;h2 id=&quot;random-walk-metropolis---hastings&quot;&gt;Random-Walk-Metropolis - Hastings:&lt;/h2&gt;
+&lt;p&gt;Let \( f(x) \) be the relative likelihood function of our desired distribution.&lt;/p&gt;
+
+&lt;p&gt;And \( q(y|x_i) \) the known distribution easily sampled from (generally taken to be \( N(x_i,b^2) \) )&lt;/p&gt;
+
+&lt;p&gt;1) Given \( X_0,X_1,…,X_i \), pick \( Y \sim q(y|X_i) \)&lt;/p&gt;
+
+&lt;p&gt;2) Compute \( r(X_i,Y) = \min\left(\frac{f(Y)q(X_i|Y)}{f(X_i)q(Y|X_i)}, 1\right) \)&lt;/p&gt;
+
+&lt;p&gt;3) Pick \( a \sim U(0,1) \)&lt;/p&gt;
+
+&lt;p&gt;4) Set&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+X_{i+1} = \begin{cases} Y &amp; \text{if } a &lt; r \\ X_i &amp; \text{otherwise}\end{cases} %]]&gt;&lt;/script&gt;
+
+&lt;h2 id=&quot;the-confidence-builder&quot;&gt;The Confidence Builder:&lt;/h2&gt;
+&lt;p&gt;We would like to sample from and obtain a histogram of the Cauchy distribution:&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;f(x) = \frac{1}{\pi}\frac{1}{1+x^2}&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align*}
+q_{01} \sim&amp; N(x,0.1)\\
+q_1 \sim&amp; N(x,1)\\
+q_{10} \sim&amp; N(x,10)\end{align*} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;Note: Since \( q \) is symmetric, \( q(x|y) = q(y|x) \).&lt;/p&gt;
+
+&lt;!--
+```python
+def metropolis_hastings(f, q, initial_state, num_iters):
+    &quot;&quot;&quot;
+    Generate a Markov Chain Monte Carlo using
+    the Metropolis-Hastings algorithm.
+    
+    Parameters
+    ----------
+    f : function
+        the [relative] likelood function for
+        the distribution we would like to
+        approximate
+    q : function
+        The conditional distribution to be
+        sampled from (given an X_i, sample
+        from q(X_i) to get potential X_i+1)
+    initial_state : type accepted by f,q
+        The initial state. This state will
+        not be included as part of the 
+        Markov Chain.
+    num_iters : int or float
+        the number of desired iterations
+        float is included to facilitate
+        1e5 type use
+    
+    Returns
+    -------
+    out : Python Array
+        Array where out[i] = X_{i-1} because
+        X_0 (the initial state) is not included
+    &quot;&quot;&quot;
+    MC = []
+    X_i = initial_state
+    for i in range(int(num_iters)):
+        Y = q(X_i)
+        r = min(f(Y)/f(X_i), 1)
+        a = np.random.uniform()
+        if a &lt; r:
+            X_i = Y
+        MC.append(X_i)
+    return MC
+```
+
+
+```python
+def cauchy_dist(x):
+    return 1/(np.pi*(1 + x**2))
+def q(scale):
+    return lambda x: np.random.normal(loc=x, scale=scale)
+```
+
+
+```python
+from scipy.stats import cauchy
+```
+
+```python
+plt.figure(1);
+plt.subplot(3,1,1);
+plt.title(&quot;STD = 0.1&quot;)
+std01 = metropolis_hastings(cauchy_dist, q(0.1), 0, 1000)
+tmpHist = plt.hist(std01, bins=20, normed=True);
+tmpLnSp = np.linspace(min(tmpHist[1]),
+                      max(tmpHist[1]),100)
+plt.plot(tmpLnSp, cauchy.pdf(tmpLnSp), 'r-')
+plt.subplot(3,1,2)
+plt.title(&quot;STD = 1&quot;)
+std1 = metropolis_hastings(cauchy_dist, q(1), 0, 1000)
+tmpHist = plt.hist(std1, bins=20, normed=True);
+tmpLnSp = np.linspace(min(tmpHist[1]),
+                      max(tmpHist[1]),100)
+plt.plot(tmpLnSp, cauchy.pdf(tmpLnSp), 'r-')
+plt.subplot(3,1,3)
+plt.title(&quot;STD = 10&quot;)
+std10 = metropolis_hastings(cauchy_dist, q(10), 0, 1000)
+tmpHist = plt.hist(std10, bins=20, normed=True);
+tmpLnSp = np.linspace(min(tmpHist[1]),
+                      max(tmpHist[1]),100)
+plt.plot(tmpLnSp, cauchy.pdf(tmpLnSp), 'r-')
+plt.tight_layout()
+plt.show()
+```
+--&gt;
+
+&lt;h2 id=&quot;pseudocode&quot;&gt;Pseudocode:&lt;/h2&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;MC&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;X_i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;initial_state&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;num_iters&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)):&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;Y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;q&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X_i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;min&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X_i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;random&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;uniform&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+		&lt;span class=&quot;n&quot;&gt;X_i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Y&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;MC&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X_i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;estimation&quot;&gt;Estimation:&lt;/h2&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;q(y\|x) \sim N(x,b^2)&lt;/script&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/pics/2017/04/18-MCMC-Cauchy-Estimation.png&quot; alt=&quot;The many distributions&quot; /&gt;&lt;/p&gt;
+
+&lt;!--
+```python
+plt.figure(2)
+plt.subplot(3,1,1)
+plt.title(&quot;STD = 0.1&quot;)
+plt.plot(std01)
+plt.subplot(3,1,2)
+plt.title(&quot;STD = 1&quot;)
+plt.plot(std1)
+plt.subplot(3,1,3)
+plt.title(&quot;STD = 10&quot;)
+plt.plot(std10)
+plt.tight_layout()
+plt.show()
+```
+
+--&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/pics/2017/04/18-MCMC-Cauchy-Estimation_TS.png&quot; alt=&quot;png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;So you can clearly see that the different values of \( b \) lead to wildly different distributions, and therefore wildly different approximations of the end distribution. For example, if the standard deviation on our sampling distribution is very small, our prospective transitions won’t venture out very far, and hence the tails of our distribution will be woefully underrepresented. If, on the other hand, the standard deviation is too large, we will often venture our much further than we should, and the we’ll end up with something like a multi-modal distribution. Basically, the prospective transition states will often be too far out to accept, in which case the current state persists, or it will be just close enough to be accepted. What you end up with is far too many samples from the tails and not enough samples from the beafier parts of the distribution.&lt;/p&gt;
+
+&lt;p&gt;Choosing the “best” value of \( b \) is more of an art than a science, really. This issue will poke its ugly head a little later. But even with that issue, we see clearly that something amazing is happening here.&lt;/p&gt;
+
+&lt;h2 id=&quot;how-is-this-happening&quot;&gt;How is this happening?&lt;/h2&gt;
+
+&lt;p&gt;A property called &lt;strong&gt;detailed balance&lt;/strong&gt;, which means,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\pi_ip_{ij} = p_{ji}\pi_j&lt;/script&gt;
+
+&lt;p&gt;or in the continuous case:&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;f(x)P_{xy} = f(y)P_{yx}&lt;/script&gt;
+
+&lt;h3 id=&quot;the-intuition&quot;&gt;The intuition&lt;/h3&gt;
+
+&lt;p&gt;Since what we’re really after is the distribution of the samples and not the order in which they were picked, it’s reasonable to require a notion of (what I’m going to call) equal hopportunity:&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;f(x)p(y|x) = f(y)p(x|y)&lt;/script&gt;
+
+&lt;p&gt;In other words, the probability of “hopping” from \( x \) to \( y \) should be the same as the reverse, because at the end of the day, both of these two scenarios only mean that \( x \) and \( y \) are in our sample.&lt;/p&gt;
+
+&lt;p&gt;If you work out the math therein (as we will do below), you find that this ratio guarantees equal hopportunity.&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;r(x,y) = \min\left(\frac{f(y)q(x|y)}{f(x)q(y|x)},1\right)&lt;/script&gt;
+
+&lt;h3 id=&quot;lets-prove-it&quot;&gt;Let’s prove it!&lt;/h3&gt;
+
+&lt;p&gt;To reiterate, the claim was that this detailed balance property ( \( f(x)P_{xy} = P_{yx}f(y) \) ) guarantees that our likelihood function \( f \) is the stable distribution for our Markov Chain.&lt;/p&gt;
+
+&lt;p&gt;Let \( f \) be the desired distribution (in our example, it was the Cauchy Distribution), and let \( q(y|x) \) be the distribution we draw from.&lt;/p&gt;
+
+&lt;p&gt;First we’ll show that detailed balance implies \( \pi \) (or \( f \) if the distribution is continuous) is the stable distribution!&lt;/p&gt;
+
+&lt;p&gt;Let \( \pi_ip_{ij} = \pi_jp_{ji} \) for discrete or for continuous \( f(i)P_{ij}=P_{ji}f(j) \)&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align*}
+(\pi P)_i =&amp; \sum\limits_j\pi_jP_{ji} &amp; (fP)(x)=&amp;\int f(y)p(x|y)dy\\
+=&amp;\sum\limits_j\pi_iP_{ij} &amp; =&amp; \int f(x)p(y|x)dy\\
+=&amp;\pi_i\sum\limits_jP_{ij} &amp; =&amp; f(x)\int p(y|x)dy\\
+=&amp;\pi_i &amp; =&amp; f(x)
+\end{align*} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;Now we’ll show that the Markov Chain defined by the Metropolis-Hastings algorithm has the detailed balance property (and hence \( f \) is the stable distribution).&lt;/p&gt;
+
+&lt;p&gt;Without any loss of generality, we’ll assume \( f(x)q(y|x) &amp;gt; f(y)q(x|y) \) (if this is not the case, the proof will follow the same with just symbolic changes).&lt;/p&gt;
+
+&lt;p&gt;Note: Since \( f(x)q(y|x) &amp;gt; f(y)q(x|y) \), we know, \( r(x,y) = \frac{f(y)q(x|y)}{f(x)q(y|x)} \), and \( r(y,x) = 1 \).&lt;/p&gt;
+
+&lt;p&gt;Then,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align*}
+\pi_xp_{xy} =&amp; f(x)\mathbb{P}(X_1=y|X_0=x) &amp; \pi_yp_{yx} =&amp; f(y)\mathbb{P}(X_1=x|X_0=y)\\
+=&amp; f(x)\left[q(y|x)\cdot r(x,y)\right] &amp; =&amp;f(y)\left[q(x|y)\cdot r(y,x)\right]\\
+=&amp; f(x)\left[q(y|x)\cdot \frac{f(y)q(x|y)}{f(x)q(y|x)}\right] &amp; =&amp;f(y)\left[q(x|y)\cdot 1\right]\\
+=&amp; f(y)q(x|y) &amp; =&amp;f(y)q(x|y)
+\end{align*} %]]&gt;&lt;/script&gt;
+
+&lt;h2 id=&quot;modeling-change-point-models-in-astrostatistics&quot;&gt;Modeling Change Point Models in Astrostatistics.&lt;/h2&gt;
+
+&lt;p&gt;This was taken from a Penn State statistics summer program website located at &lt;a href=&quot;http://sites.stat.psu.edu/~mharan/MCMCtut/COUP551_rates.dat&quot;&gt;stat.psu.edu&lt;/a&gt;. A detailed walk-through of the process PSU took with this project can be found at that site. The data is a time series of light emission recorded and aggregated over periods of 10000 seconds (just under 3 hours). A plot of the time series can be seen below for your convenience.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/pics/2017/04/18_psu_ts.png&quot; alt=&quot;png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The idea (with this data) is that the emissions can be modeled by two Poisson distributions and a change point. The data will be modeled by the first Poisson until the change point, and then it switches to the second Poisson.&lt;/p&gt;
+
+&lt;p&gt;So we start out with a multi-parameter model, and through some Bayesian inference you arrive at a pretty nasty looking posterior distribution. You’d like to sample this distribution to obtain, say, the mean \( k \) (change point) value along with a 95% confidence interval. Since you need that confidence interval, standard optimization methods won’t suffice: we’d need the distribution of \( k \)s. For this, we can use MCMC!&lt;/p&gt;
+
+&lt;p&gt;The posterior distribution we would like to sample from is this:&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align*}
+f(k,\theta,\lambda,b_1,b_2 | Y) \alpha&amp; \prod\limits_{i=1}^k\frac{\theta^{Y_i}e^{-\theta}}{Y_i!} \prod\limits_{i=k+1}^n\frac{\lambda^{Y_i}e^{-\lambda}}{Y_i!} \\
+&amp;\times\frac{1}{\Gamma(0.5)b_1^{0.5}}\theta^{-0.5}e^{-\theta/b_1} \times\frac{1}{\Gamma(0.5)b_2^{0.5}}\theta^{-0.5}e^{-\theta/b_2}\\
+&amp;\times\frac{e^{-1/b_1}}{b_1}\frac{e^{-1/b_2}}{b_2}\times \frac{1}{n}
+\end{align*} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;This distribution is pretty gnarly and since I don’t really know how to sample from this (beyond a blind search), we would like to use MCMC. Metropolis-Hastings (at least how we’ve discussed it) clearly doesn’t work here because this is multidimensional. For that we introduce another MCMC algorithm: &lt;strong&gt;Gibbs Sampling&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;gibbs-sampling&quot;&gt;Gibbs Sampling&lt;/h3&gt;
+
+&lt;p&gt;The basic pseudocode is this:&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;initial_X&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;Y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;initial_Y&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;Z&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;initial_Z&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;MC&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Z&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)]&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;num_iters&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+	&lt;span class=&quot;o&quot;&gt;//&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;each&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;variable&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;we&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;compute&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;~&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;q_X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Z&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+	&lt;span class=&quot;o&quot;&gt;//&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;We&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;this&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Z&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;turn&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;We can combine Gibbs with Metropolis quite easily:&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;initial_X&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;Y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;initial_Y&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;Z&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;initial_Z&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;MC&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Z&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)]&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;num_iters&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+	&lt;span class=&quot;o&quot;&gt;//&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;each&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;variable&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;we&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;compute&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;prospect&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;~&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;q_X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Z&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;min&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;prospect&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;~&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;uniform&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+		&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;prospect&lt;/span&gt;
+	&lt;span class=&quot;o&quot;&gt;//&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;We&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;this&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Z&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;turn&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;So, basically, you update one at a time.&lt;/p&gt;
+
+&lt;p&gt;Using this algorithm, we can analyze the data from the PSU website we mentioned above. In fact we did that very thing. Below you’ll find some graphs depicting the distribution of \( k \) values.&lt;/p&gt;
+
+&lt;!--
+```python
+def psu_mcmc(X, q, numIters=10000):
+    theta, lambd, k, b1, b2 = 1, 1, 20, 1, 1
+    thetas, lambds, ks, b1s, b2s = [], [], [], [], []
+    n = len(X)
+    def f_k(theta, lambd, k, b1, b2):
+        if 0 &lt;= k and k &lt;= n:
+            return theta**sum(X[:k])*lambd**sum(X[k:])*np.exp(-k*theta-(n-k)*lambd)
+        elif k &lt; 0:
+            return lambd**sum(X)*np.exp(-n*lambd)
+        elif k &gt; n:
+            return theta**sum(X)*np.exp(-n*theta)
+    def f_t(theta, k, b1):
+        return theta**(sum(X[:k])+0.5)*np.exp(-theta*(k+1.0)/b1)
+    def f_l(lambd, k, b2):
+        return lambd**(sum(X[k:])+0.5)*np.exp(-lambd*((n-k)+1.0)/b2)
+    def f_b(b, par):
+        return np.exp(-(1 + par) / b) / (b*np.sqrt(b))
+    for i in range(numIters):
+        tmp = q(theta)
+        if tmp &lt; np.infty:
+            r = min(1, f_t(tmp,k,b1)/f_t(theta,k,b1))
+            if np.random.uniform(0,1) &lt; r:
+                theta = tmp
+        tmp = q(lambd)
+        if tmp &lt; np.infty:
+            r = min(1, f_l(tmp,k,b2)/f_l(lambd,k,b2))
+            if np.random.uniform(0,1) &lt; r:
+                lambd = tmp
+        tmp = q(b1)
+        if tmp &lt; np.infty:
+            r = min(1, f_b(tmp, theta)/f_b(b1, theta))
+            if np.random.uniform(0,1) &lt; r:
+                b1 = tmp
+        tmp = q(b2)
+        if tmp &lt; np.infty:
+            r = min(1, f_b(tmp, lambd)/f_b(b2, lambd))
+            if np.random.uniform(0,1) &lt; r:
+                b2 = tmp
+        tmp = q(k)
+        if tmp &lt; np.infty:
+            r = min(1, f_k(theta, lambd, tmp, b1, b2) /
+                    f_k(theta, lambd, k, b1,b2))
+            if np.random.uniform(0,1) &lt; r:
+                k = tmp
+        thetas.append(theta)
+        lambds.append(lambd)
+        b1s.append(b1)
+        b2s.append(b2)
+        ks.append(k)
+    return np.array([thetas,lambds,ks,b1s,b2s])
+```
+
+
+```python
+%%bash
+if [ ! -f tmp/psu_data.tsv ]
+then
+wget http://sites.stat.psu.edu/~mharan/MCMCtut/COUP551_rates.dat -O tmp/psu_data.tsv
+fi
+```
+
+
+```python
+psu_data = []
+with open(&quot;tmp/psu_data.tsv&quot;, &quot;r&quot;) as f:
+    title = f.readline()
+    for line in f:
+        tmpArr = [x.strip() for x in line.split(&quot; &quot;)]
+        psu_data.append([int(x) for x in tmpArr if x != &quot;&quot;][1])
+psu_data = np.array(psu_data)
+psu_data
+```
+
+
+
+
+    array([11,  3,  5,  9,  3,  4,  5,  5,  5,  5, 13, 18, 27,  8,  4, 10,  8,
+            3, 12, 10, 10,  3,  9,  8,  5,  9,  4,  6,  1,  5, 14,  7,  9, 10,
+            8, 13,  8, 11, 11, 10, 11, 13, 10,  3,  8,  5])
+
+
+
+
+```python
+mcmc2 = psu_mcmc(psu_data, q(1), 1000)
+
+fig = plt.figure()
+fig.suptitle(&quot;MCMC values for Change Point&quot;)
+plt.subplot(2,1,1)
+plt.hist(mcmc2[2] % len(psu_data), normed=True)
+plt.subplot(2,1,2)
+plt.plot(mcmc2[2])
+plb.savefig(&quot;tmp/psu_graphs1.png&quot;)
+plt.show()
+```
+--&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/pics/2017/04/18_psu_graphs1.png&quot; alt=&quot;png&quot; /&gt;&lt;/p&gt;
+
+&lt;!--
+```python
+plt.plot(psu_data)
+plt.title(&quot;PSU Data&quot;)
+plb.savefig(&quot;tmp/psu_ts.png&quot;)
+plt.show()
+```
+--&gt;
+
+&lt;h2 id=&quot;summary&quot;&gt;Summary&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Random-Walk-Metropolis-Hastings
+    &lt;ul&gt;
+      &lt;li&gt;Can be used to sample difficult univariate distributions relatively easily
+        &lt;ul&gt;
+          &lt;li&gt;Have to tune the sampling parameter&lt;/li&gt;
+          &lt;li&gt;Curse of dimensionality in tuning parameters&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;Requires \( f \) to be defined on all of \( \mathbb{R} \)
+        &lt;ul&gt;
+          &lt;li&gt;Transform as needed&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Gibbs Sampling
+    &lt;ul&gt;
+      &lt;li&gt;Turn high dimensional sampling into iterative one-dimensional sampling&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Gibbs with Metropolis-Hastings
+    &lt;ul&gt;
+      &lt;li&gt;Lovely&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;bibliography&quot;&gt;Bibliography&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;http://sites.stat.psu.edu/~mharan/MCMCtut/MCMC.html&quot;&gt;Summer School in Astrostatistics&lt;/a&gt;&lt;/p&gt;</content><author><name>amniskin</name></author><category term="Sampling" /><category term="Statistics" /><category term="Stochastic" /><category term="Monte Carlo" /><category term="Markov Chain" /><category term="MCMC" /><summary type="html">Background What if we know the relative likelihood, but want the probability distribution? But what if \( \int f(x)dx \) is hard, or you can’t sample from \( f \) directly? This is the problem we will be trying to solve.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/pics/logo.png" /></entry><entry><title type="html">Linear Regression – The Basics</title><link href="http://localhost:4000/statistics/2017/02/21/What-Is-Linear-Regression/" rel="alternate" type="text/html" title="Linear Regression -- The Basics" /><published>2017-02-21T02:24:43-05:00</published><updated>2017-02-21T02:24:43-05:00</updated><id>http://localhost:4000/statistics/2017/02/21/What-Is-Linear-Regression</id><content type="html" xml:base="http://localhost:4000/statistics/2017/02/21/What-Is-Linear-Regression/">&lt;h3 id=&quot;the-basics&quot;&gt;The basics&lt;/h3&gt;
+
+&lt;p&gt;Yeah. It’s not a good sign if I’m starting out already repeating myself. But
+that’s how things seem to be with linear regression, so I guess it’s fitting.
+It seems like every day one of my professors will talk about linear regression,
+and it’s not due to laziness or lack of coordination. Indeed, it’s an
+intentional part of the curriculum here at New College of Florida because of
+how ubiquitous linear regression is. Not only is it an extremely simple yet
+expressive formulation, it’s also the theoretical basis of a whole slew of
+other tactics. Let’s just get right into it, shall we?&lt;/p&gt;
+
+&lt;!-- more --&gt;
+
+&lt;h3 id=&quot;linear-regression&quot;&gt;Linear Regression:&lt;/h3&gt;
+
+&lt;p&gt;Let’s say you have some data from the real world (and hence riddled with
+real-world error). A basic example for us to start with is this one:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/pics/2017/02/21-linear-regression_scatterPoints.png&quot; alt=&quot;Data suitable for Linear Regression&quot; title=&quot;Some Example Data&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;There’s clearly a linear trend there, but how do we pick which linear trend would be the best? Well, one thing we could do is pick the line that has the least amount of error from the prediction to the actual data-point. To do that, we have to say what we mean by “least amount of error”. For this post, we’ll calculate that error by squaring the difference between the predicted value and the actual value for every point in our data set, then averaging those values. This standard is called the Mean-Squared-Error (MSE). We can write the MSE as:&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\frac{1}{N}\sum\limits_{i=1}^N\left(\hat Y_i - Y_i\right)^2&lt;/script&gt;
+
+&lt;p&gt;where \( \hat Y_i\) is our predicted value of \(Y_i\) for a give \(X_i\). Being as how we want a linear model (for simplicity and extensibility), we can write the above equation as,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\sum\limits_{i=1}^N\left(\alpha + \beta X_i - Y_i\right)^2&lt;/script&gt;
+
+&lt;p&gt;for some \( \alpha, \beta \) that we don’t yet know. But since we want to minimize that error, we can take some derivatives and solve for \( \alpha, \beta \)! Let’s go ahead and do that! We want to minimize&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\sum\limits_{i=1}^N\left(\alpha + \beta X_i - Y_i\right)^2&lt;/script&gt;
+
+&lt;p&gt;We can start by finding the \( \hat\alpha \) such that, \( \frac{d}{d\alpha}\sum\limits_{i=1}^N\left(\alpha + \beta X_i - Y_i\right)^2 = 0 \). And as long as we don’t forget the chain rule, we’ll be alright…&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align*}
+\sum\limits_{i=1}^N2\left(\alpha + \beta X_i - Y_i\right) =&amp; 0\Longrightarrow\\
+\sum\limits_{i=1}^N\left(\alpha + \beta X_i - Y_i\right) =&amp; 0 \Longrightarrow\\
+N\alpha + N\beta\bar X - N\bar Y =&amp; 0\Longrightarrow\\
+\alpha =&amp; \bar Y - \beta\bar X \end{align*} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;and we’ll find the \( \beta \) such that \( \frac{d}{d\beta}\sum\limits_{i=1}^N\left(\alpha + \beta X_i - Y_i\right)^2 = 0 \)&lt;/p&gt;
+
+&lt;p&gt;And following a similar pattern we find (sorry for the editing… Wordpress.com isn’t the greatest therein):&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align*}
+\sum\limits_{i=1}^N2X_i\left(\alpha + \beta X_i - Y_i\right) =&amp; 0\Longrightarrow\\
+\alpha\sum\limits_{i=1}^NX_i + \beta\sum\limits_{i=1}^N X_i^2 - \sum\limits_{i=1}^NY_iX_i =&amp; 0\Longrightarrow\\
+(\bar Y -\beta\bar X)N\bar X + \beta\sum\limits_{i=1}^NX_i^2 - \sum\limits_{i=1}^NY_iX_i =&amp; 0\\
+N\bar Y\bar X -N\beta(\bar X)^2 + \beta\sum\limits_{i=1}^NX_i^2 - \sum\limits_{i=1}^NY_iX_i =&amp; 0\\
+\beta\left(\sum\limits_{i=1}^NX_i^2 - N(\bar X)^2\right) =&amp; \sum\limits_{i=1}^NY_iX_i - N\bar Y\bar X\\
+\beta =&amp; \frac{\sum\limits_{i=1}^NY_iX_i - N\bar Y\bar X}{\sum\limits_{i=1}^NX_i^2 - N(\bar X)^2}
+\end{align*} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;But note:&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\text{VAR}(X) = \frac{1}{N}\sum\limits_{i=1}^NX_i^2 - (\bar X)^2&lt;/script&gt;
+
+&lt;p&gt;So,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;N\cdot\text{VAR}(X) = \sum\limits_{i=1}^NX_i^2 - N(\bar X)^2&lt;/script&gt;
+
+&lt;p&gt;And:
+&lt;script type=&quot;math/tex&quot;&gt;% &lt;![CDATA[
+\begin{align*}
+\sum\limits_{i=1}^NY_iX_i - N\bar Y\bar X =&amp; \sum\limits_{i=1}^NY_iX_i - N(\frac{1}{N}\sum\limits_{i=1}^NY_i)\bar X \\
+=&amp; \sum\limits_{i=1}^NY_iX_i - \sum\limits_{i=1}^N(Y_i\bar X)\\
+=&amp; \sum\limits_{i=1}^NY_i\left(X_i - \bar X\right) \\
+=&amp; \sum\limits_{i=1}^NY_i\left(X_i - \bar X\right) - \sum\limits_{i=1}^N\bar Y\left(X_i - \bar X\right) + \sum\limits_{i=1}^N\bar Y\left(X_i - \bar X\right)\\
+=&amp; \sum\limits_{i=1}^N\left(Y_i-\bar Y\right)\left(X_i - \bar X\right) + \bar Y\sum\limits_{i=1}^N\left(X_i - \bar X\right)\\
+=&amp; \sum\limits_{i=1}^N\left(Y_i-\bar Y\right)\left(X_i - \bar X\right) = N\cdot \text{COV}(X, Y) \end{align*} %]]&gt;&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;So,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\beta = \frac{\text{COV}(X,Y)}{\text{VAR}(X)}&lt;/script&gt;
+
+&lt;p&gt;And then we can find \( \alpha \) by substituting in our approximation of \( \beta \). Using those coefficients, we can plot the line below, and as you can see, it really is a good approximation.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/pics/2017/02/21-linear-regression_scatterPoints_withLine.png&quot; alt=&quot;Data With Linear Regression Line&quot; title=&quot;Some Example Data With Regression Line&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;now-we-have-it&quot;&gt;Now we have it&lt;/h3&gt;
+
+&lt;p&gt;Okay, so now we have our line of “best fit”, but what does it mean? Well, it
+means that this line predicts the data we gave it with the least error. That’s
+really all it means. And sometimes, as we’ll see later, reading too much into
+that can really get you into trouble.&lt;/p&gt;
+
+&lt;p&gt;But using this model we can now predict other data outside the model.  So, for
+instance, in the model pictured above, if we were to try and predict \( Y \)
+when \( X=2 \), we wouldn’t do so bad by picking something around 10 for \(
+Y \).&lt;/p&gt;
+
+&lt;h3 id=&quot;an-example-perhaps&quot;&gt;An example, perhaps?&lt;/h3&gt;
+
+&lt;p&gt;So I feel at this point, it’s probably best to give an example. Let’s say we’re
+trying to predict stock price given the total market price. Well, in practice
+this model is used to assess volatility, but that’s neither here nor there.
+Right now, we’re really only interested in the model itself. But without
+further ado, I present you with, the CAPM (Capital Asset Pricing Model):&lt;/p&gt;
+
+&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;r = \alpha + \beta r_m + \epsilon&lt;/script&gt; (where \( \epsilon \) is the error in
+our predictions).&lt;/p&gt;
+
+&lt;p&gt;And you can fit this using historical data or what-have-you. There are a bunch
+of downsides to fitting it with historical data though, like the fact that data
+from 3 days ago really doesn’t have much to say about the future anymore. There
+are plenty of cool things you can do therein, but sadly, those are out of the
+scope of this post.&lt;/p&gt;
+
+&lt;p&gt;For now, we move on to&lt;/p&gt;
+
+&lt;h2 id=&quot;multiple-regression&quot;&gt;Multiple Regression&lt;/h2&gt;
+
+&lt;h3 id=&quot;what-is-this-anyway&quot;&gt;What is this anyway?&lt;/h3&gt;
+
+&lt;p&gt;Well, multiple regression is really just a new name for the same thing: how do
+we fit a linear model to our data given some set of predictors and a single
+response variable? The only difference is that this time our linear model
+doesn’t have to be one dimensional. Let’s get right into it, shall we?&lt;/p&gt;
+
+&lt;p&gt;So let’s say you have \( k \) many predictors arranged in a vector (in other
+words, our predictor is a vector in \( \mathbb{R}^n \)). Well, I wonder if a
+similar formula would work… Let’s figure it out…&lt;/p&gt;
+
+&lt;p&gt;Firstly, we need to know what a derivative is in \( \mathbb{R}^n \). Well, if
+\( f:\mathbb{R}^n\to\mathbb{R}^m \) is a differentiable function, then for
+any \( x \) in the domain, \( f’(x) \) is the linear map \(
+A:\mathbb{R}^n\to\mathbb{R}^m \) such that \( \text{lim}_{h\to 0}\frac{||f(x+h) - f(x) - Ah||}{||h||} = 0 \). Basically, \( f’(x) \) is the tangent plane.&lt;/p&gt;
+
+&lt;p&gt;So, now that we got that out of the way, let’s use it! We want to find the
+linear function that minimizes the Euclidean norm of the error terms (just like
+before). But note: the error term is \( \epsilon = Y - \hat Y = Y - \alpha
+-\beta X \), for some vector \( \alpha \) and some matrix \( \beta \).
+Now, since it’s easier and it’ll give us the same answer, we’re going to
+minimize the squared error term instead of just the error term (like we did in
+the one dimensional version). We’re also going to make one more simplification:
+That \( \alpha=0 \). We can do this safely by simply appending (or
+prepending) a 1 to the rows of our data (thereby creating a constant term). So
+for the following, assume we’ve done that.&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align*}\langle\epsilon, \epsilon\rangle =&amp; (Y - X\beta)^T(Y - X\beta) \\
+ \langle\epsilon, \epsilon\rangle =&amp; (Y^T - \beta^TX^T)(Y - X\beta) \\
+ \langle\epsilon, \epsilon\rangle =&amp; Y^TY - 2Y^TX\beta + \beta^TX^TX\beta \end{align*} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;So, let’s find the \( \beta \) that minimizes that.&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align*}
+0=&amp;\lim\limits_{h\to0}\frac{||(Y^TY - 2Y^TX(\beta+h) + (\beta+h)^TX^TX(\beta+h)) - (Y^TY - 2Y^TX\beta + \beta^TX^TX\beta) - Ah||}{||h||} \\
+0=&amp;\lim\limits_{h\to0}\frac{||- 2Y^TXh + 2\beta^TX^TXh + h^TX^TXh - Ah||}{||h||}\\
+0=&amp;\lim\limits_{h\to0}||- 2Y^TX + 2\beta^TX^TX + h^TX^TX - A||\frac{||h||}{||h||}\\
+0=&amp;\lim\limits_{h\to0}||- 2Y^TX + 2\beta^TX^TX - A|| \end{align*} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;So, now we see that the derivative is \( -2Y^TX + 2\beta^TX^TX \) and we want to find where our error is minimized, so we want to set that derivative to zero:&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align*}
+	0=&amp;- 2Y^TX + 2\beta^TX^TX \\
+	X^TX\beta =&amp; X^TY \\
+	\beta =&amp; (X^TX)^{-1}X^TY \end{align*} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;And there we have it. That’s called the &lt;strong&gt;normal equation&lt;/strong&gt; for linear regression.&lt;/p&gt;
+
+&lt;p&gt;Maybe next time I’ll post about how we can find these coefficients given some data using gradient descent, or some modification thereof.&lt;/p&gt;
+
+&lt;p&gt;Till next time, I hope you enjoyed this post. Please, let me know if something could be clearer or if you have any requests.&lt;/p&gt;</content><author><name>amniskin</name></author><category term="Statistics" /><category term="Prediction" /><category term="Regression" /><summary type="html">The basics Yeah. It’s not a good sign if I’m starting out already repeating myself. But that’s how things seem to be with linear regression, so I guess it’s fitting. It seems like every day one of my professors will talk about linear regression, and it’s not due to laziness or lack of coordination. Indeed, it’s an intentional part of the curriculum here at New College of Florida because of how ubiquitous linear regression is. Not only is it an extremely simple yet expressive formulation, it’s also the theoretical basis of a whole slew of other tactics. Let’s just get right into it, shall we?</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/pics/logo.png" /></entry><entry><title type="html">A dirty little ditty on Finite Automata</title><link href="http://localhost:4000/mathematics/2017/02/18/a-dirty-little-ditty-on-finite-automata/" rel="alternate" type="text/html" title="A dirty little ditty on Finite Automata" /><published>2017-02-18T09:45:44-05:00</published><updated>2017-02-18T09:45:44-05:00</updated><id>http://localhost:4000/mathematics/2017/02/18/a-dirty-little-ditty-on-finite-automata</id><content type="html" xml:base="http://localhost:4000/mathematics/2017/02/18/a-dirty-little-ditty-on-finite-automata/">&lt;h3 id=&quot;some-formal-definitions&quot;&gt;Some Formal Definitions&lt;/h3&gt;
+
+&lt;h4 id=&quot;a-deterministic-finite-automata-dfa-is&quot;&gt;A Deterministic Finite Automata (DFA) is&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;A set \(  \mathcal{Q} \) called “states”&lt;/li&gt;
+  &lt;li&gt;A set \(  \Sigma \) called “symbols”&lt;/li&gt;
+  &lt;li&gt;A function \(  \delta_F:\mathcal{Q}\times\Sigma \to \mathcal{Q} \)&lt;/li&gt;
+  &lt;li&gt;A designated state \(  q_0\in\mathcal{Q} \) called the start point&lt;/li&gt;
+  &lt;li&gt;A subset \(  F\subseteq\mathcal{Q} \) called the “accepting states”&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The DFA is then often referred to as the ordered quintuple \(  A=(\mathcal{Q},\Sigma,\delta_F,q_0,F) \).&lt;/p&gt;
+
+&lt;!-- more --&gt;
+
+&lt;h4 id=&quot;defining-how-strings-act-on-dfas&quot;&gt;Defining how strings act on DFAs.&lt;/h4&gt;
+
+&lt;p&gt;Given a DFA, \(  A=(\mathcal{Q}, \Sigma, \delta, q_0, F) \), a state \(  q_i\in\mathcal{Q} \), and a string \(  w\in\Sigma^* \), we can define \(  \delta(q_i,w) \) like so:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;If \(  w \) only has one symbol, we can consider \(  w \) to be the symbol and define \(  \delta(q_i,w) \) to be the same as if we considered \(  w \) as the symbol&lt;/li&gt;
+  &lt;li&gt;If \(  w=xv \), where \(  x\in\Sigma \) and \(  v\in\Sigma^* \), then \(  \delta(q_i, w)=\delta(\delta(q_i,x),v) \)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;And in this way, we have defined how DFAs can interpret strings of symbols rather than just single symbols.&lt;/p&gt;
+
+&lt;h4 id=&quot;the-language-of-a-dfa&quot;&gt;The language of a DFA&lt;/h4&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Given a DFA, \(  A=(\mathcal{Q}, \Sigma, \delta, q_0, F) \), we can define “the language of \(  A \)”, denoted \(  L(A) \), as \(  {w\in\Sigma^*&lt;/td&gt;
+      &lt;td&gt;\delta(q_0,w)\in F} \).&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&quot;some-examples-maybe&quot;&gt;Some Examples, Maybe?&lt;/h3&gt;
+
+&lt;h4 id=&quot;example-1&quot;&gt;Example 1:&lt;/h4&gt;
+
+&lt;p&gt;Let’s construct a  DFA that accepts only strings beginning with a 1 that, when interpreted as binary numbers, are multiples of 5. So some examples of strings that would be in \(  L(A) \) are 101, 1010, 1111&lt;/p&gt;
+
+&lt;h3 id=&quot;some-more-formal-definitions&quot;&gt;Some More Formal Definitions&lt;/h3&gt;
+
+&lt;h4 id=&quot;a-nondeterministic-finite-automata-nfa-is&quot;&gt;A Nondeterministic Finite Automata (NFA) is&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;A set \(  \mathcal{Q} \) called “states”&lt;/li&gt;
+  &lt;li&gt;A set \(  \Sigma \) called “symbols”&lt;/li&gt;
+  &lt;li&gt;A function \(  \delta_N:\mathcal{Q}\times\Sigma \to \mathcal{P}\left(\mathcal{Q}\right) \)&lt;/li&gt;
+  &lt;li&gt;A designated state \(  q_0\in\mathcal{Q} \) called the start point&lt;/li&gt;
+  &lt;li&gt;A subset \(  F\subseteq\mathcal{Q} \) called the “accepting states”&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The NFA is then often referred to as the ordered quintuple \(  A=(\mathcal{Q},\Sigma,\delta_N,q_0,F) \).&lt;/p&gt;
+
+&lt;h4 id=&quot;defining-how-strings-act-on-nfas&quot;&gt;Defining how strings act on NFAs.&lt;/h4&gt;
+
+&lt;p&gt;Given an NFA, \(  N=(\mathcal{Q}, \Sigma, \delta, q_0, F) \), a collection of states \(  \mathcal{S}\subseteq\mathcal{Q} \), and a string \(  w\in\Sigma^* \), we can define \(  \delta(\mathcal{S},w) \) like so:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;If \(  w \) only has one symbol, then we can consider \(  w \) to be the symbol and define \(  \delta(\mathcal{S},w):=\bigcup\limits_{s\in\mathcal{S}}\delta(s,w) \)&lt;/li&gt;
+  &lt;li&gt;If \(  w=xv \), where \(  x\in\Sigma \) and \(  v\in\Sigma^* \), then \(  \delta(\mathcal{S}, w)=\bigcup\limits_{s\in\mathcal{S}}\delta(\delta(s,x),v) \)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;And in this way, we have defined how NFAs can interpret strings of symbols rather than just single symbols.&lt;/p&gt;
+
+&lt;h3 id=&quot;maybe-in-another-post-well-get-past-the-definitions--&quot;&gt;Maybe in another post, we’ll get past the definitions! :-/&lt;/h3&gt;</content><author><name>amniskin</name></author><category term="Mathematics" /><category term="dfa" /><category term="dfa nfa equivalence" /><category term="finite automata" /><category term="formal languages" /><category term="math" /><category term="mathematics" /><category term="maths" /><category term="nfa" /><category term="intro" /><summary type="html">A basic yet formal introduction to Finite Automata and how strings act on them.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/pics/logo.png" /></entry><entry><title type="html">Probability – A Measure Theoretic Approach</title><link href="http://localhost:4000/probability/2017/02/18/probability-a-measure-theoretic-approach/" rel="alternate" type="text/html" title="Probability -- A Measure Theoretic Approach" /><published>2017-02-18T09:42:55-05:00</published><updated>2017-02-18T09:42:55-05:00</updated><id>http://localhost:4000/probability/2017/02/18/probability-a-measure-theoretic-approach</id><content type="html" xml:base="http://localhost:4000/probability/2017/02/18/probability-a-measure-theoretic-approach/">&lt;h2 id=&quot;probability-using-measure-theory&quot;&gt;Probability using Measure Theory&lt;/h2&gt;
+
+&lt;p&gt;A mathematically rigorous definition of probability, and some examples therein.&lt;/p&gt;
+
+&lt;!-- more --&gt;
+
+&lt;h3 id=&quot;the-traditional-definition&quot;&gt;The Traditional Definition:&lt;/h3&gt;
+
+&lt;p&gt;Consider a set \(  \Omega \) (called the &lt;strong&gt;sample space&lt;/strong&gt;
+), and a function \(  X:\Omega\rightarrow\mathbb{R} \) (called a &lt;strong&gt;random variable&lt;/strong&gt;
+.&lt;/p&gt;
+
+&lt;p&gt;If \(  \Omega \) is countable (or finite), a function \(  \mathbb{P}:\Omega\rightarrow\mathbb{R} \) is called a &lt;strong&gt;probability distribution&lt;/strong&gt;
+ if it satisfies the following 2 conditions:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;For each \(  x \in \Omega \), \(  \mathbb{P}(x) \geq 0 \)&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;If \(  A_i\cap A_j = \emptyset \), then \(  \mathbb{P}(\bigcup\limits_0^\infty A_i) = \sum\limits_0^\infty\mathbb{P}(A_i) \)&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;And if \(  \Omega \) is uncountable, a function \(  F:\mathbb{R}\rightarrow\mathbb{R} \) is called a &lt;strong&gt;probability distribution&lt;/strong&gt;
+ or a &lt;strong&gt;cumulative distribution function&lt;/strong&gt;
+ if it satisfies the following 3 conditions:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;For each \(  a,b\in\mathbb{R} \), \(  a &amp;lt; b \rightarrow F(a)\leq F(b) \)&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;\(  \lim\limits_{x\to -\infty}F(x) = 0 \)&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;\(  \lim\limits_{x\to\infty}F(x) = 1 \)&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;the-intuition&quot;&gt;The Intuition:&lt;/h3&gt;
+
+&lt;p&gt;What idea are we even trying to capture with these seemingly disparate definitions for the same thing? Well, with the two cases taken separately it's somewhat obvious, but they don't seem to marry very well. The discrete case is giving us a pointwise estimation of something akin to the proportion of observations that should correspond to a value (in a perfect world). The continuous case is the same thing, but instead of corresponding to that particular value (which doesn't really even make sense in this case), the proportion corresponds to the point in question and everything less than it. The shaded region in the top picture below and the curve in the picture directly below it denote the cumulative density function of a standard normal distribution (don't worry too much about what that means for this post, but if you're doing anything with statistics, you should probably know a bit about that).&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/pics/2017/02/18-probability-a-measure-theoretic-approach_pdf-cdf1.png&quot; alt=&quot;pdf vs cdf for Normal distribution&quot; title=&quot;PDF vs CDF for Normal Distribution&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Another way to define a continuous probability distribution is through something called a probability density function, which is closer to the discrete case definition of a probability distribution (or &lt;strong&gt;probability mass function&lt;/strong&gt;
+). A &lt;strong&gt;probability density function&lt;/strong&gt;
+ is a function \(  f:\mathbb{R}\rightarrow\mathbb{R}&lt;em&gt;+ \) such that \(  \int&lt;/em&gt;{-\infty}^xf(t)dt = F(x) \). In other words, \(  \frac{dF}{dX} = f \). This new function has some properties of our discrete case probability function, but lacks some others. On the one hand, they’re both defined pointwise, but on the other, this one can be greater than one in some places – meaning the value of the probability density function isn’t really the probability of an event, but rather (as the name “suggests”) the density therein.&lt;/p&gt;
+
+&lt;h3 id=&quot;does-it-measure-up&quot;&gt;Does it measure up?&lt;/h3&gt;
+
+&lt;p&gt;Now let’s check out the measure theoretic approach…&lt;/p&gt;
+
+&lt;p&gt;Let \(  \Omega \) be our sample space, \(  S \) be the \(  \sigma \)-algebra on \(  \Omega \) (so \(  S \) is the collection of measurable subsets of \(  \Omega \)), and \(  \mu:S\to\mathbb{R} \) a measure on that measure space. Let \(  X:\Omega\rightarrow\mathbb{E} \) be a random variable (\(  \mathbb{E} \) is generally taken to be \(  \mathbb{R} \) or \(  \mathbb{R}^n \)). We define the function \(  \mathbb{P}:\mathcal{P}(\mathbb{E})\rightarrow\mathbb{R} \) (where \(  \mathcal{P}(\mathbb{E}) \) is the powerset of \(  \mathbb{E} \) – the set of all subsets) such that if \(  A\subseteq\mathbb{E} \), we have \(  \mathbb{P}(A)=\mu(X^{-1}(A)) \). We call \(  \mathbb{P} \) a &lt;strong&gt;probability distribution&lt;/strong&gt;
+ if the following conditions hold:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;\(  \mu(\Omega) = 1 \)&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;for each \(  A\subseteq\mathbb{E} \) we have \(  X^{-1}(A)\in S \).&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;why-do-this&quot;&gt;Why do this?&lt;/h3&gt;
+
+&lt;p&gt;Well, right off the bat we have a serious benefit: we no longer have two disparate definitions of our probability distributions. Furthermore, there is the added benefit of having a natural separation of concerns: the measure \(  \mu \) determines the what we might intuitively consider to be the probability distribution while the random variable is used to encode the aspects of the events that we care about.&lt;/p&gt;
+
+&lt;p&gt;To further illustrate this&lt;/p&gt;
+
+&lt;h3 id=&quot;the-examples&quot;&gt;The Examples&lt;/h3&gt;
+
+&lt;h4 id=&quot;a-fair-die&quot;&gt;A fair die&lt;/h4&gt;
+
+&lt;h5 id=&quot;all-even&quot;&gt;All even&lt;/h5&gt;
+
+&lt;p&gt;Let’s consider a fair die. Our sample space will be \(  {1,2,3,4,5,6} \). Since our die is fair, we’ll define our measure fairly: for any \(  x \) in our sample space, \(  \mu({x}) = \frac{1}{6} \). If we want to know, for instance, what the probability of getting each number is, we could use a very intuitive random variable \(  X(a) = a \) (so \(  X(1)=1 \), etc.). Then we see that \(  \mathbb{P}({1}) = \mu({1}) = \frac{1}{6} \), and the rest are found similarly.&lt;/p&gt;
+
+&lt;h5 id=&quot;odds-and-evens&quot;&gt;Odds and Evens?&lt;/h5&gt;
+
+&lt;p&gt;What if we want to consider the fair die of yester-paragraph, but we only care if the face of the die shows an odd or an even number? Well, since the actual distribution of the die hasn’t changed, we won’t have to change our measure. Instead we’ll change our random variable to capture just those aspects we care about. In particular, \(  X(a) = 0 \) if \(  a \) is even, and \(  X(a) = 1 \) if \(  a \) is odd. We then see \(  \mathbb{P}(1) = \mu({1,3,5}) = \frac{1}{2} \) and \(  \mathbb{P}(0) = \mu({2,4,6}) = \frac{1}{2} \)&lt;/p&gt;
+
+&lt;h4 id=&quot;getting-loaded&quot;&gt;Getting loaded&lt;/h4&gt;
+
+&lt;h5 id=&quot;all-even-1&quot;&gt;All even&lt;/h5&gt;
+
+&lt;p&gt;Now let’s consider the same scenario of wanting to know the probability of getting each number, but now our die is loaded. Being as how we’re changing the distribution itself and not just the aspects we’re choosing to care about, we’re going to want to change the measure this time. For simplicity, let’s consider a kind of degenerate case scenario. Let our measure be: \(  \mu(A) = 1 \) if \(  1\in A \) and \(  \mu(A)=0 \) if \(  1\notin A \). Basically, we’re defining our probability to be such that the only possible outcome is a roll of 1. So since we are concerned with the same things we were concerned with last time, we can take that same random variable. We note \(  \mathbb{P}(1) = 1 \) and \(  \mathbb{P}(a) = 0 \) for any \(  a \neq 1 \).&lt;/p&gt;
+
+&lt;h5 id=&quot;odds-or-evens&quot;&gt;Odds or evens&lt;/h5&gt;
+
+&lt;p&gt;Try to do this one yourself. I’m going to go get some sleep now. Please feel free to contact me with any questions. I love doing this stuff, so don’t be shy!&lt;/p&gt;</content><author><name>amniskin</name></author><category term="math" /><category term="measure theory" /><category term="Probability" /><category term="statistics" /><summary type="html">Probability using Measure Theory A mathematically rigorous definition of probability, and some examples therein.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/pics/logo.png" /></entry><entry><title type="html">Description of a Pot Still</title><link href="http://localhost:4000/general/2016/08/29/example-post-three/" rel="alternate" type="text/html" title="Description of a Pot Still" /><published>2016-08-29T00:00:00-04:00</published><updated>2016-08-29T00:00:00-04:00</updated><id>http://localhost:4000/general/2016/08/29/example-post-three</id><content type="html" xml:base="http://localhost:4000/general/2016/08/29/example-post-three/">&lt;p&gt;A pot still is a type of still used in distilling spirits such as whisky or brandy. Heat is applied directly to the pot containing the wash (for whisky) or wine (for brandy). This is called a batch distillation (as opposed to a continuous distillation).&lt;/p&gt;
+
+&lt;p&gt;At standard atmospheric pressure, alcohol boils at 78 °C (172 °F), while water boils at 100 °C (212 °F). During distillation, the vapour contains more alcohol than the liquid. When the vapours are condensed, the resulting liquid contains a higher concentration of alcohol. In the pot still, the alcohol and water vapour combine with esters and flow from the still through the condensing coil. There they condense into the first distillation liquid, the so-called “low wines”. The low wines have a strength of about 25–35% alcohol by volume, and flow into a second still. It is then distilled a second time to produce the colourless spirit, collected at about 70% alcohol by volume. Colour is added through maturation in an oak aging barrel, and develops over time.&lt;/p&gt;
+
+&lt;p&gt;The modern pot still is a descendant of the alembic, an earlier distillation device.&lt;/p&gt;</content><author><name>amniskin</name></author><category term="General" /><summary type="html">A pot still is a type of still used in distilling spirits such as whisky or brandy. Heat is applied directly to the pot containing the wash (for whisky) or wine (for brandy).</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://unsplash.it/1200/400?image=1048" /></entry><entry><title type="html">History of the Alembic</title><link href="http://localhost:4000/history/2016/08/28/example-post-two/" rel="alternate" type="text/html" title="History of the Alembic" /><published>2016-08-28T00:00:00-04:00</published><updated>2016-08-28T00:00:00-04:00</updated><id>http://localhost:4000/history/2016/08/28/example-post-two</id><content type="html" xml:base="http://localhost:4000/history/2016/08/28/example-post-two/">&lt;p&gt;Dioscorides’ ambix (described in his De materia medica) is a helmet-shaped lid for gathering condensed mercury. For Athenaeus (~ 225 C.E.) it is a bottle or flask. For later chemists it denotes various parts of crude distillation devices.&lt;/p&gt;
+
+&lt;!-- more --&gt;
+
+&lt;p&gt;Alembic drawings appear in works of Cleopatra the Alchemist, Synesius, and Zosimos of Panopolis. There were alembics with two (dibikos) and three (tribikos) receivers.[4] According to Zosimos of Panopolis, the alembic was invented by Mary the Jewess.[5]&lt;/p&gt;
+
+&lt;p&gt;The anbik is described by Ibn al-Awwam in his Kitab al-Filaha (Book of Agriculture), where he explains how rose-water is distilled. Amongst others, it is mentioned in the Mafatih al-Ulum (Key of Sciences) of Khwarizmi and the Kitab al-Asrar (Book of Secrets) of Al-Razi. Some illustrations occur in the Latin translations of works which are attributed to Geber.[2]&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Originally from &lt;a href=&quot;https://en.wikipedia.org/wiki/Alembic&quot;&gt;Alembic - Wikipedia&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;</content><author><name>amniskin</name></author><category term="History" /><summary type="html">Dioscorides’ ambix (described in his De materia medica) is a helmet-shaped lid for gathering condensed mercury. For Athenaeus (~ 225 C.E.) it is a bottle or flask. For later chemists it denotes various parts of crude distillation devices.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/pics/logo.png" /></entry><entry><title type="html">Description of an Alembic</title><link href="http://localhost:4000/general/2016/08/27/example-post-one/" rel="alternate" type="text/html" title="Description of an Alembic" /><published>2016-08-27T00:00:00-04:00</published><updated>2016-08-27T00:00:00-04:00</updated><id>http://localhost:4000/general/2016/08/27/example-post-one</id><content type="html" xml:base="http://localhost:4000/general/2016/08/27/example-post-one/">&lt;p&gt;The complete distilling apparatus consists of three parts: the “cucurbit” (Arabic ḳarʿa, Greek βίκος), the still pot containing the liquid to be distilled, which is heated by a flame; the “head” or “cap” (Arabic anbiḳ, Greek ἄμβιξ) which fits over the mouth of the cucurbit to receive the vapors, with an attached downward-sloping “tube” (Greek σωλήν), leading to the “receiver” (Arabic ḳābila, Greek ἄγγος or φιάλη) container.&lt;/p&gt;
+
+&lt;!-- more --&gt;
+
+&lt;p&gt;Retorts have the “cap” and the “cucurbit” made into one. The anbik is also called the raʾs (head) of the cucurbit. The liquid in the cucurbit is heated or boiled; the vapour rises into the anbik, where it cools by contact with the walls and condenses, running down the spout into the receiver. A modern descendant of the alembic is the pot still, used to produce distilled beverages.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Originally from &lt;a href=&quot;https://en.wikipedia.org/wiki/Alembic&quot;&gt;Alembic - Wikipedia&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;</content><author><name>amniskin</name></author><category term="General" /><summary type="html">The complete distilling apparatus consists of three parts: the “cucurbit” (Arabic ḳarʿa, Greek βίκος), the still pot containing the liquid to be distilled, which is heated by a flame; the “head” or “cap” (Arabic anbiḳ, Greek ἄμβιξ) which fits over the mouth of the cucurbit to receive the vapors, with an attached downward-sloping “tube” (Greek σωλήν), leading to the “receiver” (Arabic ḳābila, Greek ἄγγος or φιάλη) container.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/pics/logo.png" /></entry><entry><title type="html">What’s in a language?</title><link href="http://localhost:4000/mathematics/2015/11/30/whats-in-a-language/" rel="alternate" type="text/html" title="What's in a language?" /><published>2015-11-30T01:36:29-05:00</published><updated>2015-11-30T01:36:29-05:00</updated><id>http://localhost:4000/mathematics/2015/11/30/whats-in-a-language</id><content type="html" xml:base="http://localhost:4000/mathematics/2015/11/30/whats-in-a-language/">&lt;h2 id=&quot;languages-in-abstraction&quot;&gt;Languages in abstraction&lt;/h2&gt;
+
+&lt;p&gt;This post is about Languages from a mathematical and abstract linguistics point of view. Not much more to say about that, so let’s get right to it!&lt;/p&gt;
+
+&lt;!-- more --&gt;
+
+&lt;h2 id=&quot;the-rigorous-definition&quot;&gt;The Rigorous definition:&lt;/h2&gt;
+
+&lt;p&gt;Let \(  \Sigma \)  be an alphabet and let \(  \Sigma^k \)  be the set of all strings of length k over that alphabet. Then, we define \(  \Sigma^* \)  to be \(  \bigcup\limits_{k\in\mathbb{N}}\Sigma^k \)  (the union of ∑&lt;sup&gt;k&lt;/sup&gt; over all natural numbers k). If \(  L\subseteq\Sigma^* \) , we call \(  L \)  a language.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-intuition-behind-the-definition&quot;&gt;The Intuition Behind the Definition&lt;/h2&gt;
+
+&lt;p&gt;Consider an alphabet (some finite set of characters), for example we can consider the letters of the English language, the ASCII symbols, the symbols \(  {0, 1} \)  (otherwise known as binary), or the symbols \(  {1, 2, 3, 4, 5, 6, 7, 8, 9, 0, +, \times , =} \) . We can then construct the infinite list of all the different ways we can arrange those characters (e.g. \(  1001011 \)  or \(  0011011011 \) , etc. if we’re using binary). We call these arrangements “strings”. Once we have all that machinery built up, a language is just some subset of that infinite collection of strings. The language may itself be infinite.&lt;/p&gt;
+
+&lt;h2 id=&quot;some-examples&quot;&gt;Some Examples&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;The alphabet: \(  \Sigma={0, 1} \) &lt;br /&gt;
+The language: \(  {x\in\Sigma|x \text{ is prime}} \)  (all prime numbers in binary)&lt;br /&gt;
+Some strings from the language: \(  10, 11, 101… \)&lt;/li&gt;
+  &lt;li&gt;The alphabet: ASCII characters&lt;br /&gt;
+The language: All syntactically correct Clojure programs (the source code)&lt;/li&gt;
+  &lt;li&gt;The alphabet: All Clojure functions, operators, etc, and list \(  {x, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0} \) &lt;br /&gt;
+The language: All syntactically correct Clojure programs (the source code)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;You see that we need to have an alphabet before we can have a Formal Language. Also, different alphabets may result in equivalent languages – by equivalent, we mean that both languages contain the same strings.&lt;/p&gt;
+
+&lt;h2 id=&quot;what-are-we-getting-at&quot;&gt;What are we getting at?&lt;/h2&gt;
+
+&lt;p&gt;Well, there are two ways to look at this. On the first hand, linguists would like to study language in its abstract essence. For this, Formal Languages may come in handy (if endowed with a Grammar and possibly more). That is not the reason I will be studying Formal Languages. I’m learning about formal languages to find their applications to computing.
+Apparently, with the help of a little Mathematical thinking, we can assign semantics to the strings in a language and somehow correlate them with real world problems – such as computability, the P=nP problem, cryptography, and more!&lt;/p&gt;</content><author><name>amniskin</name></author><category term="Formal language" /><category term="intro" /><category term="language" /><category term="math" /><summary type="html">Languages in abstraction This post is about Languages from a mathematical and abstract linguistics point of view. Not much more to say about that, so let’s get right to it!</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/pics/logo.png" /></entry><entry><title type="html">First Post, An Explication</title><link href="http://localhost:4000/meta/general/2015/11/29/first-post-an-explication/" rel="alternate" type="text/html" title="First Post, An Explication" /><published>2015-11-29T00:00:00-05:00</published><updated>2015-11-29T00:00:00-05:00</updated><id>http://localhost:4000/meta/general/2015/11/29/first-post-an-explication</id><content type="html" xml:base="http://localhost:4000/meta/general/2015/11/29/first-post-an-explication/">&lt;p&gt;This is my first blog, so I guess I should start off by explaining my motives behind writing what will probably be a sporadically updated blog. Basically, as I learn things that I find pretty difficult to find online, I’ll try to explain them as best I can here. Also, since I enjoy learning math, I’m going to try to keep up a (semi) regular stream of math posts. If you have any questions, feel free to contact me. My up-to-date contact info can be found on my website &lt;a href=&quot;http://aaron.niskin.org&quot;&gt;aaron.niskin.org&lt;/a&gt;&lt;/p&gt;</content><author><name>amniskin</name></author><category term="first post" /><category term="meta" /><summary type="html">This is my first blog, so I guess I should start off by explaining my motives behind writing what will probably be a sporadically updated blog. Basically, as I learn things that I find pretty difficult to find online, I’ll try to explain them as best I can here. Also, since I enjoy learning math, I’m going to try to keep up a (semi) regular stream of math posts. If you have any questions, feel free to contact me. My up-to-date contact info can be found on my website aaron.niskin.org</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/pics/logo.png" /></entry></feed>

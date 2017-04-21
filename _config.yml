@@ -1,0 +1,121 @@
+# Site configuration
+# 1. Files excluded from Jekyll builds
+# 2. Installed Gems
+# 3. Gem settings
+# 4. Jekyll settings
+# 5. Collections
+# 6. Jekyll collections settings
+# 7. Site settings
+# 8. Site navigation
+
+# 1. Files excluded from Jekyll builds
+exclude:
+- README.md
+- screenshot.png
+- LICENSE
+- CNAME
+- Gemfile
+- Gemfile.lock
+- demo/*
+- assets/notebooks/*
+- alembic-jekyll-theme.gemspec
+
+# 2. Installed Gems
+gems:
+- jekyll-sitemap
+- jekyll-mentions
+- jekyll-paginate
+- jekyll-seo-tag
+- jekyll-redirect-from
+- jekyll-feed
+- jemoji
+
+# 3. Gem settings
+paginate: 4 # jekyll-paginate > items per page
+paginate_path: blog/page:num # jekyll-paginate > blog page
+jekyll-mentions: https://twitter.com # jekyll-mentions > service used when @replying
+twitter:
+  username: amniskin # jekyll-seo-tag > Owners twitter username
+author: amniskin # jekyll-seo-tag > default author
+social: # jekyll-seo-tag > social overrides
+  name: Aaron Niskin # jekyll-seo-tag > real name
+  links:  # jekyll-seo-tag > social aliases (sameAs)
+    - https://twitter.com/amniskin
+    - https://www.facebook.com/aniskin
+    - https://www.linkedin.com/in/aaron-niskin
+    - https://plus.google.com/+AaronNiskin
+    - https://github.com/amniskin
+
+# 4. Jekyll settings
+sass:
+  style: compressed # Style compression
+permalink: pretty  # Permalink style (/YYYY/MM/DD/page-name/)
+excerpt_separator: <!-- more --> # Marks end of excerpt in posts
+timezone: America/New_York # Timezone for blog posts and alike
+
+# 5. Collections
+collections:
+  posts:
+    title: Posts # Needed for Siteleaf
+    output: true
+    description: "My thoughts and ideas" # The post list page content
+    feature_text: |
+      Welcome to the blog
+    feature_image: "/assets/pics/skyplane.JPG" # "https://unsplash.it/1300/400?image=1067"
+
+# 6. Jekyll collections settings
+defaults:
+  -
+    scope:
+      path: ""
+      type: pages
+    values:
+      layout: page # Default layout
+      image: "/assets/pics/logo.png" # Default image for sharing
+  -
+    scope:
+      path: ""
+      type: posts
+    values:
+      layout: post # Default layout
+      image: "/assets/pics/logo.png" # Default image for sharing
+
+# 7. Site settings
+encoding: utf-8 # Make sure the encoding is right
+title: "Aaron Niskin's Blog" # Site name or title, also used in jekyll-seo-tag
+logo: "/assets/pics/logo.png" # Site logo, also used in jekyll-seo-tag
+description: "Not just another blog! Now with more... Aaron!" # Site description and default description, also used in jekyll-seo-tag
+url: "https://aaron.niskin.org" # Site url, also used in jekyll-seo-tag
+repo: "https://github.com/amniskin.github.io"
+email: "aaron@niskin.org"
+### disqus: ""
+avatarurl: "https://www.gravatar.com/avatar/6c0377abcf4da91cdd35dea4554b2a4c" # Uses avatars for favicons to get multple sites, eg Gravatar, Twitter, GitHub
+
+# 8. Site navigation
+navigation_header:
+  Home: / # Elements: /elements/
+  Blog: /blog/
+  Categories: /categories/
+  Search: /search/ # Fork Alembic: https://github.com/daviddarnes/alembic
+
+# navigation_footer:
+#   Created by David Darnes: https://darn.es
+
+social_links:
+  Twitter: https://twitter.com/amniskin
+  LinkedIn: https://www.linkedin.com/in/aaron-niskin
+  Google+: https://plus.google.com/+AaronNiskin
+  GitHub: https://github.com/amniskin
+  link: https://aaron.niskin.org
+
+sharing_links:
+  Twitter: "#1DA1F2"
+  facebook: "#3B5998"
+  Google+: "#DC4E41"
+  Pinterest: "#BD081C"
+  LinkedIn: "#0077B5"
+  tumblr: "#36465D"
+  Reddit: "#FF4500"
+  Hacker News: "#ff6600"
+  Designer News: "#2D72D9"
+  Email: ""
