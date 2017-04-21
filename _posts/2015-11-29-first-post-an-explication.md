@@ -3,6 +3,7 @@ title: "First Post, An Explication"
 categories:
 - Meta
 - General
+excerpt: "A solemn oath to the reader... An oath I will surely forget and fail to uphold. Take it as you will"
 tags:
 - first post
 - meta

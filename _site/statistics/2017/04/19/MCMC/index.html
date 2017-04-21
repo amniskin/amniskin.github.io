@@ -29,8 +29,8 @@
 			<!-- Begin Jekyll SEO tag v2.1.0 -->
 <title>Markov Chain Monte Carlo - Aaron Niskin’s Blog</title>
 <meta property="og:title" content="Markov Chain Monte Carlo">
-<meta name="description" content="Background What if we know the relative likelihood, but want the probability distribution? But what if \( \int f(x)dx \) is hard, or you can’t sample from \( f \) directly? This is the problem we will be trying to solve.">
-<meta property="og:description" content="Background What if we know the relative likelihood, but want the probability distribution? But what if \( \int f(x)dx \) is hard, or you can’t sample from \( f \) directly? This is the problem we will be trying to solve.">
+<meta name="description" content="Markov Chain Monte Carlo is a tool for sampling otherwise intractible distributions. In this post, we’ll go through some descriptions, reasoning, and examples therein.">
+<meta property="og:description" content="Markov Chain Monte Carlo is a tool for sampling otherwise intractible distributions. In this post, we’ll go through some descriptions, reasoning, and examples therein.">
 <link rel="canonical" href="http://localhost:4000/statistics/2017/04/19/MCMC/">
 <meta property="og:url" content="http://localhost:4000/statistics/2017/04/19/MCMC/">
 <meta property="og:site_name" content="Aaron Niskin’s Blog">
@@ -46,7 +46,7 @@
 "headline": "Markov Chain Monte Carlo",
 "image": "http://localhost:4000/assets/pics/logo.png",
 "datePublished": "2017-04-19T16:52:39-04:00",
-"description": "Background What if we know the relative likelihood, but want the probability distribution? But what if \\( \\int f(x)dx \\) is hard, or you can’t sample from \\( f \\) directly? This is the problem we will be trying to solve.",
+"description": "Markov Chain Monte Carlo is a tool for sampling otherwise intractible distributions. In this post, we’ll go through some descriptions, reasoning, and examples therein.",
 "publisher": {"@type": "Organization",
 "logo": {"@type": "ImageObject",
 "url": "http://localhost:4000/assets/pics/logo.png"}},
@@ -149,30 +149,7 @@
   <time datetime="2017-04-19T16:52:39-04:00" class="time">19 Apr 2017</time>
 </small>
 
-    <!--
-```python
-import numpy as np
-import matplotlib.pyplot as plt
-import matplotlib.pylab as plb
-import seaborn
-import pandas as pd
-
-np.random.seed(1234)
-
-from IPython.core.interactiveshell import InteractiveShell
-InteractiveShell.ast_node_interactivity = "last_expr"
-```
-
-
-```bash
-if [ ! -d tmp ]
-then
-mkdir tmp
-fi
-```
--->
-
-<h1 id="text--mc2"><script type="math/tex">\text{???} = (MC)^2</script></h1>
+    <h1 id="text--mc2"><script type="math/tex">\text{???} = (MC)^2</script></h1>
 
 <h2 id="background">Background</h2>
 
@@ -278,91 +255,6 @@ q_{10} \sim& N(x,10)\end{align*} %]]></script>
 
 <p>Note: Since \( q \) is symmetric, \( q(x|y) = q(y|x) \).</p>
 
-<!--
-```python
-def metropolis_hastings(f, q, initial_state, num_iters):
-    """
-    Generate a Markov Chain Monte Carlo using
-    the Metropolis-Hastings algorithm.
-    
-    Parameters
-    ----------
-    f : function
-        the [relative] likelood function for
-        the distribution we would like to
-        approximate
-    q : function
-        The conditional distribution to be
-        sampled from (given an X_i, sample
-        from q(X_i) to get potential X_i+1)
-    initial_state : type accepted by f,q
-        The initial state. This state will
-        not be included as part of the 
-        Markov Chain.
-    num_iters : int or float
-        the number of desired iterations
-        float is included to facilitate
-        1e5 type use
-    
-    Returns
-    -------
-    out : Python Array
-        Array where out[i] = X_{i-1} because
-        X_0 (the initial state) is not included
-    """
-    MC = []
-    X_i = initial_state
-    for i in range(int(num_iters)):
-        Y = q(X_i)
-        r = min(f(Y)/f(X_i), 1)
-        a = np.random.uniform()
-        if a < r:
-            X_i = Y
-        MC.append(X_i)
-    return MC
-```
-
-
-```python
-def cauchy_dist(x):
-    return 1/(np.pi*(1 + x**2))
-def q(scale):
-    return lambda x: np.random.normal(loc=x, scale=scale)
-```
-
-
-```python
-from scipy.stats import cauchy
-```
-
-```python
-plt.figure(1);
-plt.subplot(3,1,1);
-plt.title("STD = 0.1")
-std01 = metropolis_hastings(cauchy_dist, q(0.1), 0, 1000)
-tmpHist = plt.hist(std01, bins=20, normed=True);
-tmpLnSp = np.linspace(min(tmpHist[1]),
-                      max(tmpHist[1]),100)
-plt.plot(tmpLnSp, cauchy.pdf(tmpLnSp), 'r-')
-plt.subplot(3,1,2)
-plt.title("STD = 1")
-std1 = metropolis_hastings(cauchy_dist, q(1), 0, 1000)
-tmpHist = plt.hist(std1, bins=20, normed=True);
-tmpLnSp = np.linspace(min(tmpHist[1]),
-                      max(tmpHist[1]),100)
-plt.plot(tmpLnSp, cauchy.pdf(tmpLnSp), 'r-')
-plt.subplot(3,1,3)
-plt.title("STD = 10")
-std10 = metropolis_hastings(cauchy_dist, q(10), 0, 1000)
-tmpHist = plt.hist(std10, bins=20, normed=True);
-tmpLnSp = np.linspace(min(tmpHist[1]),
-                      max(tmpHist[1]),100)
-plt.plot(tmpLnSp, cauchy.pdf(tmpLnSp), 'r-')
-plt.tight_layout()
-plt.show()
-```
--->
-
 <h2 id="pseudocode">Pseudocode:</h2>
 
 <div class="language-python highlighter-rouge">
@@ -383,24 +275,6 @@ plt.show()
 <script type="math/tex; mode=display">q(y\|x) \sim N(x,b^2)</script>
 
 <p><img src="/assets/pics/2017/04/18-MCMC-Cauchy-Estimation.png" alt="The many distributions"></p>
-
-<!--
-```python
-plt.figure(2)
-plt.subplot(3,1,1)
-plt.title("STD = 0.1")
-plt.plot(std01)
-plt.subplot(3,1,2)
-plt.title("STD = 1")
-plt.plot(std1)
-plt.subplot(3,1,3)
-plt.title("STD = 10")
-plt.plot(std10)
-plt.tight_layout()
-plt.show()
-```
-
--->
 
 <p><img src="/assets/pics/2017/04/18-MCMC-Cauchy-Estimation_TS.png" alt="png"></p>
 
@@ -722,27 +596,7 @@ plt.show()
 
     
 
-    <a class="button" href="https://www.linkedin.com/shareArticle?url=http://localhost:4000/statistics/2017/04/19/MCMC/&amp;title=Markov%20Chain%20Monte%20Carlo&amp;source=Aaron%20Niskin's%20Blog&amp;summary=&lt;!--%0A%60%60%60python%0Aimport%20numpy%20as%20np%0Aimport%20matplotlib.pyplot%20as%20plt%0Aimport%20matplotlib.pylab%20as%20plb%0Aimport%20seaborn%0Aimport%20pandas%20as%20pd%0A%0Anp.random.seed(1234)%0A%0Afrom%20IPython.core.interactiveshell%20import%20InteractiveShell%0AInteractiveShell.ast_node_interactivity%20=%20" last_expr if tmp then mkdir fi>
-
-<h1 id="text--mc2"><script type="math/tex">\text{???} = (MC)^2</script></h1>
-
-<h2 id="background">Background</h2>
-
-<p>What if we know the relative likelihood, but want the probability distribution?</p>
-
-<script type="math/tex; mode=display">\mathbb{P}(X=x) = \frac{f(x)}{\int_{-\infty}^\infty f(x)dx}</script>
-
-<p>But what if \( \int f(x)dx \) is hard, or you can’t sample from \( f \) directly?</p>
-
-<p>This is the problem we will be trying to solve.</p>
-
-&amp;mini=true
-      
-      
-      
-      
-      
-    " title="Button - LinkedIn" style="background: #0077B5"&gt;LinkedIn  <svg class="icon  icon--linkedin" role="img"><use xlink:href="#linkedin"></use></svg>
+    <a class="button" href="https://www.linkedin.com/shareArticle?url=http://localhost:4000/statistics/2017/04/19/MCMC/&amp;title=Markov%20Chain%20Monte%20Carlo&amp;source=Aaron%20Niskin's%20Blog&amp;summary=Markov%20Chain%20Monte%20Carlo%20is%20a%20tool%20for%20sampling%20otherwise%20intractible%20distributions.%20In%20this%20post,%20we'll%20go%20through%20some%20descriptions,%20reasoning,%20and%20examples%20therein.%0A&amp;mini=true%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20" title="Button - LinkedIn" style="background: #0077B5">LinkedIn  <svg class="icon  icon--linkedin" role="img"><use xlink:href="#linkedin"></use></svg>
 </a>
 
   
@@ -829,7 +683,7 @@ plt.show()
   <time datetime="2017-02-21T02:24:43-05:00" class="time">21 Feb 2017</time>
 </small>
 
-        <h3 id="the-basics">The basics</h3> <p>Yeah. It’s not a good sign if I’m starting out already repeating myself. But that’s how things...
+        <p>Linear Regression is the bedrock of Machine Learning. We cover the basics therein, some theory involved, and give some relevant...
 
       </p></article>
     </li>
@@ -842,10 +696,7 @@ plt.show()
   <time datetime="2017-02-18T09:42:55-05:00" class="time">18 Feb 2017</time>
 </small>
 
-        <h2 id="probability-using-measure-theory">Probability using Measure Theory</h2>
-
-<p>A mathematically rigorous definition of probability, and some examples therein.</p>
-
+        <p>We cover probability from a measure theoretic approach</p>
 
 
       </article>

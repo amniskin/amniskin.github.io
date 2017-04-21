@@ -7,6 +7,7 @@ tags:
 - Statistics
 - Prediction
 - Regression
+excerpt: "Linear Regression is the bedrock of Machine Learning. We cover the basics therein, some theory involved, and give some relevant examples."
 feature_image: "/assets/pics/2017/02/21-banner.png"
 ---
 

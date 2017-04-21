@@ -3,6 +3,7 @@ title: What's in a language?
 date: 2015-11-30 01:36:29.000000000 -05:00
 categories:
 - Mathematics
+excerpt: "The basics of the theory of formal languages"
 tags:
 - Formal language
 - intro

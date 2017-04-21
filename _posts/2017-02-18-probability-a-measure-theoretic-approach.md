@@ -8,6 +8,7 @@ tags:
 - measure theory
 - Probability
 - statistics
+excerpt: "We cover probability from a measure theoretic approach"
 ---
 
 ## Probability using Measure Theory

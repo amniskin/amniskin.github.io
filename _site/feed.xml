@@ -1,27 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-04-21T10:26:23-04:00</updated><id>http://localhost:4000/</id><title type="html">Aaron Niskin’s Blog</title><subtitle>Not just another blog! Now with more... Aaron!</subtitle><author><name>amniskin</name></author><entry><title type="html">Markov Chain Monte Carlo</title><link href="http://localhost:4000/statistics/2017/04/19/MCMC/" rel="alternate" type="text/html" title="Markov Chain Monte Carlo" /><published>2017-04-19T16:52:39-04:00</published><updated>2017-04-19T16:52:39-04:00</updated><id>http://localhost:4000/statistics/2017/04/19/MCMC</id><content type="html" xml:base="http://localhost:4000/statistics/2017/04/19/MCMC/">&lt;!--
-```python
-import numpy as np
-import matplotlib.pyplot as plt
-import matplotlib.pylab as plb
-import seaborn
-import pandas as pd
-
-np.random.seed(1234)
-
-from IPython.core.interactiveshell import InteractiveShell
-InteractiveShell.ast_node_interactivity = &quot;last_expr&quot;
-```
-
-
-```bash
-if [ ! -d tmp ]
-then
-mkdir tmp
-fi
-```
---&gt;
-
-&lt;h1 id=&quot;text--mc2&quot;&gt;&lt;script type=&quot;math/tex&quot;&gt;\text{???} = (MC)^2&lt;/script&gt;&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-04-21T10:59:14-04:00</updated><id>http://localhost:4000/</id><title type="html">Aaron Niskin’s Blog</title><subtitle>Not just another blog! Now with more... Aaron!</subtitle><author><name>amniskin</name></author><entry><title type="html">Markov Chain Monte Carlo</title><link href="http://localhost:4000/statistics/2017/04/19/MCMC/" rel="alternate" type="text/html" title="Markov Chain Monte Carlo" /><published>2017-04-19T16:52:39-04:00</published><updated>2017-04-19T16:52:39-04:00</updated><id>http://localhost:4000/statistics/2017/04/19/MCMC</id><content type="html" xml:base="http://localhost:4000/statistics/2017/04/19/MCMC/">&lt;h1 id=&quot;text--mc2&quot;&gt;&lt;script type=&quot;math/tex&quot;&gt;\text{???} = (MC)^2&lt;/script&gt;&lt;/h1&gt;
 
 &lt;h2 id=&quot;background&quot;&gt;Background&lt;/h2&gt;
 
@@ -127,91 +104,6 @@ q_{10} \sim&amp; N(x,10)\end{align*} %]]&gt;&lt;/script&gt;
 
 &lt;p&gt;Note: Since \( q \) is symmetric, \( q(x|y) = q(y|x) \).&lt;/p&gt;
 
-&lt;!--
-```python
-def metropolis_hastings(f, q, initial_state, num_iters):
-    &quot;&quot;&quot;
-    Generate a Markov Chain Monte Carlo using
-    the Metropolis-Hastings algorithm.
-    
-    Parameters
-    ----------
-    f : function
-        the [relative] likelood function for
-        the distribution we would like to
-        approximate
-    q : function
-        The conditional distribution to be
-        sampled from (given an X_i, sample
-        from q(X_i) to get potential X_i+1)
-    initial_state : type accepted by f,q
-        The initial state. This state will
-        not be included as part of the 
-        Markov Chain.
-    num_iters : int or float
-        the number of desired iterations
-        float is included to facilitate
-        1e5 type use
-    
-    Returns
-    -------
-    out : Python Array
-        Array where out[i] = X_{i-1} because
-        X_0 (the initial state) is not included
-    &quot;&quot;&quot;
-    MC = []
-    X_i = initial_state
-    for i in range(int(num_iters)):
-        Y = q(X_i)
-        r = min(f(Y)/f(X_i), 1)
-        a = np.random.uniform()
-        if a &lt; r:
-            X_i = Y
-        MC.append(X_i)
-    return MC
-```
-
-
-```python
-def cauchy_dist(x):
-    return 1/(np.pi*(1 + x**2))
-def q(scale):
-    return lambda x: np.random.normal(loc=x, scale=scale)
-```
-
-
-```python
-from scipy.stats import cauchy
-```
-
-```python
-plt.figure(1);
-plt.subplot(3,1,1);
-plt.title(&quot;STD = 0.1&quot;)
-std01 = metropolis_hastings(cauchy_dist, q(0.1), 0, 1000)
-tmpHist = plt.hist(std01, bins=20, normed=True);
-tmpLnSp = np.linspace(min(tmpHist[1]),
-                      max(tmpHist[1]),100)
-plt.plot(tmpLnSp, cauchy.pdf(tmpLnSp), 'r-')
-plt.subplot(3,1,2)
-plt.title(&quot;STD = 1&quot;)
-std1 = metropolis_hastings(cauchy_dist, q(1), 0, 1000)
-tmpHist = plt.hist(std1, bins=20, normed=True);
-tmpLnSp = np.linspace(min(tmpHist[1]),
-                      max(tmpHist[1]),100)
-plt.plot(tmpLnSp, cauchy.pdf(tmpLnSp), 'r-')
-plt.subplot(3,1,3)
-plt.title(&quot;STD = 10&quot;)
-std10 = metropolis_hastings(cauchy_dist, q(10), 0, 1000)
-tmpHist = plt.hist(std10, bins=20, normed=True);
-tmpLnSp = np.linspace(min(tmpHist[1]),
-                      max(tmpHist[1]),100)
-plt.plot(tmpLnSp, cauchy.pdf(tmpLnSp), 'r-')
-plt.tight_layout()
-plt.show()
-```
---&gt;
-
 &lt;h2 id=&quot;pseudocode&quot;&gt;Pseudocode:&lt;/h2&gt;
 
 &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;MC&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;
@@ -231,24 +123,6 @@ plt.show()
 &lt;script type=&quot;math/tex; mode=display&quot;&gt;q(y\|x) \sim N(x,b^2)&lt;/script&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/pics/2017/04/18-MCMC-Cauchy-Estimation.png&quot; alt=&quot;The many distributions&quot; /&gt;&lt;/p&gt;
-
-&lt;!--
-```python
-plt.figure(2)
-plt.subplot(3,1,1)
-plt.title(&quot;STD = 0.1&quot;)
-plt.plot(std01)
-plt.subplot(3,1,2)
-plt.title(&quot;STD = 1&quot;)
-plt.plot(std1)
-plt.subplot(3,1,3)
-plt.title(&quot;STD = 10&quot;)
-plt.plot(std10)
-plt.tight_layout()
-plt.show()
-```
-
---&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/pics/2017/04/18-MCMC-Cauchy-Estimation_TS.png&quot; alt=&quot;png&quot; /&gt;&lt;/p&gt;
 
@@ -512,7 +386,7 @@ plt.show()
 &lt;/ul&gt;
 
 &lt;h2 id=&quot;bibliography&quot;&gt;Bibliography&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&quot;http://sites.stat.psu.edu/~mharan/MCMCtut/MCMC.html&quot;&gt;Summer School in Astrostatistics&lt;/a&gt;&lt;/p&gt;</content><author><name>amniskin</name></author><category term="Sampling" /><category term="Statistics" /><category term="Stochastic" /><category term="Monte Carlo" /><category term="Markov Chain" /><category term="MCMC" /><summary type="html">Background What if we know the relative likelihood, but want the probability distribution? But what if \( \int f(x)dx \) is hard, or you can’t sample from \( f \) directly? This is the problem we will be trying to solve.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/pics/logo.png" /></entry><entry><title type="html">Linear Regression – The Basics</title><link href="http://localhost:4000/statistics/2017/02/21/What-Is-Linear-Regression/" rel="alternate" type="text/html" title="Linear Regression -- The Basics" /><published>2017-02-21T02:24:43-05:00</published><updated>2017-02-21T02:24:43-05:00</updated><id>http://localhost:4000/statistics/2017/02/21/What-Is-Linear-Regression</id><content type="html" xml:base="http://localhost:4000/statistics/2017/02/21/What-Is-Linear-Regression/">&lt;h3 id=&quot;the-basics&quot;&gt;The basics&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;http://sites.stat.psu.edu/~mharan/MCMCtut/MCMC.html&quot;&gt;Summer School in Astrostatistics&lt;/a&gt;&lt;/p&gt;</content><author><name>amniskin</name></author><category term="Sampling" /><category term="Statistics" /><category term="Stochastic" /><category term="Monte Carlo" /><category term="Markov Chain" /><category term="MCMC" /><summary type="html">Markov Chain Monte Carlo is a tool for sampling otherwise intractible distributions. In this post, we'll go through some descriptions, reasoning, and examples therein.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/pics/logo.png" /></entry><entry><title type="html">Linear Regression – The Basics</title><link href="http://localhost:4000/statistics/2017/02/21/What-Is-Linear-Regression/" rel="alternate" type="text/html" title="Linear Regression -- The Basics" /><published>2017-02-21T02:24:43-05:00</published><updated>2017-02-21T02:24:43-05:00</updated><id>http://localhost:4000/statistics/2017/02/21/What-Is-Linear-Regression</id><content type="html" xml:base="http://localhost:4000/statistics/2017/02/21/What-Is-Linear-Regression/">&lt;h3 id=&quot;the-basics&quot;&gt;The basics&lt;/h3&gt;
 
 &lt;p&gt;Yeah. It’s not a good sign if I’m starting out already repeating myself. But
 that’s how things seem to be with linear regression, so I guess it’s fitting.
@@ -679,7 +553,7 @@ for the following, assume we’ve done that.&lt;/p&gt;
 
 &lt;p&gt;Maybe next time I’ll post about how we can find these coefficients given some data using gradient descent, or some modification thereof.&lt;/p&gt;
 
-&lt;p&gt;Till next time, I hope you enjoyed this post. Please, let me know if something could be clearer or if you have any requests.&lt;/p&gt;</content><author><name>amniskin</name></author><category term="Statistics" /><category term="Prediction" /><category term="Regression" /><summary type="html">The basics Yeah. It’s not a good sign if I’m starting out already repeating myself. But that’s how things seem to be with linear regression, so I guess it’s fitting. It seems like every day one of my professors will talk about linear regression, and it’s not due to laziness or lack of coordination. Indeed, it’s an intentional part of the curriculum here at New College of Florida because of how ubiquitous linear regression is. Not only is it an extremely simple yet expressive formulation, it’s also the theoretical basis of a whole slew of other tactics. Let’s just get right into it, shall we?</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/pics/logo.png" /></entry><entry><title type="html">Probability – A Measure Theoretic Approach</title><link href="http://localhost:4000/probability/2017/02/18/probability-a-measure-theoretic-approach/" rel="alternate" type="text/html" title="Probability -- A Measure Theoretic Approach" /><published>2017-02-18T09:42:55-05:00</published><updated>2017-02-18T09:42:55-05:00</updated><id>http://localhost:4000/probability/2017/02/18/probability-a-measure-theoretic-approach</id><content type="html" xml:base="http://localhost:4000/probability/2017/02/18/probability-a-measure-theoretic-approach/">&lt;h2 id=&quot;probability-using-measure-theory&quot;&gt;Probability using Measure Theory&lt;/h2&gt;
+&lt;p&gt;Till next time, I hope you enjoyed this post. Please, let me know if something could be clearer or if you have any requests.&lt;/p&gt;</content><author><name>amniskin</name></author><category term="Statistics" /><category term="Prediction" /><category term="Regression" /><summary type="html">Linear Regression is the bedrock of Machine Learning. We cover the basics therein, some theory involved, and give some relevant examples.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/pics/logo.png" /></entry><entry><title type="html">Probability – A Measure Theoretic Approach</title><link href="http://localhost:4000/probability/2017/02/18/probability-a-measure-theoretic-approach/" rel="alternate" type="text/html" title="Probability -- A Measure Theoretic Approach" /><published>2017-02-18T09:42:55-05:00</published><updated>2017-02-18T09:42:55-05:00</updated><id>http://localhost:4000/probability/2017/02/18/probability-a-measure-theoretic-approach</id><content type="html" xml:base="http://localhost:4000/probability/2017/02/18/probability-a-measure-theoretic-approach/">&lt;h2 id=&quot;probability-using-measure-theory&quot;&gt;Probability using Measure Theory&lt;/h2&gt;
 
 &lt;p&gt;A mathematically rigorous definition of probability, and some examples therein.&lt;/p&gt;
 
@@ -771,7 +645,7 @@ for the following, assume we’ve done that.&lt;/p&gt;
 
 &lt;h5 id=&quot;odds-or-evens&quot;&gt;Odds or evens&lt;/h5&gt;
 
-&lt;p&gt;Try to do this one yourself. I’m going to go get some sleep now. Please feel free to contact me with any questions. I love doing this stuff, so don’t be shy!&lt;/p&gt;</content><author><name>amniskin</name></author><category term="math" /><category term="measure theory" /><category term="Probability" /><category term="statistics" /><summary type="html">Probability using Measure Theory A mathematically rigorous definition of probability, and some examples therein.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/pics/logo.png" /></entry><entry><title type="html">A dirty little ditty on Finite Automata</title><link href="http://localhost:4000/mathematics/2015/12/03/a-dirty-little-ditty-on-finite-automata/" rel="alternate" type="text/html" title="A dirty little ditty on Finite Automata" /><published>2015-12-03T00:00:00-05:00</published><updated>2015-12-03T00:00:00-05:00</updated><id>http://localhost:4000/mathematics/2015/12/03/a-dirty-little-ditty-on-finite-automata</id><content type="html" xml:base="http://localhost:4000/mathematics/2015/12/03/a-dirty-little-ditty-on-finite-automata/">&lt;p&gt;This post builds on the previous post about &lt;a href=&quot;/mathematics/2015/11/30/whats-in-a-language/&quot;&gt;Formal Languages&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Try to do this one yourself. I’m going to go get some sleep now. Please feel free to contact me with any questions. I love doing this stuff, so don’t be shy!&lt;/p&gt;</content><author><name>amniskin</name></author><category term="math" /><category term="measure theory" /><category term="Probability" /><category term="statistics" /><summary type="html">We cover probability from a measure theoretic approach</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/pics/logo.png" /></entry><entry><title type="html">A dirty little ditty on Finite Automata</title><link href="http://localhost:4000/mathematics/2015/12/03/a-dirty-little-ditty-on-finite-automata/" rel="alternate" type="text/html" title="A dirty little ditty on Finite Automata" /><published>2015-12-03T00:00:00-05:00</published><updated>2015-12-03T00:00:00-05:00</updated><id>http://localhost:4000/mathematics/2015/12/03/a-dirty-little-ditty-on-finite-automata</id><content type="html" xml:base="http://localhost:4000/mathematics/2015/12/03/a-dirty-little-ditty-on-finite-automata/">&lt;p&gt;This post builds on the previous post about &lt;a href=&quot;/mathematics/2015/11/30/whats-in-a-language/&quot;&gt;Formal Languages&lt;/a&gt;.&lt;/p&gt;
 
 &lt;h3 id=&quot;some-formal-definitions&quot;&gt;Some Formal Definitions&lt;/h3&gt;
 
@@ -866,4 +740,4 @@ The language: All syntactically correct Clojure programs (the source code)&lt;/l
 &lt;h2 id=&quot;what-are-we-getting-at&quot;&gt;What are we getting at?&lt;/h2&gt;
 
 &lt;p&gt;Well, there are two ways to look at this. On the first hand, linguists would like to study language in its abstract essence. For this, Formal Languages may come in handy (if endowed with a Grammar and possibly more). That is not the reason I will be studying Formal Languages. I’m learning about formal languages to find their applications to computing.
-Apparently, with the help of a little Mathematical thinking, we can assign semantics to the strings in a language and somehow correlate them with real world problems – such as computability, the P=nP problem, cryptography, and more!&lt;/p&gt;</content><author><name>amniskin</name></author><category term="Formal language" /><category term="intro" /><category term="language" /><category term="math" /><summary type="html">Languages in abstraction This post is about Languages from a mathematical and abstract linguistics point of view. Not much more to say about that, so let’s get right to it!</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/pics/logo.png" /></entry><entry><title type="html">First Post, An Explication</title><link href="http://localhost:4000/meta/general/2015/11/29/first-post-an-explication/" rel="alternate" type="text/html" title="First Post, An Explication" /><published>2015-11-29T00:00:00-05:00</published><updated>2015-11-29T00:00:00-05:00</updated><id>http://localhost:4000/meta/general/2015/11/29/first-post-an-explication</id><content type="html" xml:base="http://localhost:4000/meta/general/2015/11/29/first-post-an-explication/">&lt;p&gt;This is my first blog, so I guess I should start off by explaining my motives behind writing what will probably be a sporadically updated blog. Basically, as I learn things that I find pretty difficult to find online, I’ll try to explain them as best I can here. Also, since I enjoy learning math, I’m going to try to keep up a (semi) regular stream of math posts. If you have any questions, feel free to contact me. My up-to-date contact info can be found on my website &lt;a href=&quot;http://aaron.niskin.org&quot;&gt;aaron.niskin.org&lt;/a&gt;&lt;/p&gt;</content><author><name>amniskin</name></author><category term="first post" /><category term="meta" /><summary type="html">This is my first blog, so I guess I should start off by explaining my motives behind writing what will probably be a sporadically updated blog. Basically, as I learn things that I find pretty difficult to find online, I’ll try to explain them as best I can here. Also, since I enjoy learning math, I’m going to try to keep up a (semi) regular stream of math posts. If you have any questions, feel free to contact me. My up-to-date contact info can be found on my website aaron.niskin.org</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/pics/logo.png" /></entry></feed>
+Apparently, with the help of a little Mathematical thinking, we can assign semantics to the strings in a language and somehow correlate them with real world problems – such as computability, the P=nP problem, cryptography, and more!&lt;/p&gt;</content><author><name>amniskin</name></author><category term="Formal language" /><category term="intro" /><category term="language" /><category term="math" /><summary type="html">The basics of the theory of formal languages</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/pics/logo.png" /></entry><entry><title type="html">First Post, An Explication</title><link href="http://localhost:4000/meta/general/2015/11/29/first-post-an-explication/" rel="alternate" type="text/html" title="First Post, An Explication" /><published>2015-11-29T00:00:00-05:00</published><updated>2015-11-29T00:00:00-05:00</updated><id>http://localhost:4000/meta/general/2015/11/29/first-post-an-explication</id><content type="html" xml:base="http://localhost:4000/meta/general/2015/11/29/first-post-an-explication/">&lt;p&gt;This is my first blog, so I guess I should start off by explaining my motives behind writing what will probably be a sporadically updated blog. Basically, as I learn things that I find pretty difficult to find online, I’ll try to explain them as best I can here. Also, since I enjoy learning math, I’m going to try to keep up a (semi) regular stream of math posts. If you have any questions, feel free to contact me. My up-to-date contact info can be found on my website &lt;a href=&quot;http://aaron.niskin.org&quot;&gt;aaron.niskin.org&lt;/a&gt;&lt;/p&gt;</content><author><name>amniskin</name></author><category term="first post" /><category term="meta" /><summary type="html">A solemn oath to the reader... An oath I will surely forget and fail to uphold. Take it as you will</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/pics/logo.png" /></entry></feed>
