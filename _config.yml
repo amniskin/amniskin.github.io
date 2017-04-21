@@ -86,6 +86,7 @@ title: "Aaron Niskin's Blog" # Site name or title, also used in jekyll-seo-tag
 logo: "/assets/pics/logo.png" # Site logo, also used in jekyll-seo-tag
 description: "Not just another blog! Now with more... Aaron!" # Site description and default description, also used in jekyll-seo-tag
 url: "https://aaron.niskin.org" # Site url, also used in jekyll-seo-tag
+enforce_ssl: "aaron.niskin.org"
 repo: "https://github.com/amniskin.github.io"
 email: "aaron@niskin.org"
 ### disqus: ""
