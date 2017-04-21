@@ -3,14 +3,8 @@
 	<head>
 		<!-- General meta -->
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<script type="text/javascript" async
-					src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
-					MathJax.Hub.Config({
-						  tex2jax: {
-								    inlineMath: [ ['$','$'], ['\\(','\\)'] ]
-											  }
-					});
-		</script>
+		{% include google-analytics.html %}
+		{% include mathjax.html %}
 
 		{% if page.indexing == false %}
 			<meta name="robots" content="noindex">
