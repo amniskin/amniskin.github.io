@@ -79,13 +79,6 @@
   },
   
   {
-    "title": "Elements",
-    "excerpt": "A demo of Markdown and HTML includes\n",
-    "content": "Heading 1 Heading 2 Heading 3 Heading 4 Heading 5 Heading 6 A small element A link Lorem ipsum dolor sit amet, consectetur adip* isicing elit, sed do eiusmod *tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in a link reprehenderit in voluptate velit esse cillum bold text dolore eu fugiat nulla pariatur. Excepteur span element sint occaecat cupidatat non proident, sunt italicised text in culpa qui officia deserunt mollit anim id some code est laborum.  An item An item An item An item An item Item one Item two Item three Item four Item five A simple blockquote &lt;div&gt; &lt;span&gt;Some example code&lt;/span&gt; &lt;/div&gt; Single line of code HTML Includes Contact form   Name: *    Email Address: *    Message: *      \t\t\t\t* indicates a required field \t\t\t\t \t\t\t\t \t\t\t\t  Please enable JavaScript to use the form. Demo map embed  Button include A button Icon include Video include  Image includes  This image has a caption    ",
-    "url": "/assets/elements/"
-  },
-  
-  {
     "title": "Bienvenido | Willkommen | Bruchim Habaim | Welcome to the site of a MathemaNiskin!",
     "excerpt": "A boilerplate for my mind. Here is where I will blog about whatever: Math, Statistics, Economics, Computer Science, Algorithms, etc.\n",
     "content": "Welcome to my home on the internet. I’ll be posting sporadically about whatever interests me. Generally that’ll be more STEM oriented, but I imagine once I get more used to this whole blogging thing, I’ll branch out. For now the posts are mainly about Math, Algorithms, Optimization, Statistics, Sampling, etc. Enjoy the site and please feel free to email me, if you come across any issues, typos, mistakes, etc. or if you just feel like talking with me. I’m always up to chattin with new people. ",
