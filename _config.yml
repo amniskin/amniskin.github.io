@@ -85,8 +85,7 @@ encoding: utf-8 # Make sure the encoding is right
 title: "Aaron Niskin's Blog" # Site name or title, also used in jekyll-seo-tag
 logo: "/assets/pics/logo.png" # Site logo, also used in jekyll-seo-tag
 description: "Not just another blog! Now with more... Aaron!" # Site description and default description, also used in jekyll-seo-tag
-url: "https://aaron.niskin.org" # Site url, also used in jekyll-seo-tag
-enforce_ssl: "aaron.niskin.org"
+url: "http://aaron.niskin.org" # Site url, also used in jekyll-seo-tag
 repo: "https://github.com/amniskin.github.io"
 email: "aaron@niskin.org"
 ### disqus: ""
@@ -108,7 +107,7 @@ social_links:
   LinkedIn: https://www.linkedin.com/in/aaron-niskin
   Google+: https://plus.google.com/+AaronNiskin
   GitHub: https://github.com/amniskin
-  link: https://aaron.niskin.org
+  link: http://aaron.niskin.org
 
 sharing_links:
   Twitter: "#1DA1F2"
