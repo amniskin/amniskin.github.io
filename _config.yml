@@ -96,8 +96,7 @@ navigation_header:
   Home: / # Elements: /elements/
   Blog: /blog/
   Categories: /categories/
-  Resume: /assets/files/Niskin_Resume.pdf
-  Search: /search/ # Fork Alembic: https://github.com/daviddarnes/alembic
+  Resume: /assets/files/Niskin_Resume.pdf # Search: /search/
 
 # navigation_footer:
 #   Created by David Darnes: https://darn.es

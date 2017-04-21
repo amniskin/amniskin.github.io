@@ -1,5 +1,5 @@
 ---
-title: Bienvenido | Willkommen | Bruchim Habaim | Welcome to the site of a MathemaNiskin!
+title: Welcome to the site of a MathemaNiskin!
 feature_text: |
   Another blog about Maths and stuff... But way betterer.
 feature_image: "/assets/pics/skyplane.JPG"  #"https://unsplash.it/1300/400?image=971"
