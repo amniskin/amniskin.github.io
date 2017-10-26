@@ -64,19 +64,19 @@ Which is square summable if and only if $\|\lambda\| > 1$. So we see that if the
 
 ## Definition
 
-Let $X_t\in \mathbb{R}^n, A_i\in\mathbb{R}^{n\times n}, B\in\mathbb{R}^{n\times n}$ -- diagonal, and $p\in\mathbb{N}_{>0}$. Also let, $W_t$ be $n$ dimensional white noise. Then, $X_t$ is called a VAR(p) process if,
+Let $X_t\in \mathbb{R}^n, A_i\in\mathbb{R}^{n\times n}, B\in\mathbb{R}^{k_0\times n}$, and $p\in\mathbb{N}_{>0}$. Also let, $W_t$ be $k_0$ dimensional white noise. Then, $X_t$ is called a VAR(p) process if,
 
 $$ X_t = \sum\limits_{i=1}^p A_iX_{t-i} + BW_t$$
 
-Basically a VAR(p) model is an analogue of AR(p) models where the scalars are matrices and the variable itself is a vector. The purpose of $B$ is to scale the noise per coordinate. So for instance, in the example we'll be doing a little below, there will only be noise added to the first coordinate and therefore our $B$ will have a 1 in the top left entry and zero everywhere else.
+Basically a VAR(p) model is an analogue of AR(p) models where the scalars are matrices and the variable itself is a vector. The noise in such a model need not be independent per coordinate, nor restricted to only one. In fact, we can have any number of driving noise processes that get mixed together linearly into $X_t$. Hence cometh $B$ -- the linear transformation from the driving noise space into the $X_t$ space.
 
 Furthermore, let's say that we don't directly observe $X_t$ directly, but rather we observe some $Y_t$ that's a linear function of $X_t$ (plus some noise). Formally, we observe $Y_t$ s.t.:
 
 $$ Y_t = C X_t + D U_t $$
 
-Where $Y_t \in\mathbb{R}^m, C\in\mathbb{R}^{m\times n}, D\in \mathbb{R}^{m\times m}$ -- diagonal. And again, $U_t$ is $m$ dimensional white noise.
+Where $Y_t \in\mathbb{R}^m, C\in\mathbb{R}^{m\times n}, D\in \mathbb{R}^{k_1\times m}$. And again, $U_t$ is $k_1$ dimensional white noise.
 
-Here $D$ serves the same purpose as $B$ did above.
+Here $D$ serves the same purpose as $B$ did above, but for the observations themselves.
 
 This is called a "State Space" model.
 
@@ -86,7 +86,7 @@ How does this relate to our star (the AR polynomial $\Phi$)? Let's try to expres
 
 Let $x_t$ be an AR(p) process. That is to say, $x_t = \sum\limits_{i=1}^p a_ix_{t-i} + w_t$ where $w_t$ is some white noise process.
 
-We define
+Let $W_t$ be a 1 dimensional white-noise processes such that $W_t = w_t$. We define
 
 $$ X_t := \left[\begin{matrix} x_t \\ x_{t-1} \\ \vdots \\ x_{t-(p-1)} \end{matrix}\right] $$
 
@@ -102,13 +102,21 @@ a_1 & a_2 & \dots & a_{p-1} & a_p \\
 0 & \dots & 0 & 1 & 0 \\
 \end{matrix} \right] $$
 
-And finally, we're going to let $W_t$ be such that $W_t[0] = w_t$.
+We can see that for $0 < i < p$, we have $(AX_{t-1})[i] = x_{t-i}$, and $(AX_{t-1})[0] = \sum\limits_{i=1}^p a_i x_{t-i} = x_t - w_t$. As it stands, $AX_{t-1}$ is almost $X_t$, just without the added noise in the first coordinate. So let's add noise to only the first coordinate. To this end, let
 
-We can see that for $0 < i < p$, we have $(AX_{t-1})[i] = x_{t-i}$, and $(AX_{t-1})[0] = \sum\limits_{i=1}^p a_i x_{t-i} = x_t - w_t$. As it stands, $AX_{t-1}$ is almost $X_t$, just without the added noise in the first coordinate. So let's add noise to only the first coordinate. To this end, let's make our $B$ be as we said earlier (zeros everywhere except for the top left entry, which will be one). We now have:
+$$ B := \left[\begin{matrix} 1 \\ 0 \\ \vdots \\ 0 \end{matrix}\right] $$
 
 $$ X_t = AX_{t-1} + BW_t $$
 
-Now we want $Y_t = x_t$. So we set $C$ to $\left[\begin{matrix}1 & 0 & 0 & \dots & 0\end{matrix}\right]$. That way, $Y_t = CX_t = x_t$ and all is right with the world.
+and 
+
+$$ \forall t \in \mathbb{N}_{>p} (X_t[0] = x_t) $$
+
+Now we want $Y_t = x_t$. So we set
+
+$$C = \left[\begin{matrix}1 & 0 & 0 & \dots & 0\end{matrix}\right]$$
+
+That way, $Y_t = CX_t = x_t$ and all is right with the world.
 
 So yay! We've expressed this AR(p) process as a $p$ dimensional $VAR(1)$ process! So... Why?
 
