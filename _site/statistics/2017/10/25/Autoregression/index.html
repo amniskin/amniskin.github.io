@@ -27,10 +27,10 @@
 
 		
 			<!-- Begin Jekyll SEO tag v2.1.0 -->
-<title>Autoregressive Models - Aaron Niskin’s Blog</title>
-<meta property="og:title" content="Autoregressive Models">
-<meta name="description" content="Time series. It’s a thing! It’s a thing that involves some Linear Algebra and other beautiful things! You won’t believe what beautiful things it draws from! [enter more clickbait here]">
-<meta property="og:description" content="Time series. It’s a thing! It’s a thing that involves some Linear Algebra and other beautiful things! You won’t believe what beautiful things it draws from! [enter more clickbait here]">
+<title>Decomposition of Autoregressive Models - Aaron Niskin’s Blog</title>
+<meta property="og:title" content="Decomposition of Autoregressive Models">
+<meta name="description" content="We discuss the decomposition of AR models into components, and how eigenvalues are involved (because they always are).">
+<meta property="og:description" content="We discuss the decomposition of AR models into components, and how eigenvalues are involved (because they always are).">
 <link rel="canonical" href="http://localhost:4000/statistics/2017/10/25/Autoregression/">
 <meta property="og:url" content="http://localhost:4000/statistics/2017/10/25/Autoregression/">
 <meta property="og:site_name" content="Aaron Niskin’s Blog">
@@ -43,10 +43,10 @@
 <script type="application/ld+json">
 {"@context": "http://schema.org",
 "@type": "BlogPosting",
-"headline": "Autoregressive Models",
+"headline": "Decomposition of Autoregressive Models",
 "image": "http://localhost:4000/assets/pics/logo.png",
 "datePublished": "2017-10-25T16:52:39-04:00",
-"description": "Time series. It’s a thing! It’s a thing that involves some Linear Algebra and other beautiful things! You won’t believe what beautiful things it draws from! [enter more clickbait here]",
+"description": "We discuss the decomposition of AR models into components, and how eigenvalues are involved (because they always are).",
 "publisher": {"@type": "Organization",
 "logo": {"@type": "ImageObject",
 "url": "http://localhost:4000/assets/pics/logo.png"}},
@@ -63,7 +63,7 @@
 <link rel="shortcut icon" href="/assets/pics/logo.png">
 
 	</head>
-	<body class="layout-post  autoregressive-models">
+	<body class="layout-post  decomposition-of-autoregressive-models">
 		<svg xmlns="http://www.w3.org/2000/svg" style="height: 0; position: absolute" xmlns:xlink="http://www.w3.org/1999/xlink">
   <symbol id="codepen" viewbox="0 0 16 16"><path d="M15.988 5.443c-.004-.02-.007-.04-.012-.058l-.01-.033c-.006-.017-.012-.034-.02-.05-.003-.012-.01-.023-.014-.034l-.023-.045-.02-.032-.03-.04-.024-.03c-.01-.013-.022-.026-.034-.038l-.027-.027-.04-.032-.03-.024-.012-.01L8.38.117c-.23-.155-.53-.155-.76 0L.305 4.99.296 5c-.012.007-.022.015-.032.023-.014.01-.027.02-.04.032l-.027.027-.034.037-.024.03-.03.04c-.006.012-.013.022-.02.033l-.023.045-.015.034c-.007.016-.012.033-.018.05l-.01.032c-.005.02-.01.038-.012.058l-.006.03C.002 5.5 0 5.53 0 5.56v4.875c0 .03.002.06.006.09l.007.03c.003.02.006.04.013.058l.01.033c.006.018.01.035.018.05l.015.033c.006.016.014.03.023.047l.02.03c.008.016.018.03.03.042.007.01.014.02.023.03.01.012.02.025.034.036.01.01.018.02.028.026l.04.033.03.023.01.01 7.31 4.876c.116.078.248.117.382.116.134 0 .266-.04.38-.116l7.314-4.875.01-.01c.012-.007.022-.015.032-.023.014-.01.027-.02.04-.032l.027-.027.034-.037.024-.03.03-.04.02-.032.023-.046.015-.033.018-.052.01-.033c.005-.02.01-.038.013-.058 0-.01.003-.02.004-.03.004-.03.006-.06.006-.09V5.564c0-.03-.002-.06-.006-.09l-.007-.03zM8 9.626L5.568 8 8 6.374 10.432 8 8 9.626zM7.312 5.18l-2.98 1.993-2.406-1.61 5.386-3.59v3.206zM3.095 8l-1.72 1.15v-2.3L3.095 8zm1.237.828l2.98 1.993v3.208l-5.386-3.59 2.406-1.61zm4.355 1.993l2.98-1.993 2.407 1.61-5.387 3.59v-3.206zM12.905 8l1.72-1.15v2.3L12.905 8zm-1.237-.827L8.688 5.18V1.97l5.386 3.59-2.406 1.61z" fill-rule="nonzero"></path></symbol>
   <symbol id="dribbble" viewbox="0 0 16 16"><path d="M8 16c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm6.747-6.905c-.234-.074-2.115-.635-4.257-.292.894 2.456 1.258 4.456 1.328 4.872 1.533-1.037 2.624-2.68 2.93-4.58zM10.67 14.3c-.102-.6-.5-2.688-1.46-5.18l-.044.014C5.312 10.477 3.93 13.15 3.806 13.4c1.158.905 2.614 1.444 4.194 1.444.947 0 1.85-.194 2.67-.543zm-7.747-1.72c.155-.266 2.03-3.37 5.555-4.51.09-.03.18-.056.27-.08-.173-.39-.36-.778-.555-1.16C4.78 7.85 1.47 7.807 1.17 7.8l-.003.208c0 1.755.665 3.358 1.756 4.57zM1.31 6.61c.307.005 3.122.017 6.318-.832-1.132-2.012-2.353-3.705-2.533-3.952-1.912.902-3.34 2.664-3.784 4.785zM6.4 1.368c.188.253 1.43 1.943 2.548 4 2.43-.91 3.46-2.293 3.582-2.468C11.323 1.827 9.736 1.176 8 1.176c-.55 0-1.087.066-1.6.19zm6.89 2.322c-.145.194-1.29 1.662-3.816 2.694.16.325.31.656.453.99.05.117.1.235.147.352 2.274-.286 4.533.172 4.758.22-.015-1.613-.59-3.094-1.543-4.257z"></path></symbol>
@@ -144,7 +144,7 @@
 
 	<article class="article  article--post  content  typeset">
 
-    <h1>Autoregressive Models</h1>
+    <h1>Decomposition of Autoregressive Models</h1>
 		<small class="small  post-meta">
   <time datetime="2017-10-25T16:52:39-04:00" class="time">25 Oct 2017</time>
 </small>
@@ -153,7 +153,7 @@
 
 <h2 id="background">Background</h2>
 
-<p>This post will be a formal introduction into some of the theory of Autoregressive models. This post will develop the subject using what seems to be an atypical approach, but one that I find to be very elegant.</p>
+<p>This post will be a formal introduction into some of the theory of Autoregressive models. Specifically, we’ll tackle how to decompose an AR(p) model into a bunch of AR(1) models. We’ll discuss the interpretability of these models and howto therein. This post will develop the subject using what seems to be an atypical approach, but one that I find to be very elegant.</p>
 
 <!-- more -->
 
@@ -172,7 +172,9 @@ x_t - \sum\limits_{i=1}^pa_ix_{t-i} =& w_t \\
 
 <script type="math/tex; mode=display">\Phi(L) = c\prod\limits_{i=1}^p(L-\varphi_i)</script>
 
-<p>Where $\varphi_i$ are the roots of $\Phi$. This polynomial will be the star of our show today, so we’ll be investigating several of its properties. First, let’s investigate the conditions under which it’s invertible.</p>
+<p>Where $\varphi_i$ are the roots of $\Phi$. This polynomial will be the star of our show today. In fact, if we want to understand $\Phi$ (the AR process we’re considering), we need only understand each $x_t = \varphi_ix_{t-1} + w_t$ model. We’ll actually prove this later.</p>
+
+<p>We’ll be investigating several of its properties but first (just for fun) let’s investigate the conditions under which it’s invertible.</p>
 
 <p>We can reduce the problem of determining whether or not the AR polynomial is invertible to the problem of inverting each factor. After all, the polynomial is invertible if and only if each factor is. So let’s restrict our considerations to just a single factor for the time being. When will $x-\lambda$ be invertible?</p>
 
@@ -372,7 +374,7 @@ x_t =& Y_t \\
 
     
 
-    <a class="button" target="_blank" href="https://twitter.com/intent/tweet/?url=http://localhost:4000/statistics/2017/10/25/Autoregression/&amp;text=Autoregressive%20Models&amp;via=amniskin%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20" title="Button - Twitter" style="background: #1DA1F2">Twitter  <svg class="icon  icon--twitter" role="img"><use xlink:href="#twitter"></use></svg>
+    <a class="button" target="_blank" href="https://twitter.com/intent/tweet/?url=http://localhost:4000/statistics/2017/10/25/Autoregression/&amp;text=Decomposition%20of%20Autoregressive%20Models&amp;via=amniskin%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20" title="Button - Twitter" style="background: #1DA1F2">Twitter  <svg class="icon  icon--twitter" role="img"><use xlink:href="#twitter"></use></svg>
 </a>
 
   
@@ -405,7 +407,7 @@ x_t =& Y_t \\
 
     
 
-    <a class="button" target="_blank" href="https://pinterest.com/pin/create/button/?url=http://localhost:4000/statistics/2017/10/25/Autoregression/&amp;description=Autoregressive%20Models&amp;media=/assets/pics/logo.png%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20" title="Button - Pinterest" style="background: #BD081C">Pinterest  <svg class="icon  icon--pinterest" role="img"><use xlink:href="#pinterest"></use></svg>
+    <a class="button" target="_blank" href="https://pinterest.com/pin/create/button/?url=http://localhost:4000/statistics/2017/10/25/Autoregression/&amp;description=Decomposition%20of%20Autoregressive%20Models&amp;media=/assets/pics/logo.png%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20" title="Button - Pinterest" style="background: #BD081C">Pinterest  <svg class="icon  icon--pinterest" role="img"><use xlink:href="#pinterest"></use></svg>
 </a>
 
   
@@ -416,7 +418,7 @@ x_t =& Y_t \\
 
     
 
-    <a class="button" target="_blank" href="https://www.linkedin.com/shareArticle?url=http://localhost:4000/statistics/2017/10/25/Autoregression/&amp;title=Autoregressive%20Models&amp;source=Aaron%20Niskin's%20Blog&amp;summary=Time%20series.%20It's%20a%20thing!%20It's%20a%20thing%20that%20involves%20some%20Linear%20Algebra%20and%20other%20beautiful%20things!%20You%20won't%20believe%20what%20beautiful%20things%20it%20draws%20from!%20%5Benter%20more%20clickbait%20here%5D%0A&amp;mini=true%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20" title="Button - LinkedIn" style="background: #0077B5">LinkedIn  <svg class="icon  icon--linkedin" role="img"><use xlink:href="#linkedin"></use></svg>
+    <a class="button" target="_blank" href="https://www.linkedin.com/shareArticle?url=http://localhost:4000/statistics/2017/10/25/Autoregression/&amp;title=Decomposition%20of%20Autoregressive%20Models&amp;source=Aaron%20Niskin's%20Blog&amp;summary=We%20discuss%20the%20decomposition%20of%20AR%20models%20into%20components,%20and%20how%20eigenvalues%20are%20involved%20(because%20they%20always%20are).%0A&amp;mini=true%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20" title="Button - LinkedIn" style="background: #0077B5">LinkedIn  <svg class="icon  icon--linkedin" role="img"><use xlink:href="#linkedin"></use></svg>
 </a>
 
   
@@ -427,7 +429,7 @@ x_t =& Y_t \\
 
     
 
-    <a class="button" target="_blank" href="https://tumblr.com/widgets/share/tool?canonicalUrl=http://localhost:4000/statistics/2017/10/25/Autoregression/&amp;tags=&amp;caption=Autoregressive%20Models%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20" title="Button - tumblr" style="background: #36465D">tumblr  <svg class="icon  icon--tumblr" role="img"><use xlink:href="#tumblr"></use></svg>
+    <a class="button" target="_blank" href="https://tumblr.com/widgets/share/tool?canonicalUrl=http://localhost:4000/statistics/2017/10/25/Autoregression/&amp;tags=&amp;caption=Decomposition%20of%20Autoregressive%20Models%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20" title="Button - tumblr" style="background: #36465D">tumblr  <svg class="icon  icon--tumblr" role="img"><use xlink:href="#tumblr"></use></svg>
 </a>
 
   
@@ -438,7 +440,7 @@ x_t =& Y_t \\
 
     
 
-    <a class="button" target="_blank" href="https://reddit.com/submit?url=http://localhost:4000/statistics/2017/10/25/Autoregression/&amp;title=Autoregressive%20Models&amp;resubmit=true%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20" title="Button - Reddit" style="background: #FF4500">Reddit  <svg class="icon  icon--reddit" role="img"><use xlink:href="#reddit"></use></svg>
+    <a class="button" target="_blank" href="https://reddit.com/submit?url=http://localhost:4000/statistics/2017/10/25/Autoregression/&amp;title=Decomposition%20of%20Autoregressive%20Models&amp;resubmit=true%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20" title="Button - Reddit" style="background: #FF4500">Reddit  <svg class="icon  icon--reddit" role="img"><use xlink:href="#reddit"></use></svg>
 </a>
 
   
@@ -449,7 +451,7 @@ x_t =& Y_t \\
 
     
 
-    <a class="button" target="_blank" href="https://news.ycombinator.com/submitlink?u=http://localhost:4000/statistics/2017/10/25/Autoregression/&amp;t=Autoregressive%20Models%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20" title="Button - Hacker News" style="background: #ff6600">Hacker News  <svg class="icon  icon--hackernews" role="img"><use xlink:href="#hackernews"></use></svg>
+    <a class="button" target="_blank" href="https://news.ycombinator.com/submitlink?u=http://localhost:4000/statistics/2017/10/25/Autoregression/&amp;t=Decomposition%20of%20Autoregressive%20Models%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20" title="Button - Hacker News" style="background: #ff6600">Hacker News  <svg class="icon  icon--hackernews" role="img"><use xlink:href="#hackernews"></use></svg>
 </a>
 
   
@@ -460,7 +462,7 @@ x_t =& Y_t \\
 
     
 
-    <a class="button" target="_blank" href="https://www.designernews.co/submit?url=http://localhost:4000/statistics/2017/10/25/Autoregression/&amp;title=Autoregressive%20Models%0A%20%20%20%20%20%20%0A%20%20%20%20" title="Button - Designer News" style="background: #2D72D9">Designer News  <svg class="icon  icon--designernews" role="img"><use xlink:href="#designernews"></use></svg>
+    <a class="button" target="_blank" href="https://www.designernews.co/submit?url=http://localhost:4000/statistics/2017/10/25/Autoregression/&amp;title=Decomposition%20of%20Autoregressive%20Models%0A%20%20%20%20%20%20%0A%20%20%20%20" title="Button - Designer News" style="background: #2D72D9">Designer News  <svg class="icon  icon--designernews" role="img"><use xlink:href="#designernews"></use></svg>
 </a>
 
   
@@ -471,7 +473,7 @@ x_t =& Y_t \\
 
     
 
-    <a class="button" target="_blank" href="mailto:?subject=Autoregressive%20Models&amp;body=Hey,%20check%20out%20this:%20http://localhost:4000/statistics/2017/10/25/Autoregression/%0A%20%20%20%20" title="Button - Email" style="background: ">Email  <svg class="icon  icon--email" role="img"><use xlink:href="#email"></use></svg>
+    <a class="button" target="_blank" href="mailto:?subject=Decomposition%20of%20Autoregressive%20Models&amp;body=Hey,%20check%20out%20this:%20http://localhost:4000/statistics/2017/10/25/Autoregression/%0A%20%20%20%20" title="Button - Email" style="background: ">Email  <svg class="icon  icon--email" role="img"><use xlink:href="#email"></use></svg>
 </a>
 
   

@@ -1,9 +1,9 @@
 ---
-title: "Autoregressive Models"
+title: "Decomposition of Autoregressive Models"
 date: 2017-10-25 15:52:39.000000000 -05:00
 type: post
 excerpt: |
-  Time series. It's a thing! It's a thing that involves some Linear Algebra and other beautiful things! You won't believe what beautiful things it draws from! [enter more clickbait here]
+  We discuss the decomposition of AR models into components, and how eigenvalues are involved (because they always are).
 categories:
 - Statistics
 tags:
@@ -20,7 +20,7 @@ feature_image: "/assets/pics/2017/10/25_banner.jpg"
 
 ## Background
 
-This post will be a formal introduction into some of the theory of Autoregressive models. This post will develop the subject using what seems to be an atypical approach, but one that I find to be very elegant.
+This post will be a formal introduction into some of the theory of Autoregressive models. Specifically, we'll tackle how to decompose an AR(p) model into a bunch of AR(1) models. We'll discuss the interpretability of these models and howto therein. This post will develop the subject using what seems to be an atypical approach, but one that I find to be very elegant.
 
 <!-- more -->
 
@@ -38,7 +38,9 @@ Where $L$ is the **lag operator**. We define the AR polynomial $\Phi$ as $\Phi(L
 
 $$\Phi(L) = c\prod\limits_{i=1}^p(L-\varphi_i)$$
 
-Where $\varphi_i$ are the roots of $\Phi$. This polynomial will be the star of our show today, so we'll be investigating several of its properties. First, let's investigate the conditions under which it's invertible.
+Where $\varphi_i$ are the roots of $\Phi$. This polynomial will be the star of our show today. In fact, if we want to understand $\Phi$ (the AR process we're considering), we need only understand each $x_t = \varphi_ix_{t-1} + w_t$ model. We'll actually prove this later.
+
+We'll be investigating several of its properties but first (just for fun) let's investigate the conditions under which it's invertible.
 
 We can reduce the problem of determining whether or not the AR polynomial is invertible to the problem of inverting each factor. After all, the polynomial is invertible if and only if each factor is. So let's restrict our considerations to just a single factor for the time being. When will $x-\lambda$ be invertible?
 
