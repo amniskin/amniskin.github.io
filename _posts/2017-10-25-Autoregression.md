@@ -197,8 +197,8 @@ So indeed, $x_t$ is a linear combination of $p$ many AR(1) processes. In fact, s
 $$\begin{align*}
 \tilde x_{t,i} =& \lambda_i\tilde x_{t-1,i} + w_t \\
 \tilde x_{t,i} - \lambda_i\tilde x_{t-1,i} =& w_{t,i} \\
-\left(1-\lambda_iL\right)\tilde x_{t-1,i} =& w_{t,i} \\
-\frac{-1}{\lambda_i}\left(L-\lambda_i\right)\tilde x_{t-1,i} =& w_{t,i} \\
+\left(1-\lambda_iL\right)\tilde x_{t,i} =& w_{t,i} \\
+\frac{-1}{\lambda_i}\left(L-\lambda_i\right)\tilde x_{t,i} =& w_{t,i} \\
 \end{align*}$$
 
 Where $\lambda_i$ is the $i$th eigenvalue of $A$ (hence the $(i,i)$th element of $\bar A$). So we see that the AR(1) processes each have their respective roots from the roots of the original AR polynomial $\Phi$. Pretty cool, right?

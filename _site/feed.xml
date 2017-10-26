@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-10-26T14:09:22-04:00</updated><id>http://localhost:4000/</id><title type="html">Aaron Niskin’s Blog</title><subtitle>Not just another blog! Now with more... Aaron!</subtitle><author><name>amniskin</name></author><entry><title type="html">Autoregressive Models</title><link href="http://localhost:4000/statistics/2017/10/25/Autoregression/" rel="alternate" type="text/html" title="Autoregressive Models" /><published>2017-10-25T16:52:39-04:00</published><updated>2017-10-25T16:52:39-04:00</updated><id>http://localhost:4000/statistics/2017/10/25/Autoregression</id><content type="html" xml:base="http://localhost:4000/statistics/2017/10/25/Autoregression/">&lt;h1 id=&quot;autoregression&quot;&gt;Autoregression&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-10-26T14:13:01-04:00</updated><id>http://localhost:4000/</id><title type="html">Aaron Niskin’s Blog</title><subtitle>Not just another blog! Now with more... Aaron!</subtitle><author><name>amniskin</name></author><entry><title type="html">Autoregressive Models</title><link href="http://localhost:4000/statistics/2017/10/25/Autoregression/" rel="alternate" type="text/html" title="Autoregressive Models" /><published>2017-10-25T16:52:39-04:00</published><updated>2017-10-25T16:52:39-04:00</updated><id>http://localhost:4000/statistics/2017/10/25/Autoregression</id><content type="html" xml:base="http://localhost:4000/statistics/2017/10/25/Autoregression/">&lt;h1 id=&quot;autoregression&quot;&gt;Autoregression&lt;/h1&gt;
 
 &lt;h2 id=&quot;background&quot;&gt;Background&lt;/h2&gt;
 
@@ -190,8 +190,8 @@ x_t =&amp; Y_t \\
 \begin{align*}
 \tilde x_{t,i} =&amp; \lambda_i\tilde x_{t-1,i} + w_t \\
 \tilde x_{t,i} - \lambda_i\tilde x_{t-1,i} =&amp; w_{t,i} \\
-\left(1-\lambda_iL\right)\tilde x_{t-1,i} =&amp; w_{t,i} \\
-\frac{-1}{\lambda_i}\left(L-\lambda_i\right)\tilde x_{t-1,i} =&amp; w_{t,i} \\
+\left(1-\lambda_iL\right)\tilde x_{t,i} =&amp; w_{t,i} \\
+\frac{-1}{\lambda_i}\left(L-\lambda_i\right)\tilde x_{t,i} =&amp; w_{t,i} \\
 \end{align*} %]]&gt;&lt;/script&gt;
 
 &lt;p&gt;Where $\lambda_i$ is the $i$th eigenvalue of $A$ (hence the $(i,i)$th element of $\bar A$). So we see that the AR(1) processes each have their respective roots from the roots of the original AR polynomial $\Phi$. Pretty cool, right?&lt;/p&gt;
