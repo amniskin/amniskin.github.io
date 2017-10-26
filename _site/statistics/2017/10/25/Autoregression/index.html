@@ -27,35 +27,32 @@
 
 		
 			<!-- Begin Jekyll SEO tag v2.1.0 -->
-<meta property="og:title" content="Aaron Niskin’s Blog">
-<meta name="description" content="Not just another blog! Now with more… Aaron!">
-<meta property="og:description" content="Not just another blog! Now with more… Aaron!">
-<link rel="canonical" href="http://localhost:4000/blog/">
-<meta property="og:url" content="http://localhost:4000/blog/">
+<title>Autoregressive Models - Aaron Niskin’s Blog</title>
+<meta property="og:title" content="Autoregressive Models">
+<meta name="description" content="Time series. It’s a thing! It’s a thing that involves some Linear Algebra and other beautiful things! You won’t believe what beautiful things it draws from! [enter more clickbait here]">
+<meta property="og:description" content="Time series. It’s a thing! It’s a thing that involves some Linear Algebra and other beautiful things! You won’t believe what beautiful things it draws from! [enter more clickbait here]">
+<link rel="canonical" href="http://localhost:4000/statistics/2017/10/25/Autoregression/">
+<meta property="og:url" content="http://localhost:4000/statistics/2017/10/25/Autoregression/">
 <meta property="og:site_name" content="Aaron Niskin’s Blog">
 <meta property="og:image" content="http://localhost:4000/assets/pics/logo.png">
-<link rel="next" href="http://localhost:4000/blog/page2">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2017-10-25T16:52:39-04:00">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@amniskin">
 <meta name="twitter:creator" content="@amniskin">
 <script type="application/ld+json">
 {"@context": "http://schema.org",
-"@type": "WebPage",
-"headline": "Aaron Niskin’s Blog",
+"@type": "BlogPosting",
+"headline": "Autoregressive Models",
 "image": "http://localhost:4000/assets/pics/logo.png",
-"description": "Not just another blog! Now with more… Aaron!",
+"datePublished": "2017-10-25T16:52:39-04:00",
+"description": "Time series. It’s a thing! It’s a thing that involves some Linear Algebra and other beautiful things! You won’t believe what beautiful things it draws from! [enter more clickbait here]",
 "publisher": {"@type": "Organization",
 "logo": {"@type": "ImageObject",
 "url": "http://localhost:4000/assets/pics/logo.png"}},
-"url": "http://localhost:4000/blog/"}</script>
+"url": "http://localhost:4000/statistics/2017/10/25/Autoregression/"}</script>
 <!-- End Jekyll SEO tag -->
 
-
-			
-			<title>Posts - Aaron Niskin's Blog</title>
-			<meta property="og:title" content="Posts">
-			<meta name="description" content="My thoughts and ideas">
-			<meta property="og:description" content="My thoughts and ideas">
 		
 
     <link rel="stylesheet" href="/assets/styles.css">
@@ -66,7 +63,7 @@
 <link rel="shortcut icon" href="/assets/pics/logo.png">
 
 	</head>
-	<body class="layout-blog  ">
+	<body class="layout-post  autoregressive-models">
 		<svg xmlns="http://www.w3.org/2000/svg" style="height: 0; position: absolute" xmlns:xlink="http://www.w3.org/1999/xlink">
   <symbol id="codepen" viewbox="0 0 16 16"><path d="M15.988 5.443c-.004-.02-.007-.04-.012-.058l-.01-.033c-.006-.017-.012-.034-.02-.05-.003-.012-.01-.023-.014-.034l-.023-.045-.02-.032-.03-.04-.024-.03c-.01-.013-.022-.026-.034-.038l-.027-.027-.04-.032-.03-.024-.012-.01L8.38.117c-.23-.155-.53-.155-.76 0L.305 4.99.296 5c-.012.007-.022.015-.032.023-.014.01-.027.02-.04.032l-.027.027-.034.037-.024.03-.03.04c-.006.012-.013.022-.02.033l-.023.045-.015.034c-.007.016-.012.033-.018.05l-.01.032c-.005.02-.01.038-.012.058l-.006.03C.002 5.5 0 5.53 0 5.56v4.875c0 .03.002.06.006.09l.007.03c.003.02.006.04.013.058l.01.033c.006.018.01.035.018.05l.015.033c.006.016.014.03.023.047l.02.03c.008.016.018.03.03.042.007.01.014.02.023.03.01.012.02.025.034.036.01.01.018.02.028.026l.04.033.03.023.01.01 7.31 4.876c.116.078.248.117.382.116.134 0 .266-.04.38-.116l7.314-4.875.01-.01c.012-.007.022-.015.032-.023.014-.01.027-.02.04-.032l.027-.027.034-.037.024-.03.03-.04.02-.032.023-.046.015-.033.018-.052.01-.033c.005-.02.01-.038.013-.058 0-.01.003-.02.004-.03.004-.03.006-.06.006-.09V5.564c0-.03-.002-.06-.006-.09l-.007-.03zM8 9.626L5.568 8 8 6.374 10.432 8 8 9.626zM7.312 5.18l-2.98 1.993-2.406-1.61 5.386-3.59v3.206zM3.095 8l-1.72 1.15v-2.3L3.095 8zm1.237.828l2.98 1.993v3.208l-5.386-3.59 2.406-1.61zm4.355 1.993l2.98-1.993 2.407 1.61-5.387 3.59v-3.206zM12.905 8l1.72-1.15v2.3L12.905 8zm-1.237-.827L8.688 5.18V1.97l5.386 3.59-2.406 1.61z" fill-rule="nonzero"></path></symbol>
   <symbol id="dribbble" viewbox="0 0 16 16"><path d="M8 16c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm6.747-6.905c-.234-.074-2.115-.635-4.257-.292.894 2.456 1.258 4.456 1.328 4.872 1.533-1.037 2.624-2.68 2.93-4.58zM10.67 14.3c-.102-.6-.5-2.688-1.46-5.18l-.044.014C5.312 10.477 3.93 13.15 3.806 13.4c1.158.905 2.614 1.444 4.194 1.444.947 0 1.85-.194 2.67-.543zm-7.747-1.72c.155-.266 2.03-3.37 5.555-4.51.09-.03.18-.056.27-.08-.173-.39-.36-.778-.555-1.16C4.78 7.85 1.47 7.807 1.17 7.8l-.003.208c0 1.755.665 3.358 1.756 4.57zM1.31 6.61c.307.005 3.122.017 6.318-.832-1.132-2.012-2.353-3.705-2.533-3.952-1.912.902-3.34 2.664-3.784 4.785zM6.4 1.368c.188.253 1.43 1.943 2.548 4 2.43-.91 3.46-2.293 3.582-2.468C11.323 1.827 9.736 1.176 8 1.176c-.55 0-1.087.066-1.6.19zm6.89 2.322c-.145.194-1.29 1.662-3.816 2.694.16.325.31.656.453.99.05.117.1.235.147.352 2.274-.286 4.533.172 4.758.22-.015-1.613-.59-3.094-1.543-4.257z"></path></symbol>
@@ -108,7 +105,7 @@
         <a href="/" title="Page - Home">Home</a>
       </li>
     
-      <li class="item  item--nav  item--current">
+      <li class="item  item--nav">
         <a href="/blog/" title="Page - Blog">Blog</a>
       </li>
     
@@ -131,9 +128,9 @@
 
 
 
-  <div class="feature" style="background-image: url(/assets/pics/skyplane.JPG)">
+  <div class="feature" style="background-image: url(/assets/pics/2017/10/25_banner.jpg)">
       <div class="container  typeset">
-        <p>Welcome to the blog</p>
+        
 
       </div>
   </div>
@@ -145,111 +142,391 @@
 
 <main class="main  container">
 
-	<div class="content">
+	<article class="article  article--post  content  typeset">
 
-    <article class="article  article--page  typeset">
-
-			
-			<h1>Posts</h1>
-
-			<p>My thoughts and ideas</p>
-
-
-    </article>
-
-    
-
-	<section class="section  typeset">
-		<ul class="list  list--posts">
-			
-				<li class="item  item--post">
-					<article class="article  article--post">
-
-						<h2><a href="/statistics/2017/10/25/Autoregression/" title="Post - Autoregressive Models">Autoregressive Models</a></h2>
-						<small class="small  post-meta">
+    <h1>Autoregressive Models</h1>
+		<small class="small  post-meta">
   <time datetime="2017-10-25T16:52:39-04:00" class="time">25 Oct 2017</time>
 </small>
 
-						<p>Time series. It’s a thing! It’s a thing that involves some Linear Algebra and other beautiful things! You won’t believe what beautiful things it draws from! [enter more clickbait here]</p>
+    <h1 id="autoregression">Autoregression</h1>
+
+<h2 id="background">Background</h2>
+
+<p>This post will be a formal introduction into some of the theory of Autoregressive models. This post will develop the subject using what seems to be an atypical approach, but one that I find to be very elegant.</p>
+
+<!-- more -->
+
+<h1 id="the-traditional-way">The traditional way</h1>
+
+<p>Let $x_t$ be an AR(p) process. So $x_t = \sum\limits_{i=1}^pa_ix_{t-i} + w_t$. We can express $x_t$ thusly:</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align*}
+x_t =& \sum\limits_{i=1}^pa_ix_{t-i} + w_t \\
+x_t - \sum\limits_{i=1}^pa_ix_{t-i} =& w_t \\
+\left(1 - \sum\limits_{i=1}^pa_iL^i\right)x_t =& w_t
+\end{align*} %]]></script>
+
+<p>Where $L$ is the <strong>lag operator</strong>. We define the AR polynomial $\Phi$ as $\Phi(L) := \left(1 - \sum\limits_{i=1}^pa_iL^i\right)$. Then as long as we’re considering this polynomial to be over an algebraically closed field (like $\mathbb{C}$), we can factor this polynomial. So</p>
+
+<script type="math/tex; mode=display">\Phi(L) = c\prod\limits_{i=1}^p(L-\varphi_i)</script>
+
+<p>Where $\varphi_i$ are the roots of $\Phi$. This polynomial will be the star of our show today, so we’ll be investigating several of its properties. First, let’s investigate the conditions under which it’s invertible.</p>
+
+<p>We can reduce the problem of determining whether or not the AR polynomial is invertible to the problem of inverting each factor. After all, the polynomial is invertible if and only if each factor is. So let’s restrict our considerations to just a single factor for the time being. When will $x-\lambda$ be invertible?</p>
+
+<p>Now, we recall the Taylor Series Expansion formula from our trusty calculus class.</p>
+
+<script type="math/tex; mode=display">f(x) = \sum\limits_{i=0}^\infty \frac{f^{(i)}(a)}{i!}(x-a)^i</script>
+
+<p>In general, we tend to use $a=0$ as a good arbitrary choice (the Maclaurin Series), resulting in:</p>
+
+<script type="math/tex; mode=display">f(x) = \sum\limits_{i=0}^\infty \frac{f^{(i)}(0)}{i!}x^i</script>
+
+<p>Well, if we consider the Taylor expansion of $\frac{1}{x-\lambda}$, we find</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align*}
+\frac{1}{x-\lambda} =& \frac{-1}{\lambda}(x) + (-1)^1\frac{-1}{\lambda^2}x^2 + (-1)^2\frac{-1}{\lambda^3}x^3 + ... \\
+=& \sum\limits_{i=0}^\infty (-1)^{i+1}\frac{1}{\lambda^{i+1}}x^{i+1} \\
+=& \sum\limits_{i=1}^\infty (-1)^{i}\frac{1}{\lambda^{i}}x^{i}
+\end{align*} %]]></script>
+
+<p>Which is square summable if and only if $|\lambda| &gt; 1$. So we see that if the AR roots are all outside the unit circle, then the AR polynomial will be invertible (in such a case, the AR process is called <strong>causal</strong>).</p>
+
+<h1 id="the-new-approach">The new(?) approach</h1>
+
+<h2 id="definition">Definition</h2>
+
+<p>Let $X_t\in \mathbb{R}^n, A_i\in\mathbb{R}^{n\times n}, B\in\mathbb{R}^{n\times n}$ – diagonal, and $p\in\mathbb{N}_{&gt;0}$. Also let, $W_t$ be $n$ dimensional white noise. Then, $X_t$ is called a VAR(p) process if,</p>
+
+<script type="math/tex; mode=display">X_t = \sum\limits_{i=1}^p A_iX_{t-i} + BW_t</script>
+
+<p>Basically a VAR(p) model is an analogue of AR(p) models where the scalars are matrices and the variable itself is a vector. The purpose of $B$ is to scale the noise per coordinate. So for instance, in the example we’ll be doing a little below, there will only be noise added to the first coordinate and therefore our $B$ will have a 1 in the top left entry and zero everywhere else.</p>
+
+<p>Furthermore, let’s say that we don’t directly observe $X_t$ directly, but rather we observe some $Y_t$ that’s a linear function of $X_t$ (plus some noise). Formally, we observe $Y_t$ s.t.:</p>
+
+<script type="math/tex; mode=display">Y_t = C X_t + D U_t</script>
+
+<p>Where $Y_t \in\mathbb{R}^m, C\in\mathbb{R}^{m\times n}, D\in \mathbb{R}^{m\times m}$ – diagonal. And again, $U_t$ is $m$ dimensional white noise.</p>
+
+<p>Here $D$ serves the same purpose as $B$ did above.</p>
+
+<p>This is called a “State Space” model.</p>
+
+<h2 id="examplificate">Examplificate</h2>
+
+<p>How does this relate to our star (the AR polynomial $\Phi$)? Let’s try to express an AR(p) process as a VAR(1) process…</p>
+
+<p>Let $x_t$ be an AR(p) process. That is to say, $x_t = \sum\limits_{i=1}^p a_ix_{t-i} + w_t$ where $w_t$ is some white noise process.</p>
+
+<p>We define</p>
+
+<script type="math/tex; mode=display">X_t := \left[\begin{matrix} x_t \\ x_{t-1} \\ \vdots \\ x_{t-(p-1)} \end{matrix}\right]</script>
+
+<p>Then, we can see that the first coordinate of $X_t$ is always $x_t$. Our notation for this will be $X_t[0] = x_t$.</p>
+
+<p>Furthermore, let</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+A = \left[\begin{matrix}
+a_1 & a_2 & \dots & a_{p-1} & a_p \\
+1 & 0 & \dots & 0 & 0 \\
+0 & 1 & \dots & 0 & 0 \\
+ &  & \ddots & & \\
+0 & \dots & 0 & 1 & 0 \\
+\end{matrix} \right] %]]></script>
+
+<p>And finally, we’re going to let $W_t$ be such that $W_t[0] = w_t$.</p>
+
+<p>We can see that for $0 &lt; i &lt; p$, we have $(AX_{t-1})[i] = x_{t-i}$, and $(AX_{t-1})[0] = \sum\limits_{i=1}^p a_i x_{t-i} = x_t - w_t$. As it stands, $AX_{t-1}$ is almost $X_t$, just without the added noise in the first coordinate. So let’s add noise to only the first coordinate. To this end, let’s make our $B$ be as we said earlier (zeros everywhere except for the top left entry, which will be one). We now have:</p>
+
+<script type="math/tex; mode=display">X_t = AX_{t-1} + BW_t</script>
+
+<p>Now we want $Y_t = x_t$. So we set $C$ to $\left[\begin{matrix}1 &amp; 0 &amp; 0 &amp; \dots &amp; 0\end{matrix}\right]$. That way, $Y_t = CX_t = x_t$ and all is right with the world.</p>
+
+<p>So yay! We’ve expressed this AR(p) process as a $p$ dimensional $VAR(1)$ process! So… Why?</p>
+
+<h2 id="why-do">Why do?</h2>
+
+<p>Well, one natural question to ask at this point is, what are the eigenvalues of $A$?</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align*}
+0 =& \det(A - \lambda I) \\
+=& \left\|\begin{matrix}
+a_1 - \lambda & a_2 & \dots & a_{p-1} & a_p \\
+1 & -\lambda & \dots & 0 & 0 \\
+0 & 1 & \dots & 0 & 0 \\
+ &  & \ddots & & \\
+0 & \dots & 0 & 1 & -\lambda \\
+\end{matrix} \right\| \\
+=& (-\lambda)^p + a_1(-\lambda)^{p-1} - a_2(-\lambda)^{p-2} + \dots + (-1)^{p-1}a_p
+\end{align*} %]]></script>
+
+<p>This polynomial is the characteristic polynomial of $A$, so the roots of this polynomial are the eigenvalues of $A$. Let’s see how this relates to $\Phi$…</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align*}
+0 =& (-\lambda)^p + a_1(-\lambda)^{p-1} - a_2(-\lambda)^{p-2} + \dots + (-1)^{p-1}a_p \\
+(-\lambda)^p(0) =& 1 - a_1\lambda^{-1} - a_2\lambda^{-2} - \dots - a_p\lambda^{-p} \\
+\text{Define } L :=& \lambda^{-1} \\
+0 =& 1 - a_1L - a_2L^2 - \dots - a_pL^p \\
+=& 1 - \sum\limits_{i=1}^pa_iL^i \\
+=& \Phi(L)
+\end{align*} %]]></script>
+
+<p>So the characteristic polynomial is really just $\Phi(L)$ revisited! Furthermore, check this sweetness out…</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align*}
+\Phi(L) =& c\prod\limits_{i=1}^p\left(L-\varphi_i\right) \\
+=& c\prod\limits_{i=1}^p\left(\lambda^{-1}-\varphi_i\right) \Rightarrow \\
+\lambda_i =& \frac{1}{\varphi_i}
+\end{align*} %]]></script>
+
+<p>So we can see that the eigenvalues are actually intimately related with the roots (in fact they’re inverses of each other)! With that in mind, let’s see what happens when we try to diagonalize this matrix $A$. Firstly, let’s assume that $A$ matrix is diagonalizable. I.e., let</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align*}
+\bar H^{-1}AH =& A \Leftrightarrow \\
+\bar A =& HAH^{-1}
+\end{align*} %]]></script>
+
+<p>where $H$ is a coordinate transformation (an invertible map) and $\bar A$ is diagonal.</p>
+
+<p>Then</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align*}
+X_t =& H^{-1}\bar AH X_{t-1} + BW_t \\
+=& H^{-1}\left(\bar AHX_{t-1} + HBW_t\right)
+\end{align*} %]]></script>
+
+<p>So if we let $\tilde X_t = HX_t$, we get</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align*}
+\tilde X_t =& HX_t \\
+=& HH^{-1}\left(\bar AHX_{t-1} + HBW_t\right) \\
+=& \bar AHX_{t-1} + HBW_t \\
+=& \bar A\tilde X_{t-1} + HBW_t
+\end{align*} %]]></script>
+
+<p>So $\tilde X_t$ is a bunch of AR(1) processes (because the matrix $\bar A$ is diagonal), and,</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align*}
+Y_t =& CX_t \text{ because $U_t=0$ for our scenario}\\
+=& CH^{-1}\tilde X_t \\
+=& \left(CH^{-1}\right)\tilde X_t
+\end{align*} %]]></script>
+
+<p>Which is to say that $Y_t$ is a linear combination of AR(1) processes! So we started out with a general AR(p) process, and found that expressing it as a VAR(1) model allows us to see that this is just a linear combination of AR(1) processes. I think that’s pretty cool. But let’s investigate this a bit further…</p>
+
+<h1 id="what-more">What more?!</h1>
+
+<p>As per our previous section, we have that $Y_t$, which was really just $x_t$ – our original AR(p) variable, is a linear combination of AR(1) models. More specifically, if we let $F := CH^{-1}$, then</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align*}
+x_t =& Y_t \\
+=& F\tilde X_t
+\end{align*} %]]></script>
+
+<p>So indeed, $x_t$ is a linear combination of $p$ many AR(1) processes. In fact, since $\tilde X_t = \bar A \tilde X_{t-1} + \left(HB\right)W_t$, we know the AR(1) models explicitly:</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align*}
+\tilde x_{t,i} =& \lambda_i\tilde x_{t-1,i} + w_t \\
+\tilde x_{t,i} - \lambda_i\tilde x_{t-1,i} =& w_{t,i} \\
+\left(1-\lambda_iL\right)\tilde x_{t-1,i} =& w_{t,i} \\
+\frac{-1}{\lambda_i}\left(L-\lambda_i\right)\tilde x_{t-1,i} =& w_{t,i} \\
+\end{align*} %]]></script>
+
+<p>Where $\lambda_i$ is the $i$th eigenvalue of $A$ (hence the $(i,i)$th element of $\bar A$). So we see that the AR(1) processes each have their respective roots from the roots of the original AR polynomial $\Phi$. Pretty cool, right?</p>
+
+<h2 id="summary">Summary</h2>
+
+<p>So we can express any AR(p) model as a linear combination of AR(1) processes (albeit with correlated noise terms), where each AR(1) process is determined by the roots of the AR polynomial (or the characteristic polynomial).</p>
+
+<p>We’ve essentially reduced the problem of studying AR(p) models to studying their eigenvalues (or AR roots).</p>
 
 
-					</article>
-				</li>
-			
-				<li class="item  item--post">
-					<article class="article  article--post">
+		<div class="share">
+  
+    
+    
+    
+    
 
-						<h2><a href="/statistics/2017/04/19/MCMC/" title="Post - Markov Chain Monte Carlo">Markov Chain Monte Carlo</a></h2>
-						<small class="small  post-meta">
-  <time datetime="2017-04-19T16:52:39-04:00" class="time">19 Apr 2017</time>
-</small>
+    
 
-						<p>Markov Chain Monte Carlo is a tool for sampling otherwise intractible distributions. In this post, we’ll go through some descriptions, reasoning, and examples therein.</p>
-
-
-					</article>
-				</li>
-			
-				<li class="item  item--post">
-					<article class="article  article--post">
-
-						<h2><a href="/statistics/2017/02/21/What-Is-Linear-Regression/" title="Post - Linear Regression -- The Basics">Linear Regression -- The Basics</a></h2>
-						<small class="small  post-meta">
-  <time datetime="2017-02-21T02:24:43-05:00" class="time">21 Feb 2017</time>
-</small>
-
-						<p>Linear Regression is the bedrock of Machine Learning. We cover the basics therein, some theory involved, and give some relevant examples.</p>
-
-
-					</article>
-				</li>
-			
-				<li class="item  item--post">
-					<article class="article  article--post">
-
-						<h2><a href="/probability/2017/02/18/probability-a-measure-theoretic-approach/" title="Post - Probability -- A Measure Theoretic Approach">Probability -- A Measure Theoretic Approach</a></h2>
-						<small class="small  post-meta">
-  <time datetime="2017-02-18T09:42:55-05:00" class="time">18 Feb 2017</time>
-</small>
-
-						<p>We cover probability from a measure theoretic approach</p>
-
-
-					</article>
-				</li>
-			
-		</ul>
-		<nav class="nav  nav--paginator">
+    <a class="button" target="_blank" href="https://twitter.com/intent/tweet/?url=http://localhost:4000/statistics/2017/10/25/Autoregression/&amp;text=Autoregressive%20Models&amp;via=amniskin%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20" title="Button - Twitter" style="background: #1DA1F2">Twitter  <svg class="icon  icon--twitter" role="img"><use xlink:href="#twitter"></use></svg>
+</a>
 
   
-    <span class="pagination  pagination--previous">← Previous</span>
+    
+    
+    
+    
+
+    
+
+    <a class="button" target="_blank" href="https://facebook.com/sharer/sharer.php?u=http://localhost:4000/statistics/2017/10/25/Autoregression/%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20" title="Button - facebook" style="background: #3B5998">facebook  <svg class="icon  icon--facebook" role="img"><use xlink:href="#facebook"></use></svg>
+</a>
+
   
+    
+    
+    
+    
 
-  <span class="pagination  pagination--counter">Page: 1 of 2</span>
+    
+
+    <a class="button" target="_blank" href="https://plus.google.com/share?url=http://localhost:4000/statistics/2017/10/25/Autoregression/%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20" title="Button - Google+" style="background: #DC4E41">Google+  <svg class="icon  icon--google+" role="img"><use xlink:href="#google+"></use></svg>
+</a>
 
   
-    <a href="/blog/page2" class="pagination  pagination--next">Next →</a>
+    
+    
+    
+    
+
+    
+
+    <a class="button" target="_blank" href="https://pinterest.com/pin/create/button/?url=http://localhost:4000/statistics/2017/10/25/Autoregression/&amp;description=Autoregressive%20Models&amp;media=/assets/pics/logo.png%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20" title="Button - Pinterest" style="background: #BD081C">Pinterest  <svg class="icon  icon--pinterest" role="img"><use xlink:href="#pinterest"></use></svg>
+</a>
+
   
+    
+    
+    
+    
 
-</nav>
+    
 
-	</section>
+    <a class="button" target="_blank" href="https://www.linkedin.com/shareArticle?url=http://localhost:4000/statistics/2017/10/25/Autoregression/&amp;title=Autoregressive%20Models&amp;source=Aaron%20Niskin's%20Blog&amp;summary=Time%20series.%20It's%20a%20thing!%20It's%20a%20thing%20that%20involves%20some%20Linear%20Algebra%20and%20other%20beautiful%20things!%20You%20won't%20believe%20what%20beautiful%20things%20it%20draws%20from!%20%5Benter%20more%20clickbait%20here%5D%0A&amp;mini=true%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20" title="Button - LinkedIn" style="background: #0077B5">LinkedIn  <svg class="icon  icon--linkedin" role="img"><use xlink:href="#linkedin"></use></svg>
+</a>
+
+  
+    
+    
+    
+    
+
+    
+
+    <a class="button" target="_blank" href="https://tumblr.com/widgets/share/tool?canonicalUrl=http://localhost:4000/statistics/2017/10/25/Autoregression/&amp;tags=&amp;caption=Autoregressive%20Models%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20" title="Button - tumblr" style="background: #36465D">tumblr  <svg class="icon  icon--tumblr" role="img"><use xlink:href="#tumblr"></use></svg>
+</a>
+
+  
+    
+    
+    
+    
+
+    
+
+    <a class="button" target="_blank" href="https://reddit.com/submit?url=http://localhost:4000/statistics/2017/10/25/Autoregression/&amp;title=Autoregressive%20Models&amp;resubmit=true%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20" title="Button - Reddit" style="background: #FF4500">Reddit  <svg class="icon  icon--reddit" role="img"><use xlink:href="#reddit"></use></svg>
+</a>
+
+  
+    
+    
+    
+    
+
+    
+
+    <a class="button" target="_blank" href="https://news.ycombinator.com/submitlink?u=http://localhost:4000/statistics/2017/10/25/Autoregression/&amp;t=Autoregressive%20Models%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20" title="Button - Hacker News" style="background: #ff6600">Hacker News  <svg class="icon  icon--hackernews" role="img"><use xlink:href="#hackernews"></use></svg>
+</a>
+
+  
+    
+    
+    
+    
+
+    
+
+    <a class="button" target="_blank" href="https://www.designernews.co/submit?url=http://localhost:4000/statistics/2017/10/25/Autoregression/&amp;title=Autoregressive%20Models%0A%20%20%20%20%20%20%0A%20%20%20%20" title="Button - Designer News" style="background: #2D72D9">Designer News  <svg class="icon  icon--designernews" role="img"><use xlink:href="#designernews"></use></svg>
+</a>
+
+  
+    
+    
+    
+    
+
+    
+
+    <a class="button" target="_blank" href="mailto:?subject=Autoregressive%20Models&amp;body=Hey,%20check%20out%20this:%20http://localhost:4000/statistics/2017/10/25/Autoregression/%0A%20%20%20%20" title="Button - Email" style="background: ">Email  <svg class="icon  icon--email" role="img"><use xlink:href="#email"></use></svg>
+</a>
+
+  
+</div>
 
 
+		
 
 
-  </div>
+  </article>
 
   <aside class="aside  typeset">
 
   
-    <h3>About this site</h3>
-    <p>Not just another blog! Now with more... Aaron!</p>
-  
 
   
 
   
+
+  
+    <h3>Related posts</h3>
+<ul class="list  list--posts">
+  
+    <li class="item  item--post">
+      <article class="article  article--post  typeset">
+
+        <h4><a href="/statistics/2017/04/19/MCMC/" title="Related post - Markov Chain Monte Carlo">Markov Chain Monte Carlo</a></h4>
+        <small class="small  post-meta">
+  <time datetime="2017-04-19T16:52:39-04:00" class="time">19 Apr 2017</time>
+</small>
+
+        <p>Markov Chain Monte Carlo is a tool for sampling otherwise intractible distributions. In this post, we’ll go through some descriptions,...
+
+      </p></article>
+    </li>
+  
+    <li class="item  item--post">
+      <article class="article  article--post  typeset">
+
+        <h4><a href="/statistics/2017/02/21/What-Is-Linear-Regression/" title="Related post - Linear Regression -- The Basics">Linear Regression -- The Basics</a></h4>
+        <small class="small  post-meta">
+  <time datetime="2017-02-21T02:24:43-05:00" class="time">21 Feb 2017</time>
+</small>
+
+        <p>Linear Regression is the bedrock of Machine Learning. We cover the basics therein, some theory involved, and give some relevant...
+
+      </p></article>
+    </li>
+  
+    <li class="item  item--post">
+      <article class="article  article--post  typeset">
+
+        <h4><a href="/probability/2017/02/18/probability-a-measure-theoretic-approach/" title="Related post - Probability -- A Measure Theoretic Approach">Probability -- A Measure Theoretic Approach</a></h4>
+        <small class="small  post-meta">
+  <time datetime="2017-02-18T09:42:55-05:00" class="time">18 Feb 2017</time>
+</small>
+
+        <p>We cover probability from a measure theoretic approach</p>
+
+
+      </article>
+    </li>
+  
+</ul>
 
   
 
@@ -323,7 +600,7 @@
       
     
       
-        <li class="item  item--nav  item--current">
+        <li class="item  item--nav">
           
       			
       			<a href="/blog/" title="Page - Posts">Posts</a>
