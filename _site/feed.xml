@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2018-04-12T23:41:06-04:00</updated><id>http://localhost:4000/</id><title type="html">Aaron Niskin’s Blog</title><subtitle>Not just another blog! Now with more... Aaron!</subtitle><author><name>amniskin</name></author><entry><title type="html">Decomposition of Autoregressive Models</title><link href="http://localhost:4000/statistics/2017/10/25/Autoregression/" rel="alternate" type="text/html" title="Decomposition of Autoregressive Models" /><published>2017-10-25T16:52:39-04:00</published><updated>2017-10-25T16:52:39-04:00</updated><id>http://localhost:4000/statistics/2017/10/25/Autoregression</id><content type="html" xml:base="http://localhost:4000/statistics/2017/10/25/Autoregression/">&lt;h1 id=&quot;autoregression&quot;&gt;Autoregression&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2018-04-12T23:44:35-04:00</updated><id>http://localhost:4000/</id><title type="html">Aaron Niskin’s Blog</title><subtitle>Not just another blog! Now with more... Aaron!</subtitle><author><name>amniskin</name></author><entry><title type="html">Decomposition of Autoregressive Models</title><link href="http://localhost:4000/statistics/2017/10/25/Autoregression/" rel="alternate" type="text/html" title="Decomposition of Autoregressive Models" /><published>2017-10-25T16:52:39-04:00</published><updated>2017-10-25T16:52:39-04:00</updated><id>http://localhost:4000/statistics/2017/10/25/Autoregression</id><content type="html" xml:base="http://localhost:4000/statistics/2017/10/25/Autoregression/">&lt;h1 id=&quot;autoregression&quot;&gt;Autoregression&lt;/h1&gt;
 
 &lt;h2 id=&quot;background&quot;&gt;Background&lt;/h2&gt;
 
@@ -130,7 +130,7 @@ a_1 - \lambda &amp; a_2 &amp; \dots &amp; a_{p-1} &amp; a_p \\
 &lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
 \begin{align*}
 0 =&amp; (-\lambda)^p + a_1(-\lambda)^{p-1} - a_2(-\lambda)^{p-2} + \dots + (-1)^{p-1}a_p \\
-(-\lambda)^p(0) =&amp; 1 - a_1\lambda^{-1} - a_2\lambda^{-2} - \dots - a_p\lambda^{-p} \\
+(-\lambda)^{-p}(0) =&amp; 1 - a_1\lambda^{-1} - a_2\lambda^{-2} - \dots - a_p\lambda^{-p} \\
 \text{Define } L :=&amp; \lambda^{-1} \\
 0 =&amp; 1 - a_1L - a_2L^2 - \dots - a_pL^p \\
 =&amp; 1 - \sum\limits_{i=1}^pa_iL^i \\
