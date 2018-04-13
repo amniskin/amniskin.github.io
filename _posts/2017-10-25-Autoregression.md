@@ -142,7 +142,7 @@ This polynomial is the characteristic polynomial of $A$, so the roots of this po
 
 $$\begin{align*}
 0 =& (-\lambda)^p + a_1(-\lambda)^{p-1} - a_2(-\lambda)^{p-2} + \dots + (-1)^{p-1}a_p \\
-(-\lambda)^p(0) =& 1 - a_1\lambda^{-1} - a_2\lambda^{-2} - \dots - a_p\lambda^{-p} \\
+(-\lambda)^{-p}(0) =& 1 - a_1\lambda^{-1} - a_2\lambda^{-2} - \dots - a_p\lambda^{-p} \\
 \text{Define } L :=& \lambda^{-1} \\
 0 =& 1 - a_1L - a_2L^2 - \dots - a_pL^p \\
 =& 1 - \sum\limits_{i=1}^pa_iL^i \\
