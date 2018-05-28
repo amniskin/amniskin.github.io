@@ -27,30 +27,30 @@
 
 		
 			<!-- Begin Jekyll SEO tag v2.1.0 -->
-<title>Probability – A Measure Theoretic Approach - Aaron Niskin’s Blog</title>
-<meta property="og:title" content="Probability – A Measure Theoretic Approach">
-<meta name="description" content="We cover probability from a measure theoretic approach">
-<meta property="og:description" content="We cover probability from a measure theoretic approach">
-<link rel="canonical" href="http://localhost:4000/probability/2017/02/18/probability-a-measure-theoretic-approach/">
-<meta property="og:url" content="http://localhost:4000/probability/2017/02/18/probability-a-measure-theoretic-approach/">
+<title>Let’s Cover Homology (pt 1) - Aaron Niskin’s Blog</title>
+<meta property="og:title" content="Let’s Cover Homology (pt 1)">
+<meta name="description" content="What does topology have to do with data?! And what is this topology thing anyway?">
+<meta property="og:description" content="What does topology have to do with data?! And what is this topology thing anyway?">
+<link rel="canonical" href="http://localhost:4000/statistics/mathematics/2018/04/12/homology/">
+<meta property="og:url" content="http://localhost:4000/statistics/mathematics/2018/04/12/homology/">
 <meta property="og:site_name" content="Aaron Niskin’s Blog">
 <meta property="og:image" content="http://localhost:4000/assets/pics/logo.png">
 <meta property="og:type" content="article">
-<meta property="article:published_time" content="2017-02-18T09:42:55-05:00">
+<meta property="article:published_time" content="2018-04-12T16:52:39-04:00">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@amniskin">
 <meta name="twitter:creator" content="@amniskin">
 <script type="application/ld+json">
 {"@context": "http://schema.org",
 "@type": "BlogPosting",
-"headline": "Probability – A Measure Theoretic Approach",
+"headline": "Let’s Cover Homology (pt 1)",
 "image": "http://localhost:4000/assets/pics/logo.png",
-"datePublished": "2017-02-18T09:42:55-05:00",
-"description": "We cover probability from a measure theoretic approach",
+"datePublished": "2018-04-12T16:52:39-04:00",
+"description": "What does topology have to do with data?! And what is this topology thing anyway?",
 "publisher": {"@type": "Organization",
 "logo": {"@type": "ImageObject",
 "url": "http://localhost:4000/assets/pics/logo.png"}},
-"url": "http://localhost:4000/probability/2017/02/18/probability-a-measure-theoretic-approach/"}</script>
+"url": "http://localhost:4000/statistics/mathematics/2018/04/12/homology/"}</script>
 <!-- End Jekyll SEO tag -->
 
 		
@@ -63,7 +63,7 @@
 <link rel="shortcut icon" href="/assets/pics/logo.png">
 
 	</head>
-	<body class="layout-post  probability-a-measure-theoretic-approach">
+	<body class="layout-post  let-s-cover-homology-pt-1">
 		<svg xmlns="http://www.w3.org/2000/svg" style="height: 0; position: absolute" xmlns:xlink="http://www.w3.org/1999/xlink">
   <symbol id="codepen" viewbox="0 0 16 16"><path d="M15.988 5.443c-.004-.02-.007-.04-.012-.058l-.01-.033c-.006-.017-.012-.034-.02-.05-.003-.012-.01-.023-.014-.034l-.023-.045-.02-.032-.03-.04-.024-.03c-.01-.013-.022-.026-.034-.038l-.027-.027-.04-.032-.03-.024-.012-.01L8.38.117c-.23-.155-.53-.155-.76 0L.305 4.99.296 5c-.012.007-.022.015-.032.023-.014.01-.027.02-.04.032l-.027.027-.034.037-.024.03-.03.04c-.006.012-.013.022-.02.033l-.023.045-.015.034c-.007.016-.012.033-.018.05l-.01.032c-.005.02-.01.038-.012.058l-.006.03C.002 5.5 0 5.53 0 5.56v4.875c0 .03.002.06.006.09l.007.03c.003.02.006.04.013.058l.01.033c.006.018.01.035.018.05l.015.033c.006.016.014.03.023.047l.02.03c.008.016.018.03.03.042.007.01.014.02.023.03.01.012.02.025.034.036.01.01.018.02.028.026l.04.033.03.023.01.01 7.31 4.876c.116.078.248.117.382.116.134 0 .266-.04.38-.116l7.314-4.875.01-.01c.012-.007.022-.015.032-.023.014-.01.027-.02.04-.032l.027-.027.034-.037.024-.03.03-.04.02-.032.023-.046.015-.033.018-.052.01-.033c.005-.02.01-.038.013-.058 0-.01.003-.02.004-.03.004-.03.006-.06.006-.09V5.564c0-.03-.002-.06-.006-.09l-.007-.03zM8 9.626L5.568 8 8 6.374 10.432 8 8 9.626zM7.312 5.18l-2.98 1.993-2.406-1.61 5.386-3.59v3.206zM3.095 8l-1.72 1.15v-2.3L3.095 8zm1.237.828l2.98 1.993v3.208l-5.386-3.59 2.406-1.61zm4.355 1.993l2.98-1.993 2.407 1.61-5.387 3.59v-3.206zM12.905 8l1.72-1.15v2.3L12.905 8zm-1.237-.827L8.688 5.18V1.97l5.386 3.59-2.406 1.61z" fill-rule="nonzero"></path></symbol>
   <symbol id="dribbble" viewbox="0 0 16 16"><path d="M8 16c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm6.747-6.905c-.234-.074-2.115-.635-4.257-.292.894 2.456 1.258 4.456 1.328 4.872 1.533-1.037 2.624-2.68 2.93-4.58zM10.67 14.3c-.102-.6-.5-2.688-1.46-5.18l-.044.014C5.312 10.477 3.93 13.15 3.806 13.4c1.158.905 2.614 1.444 4.194 1.444.947 0 1.85-.194 2.67-.543zm-7.747-1.72c.155-.266 2.03-3.37 5.555-4.51.09-.03.18-.056.27-.08-.173-.39-.36-.778-.555-1.16C4.78 7.85 1.47 7.807 1.17 7.8l-.003.208c0 1.755.665 3.358 1.756 4.57zM1.31 6.61c.307.005 3.122.017 6.318-.832-1.132-2.012-2.353-3.705-2.533-3.952-1.912.902-3.34 2.664-3.784 4.785zM6.4 1.368c.188.253 1.43 1.943 2.548 4 2.43-.91 3.46-2.293 3.582-2.468C11.323 1.827 9.736 1.176 8 1.176c-.55 0-1.087.066-1.6.19zm6.89 2.322c-.145.194-1.29 1.662-3.816 2.694.16.325.31.656.453.99.05.117.1.235.147.352 2.274-.286 4.533.172 4.758.22-.015-1.613-.59-3.094-1.543-4.257z"></path></symbol>
@@ -128,6 +128,13 @@
 
 
 
+  <div class="feature" style="background-image: url(/assets/pics/2018/04/12_banner.jpg)">
+      <div class="container  typeset">
+        
+
+      </div>
+  </div>
+
 
 
 </header>
@@ -137,105 +144,93 @@
 
 	<article class="article  article--post  content  typeset">
 
-    <h1>Probability -- A Measure Theoretic Approach</h1>
+    <h1>Let's Cover Homology (pt 1)</h1>
 		<small class="small  post-meta">
-  <time datetime="2017-02-18T09:42:55-05:00" class="time">18 Feb 2017</time>
+  <time datetime="2018-04-12T16:52:39-04:00" class="time">12 Apr 2018</time>
 </small>
 
-    <h2 id="probability-using-measure-theory">Probability using Measure Theory</h2>
+    <h1 id="topology">Topology</h1>
 
-<p>A mathematically rigorous definition of probability, and some examples therein.</p>
+<h2 id="what-is-it">What is it?</h2>
+
+<p>Topology is essentially the study of proximity, which is a close analogue for shape. The specifics of how that’s done are not really the point of this post. That’s all for this section.</p>
+
+<h2 id="how-is-it-related-to-analyzing-data">How is it related to analyzing data?</h2>
+
+<p>Most data analysis techniques are already about quantifying some geometric attributes. For instance, when you fit a linear model, you’re really just imposing an affine model on the data, and computing the appropriate parameters (slope and intercept). But these sorts of things work best if you have an idea for what an appropriate shape would be. That’s one area where topology might be able to help. But to hear more about that, you’ll have to wait for my next post.</p>
 
 <!-- more -->
 
-<h3 id="the-traditional-definition">The Traditional Definition:</h3>
+<p>There is a notion of equivalence (called isomorphism) of topological spaces (bi-continuous bijections). Basically, we consider two topological spaces to be equivalent if one can be continuously transformed into the other and back. That’s actually a very powerful description that captures a lot of non-linearities and things like that. For instance, an egg shape, a sphere, a pyramid, and a tetrahedron are all isomorphic topological spaces, but not a doughnut (torus). And those kinda make sense. But there are some counter-intuitive examples. For instance, if you were to take one of those long clown balloons and tie it up into a poodle, it would also be isomorphic to the bunch above. And, as the joke goes, donuts are isomorphic to coffee cups. I know what you’re thinking. This topology stuff sounds super cool.</p>
 
-<p>Consider a set \(  \Omega \) (called the <strong>sample space</strong>
-), and a function \(  X:\Omega\rightarrow\mathbb{R} \) (called a <strong>random variable</strong>
-.</p>
+<p>So topology would make a wonderful (admittedly incomplete) description of data. But there are some problems: mainly that this whole story breaks down in higher dimensions. Luckily, there is an analogue that can be computed.</p>
 
-<p>If \(  \Omega \) is countable (or finite), a function \(  \mathbb{P}:\Omega\rightarrow\mathbb{R} \) is called a <strong>probability distribution</strong>
- if it satisfies the following 2 conditions:</p>
+<h1 id="homology">Homology</h1>
 
-<ul>
-  <li>
-    <p>For each \(  x \in \Omega \), \(  \mathbb{P}(x) \geq 0 \)</p>
-  </li>
-  <li>
-    <p>If \(  A_i\cap A_j = \emptyset \), then \(  \mathbb{P}(\bigcup\limits_0^\infty A_i) = \sum\limits_0^\infty\mathbb{P}(A_i) \)</p>
-  </li>
-</ul>
+<h2 id="what-is-it-1">What is it?</h2>
 
-<p>And if \(  \Omega \) is uncountable, a function \(  F:\mathbb{R}\rightarrow\mathbb{R} \) is called a <strong>probability distribution</strong>
- or a <strong>cumulative distribution function</strong>
- if it satisfies the following 3 conditions:</p>
+<p>Homology is (in an overly-simplified sentence), counting the number of holes. That’s actually a lot more information than you might initially think. It’s actually sufficient to completely classify the space in lower dimensions, and a good approximation in higher ones. Either way, if we knew that info about our data, we’d capture a lot of the non-linear relationships. Either way, it’ll be fun, so let’s get into it.</p>
 
-<ul>
-  <li>
-    <p>For each \(  a,b\in\mathbb{R} \), \(  a &lt; b \rightarrow F(a)\leq F(b) \)</p>
-  </li>
-  <li>
-    <p>\(  \lim\limits_{x\to -\infty}F(x) = 0 \)</p>
-  </li>
-  <li>
-    <p>\(  \lim\limits_{x\to\infty}F(x) = 1 \)</p>
-  </li>
-</ul>
+<h1 id="how-to-computes">How to computes…</h1>
 
-<h3 id="the-intuition">The Intuition:</h3>
+<h2 id="triangulation">Triangulation</h2>
 
-<p>What idea are we even trying to capture with these seemingly disparate definitions for the same thing? Well, with the two cases taken separately it's somewhat obvious, but they don't seem to marry very well. The discrete case is giving us a pointwise estimation of something akin to the proportion of observations that should correspond to a value (in a perfect world). The continuous case is the same thing, but instead of corresponding to that particular value (which doesn't really even make sense in this case), the proportion corresponds to the point in question and everything less than it. The shaded region in the top picture below and the curve in the picture directly below it denote the cumulative density function of a standard normal distribution (don't worry too much about what that means for this post, but if you're doing anything with statistics, you should probably know a bit about that).</p>
+<h3 id="simplicies">Simplicies</h3>
 
-<p><img src="/assets/pics/2017/02/18-probability-a-measure-theoretic-approach_pdf-cdf1.png" alt="pdf vs cdf for Normal distribution" title="PDF vs CDF for Normal Distribution"></p>
+<p>A <a href="https://en.wikipedia.org/wiki/Simplex">simplex</a> is a collection of $n$ points with the property that no one point lies in the subspace defined by the other $n-1$ points. The idea is that it’s the minimal number of points with an $n-1$ dimensional convex hull – or, said differently, the minimal number of points to make an $n-1$ dimensional shape. For instance, if we consider $\mathbb{R}^2$ as our ambient space, then the only simplicies that exist are 0, 1, or 2 simplicies: the 0 simplicies being points, 1 simplicies being lines and 2 simplicies being tetrahedra. If we look at these simplicies like building blocks, we can now make something isomorphic to any shape just by glueing a bunch of these simplicies together. But we’ll get to that in a bit.</p>
 
-<p>Another way to define a continuous probability distribution is through something called a probability density function, which is closer to the discrete case definition of a probability distribution (or <strong>probability mass function</strong>
-). A <strong>probability density function</strong>
- is a function \(  f:\mathbb{R}\rightarrow\mathbb{R}<em>+ \) such that \(  \int</em>{-\infty}^xf(t)dt = F(x) \). In other words, \(  \frac{dF}{dX} = f \). This new function has some properties of our discrete case probability function, but lacks some others. On the one hand, they’re both defined pointwise, but on the other, this one can be greater than one in some places – meaning the value of the probability density function isn’t really the probability of an event, but rather (as the name “suggests”) the density therein.</p>
+<p>Let $\{v_0,v_1,v_2\}$ be a simplex. Firstly, since it’s a simplex with 3 points, it must be a 2-simplex. And since it’s a simplex, we know that $v_0-v_1\notin span(\{v_1-v_2,v_1+v_2\})$ and the same relationship holds for all the rest of the points. This simplex is supposed to represent any 2 dimensional contiguous ball-like thing. For instance, since a filled-in circle can be continuously transformed into a filled-in triangle (which is, in essence what a 2-simplex is), our simplex becomes a proxy for such circles, and squares, and rhombi, and octagons, but not the Apple logo. But if you take that stem thing and throw it away so you’re only left with the main apple part of the logo, then yeah, that too.</p>
 
-<h3 id="does-it-measure-up">Does it measure up?</h3>
+<p>So now if we have any single contiguous $N$-D object without any holes, we can represent it topologically by a triangle. So simplicies make the building blocks for general shapes, as we’ll see in a bit.</p>
 
-<p>Now let’s check out the measure theoretic approach…</p>
+<h3 id="simplicial-complexes">Simplicial Complexes</h3>
 
-<p>Let \(  \Omega \) be our sample space, \(  S \) be the \(  \sigma \)-algebra on \(  \Omega \) (so \(  S \) is the collection of measurable subsets of \(  \Omega \)), and \(  \mu:S\to\mathbb{R} \) a measure on that measure space. Let \(  X:\Omega\rightarrow\mathbb{E} \) be a random variable (\(  \mathbb{E} \) is generally taken to be \(  \mathbb{R} \) or \(  \mathbb{R}^n \)). We define the function \(  \mathbb{P}:\mathcal{P}(\mathbb{E})\rightarrow\mathbb{R} \) (where \(  \mathcal{P}(\mathbb{E}) \) is the powerset of \(  \mathbb{E} \) – the set of all subsets) such that if \(  A\subseteq\mathbb{E} \), we have \(  \mathbb{P}(A)=\mu(X^{-1}(A)) \). We call \(  \mathbb{P} \) a <strong>probability distribution</strong>
- if the following conditions hold:</p>
+<p>So let’s build a simplicial complex! But wait! I haven’t even defined what that is yet! Meh, let’s just roll with it. So given a bunch of things we can represent by simplicies (like the full apple logo, for instance), we can construct a simplicial complex to represent it. Some more examples would be: a balloon on a string, a filled water balloon on a string, or a doughnut. The list goes on, obviously, but I think you get the point. We can represent pretty much anything this way.</p>
 
-<ul>
-  <li>
-    <p>\(  \mu(\Omega) = 1 \)</p>
-  </li>
-  <li>
-    <p>for each \(  A\subseteq\mathbb{E} \) we have \(  X^{-1}(A)\in S \).</p>
-  </li>
-</ul>
+<p>The specifics really only come in when we try to construct the simplicial complex itself. In order to make the thing have the nice characteristics we’ll use later on, we’ll need to make sure our complexes have some properties. But first, we need to know what the face of a simplex is:</p>
 
-<h3 id="why-do-this">Why do this?</h3>
+<p>Given a simplex $\{v_0,v_1,…,v_n\}$, a face is the simplex defined by a subset (e.g. $\{v_1,v_2,…,v_n\}$ is a face, and so is the original simplex). If you think of a tetrahedron, for instance, the faces are the four triangular faces we’re used to calling faces as well as the six lines on the edges, and the four individual points. So the faces are kinda similar to our intuitive notion of a face. Now we can define a simplicial complex. A simplicial complex $K$ is a collection of simplicies with the following properties (see <a href="http://mathworld.wolfram.com/SimplicialComplex.html">mathworld</a>):</p>
 
-<p>Well, right off the bat we have a serious benefit: we no longer have two disparate definitions of our probability distributions. Furthermore, there is the added benefit of having a natural separation of concerns: the measure \(  \mu \) determines the what we might intuitively consider to be the probability distribution while the random variable is used to encode the aspects of the events that we care about.</p>
+<ol>
+  <li>Each face of a simplex in $K$ is itself a simplex in $K$</li>
+  <li>The intersection of two simplicies in $K$ is itself a simple (hence in $K$)x</li>
+</ol>
 
-<p>To further illustrate this</p>
+<p>It’s the second rule that’s really the crux of everything, as we’ll see. But let’s go through some examples…</p>
 
-<h3 id="the-examples">The Examples</h3>
+<p>The Apple logo can be triangulated by two disjoint 2-simplicies (along with all the appropriate faces of the two). So we basically forced the first property to hold, and since the two simplicies are disjoint the second property trivially holds.</p>
 
-<h4 id="a-fair-die">A fair die</h4>
+<p>The filled water-balloon on a string can be triangulated by a 3-simplex attached to a 1-simplex along with all the appropriate faces. The filled water-balloon part is clearly the 3-simplex, and the string is the 1-simplex. So let’s prove that the two properties hold. The first one holds trivially, since we defined it as the union of all the faces. The second property holds because if you take any two simplicies in this complex, either they intersect at the point on top (a 0-simplex) or they don’t intersect at all! (Pardon the hand waving proof there).</p>
 
-<h5 id="all-even">All even</h5>
+<p>The non-filled water balloon, on the other hand, is a bit harder to triangulate, but we’ll barrel through it. We can glue four 2-simplicies together to be like a hollowed out 3-simplex, then attach a 1-simplex as the string to one of the vertices of the hollow tetrahedron, and we’ll be done. All that’s left is to show the two properties hold. That’s left as an exercise to the reader (ah, the good life).</p>
 
-<p>Let’s consider a fair die. Our sample space will be \(  {1,2,3,4,5,6} \). Since our die is fair, we’ll define our measure fairly: for any \(  x \) in our sample space, \(  \mu({x}) = \frac{1}{6} \). If we want to know, for instance, what the probability of getting each number is, we could use a very intuitive random variable \(  X(a) = a \) (so \(  X(1)=1 \), etc.). Then we see that \(  \mathbb{P}({1}) = \mu({1}) = \frac{1}{6} \), and the rest are found similarly.</p>
+<p>The doughnut, on the other hand, is a lot more complicated to triangulate. To do that we’d have to specify if we’re talking about the shell of a doughnut or a filled in one. Although this is a fun exercise, the traditional way to triangulate the torus doesn’t have much to do with what we’re going to be using this stuff for, so I’ll take a more data-science type approach to this. If we have a bunch of data arranged in the shape of a torus, we can just take the union of the simplicies defined by taking a point and the 3 nearest points to it, and creating the convex hull of those points (or considering them as a 3-simplex).</p>
 
-<h5 id="odds-and-evens">Odds and Evens?</h5>
+<h3 id="associations">Associations</h3>
 
-<p>What if we want to consider the fair die of yester-paragraph, but we only care if the face of the die shows an odd or an even number? Well, since the actual distribution of the die hasn’t changed, we won’t have to change our measure. Instead we’ll change our random variable to capture just those aspects we care about. In particular, \(  X(a) = 0 \) if \(  a \) is even, and \(  X(a) = 1 \) if \(  a \) is odd. We then see \(  \mathbb{P}(1) = \mu({1,3,5}) = \frac{1}{2} \) and \(  \mathbb{P}(0) = \mu({2,4,6}) = \frac{1}{2} \)</p>
+<p>But it would be useful to triangulate the torus using the more traditional approach. To get you started on the right track, you’ll need another tool: association. So let’s triangulate a sphere (like the non-filled balloon example) but without using the fact that we’re in 3-D space. Let’s start with two 2-simplicies joined at one edge (to make something that looks like a square).</p>
 
-<h4 id="getting-loaded">Getting loaded</h4>
+<p><img src="/assets/pics/2018/04/12_sphere_triangulate_0.png" alt="sphere"></p>
 
-<h5 id="all-even-1">All even</h5>
+<p>We then make the following associations: we say anything along the line connecting (1,2) is associated with things on the line connecting (3,4) – where order is important. If we want to make it more formal, we could parameterize the line connecting 1 to 2 by a parameter $t$ such that $f_0(0) = 1$ and $f_0(1) = 2$, then do the same with the line connecting 3 to 4 (with $f_1(0) = 3$ and $f_1(1) = 4$). Then we say two points are associated if $f_0(t) = f_1(t)$. We do the same for the lines connecting (2,3) and (4,1).</p>
 
-<p>Now let’s consider the same scenario of wanting to know the probability of getting each number, but now our die is loaded. Being as how we’re changing the distribution itself and not just the aspects we’re choosing to care about, we’re going to want to change the measure this time. For simplicity, let’s consider a kind of degenerate case scenario. Let our measure be: \(  \mu(A) = 1 \) if \(  1\in A \) and \(  \mu(A)=0 \) if \(  1\notin A \). Basically, we’re defining our probability to be such that the only possible outcome is a roll of 1. So since we are concerned with the same things we were concerned with last time, we can take that same random variable. We note \(  \mathbb{P}(1) = 1 \) and \(  \mathbb{P}(a) = 0 \) for any \(  a \neq 1 \).</p>
+<p><img src="/assets/pics/2018/04/12_sphere_triangulate_1.png" alt="sphere"></p>
 
-<h5 id="odds-or-evens">Odds or evens</h5>
+<p>We see the resulting thing only has one 0-simplex because all the vertices were associated with each other! You can imagine that what’s left is something that looks like a sphere. The important part is the associations.</p>
 
-<p>Try to do this one yourself. I’m going to go get some sleep now. Please feel free to contact me with any questions. I love doing this stuff, so don’t be shy!</p>
+<p>Now if we just make different associations, we can get a möbius strip! What happens</p>
 
+<p><img src="/assets/pics/2018/04/12_mobius.png" alt="sphere"></p>
+
+<p>And if we make the following associations, it becomes a torus!</p>
+
+<p><img src="/assets/pics/2018/04/12_torus.png" alt="sphere"></p>
+
+<p>And the following associations become the famous Klein Bottle!</p>
+
+<p><img src="/assets/pics/2018/04/12_klein.png" alt="sphere"></p>
+
+<p>The problem is that none of these are simplicial complexes. Why not? Can you fix these so that they become simplicial complexes?</p>
 
 
 		<div class="share">
@@ -247,7 +242,7 @@
 
     
 
-    <a class="button" target="_blank" href="https://twitter.com/intent/tweet/?url=http://localhost:4000/probability/2017/02/18/probability-a-measure-theoretic-approach/&amp;text=Probability%20--%20A%20Measure%20Theoretic%20Approach&amp;via=amniskin%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20" title="Button - Twitter" style="background: #1DA1F2">Twitter  <svg class="icon  icon--twitter" role="img"><use xlink:href="#twitter"></use></svg>
+    <a class="button" target="_blank" href="https://twitter.com/intent/tweet/?url=http://localhost:4000/statistics/mathematics/2018/04/12/homology/&amp;text=Let's%20Cover%20Homology%20(pt%201)&amp;via=amniskin%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20" title="Button - Twitter" style="background: #1DA1F2">Twitter  <svg class="icon  icon--twitter" role="img"><use xlink:href="#twitter"></use></svg>
 </a>
 
   
@@ -258,7 +253,7 @@
 
     
 
-    <a class="button" target="_blank" href="https://facebook.com/sharer/sharer.php?u=http://localhost:4000/probability/2017/02/18/probability-a-measure-theoretic-approach/%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20" title="Button - facebook" style="background: #3B5998">facebook  <svg class="icon  icon--facebook" role="img"><use xlink:href="#facebook"></use></svg>
+    <a class="button" target="_blank" href="https://facebook.com/sharer/sharer.php?u=http://localhost:4000/statistics/mathematics/2018/04/12/homology/%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20" title="Button - facebook" style="background: #3B5998">facebook  <svg class="icon  icon--facebook" role="img"><use xlink:href="#facebook"></use></svg>
 </a>
 
   
@@ -269,7 +264,7 @@
 
     
 
-    <a class="button" target="_blank" href="https://plus.google.com/share?url=http://localhost:4000/probability/2017/02/18/probability-a-measure-theoretic-approach/%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20" title="Button - Google+" style="background: #DC4E41">Google+  <svg class="icon  icon--google+" role="img"><use xlink:href="#google+"></use></svg>
+    <a class="button" target="_blank" href="https://plus.google.com/share?url=http://localhost:4000/statistics/mathematics/2018/04/12/homology/%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20" title="Button - Google+" style="background: #DC4E41">Google+  <svg class="icon  icon--google+" role="img"><use xlink:href="#google+"></use></svg>
 </a>
 
   
@@ -280,7 +275,7 @@
 
     
 
-    <a class="button" target="_blank" href="https://pinterest.com/pin/create/button/?url=http://localhost:4000/probability/2017/02/18/probability-a-measure-theoretic-approach/&amp;description=Probability%20--%20A%20Measure%20Theoretic%20Approach&amp;media=/assets/pics/logo.png%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20" title="Button - Pinterest" style="background: #BD081C">Pinterest  <svg class="icon  icon--pinterest" role="img"><use xlink:href="#pinterest"></use></svg>
+    <a class="button" target="_blank" href="https://pinterest.com/pin/create/button/?url=http://localhost:4000/statistics/mathematics/2018/04/12/homology/&amp;description=Let's%20Cover%20Homology%20(pt%201)&amp;media=/assets/pics/logo.png%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20" title="Button - Pinterest" style="background: #BD081C">Pinterest  <svg class="icon  icon--pinterest" role="img"><use xlink:href="#pinterest"></use></svg>
 </a>
 
   
@@ -291,7 +286,7 @@
 
     
 
-    <a class="button" target="_blank" href="https://www.linkedin.com/shareArticle?url=http://localhost:4000/probability/2017/02/18/probability-a-measure-theoretic-approach/&amp;title=Probability%20--%20A%20Measure%20Theoretic%20Approach&amp;source=Aaron%20Niskin's%20Blog&amp;summary=We%20cover%20probability%20from%20a%20measure%20theoretic%20approach&amp;mini=true%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20" title="Button - LinkedIn" style="background: #0077B5">LinkedIn  <svg class="icon  icon--linkedin" role="img"><use xlink:href="#linkedin"></use></svg>
+    <a class="button" target="_blank" href="https://www.linkedin.com/shareArticle?url=http://localhost:4000/statistics/mathematics/2018/04/12/homology/&amp;title=Let's%20Cover%20Homology%20(pt%201)&amp;source=Aaron%20Niskin's%20Blog&amp;summary=What%20does%20topology%20have%20to%20do%20with%20data?!%20And%20what%20is%20this%20topology%20thing%20anyway?%0A&amp;mini=true%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20" title="Button - LinkedIn" style="background: #0077B5">LinkedIn  <svg class="icon  icon--linkedin" role="img"><use xlink:href="#linkedin"></use></svg>
 </a>
 
   
@@ -302,7 +297,7 @@
 
     
 
-    <a class="button" target="_blank" href="https://tumblr.com/widgets/share/tool?canonicalUrl=http://localhost:4000/probability/2017/02/18/probability-a-measure-theoretic-approach/&amp;tags=&amp;caption=Probability%20--%20A%20Measure%20Theoretic%20Approach%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20" title="Button - tumblr" style="background: #36465D">tumblr  <svg class="icon  icon--tumblr" role="img"><use xlink:href="#tumblr"></use></svg>
+    <a class="button" target="_blank" href="https://tumblr.com/widgets/share/tool?canonicalUrl=http://localhost:4000/statistics/mathematics/2018/04/12/homology/&amp;tags=&amp;caption=Let's%20Cover%20Homology%20(pt%201)%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20" title="Button - tumblr" style="background: #36465D">tumblr  <svg class="icon  icon--tumblr" role="img"><use xlink:href="#tumblr"></use></svg>
 </a>
 
   
@@ -313,7 +308,7 @@
 
     
 
-    <a class="button" target="_blank" href="https://reddit.com/submit?url=http://localhost:4000/probability/2017/02/18/probability-a-measure-theoretic-approach/&amp;title=Probability%20--%20A%20Measure%20Theoretic%20Approach&amp;resubmit=true%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20" title="Button - Reddit" style="background: #FF4500">Reddit  <svg class="icon  icon--reddit" role="img"><use xlink:href="#reddit"></use></svg>
+    <a class="button" target="_blank" href="https://reddit.com/submit?url=http://localhost:4000/statistics/mathematics/2018/04/12/homology/&amp;title=Let's%20Cover%20Homology%20(pt%201)&amp;resubmit=true%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20" title="Button - Reddit" style="background: #FF4500">Reddit  <svg class="icon  icon--reddit" role="img"><use xlink:href="#reddit"></use></svg>
 </a>
 
   
@@ -324,7 +319,7 @@
 
     
 
-    <a class="button" target="_blank" href="https://news.ycombinator.com/submitlink?u=http://localhost:4000/probability/2017/02/18/probability-a-measure-theoretic-approach/&amp;t=Probability%20--%20A%20Measure%20Theoretic%20Approach%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20" title="Button - Hacker News" style="background: #ff6600">Hacker News  <svg class="icon  icon--hackernews" role="img"><use xlink:href="#hackernews"></use></svg>
+    <a class="button" target="_blank" href="https://news.ycombinator.com/submitlink?u=http://localhost:4000/statistics/mathematics/2018/04/12/homology/&amp;t=Let's%20Cover%20Homology%20(pt%201)%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%0A%20%20%20%20" title="Button - Hacker News" style="background: #ff6600">Hacker News  <svg class="icon  icon--hackernews" role="img"><use xlink:href="#hackernews"></use></svg>
 </a>
 
   
@@ -335,7 +330,7 @@
 
     
 
-    <a class="button" target="_blank" href="https://www.designernews.co/submit?url=http://localhost:4000/probability/2017/02/18/probability-a-measure-theoretic-approach/&amp;title=Probability%20--%20A%20Measure%20Theoretic%20Approach%0A%20%20%20%20%20%20%0A%20%20%20%20" title="Button - Designer News" style="background: #2D72D9">Designer News  <svg class="icon  icon--designernews" role="img"><use xlink:href="#designernews"></use></svg>
+    <a class="button" target="_blank" href="https://www.designernews.co/submit?url=http://localhost:4000/statistics/mathematics/2018/04/12/homology/&amp;title=Let's%20Cover%20Homology%20(pt%201)%0A%20%20%20%20%20%20%0A%20%20%20%20" title="Button - Designer News" style="background: #2D72D9">Designer News  <svg class="icon  icon--designernews" role="img"><use xlink:href="#designernews"></use></svg>
 </a>
 
   
@@ -346,7 +341,7 @@
 
     
 
-    <a class="button" target="_blank" href="mailto:?subject=Probability%20--%20A%20Measure%20Theoretic%20Approach&amp;body=Hey,%20check%20out%20this:%20http://localhost:4000/probability/2017/02/18/probability-a-measure-theoretic-approach/%0A%20%20%20%20" title="Button - Email" style="background: ">Email  <svg class="icon  icon--email" role="img"><use xlink:href="#email"></use></svg>
+    <a class="button" target="_blank" href="mailto:?subject=Let's%20Cover%20Homology%20(pt%201)&amp;body=Hey,%20check%20out%20this:%20http://localhost:4000/statistics/mathematics/2018/04/12/homology/%0A%20%20%20%20" title="Button - Email" style="background: ">Email  <svg class="icon  icon--email" role="img"><use xlink:href="#email"></use></svg>
 </a>
 
   
@@ -373,20 +368,6 @@
     <li class="item  item--post">
       <article class="article  article--post  typeset">
 
-        <h4><a href="/statistics/mathematics/2018/04/12/homology/" title="Related post - Let's Cover Homology (pt 1)">Let's Cover Homology (pt 1)</a></h4>
-        <small class="small  post-meta">
-  <time datetime="2018-04-12T16:52:39-04:00" class="time">12 Apr 2018</time>
-</small>
-
-        <p>What does topology have to do with data?! And what is this topology thing anyway?</p>
-
-
-      </article>
-    </li>
-  
-    <li class="item  item--post">
-      <article class="article  article--post  typeset">
-
         <h4><a href="/statistics/2017/10/25/Autoregression/" title="Related post - Decomposition of Autoregressive Models">Decomposition of Autoregressive Models</a></h4>
         <small class="small  post-meta">
   <time datetime="2017-10-25T16:52:39-04:00" class="time">25 Oct 2017</time>
@@ -407,6 +388,19 @@
 </small>
 
         <p>Markov Chain Monte Carlo is a tool for sampling otherwise intractible distributions. In this post, we’ll go through some descriptions,...
+
+      </p></article>
+    </li>
+  
+    <li class="item  item--post">
+      <article class="article  article--post  typeset">
+
+        <h4><a href="/statistics/2017/02/21/What-Is-Linear-Regression/" title="Related post - Linear Regression -- The Basics">Linear Regression -- The Basics</a></h4>
+        <small class="small  post-meta">
+  <time datetime="2017-02-21T02:24:43-05:00" class="time">21 Feb 2017</time>
+</small>
+
+        <p>Linear Regression is the bedrock of Machine Learning. We cover the basics therein, some theory involved, and give some relevant...
 
       </p></article>
     </li>
