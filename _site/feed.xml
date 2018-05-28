@@ -1,4 +1,89 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2018-05-28T11:31:28-04:00</updated><id>http://localhost:4000/</id><title type="html">Aaron Niskin’s Blog</title><subtitle>Not just another blog! Now with more... Aaron!</subtitle><author><name>amniskin</name></author><entry><title type="html">Decomposition of Autoregressive Models</title><link href="http://localhost:4000/statistics/2017/10/25/Autoregression/" rel="alternate" type="text/html" title="Decomposition of Autoregressive Models" /><published>2017-10-25T16:52:39-04:00</published><updated>2017-10-25T16:52:39-04:00</updated><id>http://localhost:4000/statistics/2017/10/25/Autoregression</id><content type="html" xml:base="http://localhost:4000/statistics/2017/10/25/Autoregression/">&lt;h1 id=&quot;autoregression&quot;&gt;Autoregression&lt;/h1&gt;
+=======
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2018-05-28T11:32:57-04:00</updated><id>http://localhost:4000/</id><title type="html">Aaron Niskin’s Blog</title><subtitle>Not just another blog! Now with more... Aaron!</subtitle><author><name>amniskin</name></author><entry><title type="html">Let’s Cover Homology (pt 1)</title><link href="http://localhost:4000/statistics/mathematics/2018/04/12/homology/" rel="alternate" type="text/html" title="Let's Cover Homology (pt 1)" /><published>2018-04-12T16:52:39-04:00</published><updated>2018-04-12T16:52:39-04:00</updated><id>http://localhost:4000/statistics/mathematics/2018/04/12/homology</id><content type="html" xml:base="http://localhost:4000/statistics/mathematics/2018/04/12/homology/">&lt;h1 id=&quot;topology&quot;&gt;Topology&lt;/h1&gt;
+
+&lt;h2 id=&quot;what-is-it&quot;&gt;What is it?&lt;/h2&gt;
+
+&lt;p&gt;Topology is essentially the study of proximity, which is a close analogue for shape. The specifics of how that’s done are not really the point of this post. That’s all for this section.&lt;/p&gt;
+
+&lt;h2 id=&quot;how-is-it-related-to-analyzing-data&quot;&gt;How is it related to analyzing data?&lt;/h2&gt;
+
+&lt;p&gt;Most data analysis techniques are already about quantifying some geometric attributes. For instance, when you fit a linear model, you’re really just imposing an affine model on the data, and computing the appropriate parameters (slope and intercept). But these sorts of things work best if you have an idea for what an appropriate shape would be. That’s one area where topology might be able to help. But to hear more about that, you’ll have to wait for my next post.&lt;/p&gt;
+
+&lt;!-- more --&gt;
+
+&lt;p&gt;There is a notion of equivalence (called isomorphism) of topological spaces (bi-continuous bijections). Basically, we consider two topological spaces to be equivalent if one can be continuously transformed into the other and back. That’s actually a very powerful description that captures a lot of non-linearities and things like that. For instance, an egg shape, a sphere, a pyramid, and a tetrahedron are all isomorphic topological spaces, but not a doughnut (torus). And those kinda make sense. But there are some counter-intuitive examples. For instance, if you were to take one of those long clown balloons and tie it up into a poodle, it would also be isomorphic to the bunch above. And, as the joke goes, donuts are isomorphic to coffee cups. I know what you’re thinking. This topology stuff sounds super cool.&lt;/p&gt;
+
+&lt;p&gt;So topology would make a wonderful (admittedly incomplete) description of data. But there are some problems: mainly that this whole story breaks down in higher dimensions. Luckily, there is an analogue that can be computed.&lt;/p&gt;
+
+&lt;h1 id=&quot;homology&quot;&gt;Homology&lt;/h1&gt;
+
+&lt;h2 id=&quot;what-is-it-1&quot;&gt;What is it?&lt;/h2&gt;
+
+&lt;p&gt;Homology is (in an overly-simplified sentence), counting the number of holes. That’s actually a lot more information than you might initially think. It’s actually sufficient to completely classify the space in lower dimensions, and a good approximation in higher ones. Either way, if we knew that info about our data, we’d capture a lot of the non-linear relationships. Either way, it’ll be fun, so let’s get into it.&lt;/p&gt;
+
+&lt;h1 id=&quot;how-to-computes&quot;&gt;How to computes…&lt;/h1&gt;
+
+&lt;h2 id=&quot;triangulation&quot;&gt;Triangulation&lt;/h2&gt;
+
+&lt;h3 id=&quot;simplicies&quot;&gt;Simplicies&lt;/h3&gt;
+
+&lt;p&gt;A &lt;a href=&quot;https://en.wikipedia.org/wiki/Simplex&quot;&gt;simplex&lt;/a&gt; is a collection of $n$ points with the property that no one point lies in the subspace defined by the other $n-1$ points. The idea is that it’s the minimal number of points with an $n-1$ dimensional convex hull – or, said differently, the minimal number of points to make an $n-1$ dimensional shape. For instance, if we consider $\mathbb{R}^2$ as our ambient space, then the only simplicies that exist are 0, 1, or 2 simplicies: the 0 simplicies being points, 1 simplicies being lines and 2 simplicies being tetrahedra. If we look at these simplicies like building blocks, we can now make something isomorphic to any shape just by glueing a bunch of these simplicies together. But we’ll get to that in a bit.&lt;/p&gt;
+
+&lt;p&gt;Let $\{v_0,v_1,v_2\}$ be a simplex. Firstly, since it’s a simplex with 3 points, it must be a 2-simplex. And since it’s a simplex, we know that $v_0-v_1\notin span(\{v_1-v_2,v_1+v_2\})$ and the same relationship holds for all the rest of the points. This simplex is supposed to represent any 2 dimensional contiguous ball-like thing. For instance, since a filled-in circle can be continuously transformed into a filled-in triangle (which is, in essence what a 2-simplex is), our simplex becomes a proxy for such circles, and squares, and rhombi, and octagons, but not the Apple logo. But if you take that stem thing and throw it away so you’re only left with the main apple part of the logo, then yeah, that too.&lt;/p&gt;
+
+&lt;p&gt;So now if we have any single contiguous $N$-D object without any holes, we can represent it topologically by a triangle. So simplicies make the building blocks for general shapes, as we’ll see in a bit.&lt;/p&gt;
+
+&lt;h3 id=&quot;simplicial-complexes&quot;&gt;Simplicial Complexes&lt;/h3&gt;
+
+&lt;p&gt;So let’s build a simplicial complex! But wait! I haven’t even defined what that is yet! Meh, let’s just roll with it. So given a bunch of things we can represent by simplicies (like the full apple logo, for instance), we can construct a simplicial complex to represent it. Some more examples would be: a balloon on a string, a filled water balloon on a string, or a doughnut. The list goes on, obviously, but I think you get the point. We can represent pretty much anything this way.&lt;/p&gt;
+
+&lt;p&gt;The specifics really only come in when we try to construct the simplicial complex itself. In order to make the thing have the nice characteristics we’ll use later on, we’ll need to make sure our complexes have some properties. But first, we need to know what the face of a simplex is:&lt;/p&gt;
+
+&lt;p&gt;Given a simplex $\{v_0,v_1,…,v_n\}$, a face is the simplex defined by a subset (e.g. $\{v_1,v_2,…,v_n\}$ is a face, and so is the original simplex). If you think of a tetrahedron, for instance, the faces are the four triangular faces we’re used to calling faces as well as the six lines on the edges, and the four individual points. So the faces are kinda similar to our intuitive notion of a face. Now we can define a simplicial complex. A simplicial complex $K$ is a collection of simplicies with the following properties (see &lt;a href=&quot;http://mathworld.wolfram.com/SimplicialComplex.html&quot;&gt;mathworld&lt;/a&gt;):&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Each face of a simplex in $K$ is itself a simplex in $K$&lt;/li&gt;
+  &lt;li&gt;The intersection of two simplicies in $K$ is itself a simple (hence in $K$)x&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;It’s the second rule that’s really the crux of everything, as we’ll see. But let’s go through some examples…&lt;/p&gt;
+
+&lt;p&gt;The Apple logo can be triangulated by two disjoint 2-simplicies (along with all the appropriate faces of the two). So we basically forced the first property to hold, and since the two simplicies are disjoint the second property trivially holds.&lt;/p&gt;
+
+&lt;p&gt;The filled water-balloon on a string can be triangulated by a 3-simplex attached to a 1-simplex along with all the appropriate faces. The filled water-balloon part is clearly the 3-simplex, and the string is the 1-simplex. So let’s prove that the two properties hold. The first one holds trivially, since we defined it as the union of all the faces. The second property holds because if you take any two simplicies in this complex, either they intersect at the point on top (a 0-simplex) or they don’t intersect at all! (Pardon the hand waving proof there).&lt;/p&gt;
+
+&lt;p&gt;The non-filled water balloon, on the other hand, is a bit harder to triangulate, but we’ll barrel through it. We can glue four 2-simplicies together to be like a hollowed out 3-simplex, then attach a 1-simplex as the string to one of the vertices of the hollow tetrahedron, and we’ll be done. All that’s left is to show the two properties hold. That’s left as an exercise to the reader (ah, the good life).&lt;/p&gt;
+
+&lt;p&gt;The doughnut, on the other hand, is a lot more complicated to triangulate. To do that we’d have to specify if we’re talking about the shell of a doughnut or a filled in one. Although this is a fun exercise, the traditional way to triangulate the torus doesn’t have much to do with what we’re going to be using this stuff for, so I’ll take a more data-science type approach to this. If we have a bunch of data arranged in the shape of a torus, we can just take the union of the simplicies defined by taking a point and the 3 nearest points to it, and creating the convex hull of those points (or considering them as a 3-simplex).&lt;/p&gt;
+
+&lt;h3 id=&quot;associations&quot;&gt;Associations&lt;/h3&gt;
+
+&lt;p&gt;But it would be useful to triangulate the torus using the more traditional approach. To get you started on the right track, you’ll need another tool: association. So let’s triangulate a sphere (like the non-filled balloon example) but without using the fact that we’re in 3-D space. Let’s start with two 2-simplicies joined at one edge (to make something that looks like a square).&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/pics/2018/04/12_sphere_triangulate_0.png&quot; alt=&quot;sphere&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;We then make the following associations: we say anything along the line connecting (1,2) is associated with things on the line connecting (3,4) – where order is important. If we want to make it more formal, we could parameterize the line connecting 1 to 2 by a parameter $t$ such that $f_0(0) = 1$ and $f_0(1) = 2$, then do the same with the line connecting 3 to 4 (with $f_1(0) = 3$ and $f_1(1) = 4$). Then we say two points are associated if $f_0(t) = f_1(t)$. We do the same for the lines connecting (2,3) and (4,1).&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/pics/2018/04/12_sphere_triangulate_1.png&quot; alt=&quot;sphere&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;We see the resulting thing only has one 0-simplex because all the vertices were associated with each other! You can imagine that what’s left is something that looks like a sphere. The important part is the associations.&lt;/p&gt;
+
+&lt;p&gt;Now if we just make different associations, we can get a möbius strip! What happens&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/pics/2018/04/12_mobius.png&quot; alt=&quot;sphere&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;And if we make the following associations, it becomes a torus!&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/pics/2018/04/12_torus.png&quot; alt=&quot;sphere&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;And the following associations become the famous Klein Bottle!&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/pics/2018/04/12_klein.png&quot; alt=&quot;sphere&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The problem is that none of these are simplicial complexes. Why not? Can you fix these so that they become simplicial complexes?&lt;/p&gt;</content><author><name>amniskin</name></author><category term="Data Visualization" /><category term="Statistics" /><category term="Mathematics" /><category term="Topology" /><category term="Algebra" /><category term="Theory" /><summary type="html">What does topology have to do with data?! And what is this topology thing anyway?</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/pics/logo.png" /></entry><entry><title type="html">Decomposition of Autoregressive Models</title><link href="http://localhost:4000/statistics/2017/10/25/Autoregression/" rel="alternate" type="text/html" title="Decomposition of Autoregressive Models" /><published>2017-10-25T16:52:39-04:00</published><updated>2017-10-25T16:52:39-04:00</updated><id>http://localhost:4000/statistics/2017/10/25/Autoregression</id><content type="html" xml:base="http://localhost:4000/statistics/2017/10/25/Autoregression/">&lt;h1 id=&quot;autoregression&quot;&gt;Autoregression&lt;/h1&gt;
+>>>>>>> new_post
 
 &lt;h2 id=&quot;background&quot;&gt;Background&lt;/h2&gt;
 
