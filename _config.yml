@@ -84,7 +84,7 @@ defaults:
 encoding: utf-8 # Make sure the encoding is right
 title: "Aaron Niskin's Blog" # Site name or title, also used in jekyll-seo-tag
 logo: "/assets/pics/logo.png" # Site logo, also used in jekyll-seo-tag
-description: "Not just another blog! Now with more... Aaron!" # Site description and default description, also used in jekyll-seo-tag
+description: "Not just another mathy blog! Now with more... Aaron!" # also used in jekyll-seo-tag
 url: "http://aaron.niskin.org" # Site url, also used in jekyll-seo-tag
 repo: "https://github.com/amniskin.github.io"
 email: "aaron@niskin.org"
@@ -96,11 +96,8 @@ avatarurl: "/assets/pics/logo.png"
 navigation_header:
   Home: / # Elements: /elements/
   Blog: /blog/
-  Categories: /categories/
-  Resume: /assets/files/Niskin_Resume.pdf # Search: /search/
-
-# navigation_footer:
-#   Created by David Darnes: https://darn.es
+  Categories: /categories/ # Search: /search/ 
+  Resume: https://github.com/amniskin/resume/raw/master/Niskin_Resume.pdf # # Resume: /assets/files/Niskin_Resume.pdf # Search: /search/
 
 social_links:
   Twitter: https://twitter.com/amniskin
