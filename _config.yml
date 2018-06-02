@@ -1,5 +1,7 @@
+# {{{ outline
 # Site configuration
-# 1. Files excluded from Jekyll builds
+# 0. GLOBAL CONFIG
+# 1. BUILD COMMAND OPTIONS      # 1. Files excluded from Jekyll builds
 # 2. Installed Gems
 # 3. Gem settings
 # 4. Jekyll settings
@@ -7,20 +9,57 @@
 # 6. Jekyll collections settings
 # 7. Site settings
 # 8. Site navigation
+# }}}
 
 # 1. Files excluded from Jekyll builds
+#
+# {{{ 0. GLOBAL CONFIG
 exclude:
-- README.md
-- screenshot.png
+- README.md  # - screenshot.png
 - LICENSE
 - CNAME
 - Gemfile
 - Gemfile.lock
-- demo/*
 - assets/notebooks/*
 - alembic-jekyll-theme.gemspec
+timezone: America/Los_Angeles # New_York # Timezone for blog posts and alike
+encoding: utf-8 # Make sure the encoding is right
+defaults:
+  -
+    scope:
+      path: ""
+      type: pages
+    values:
+      layout: page # Default layout
+      image: "/assets/pics/logo.png" # Default image for sharing
+  -
+    scope:
+      path: "_posts"
+      type: posts
+    values:
+      layout: post # Default layout    image: "/assets/pics/logo.png" # Default image for sharing
+      feature_image: "/assets/pics/coming_soon.jpg" # "https://unsplash.it/1300/400?image=1067"
+      author: "Aaron Niskin"
+  -
+    scope:
+      path: "_drafts"
+      type: posts
+    values:
+      layout: post # Default layout    image: "/assets/pics/logo.png" # Default image for sharing
+      feature_image: "/assets/pics/coming_soon.jpg" # "https://unsplash.it/1300/400?image=1067"
+      author: "Aaron Niskin"
+# }}}
 
-# 2. Installed Gems
+# {{{ 1. BUILD COMMAND OPTIONS
+show_drafts: false
+unpublished: false
+profile:     true
+# }}}
+
+# {{{ 2. SERVE COMMAND OPTIONS
+# }}}
+
+# {{{ 2. Installed Gems
 gems:
 - jekyll-sitemap
 - jekyll-mentions
@@ -29,8 +68,9 @@ gems:
 - jekyll-redirect-from
 - jekyll-feed
 - jemoji
+# }}}
 
-# 3. Gem settings
+# {{{ 3. Gem settings
 paginate: 4 # jekyll-paginate > items per page
 paginate_path: blog/page:num # jekyll-paginate > blog page
 jekyll-mentions: https://twitter.com # jekyll-mentions > service used when @replying
@@ -45,15 +85,16 @@ social: # jekyll-seo-tag > social overrides
     - https://www.linkedin.com/in/aaron-niskin
     - https://plus.google.com/+AaronNiskin
     - https://github.com/amniskin
+# }}}
 
-# 4. Jekyll settings
+# {{{ 4. Jekyll settings
 sass:
   style: compressed # Style compression
-permalink: pretty  # Permalink style (/YYYY/MM/DD/page-name/)
+permalink: /blog/:year/:month/:day/:title:output_ext  # pretty  # Permalink style (/YYYY/MM/DD/page-name/)
 excerpt_separator: <!-- more --> # Marks end of excerpt in posts
-timezone: America/New_York # Timezone for blog posts and alike
+# }}}
 
-# 5. Collections
+# {{{ 5. Collections
 collections:
   posts:
     title: Posts # Needed for Siteleaf
@@ -62,26 +103,12 @@ collections:
     feature_text: |
       Welcome to the blog
     feature_image: "/assets/pics/skyplane.JPG" # "https://unsplash.it/1300/400?image=1067"
+# }}}
 
-# 6. Jekyll collections settings
-defaults:
-  -
-    scope:
-      path: ""
-      type: pages
-    values:
-      layout: page # Default layout
-      image: "/assets/pics/logo.png" # Default image for sharing
-  -
-    scope:
-      path: ""
-      type: posts
-    values:
-      layout: post # Default layout
-      image: "/assets/pics/logo.png" # Default image for sharing
+# {{{ 6. Jekyll collections settings
+# }}}
 
-# 7. Site settings
-encoding: utf-8 # Make sure the encoding is right
+# {{{ 7. Site settings
 title: "Aaron Niskin's Blog" # Site name or title, also used in jekyll-seo-tag
 logo: "/assets/pics/logo.png" # Site logo, also used in jekyll-seo-tag
 description: "Not just another mathy blog! Now with more... Aaron!" # also used in jekyll-seo-tag
@@ -91,8 +118,9 @@ email: "aaron@niskin.org"
 ### disqus: ""
 avatarurl: "/assets/pics/logo.png"
 ### avatarurl: "https://secure.gravatar.com/avatar/5267e8bc17bebc6f6e39eab09457eeb5" # Uses avatars for favicons to get multple sites, eg Gravatar, Twitter, GitHub
+#}}}
 
-# 8. Site navigation
+# {{{ 8. Site navigation
 navigation_header:
   Home: / # Elements: /elements/
   Blog: /blog/
@@ -117,3 +145,4 @@ sharing_links:
   Hacker News: "#ff6600"
   Designer News: "#2D72D9"
   Email: ""
+# }}}
