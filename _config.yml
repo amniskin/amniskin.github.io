@@ -32,6 +32,7 @@ defaults:
     values:
       layout: page # Default layout
       image: "/assets/pics/logo.png" # Default image for sharing
+      feature_image: "/assets/pics/skyplane.JPG" # "https://unsplash.it/1300/400?image=1067"
   -
     scope:
       path: "_posts"
