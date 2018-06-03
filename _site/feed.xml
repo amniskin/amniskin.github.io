@@ -1,4 +1,76 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2018-06-02T21:08:13-07:00</updated><id>http://localhost:4000/</id><title type="html">Aaron Niskin’s Blog</title><subtitle>Not just another mathy blog! Now with more... Aaron!</subtitle><author><name>amniskin</name></author><entry><title type="html">The blue-eyed reconing!</title><link href="http://localhost:4000/blog/2018/06/02/blue_eyed_people.html" rel="alternate" type="text/html" title="The blue-eyed reconing!" /><published>2018-06-02T00:00:00-07:00</published><updated>2018-06-02T00:00:00-07:00</updated><id>http://localhost:4000/blog/2018/06/02/blue_eyed_people</id><content type="html" xml:base="http://localhost:4000/blog/2018/06/02/blue_eyed_people.html">&lt;h2 id=&quot;the-scenario&quot;&gt;The scenario:&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="http://jekyllrb.com" version="3.4.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2018-06-02T22:31:53-07:00</updated><id>http://localhost:4000/</id><title type="html">Aaron Niskin’s Blog</title><subtitle>Not just another mathy blog! Now with more... Aaron!</subtitle><author><name>amniskin</name></author><entry><title type="html">Prisoners and The Lightblub</title><link href="http://localhost:4000/blog/2018/06/02/prisoner_lightbulb.html" rel="alternate" type="text/html" title="Prisoners and The Lightblub" /><published>2018-06-02T00:00:00-07:00</published><updated>2018-06-02T00:00:00-07:00</updated><id>http://localhost:4000/blog/2018/06/02/prisoner_lightbulb</id><content type="html" xml:base="http://localhost:4000/blog/2018/06/02/prisoner_lightbulb.html">&lt;h2 id=&quot;the-scenario&quot;&gt;The scenario:&lt;/h2&gt;
+
+&lt;p&gt;One day, a drunk warden waltzes into her prison feeling particularly sadistic and decides to put on a little show for herself. She told her guards to gather 100 prisoners into a room so that she could talk to them. When in front of the group of prisoners, she tells them of her plan: All of their prison sentences have been extended indefinitely, but they have a chance to earn their freedom – through her game.&lt;/p&gt;
+
+&lt;p&gt;She explained that she arranged for a room to be secured and left with just a single light bulb inside and that nobody but them would be allowed inside. They would then be brought into the room one prisoner per day and allowed to turn the light on or off. It’s guaranteed that nobody else would be given access to the room other than themselves, and that in no way would anyone mess with the light.&lt;/p&gt;
+
+&lt;p&gt;They were told that at any time, anyone could come forward and say “I believe all prisoners has been in the room” if they believe it, and if it’s true, all the prisoners go free. If the prisoner says the phrase and it’s not true, they all are killed by firing squad.&lt;/p&gt;
+
+&lt;p&gt;Now, you can’t just say the phrase on the 100th day – I mean, you could, but it probably wouldn’t work because the prisoners can be sent in multiple times.&lt;/p&gt;
+
+&lt;p&gt;What you know:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;There are 100 prisoners&lt;/li&gt;
+  &lt;li&gt;There is a room with a light bulb that only these prisoners have access to&lt;/li&gt;
+  &lt;li&gt;They can really only communicate through this light bulb&lt;/li&gt;
+  &lt;li&gt;At any time, any one of them can stop the game, and if all prisoners have been in the room with the light, they go free. If not all prisoners have been in that room, then they all lose the game (or get killed, or the warden steps on their pet bunny or something – something negative happens).&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;What’s your strategy?&lt;/p&gt;
+
+&lt;h3 id=&quot;hints-click-to-unblur&quot;&gt;Hints (click to unblur)&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p class=&quot;hint&quot;&gt;There’s a non-zero probability (assuming the choice of prisoner is random) that it’s 100,000 years before all prisoners go into that room. So don’t try to find a perfect solution. Just any solution will work.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p class=&quot;hint&quot;&gt;If you haven’t found any solutions, how about putting one prisoner in charge?&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;some-solutions&quot;&gt;Some Solutions&lt;/h3&gt;
+
+&lt;h4 id=&quot;solution-1&quot;&gt;Solution 1&lt;/h4&gt;
+
+&lt;div class=&quot;hint&quot;&gt;
+  &lt;p&gt;You can put one prisoner in charge and only allow that prisoner to ever turn off the light. Then, whenever anyone else gets in the room, if the light is off and they’ve never turned it on before, turn it on; otherwise, just leave it be. The chosen prisoner ends the game when he or she turns the light off for the 99th time.&lt;/p&gt;
+
+  &lt;p&gt;That solution is okay, but not great. It gets the job done, but it’ll take forever.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;h4 id=&quot;solution-2&quot;&gt;Solution 2&lt;/h4&gt;
+
+&lt;div class=&quot;hint&quot;&gt;
+  &lt;p&gt;My favorite solution is kinda complicated, but it’s really cool…&lt;/p&gt;
+
+  &lt;p&gt;So, you pick a number, say, 10. Then, you say make the following rules:&lt;/p&gt;
+
+  &lt;ul&gt;
+    &lt;li&gt;You assign a notion of “value” to a light-bulb.
+      &lt;ul&gt;
+        &lt;li&gt;For the first ten days, a light bulb is said to have a value of 1.&lt;/li&gt;
+        &lt;li&gt;Then every ten days after that, the value doubles, until it gets to 64&lt;/li&gt;
+        &lt;li&gt;After 64, it goes back to 1.&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;Everybody keeps a record in their own respective cells of the value they currently have.&lt;/li&gt;
+    &lt;li&gt;When a prisoner enters the room, if the light is on, the prisoner turns it off and adds the current day’s value to their own.
+      &lt;ul&gt;
+        &lt;li&gt;Then, the prisoner writes out the value they have in binary.&lt;/li&gt;
+        &lt;li&gt;The value of the light bulb progresses to the next day’s value, let’s call it \(\lambda\).&lt;/li&gt;
+        &lt;li&gt;If the prisoner has a “1” in the \(\lambda\) place of the binary description of his or her own value, they turn on the light and decrease their own value by \(\lambda\).&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+
+  &lt;p&gt;So, for example, let’s pick 10 as our number of days per value thing. Then if today is the 9th day in the full cycle, then today’s value is 1 (and so is tomorrow’s). So if the light is on when I get in, I turn it off and increment my value. Let’s assume the light is on and I have a value of 20 (or 0010100, in our description). Then I turn off the light and find that I have a value of 21. Since tomorrow’s value is 1, and my binary description is 0010101, I return that point and turn on the light bulb, leaving me with 0010100. If on the other hand, it had been the tenth day and tomorrow’s value were 2, since I’d have a 0 in the 2’s place, I’d keep the point.&lt;/p&gt;
+
+  &lt;p&gt;The reason I find this solution so interesting is, it really gets to the core of money and value. In this case, the light is only twice as valuable on day 11 as it is on day 10 because we agree to artificially make it so, but as long as we’re doing that, the results are astounding and very real.&lt;/p&gt;
+
+  &lt;p&gt;Also, this is a completely decentralized solution! Come on, that’s amazing!&lt;/p&gt;
+&lt;/div&gt;</content><author><name>Aaron Niskin</name></author><category term="Riddles" /><category term="puzzles" /><category term="riddles" /><category term="fun&amp;games" /><category term="pokeaneyeout" /><summary type="html">A group of prisoners encounter an evil warden and his sadistic lightbulb. Who will win?</summary></entry><entry><title type="html">The blue-eyed reconing!</title><link href="http://localhost:4000/blog/2018/06/02/blue_eyed_people.html" rel="alternate" type="text/html" title="The blue-eyed reconing!" /><published>2018-06-02T00:00:00-07:00</published><updated>2018-06-02T00:00:00-07:00</updated><id>http://localhost:4000/blog/2018/06/02/blue_eyed_people</id><content type="html" xml:base="http://localhost:4000/blog/2018/06/02/blue_eyed_people.html">&lt;h2 id=&quot;the-scenario&quot;&gt;The scenario:&lt;/h2&gt;
 
 &lt;p&gt;There’s an island far away from anything we would call recognizable with a particularly strange custom: in this town, any person who discovers his or her own eye color is compelled to go to the town square at 9:00AM the following morning and kill him or her self publicly, so it goes. It’s a part of their lives and they all obey this custom diligently.&lt;/p&gt;
 
@@ -1128,35 +1200,4 @@ for the following, assume we’ve done that.&lt;/p&gt;
 
 &lt;p&gt;And in this way, we have defined how NFAs can interpret strings of symbols rather than just single symbols.&lt;/p&gt;
 
-&lt;h3 id=&quot;maybe-in-another-post-well-get-past-the-definitions--&quot;&gt;Maybe in another post, we’ll get past the definitions! :-/&lt;/h3&gt;</content><author><name>Aaron Niskin</name></author><category term="Mathematics" /><category term="dfa" /><category term="dfa nfa equivalence" /><category term="finite automata" /><category term="formal languages" /><category term="math" /><category term="mathematics" /><category term="maths" /><category term="nfa" /><category term="intro" /><summary type="html">A basic yet formal introduction to Finite Automata and how strings act on them.</summary></entry><entry><title type="html">What’s in a language?</title><link href="http://localhost:4000/blog/2015/11/30/whats-in-a-language.html" rel="alternate" type="text/html" title="What's in a language?" /><published>2015-11-29T22:36:29-08:00</published><updated>2015-11-29T22:36:29-08:00</updated><id>http://localhost:4000/blog/2015/11/30/whats-in-a-language</id><content type="html" xml:base="http://localhost:4000/blog/2015/11/30/whats-in-a-language.html">&lt;h2 id=&quot;languages-in-abstraction&quot;&gt;Languages in abstraction&lt;/h2&gt;
-
-&lt;p&gt;This post is about Languages from a mathematical and abstract linguistics point of view. Not much more to say about that, so let’s get right to it!&lt;/p&gt;
-
-&lt;!-- more --&gt;
-
-&lt;h2 id=&quot;the-rigorous-definition&quot;&gt;The Rigorous definition:&lt;/h2&gt;
-
-&lt;p&gt;Let \(  \Sigma \)  be an alphabet and let \(  \Sigma^k \)  be the set of all strings of length k over that alphabet. Then, we define \(  \Sigma^* \)  to be \(  \bigcup\limits_{k\in\mathbb{N}}\Sigma^k \)  (the union of ∑&lt;sup&gt;k&lt;/sup&gt; over all natural numbers k). If \(  L\subseteq\Sigma^* \) , we call \(  L \)  a language.&lt;/p&gt;
-
-&lt;h2 id=&quot;the-intuition-behind-the-definition&quot;&gt;The Intuition Behind the Definition&lt;/h2&gt;
-
-&lt;p&gt;Consider an alphabet (some finite set of characters), for example we can consider the letters of the English language, the ASCII symbols, the symbols \(  {0, 1} \)  (otherwise known as binary), or the symbols \(  {1, 2, 3, 4, 5, 6, 7, 8, 9, 0, +, \times , =} \) . We can then construct the infinite list of all the different ways we can arrange those characters (e.g. \(  1001011 \)  or \(  0011011011 \) , etc. if we’re using binary). We call these arrangements “strings”. Once we have all that machinery built up, a language is just some subset of that infinite collection of strings. The language may itself be infinite.&lt;/p&gt;
-
-&lt;h2 id=&quot;some-examples&quot;&gt;Some Examples&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;The alphabet: \(  \Sigma={0, 1} \) &lt;br /&gt;
-The language: \(  {x\in\Sigma|x \text{ is prime}} \)  (all prime numbers in binary)&lt;br /&gt;
-Some strings from the language: \(  10, 11, 101… \)&lt;/li&gt;
-  &lt;li&gt;The alphabet: ASCII characters&lt;br /&gt;
-The language: All syntactically correct Clojure programs (the source code)&lt;/li&gt;
-  &lt;li&gt;The alphabet: All Clojure functions, operators, etc, and list \(  {x, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0} \) &lt;br /&gt;
-The language: All syntactically correct Clojure programs (the source code)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;You see that we need to have an alphabet before we can have a Formal Language. Also, different alphabets may result in equivalent languages – by equivalent, we mean that both languages contain the same strings.&lt;/p&gt;
-
-&lt;h2 id=&quot;what-are-we-getting-at&quot;&gt;What are we getting at?&lt;/h2&gt;
-
-&lt;p&gt;Well, there are two ways to look at this. On the first hand, linguists would like to study language in its abstract essence. For this, Formal Languages may come in handy (if endowed with a Grammar and possibly more). That is not the reason I will be studying Formal Languages. I’m learning about formal languages to find their applications to computing.
-Apparently, with the help of a little Mathematical thinking, we can assign semantics to the strings in a language and somehow correlate them with real world problems – such as computability, the P=nP problem, cryptography, and more!&lt;/p&gt;</content><author><name>Aaron Niskin</name></author><category term="Formal language" /><category term="intro" /><category term="language" /><category term="math" /><summary type="html">The basics of the theory of formal languages</summary></entry></feed>
+&lt;h3 id=&quot;maybe-in-another-post-well-get-past-the-definitions--&quot;&gt;Maybe in another post, we’ll get past the definitions! :-/&lt;/h3&gt;</content><author><name>Aaron Niskin</name></author><category term="Mathematics" /><category term="dfa" /><category term="dfa nfa equivalence" /><category term="finite automata" /><category term="formal languages" /><category term="math" /><category term="mathematics" /><category term="maths" /><category term="nfa" /><category term="intro" /><summary type="html">A basic yet formal introduction to Finite Automata and how strings act on them.</summary></entry></feed>
