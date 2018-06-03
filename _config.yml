@@ -38,8 +38,8 @@ defaults:
       path: ""
       type: posts
     values:
-      layout: post # Default layout    image: "/assets/pics/logo.png" # Default image for sharing
-      feature_image: "/assets/pics/coming_soon.jpg" # "https://unsplash.it/1300/400?image=1067"
+      layout: post # Default layout    image: "/assets/pics/logo.png" # Default image for sharing 
+      feature_image: "/assets/pics/puzzles.jpg" # "https://unsplash.it/1300/400?image=1067"
       author: "Aaron Niskin"
 ##    -
 ##      scope:
@@ -47,8 +47,7 @@ defaults:
 ##        type: riddles
 ##      values:
 ##        layout: riddle # Default layout    image: "/assets/pics/logo.png" # Default image for sharing
-##        paginate_path: riddles/page:num # jekyll-paginate > blog page
-##        permalink: /riddle/:year/:month/:day/:title:output_ext  # pretty  # Permalink style (/YYYY/MM/DD/page-name/)
+##        paginate_path: riddles/page:num # jekyll-paginate > blog page permalink: /riddle/:year/:month/:day/:title:output_ext  # pretty  # Permalink style (/YYYY/MM/DD/page-name/)
 ##        feature_image: "/assets/pics/coming_soon.jpg" # "https://unsplash.it/1300/400?image=1067"
 ##        author: "Aaron Niskin"
 # }}}
@@ -93,7 +92,6 @@ social: # jekyll-seo-tag > social overrides
 # {{{ 4. Jekyll settings
 sass:
   style: compressed # Style compression
-permalink: /blog/:year/:month/:day/:title:output_ext  # pretty  # Permalink style (/YYYY/MM/DD/page-name/)
 excerpt_separator: <!-- more --> # Marks end of excerpt in posts
 # }}}
 
@@ -106,13 +104,15 @@ collections:
     feature_text: |
       Welcome to the blog
     feature_image: "/assets/pics/skyplane.JPG" # "https://unsplash.it/1300/400?image=1067"
+    permalink: /blog/:year/:month/:day/:title:output_ext  # pretty  # Permalink style (/YYYY/MM/DD/page-name/)
 ##    riddles:
 ##      title: Riddles # Needed for Siteleaf
 ##      output: true
 ##      description: "Having fun with riddles!" # The post list page content
 ##      feature_text: |
 ##        Just fun riddles
-##      feature_image: "/assets/pics/skyplane.JPG" # "https://unsplash.it/1300/400?image=1067"
+##      feature_image: "/assets/pics/puzzles.jpg" # "https://unsplash.it/1300/400?image=1067"
+##      permalink: /riddles/:title:output_ext  # pretty  # Permalink style (/YYYY/MM/DD/page-name/)
 # }}}
 
 # {{{ 6. Jekyll collections settings
