@@ -3,8 +3,10 @@
 	<head>
 		<!-- General meta -->
 		<meta name="viewport" content="width=device-width, initial-scale=1">
+		{% include jquery.html %}
 		{% include google-analytics.html %}
 		{% include mathjax.html %}
+		{% include hints.html %}
 
 		{% if page.indexing == false %}
 			<meta name="robots" content="noindex">
