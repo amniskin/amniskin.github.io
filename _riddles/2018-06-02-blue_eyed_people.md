@@ -1,9 +1,8 @@
 ---
 title: "The blue-eyed reconing!"
-type: post
+type: riddle
 excerpt: |
   In a world of blue eyed and brown eyed people, it's dangerous to know your own eye color.
-category: Riddles
 tags:
 - puzzles
 - riddles

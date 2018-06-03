@@ -1,31 +1,28 @@
 <aside class="aside  typeset">
 
-  {% unless page.layout == "categories" or page.collection == "posts" %}
-    <h3>About this site</h3>
-    <p>{{ site.description }}</p>
-  {% endunless %}
+	{% if include.type %}
+		{% if include.type == "post" %}
+			<h3>Related Posts</h3>
+			{% include post-related.html %}
+		{% else %}
+			{% if include.type != "posts" %}
+				{% if include.type == "homepage" %}
+					<h3>About this site</h3>
+					<p>{{ site.description }}</p>
+				{% endif %}
+				<h3>Blog Posts</h3>
+				{% include post-list.html type="posts" %}
+			{% endif %}
+		{% endif %}
+	{% endif %}
+	{% include button.html text="Subscribe to posts &nbsp;" icon="rss" link="/feed.xml" %}
+	{% include nav-social.html %}
 
-  {% unless page.layout == "categories" or page.layout == "search" or page.collection == "posts" or paginator.posts %}
-    {% include post-list.html %}
-  {% endunless %}
-
-  {% if page.layout == "categories" %}
+  {% if page.layout == "categories" or include.type == "posts" %}
     <section class="section  section--category-index">
       <h3>Index</h3>
       {% include nav-categories.html %}
     </section>
   {% endif %}
-
-  {% if page.collection == "posts" %}
-    {% include post-related.html %}
-  {% endif %}
-
-  {% if page.collection == "posts" or paginator.posts %}
-    {% include button.html text="Subscribe to posts &nbsp;" icon="rss" link="/feed.xml" %}
-  {% endif %}
-
-  {% unless page.layout == "categories" %}
-    {% include nav-social.html %}
-  {% endunless %}
 
 </aside>

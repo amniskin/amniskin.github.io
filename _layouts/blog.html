@@ -10,18 +10,18 @@ layout: default
 
     <article class="article  article--page  typeset">
 
-			{% assign collectiondata = site.collections | where: "label", page.collectionpage | first %}
+			{% assign collectiondata = site.collections | where: "label", page.collection | first %}
 			<h1>{{ collectiondata.title }}</h1>
 
 			{{ collectiondata.description | markdownify }}
 
     </article>
 
-    {% include post-list.html %}
+    {% include post-list.html type=page.collection %}
 
   </div>
 
-  {% include site-aside.html %}
+  {% include site-aside.html type=page.collection %}
 
 </main>
 

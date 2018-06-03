@@ -39,17 +39,17 @@ defaults:
       type: posts
     values:
       layout: post # Default layout    image: "/assets/pics/logo.png" # Default image for sharing 
+      feature_image: "/assets/pics/coming_soon.jpg" # "https://unsplash.it/1300/400?image=1067"
+      author: "Aaron Niskin"
+  -
+    scope:
+      path: ""
+      type: riddles
+    values:
+      layout: post # Default layout    image: "/assets/pics/logo.png" # Default image for sharing
+      paginate_path: riddles/page:num # jekyll-paginate > blog page permalink: /riddle/:year/:month/:day/:title:output_ext  # pretty  # Permalink style (/YYYY/MM/DD/page-name/)
       feature_image: "/assets/pics/puzzles.jpg" # "https://unsplash.it/1300/400?image=1067"
       author: "Aaron Niskin"
-##    -
-##      scope:
-##        path: ""
-##        type: riddles
-##      values:
-##        layout: riddle # Default layout    image: "/assets/pics/logo.png" # Default image for sharing
-##        paginate_path: riddles/page:num # jekyll-paginate > blog page permalink: /riddle/:year/:month/:day/:title:output_ext  # pretty  # Permalink style (/YYYY/MM/DD/page-name/)
-##        feature_image: "/assets/pics/coming_soon.jpg" # "https://unsplash.it/1300/400?image=1067"
-##        author: "Aaron Niskin"
 # }}}
 
 # {{{ 1. BUILD COMMAND OPTIONS
@@ -105,17 +105,14 @@ collections:
       Welcome to the blog
     feature_image: "/assets/pics/skyplane.JPG" # "https://unsplash.it/1300/400?image=1067"
     permalink: /blog/:year/:month/:day/:title:output_ext  # pretty  # Permalink style (/YYYY/MM/DD/page-name/)
-##    riddles:
-##      title: Riddles # Needed for Siteleaf
-##      output: true
-##      description: "Having fun with riddles!" # The post list page content
-##      feature_text: |
-##        Just fun riddles
-##      feature_image: "/assets/pics/puzzles.jpg" # "https://unsplash.it/1300/400?image=1067"
-##      permalink: /riddles/:title:output_ext  # pretty  # Permalink style (/YYYY/MM/DD/page-name/)
-# }}}
-
-# {{{ 6. Jekyll collections settings
+  riddles:
+    title: Riddles # Needed for Siteleaf
+    output: true
+    description: "Having fun with riddles!" # The post list page content
+    feature_text: |
+      Just fun riddles
+    feature_image: "/assets/pics/puzzles.jpg" # "https://unsplash.it/1300/400?image=1067"
+    permalink: /riddles/:title:output_ext  # pretty  # Permalink style (/YYYY/MM/DD/page-name/)
 # }}}
 
 # {{{ 7. Site settings
@@ -133,8 +130,8 @@ avatarurl: "/assets/pics/logo.png"
 # {{{ 8. Site navigation
 navigation_header:
   Home: / # Elements: /elements/
-  Blog: /blog/ ## Riddles: /riddles/
-  Categories: /categories/ # Search: /search/ 
+  Blog: /blog/ ##
+  Riddles: /riddles/ ## Categories: /categories/ # Search: /search/ 
   Resume: https://github.com/amniskin/resume/raw/master/Niskin_Resume.pdf # # Resume: /assets/files/Niskin_Resume.pdf # Search: /search/
 
 social_links:

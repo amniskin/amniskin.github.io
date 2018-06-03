@@ -1,9 +1,8 @@
 ---
 title: "Prisoners and The Lightblub"
-type: post
+type: riddle
 excerpt: |
   A group of prisoners encounter an evil warden and his sadistic lightbulb. Who will win?
-category: Riddles
 tags:
 - puzzles
 - riddles
