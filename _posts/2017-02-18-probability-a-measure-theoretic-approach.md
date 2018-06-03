@@ -9,6 +9,7 @@ tags:
 - Probability
 - statistics
 excerpt: "We cover probability from a measure theoretic approach"
+feature_image: "/assets/pics/2017/02/18_banner.png"
 ---
 
 ## Probability using Measure Theory
