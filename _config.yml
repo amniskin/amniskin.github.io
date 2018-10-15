@@ -123,8 +123,8 @@ url: "http://aaron.niskin.org" # Site url, also used in jekyll-seo-tag
 repo: "https://github.com/amniskin.github.io"
 email: "aaron@niskin.org"
 ### disqus: ""
-avatarurl: "/assets/pics/logo.png"
-### avatarurl: "https://secure.gravatar.com/avatar/5267e8bc17bebc6f6e39eab09457eeb5" # Uses avatars for favicons to get multple sites, eg Gravatar, Twitter, GitHub
+### avatarurl: "/assets/pics/logo.png"
+avatarurl: "https://secure.gravatar.com/avatar/5267e8bc17bebc6f6e39eab09457eeb5" # Uses avatars for favicons to get multple sites, eg Gravatar, Twitter, GitHub
 #}}}
 
 # {{{ 8. Site navigation
