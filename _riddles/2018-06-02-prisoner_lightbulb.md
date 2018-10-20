@@ -8,6 +8,7 @@ tags:
 - riddles
 - fun&games
 - pokeaneyeout
+feature_image: /assets/pics/2018/06/02_light_bulb.jpg
 ---
 
 ## The scenario:

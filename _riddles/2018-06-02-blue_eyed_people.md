@@ -8,6 +8,7 @@ tags:
 - riddles
 - fun&games
 - pokeaneyeout
+feature_image: /assets/pics/2018/06/02_blue_eyed_cat.jpg
 ---
 
 ## The scenario:

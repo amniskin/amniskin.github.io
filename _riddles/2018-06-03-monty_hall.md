@@ -9,6 +9,7 @@ tags:
 - riddles
 - fun&games
 - pokeaneyeout
+feature_image: /assets/pics/2018/06/03_monty_hall.png
 ---
 
 ## The scenario:
