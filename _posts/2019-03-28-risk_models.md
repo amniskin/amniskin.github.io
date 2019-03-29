@@ -59,15 +59,14 @@ $$
 \text{proj}_vu = \frac{\langle u, v\rangle}{||v||} \frac{v}{||v||}
 $$
 
-So if you're only interested in the magnitude of the projection (which would be the amount of risk in the direction of the total risk), it would be:
+So if you're only interested in the coefficient (signed magnitude) of the projection (which would be the amount of risk in the direction of the total risk), it would be:
 
 $$
 \begin{align*}
 \text{proj}_vu
-=& \left| \left| \frac{\langle u, v\rangle}{||v||} \frac{v}{||v||} \right|\right| \\\\
-=& \left| \left| \frac{\langle u, v\rangle}{||v||} \right|\right| \\\\
-=& \left| \left| \frac{u'Vv}{\sqrt{v'Vv}} \right|\right| \\\\
-=& \left| \left| \frac{(Xh_1)'V(Xh)}{\sqrt{(Xh)'V(Xh)}} \right|\right| \\\\
+=& \frac{\langle u, v\rangle}{||v||} \frac{v}{||v||} \text{ we can get rid of the unit vector} \\\\
+=& \frac{\langle u, v\rangle}{||v||} \\\\
+=& \frac{u'Vv}{\sqrt{v'Vv}} \\\\
 =& \frac{(Xh_1)'V(Xh)}{\sqrt{(Xh)'V(Xh)}} \\\\
 \end{align*}
 $$
