@@ -68,6 +68,7 @@ $$
 =& \left| \left| \frac{\langle u, v\rangle}{||v||} \right|\right| \\\\
 =& \left| \left| \frac{u'Vv}{\sqrt{v'Vv}} \right|\right| \\\\
 =& \left| \left| \frac{(Xh_1)'V(Xh)}{\sqrt{(Xh)'V(Xh)}} \right|\right| \\\\
+=& \frac{(Xh_1)'V(Xh)}{\sqrt{(Xh)'V(Xh)}} \\\\
 \end{align*}
 $$
 
