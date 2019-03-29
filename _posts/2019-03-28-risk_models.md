@@ -63,10 +63,11 @@ So if you're only interested in the magnitude of the projection (which would be 
 
 $$
 \begin{align*}
-\text{proj}_vu =& \left |\left |\frac{\langle u, v\rangle}{||v||} \frac{v}{||v||}\right | \right | \\\\
-=& \left |\left |\frac{\langle u, v\rangle}{||v||}\right | \right | \\\\
-=& \left |\left |\frac{u'Vv}{\sqrt{v'Vv}}\right | \right | \\\\
-=& \left |\left |\frac{(Xh_1)'V(Xh)}{\sqrt{(Xh)'V(Xh)}}\right | \right | \\\\
+\text{proj}_vu
+=& \frac{\langle u, v\rangle}{||v||} \frac{v}{||v||} \\\\
+=& \frac{\langle u, v\rangle}{||v||} \\\\
+=& \frac{u'Vv}{\sqrt{v'Vv}} \\\\
+=& \frac{(Xh_1)'V(Xh)}{\sqrt{(Xh)'V(Xh)}} \\\\
 $$
 
 ## Summary
