@@ -2,7 +2,7 @@
 title: "A little geometric walk down risk model lane"
 type: post
 excerpt: Let's talk about the geometry of risk models
-category: Mathematics
+category: Finance
 tags:
 - Geometry
 - Statistics
