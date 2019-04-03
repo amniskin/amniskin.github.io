@@ -88,7 +88,7 @@ We can view this style of risk model in a geometric way for some added clarity. 
 Formally, we have an inner product defined in $\mathbb{R}^n$ given by:
 
 $$
-\langle u, v\rangle =& u'Fv
+\langle u, v\rangle = u'Fv
 $$
 
 So our factor risk is the norm of our vector in this space. But now we want to see how seeing things the geometric way can benefit us.
