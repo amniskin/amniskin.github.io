@@ -50,6 +50,17 @@ $$
 \text{proj}_vu := \frac{\langle u, v\rangle}{||v||} \frac{v}{||v||}
 $$
 
+Another way to see the definition, given our definition of $\cos$ is:
+
+$$
+\begin{align*}
+\text{proj}_vu =& \frac{\langle u, v\rangle}{||v||} \frac{v}{||v||} \\\\
+=& \frac{||u||\langle u, v\rangle}{||u||\cdot||v||} \frac{v}{||v||} \\\\
+=& ||u||\cos(\theta) \frac{v}{||v||}
+\end{align*}
+$$
+
+
 Geometrically, this gives us the component of $u$ in the $v$ direction. See figure below.
 
 ![visual of a vector projection]({{ site.baseurl }}/assets/pics/2019/03/28_projection.png "Visual of a vector projection")
