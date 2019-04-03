@@ -44,7 +44,7 @@ $$
 $$
 
 ## Projections
-Let $u,v\in\mathbb{R}^n$. Given an inner product $\langle\cdot,\cdot\langle$ (and the associated norm), the **projection** (sometimes called **vector projection**) of $u$ onto $v$ (denoted as $\text{proj}_vu$)is defined as:
+Let $u,v\in\mathbb{R}^n$. Given an inner product $\langle\cdot,\cdot\rangle$ (and the associated norm), the **projection** (sometimes called **vector projection**) of $u$ onto $v$ (denoted as $\text{proj}_vu$)is defined as:
 
 $$
 \text{proj}_vu := \frac{\langle u, v\rangle}{||v||} \frac{v}{||v||}
