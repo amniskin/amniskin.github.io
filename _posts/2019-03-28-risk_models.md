@@ -52,7 +52,7 @@ $$
 
 Geometrically, this gives us the component of $u$ in the $v$ direction. See figure below.
 
-![visual of a vector projection]({{ site.baseurl }}/assets/pics/2019/03/28-projection.png "Visual of a vector projection")
+![visual of a vector projection]({{ site.baseurl }}/assets/pics/2019/03/28_projection.png "Visual of a vector projection")
 
 If you're wondering why I specified that it's the "**vector** projection" rather than just "projection", it's because there is a notion of a *scaler projection* too: The **scaler projection** of $u$ onto $v$ is simply the coefficient part of the projection:
 
