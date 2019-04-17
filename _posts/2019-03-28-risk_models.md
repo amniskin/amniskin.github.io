@@ -60,7 +60,6 @@ $$
 \end{align*}
 $$
 
-
 Geometrically, this gives us the component of $u$ in the $v$ direction. See figure below.
 
 ![visual of a vector projection]({{ site.baseurl }}/assets/pics/2019/03/28_projection.png "Visual of a vector projection")
@@ -91,7 +90,7 @@ $$
 
 Where $h \in \mathbb{R}^m$ is our **holdings** (of $m$ many assets) vector, $X \in \mathbb{R}^{n\times m}$ is called our **factor exposure matrix** (usually shortened to simply, "exposure matrix"), $V \in \mathbb{R}^{n\times n}$ is called our **factor covariance matrix**, and $D \in \mathbb{R}^{m}$ is our **specific risk** vector. The exposure matrix is computed based off of real-world things like the stock's N-day momentum, the stock's market cap, volatility (yet another word for standard deviation) of returns, etc.
 
-If $n \ll m$ the covariance matrix can be computed with a lot more efficacy and the exposures are computed from external things like official SEC filings, etc. so as to reduce the amount of over-fitting here.
+If $n \ll m$ the covariance matrix can be computed with a lot more efficacy and the exposures are computed from external things like official SEC filings, etc. so as to reduce the amount of over-fitting here. So Barra generally regresses the exposures against returns (with some universe filtering and time weighting, etc.) to get "factor returns". We can then compute the factor covariance matrix, and we're done!
 
 ## The geometric view
 
@@ -140,9 +139,23 @@ $$
 And it comes with the all the geometric intuition we all know and love.
 
 ## U.F.P.'s
+
+\[edit\]
+See note below.
+\[end edit\]
+
 What the hell are they? The standard definition of a **UFP** is: the characteristic portfolio with unit exposure to a particular factor, and zero exposure to all the others. What does this mean? How are we guaranteed that such a thing always exists, and just, what? Well, yet again, our geometric interpretation can come to our rescue...
 
 Let's pick a particular factor $i$. Now let's construct an ortho-normal basis (perhaps using Gram-Schmidt) in factor space starting with every other factor *but* $i$, leaving $i$ for last. That last basis vector would be, by construction, orthogonal to every other factor (hence zero exposure to them) and have some exposure to our chosen factor. We can now take that last basis vector, rescale it as appropriately and we have ourselves a sweet UFP.
+
+\[edit\]
+### NOTE
+The information above about *UFP* is actually incorrect. A **UFP** is actually just the returns of the momentum vector. If you're more comfortable thinking in portfolio space, it's the returns of a fictitious portfolio that, when projected to factor space, is one of our basis vectors. What I wrote below is a bit more complicated, but provides an interesting and potentially useful insight into factor performance. I personally couldn't really care too much less about factors, but if that's what you're into, looking at both the "real" UFPs and what I was calling UFPs can give you a much more complete view of things.
+
+Let me explain:
+
+The risk of a "real" UFP has a portion explained by other factors. So if momentum is on a tear, it could just be a coalescence of other factors ripping it but the part that makes momentum unique is actually quite negative. One way to see that is to plot the performance of the "real" UFPs along with my UFPs. If you see the "real" UFP is positive but my UFP is negative (for a give factor), you can conclude we're in a situation like I described above. And so on.
+\[end edit\]
 
 ## Specific risk
 So how do we interpret specific risk (what we called $D$) in the geometric way? Can we simply add a column to our risk model for specific risk -- even if it is mostly zeros? It turns out, no. For one, the specific risk is stock-specific (hence the name), but also, the thing we want to measure -- variance -- is not linear. So what is specific risk?
