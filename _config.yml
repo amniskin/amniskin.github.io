@@ -38,7 +38,7 @@ defaults:
       path: ""
       type: posts
     values:
-      layout: post # Default layout    image: "/assets/pics/logo.png" # Default image for sharing 
+      layout: post # Default layout    image: "/assets/pics/logo.png" # Default image for sharing
       feature_image: "/assets/pics/coming_soon.jpg" # "https://unsplash.it/1300/400?image=1067"
       author: "Aaron Niskin"
   -
@@ -83,7 +83,6 @@ social: # jekyll-seo-tag > social overrides
   name: Aaron Niskin # jekyll-seo-tag > real name
   links:  # jekyll-seo-tag > social aliases (sameAs)
     - https://twitter.com/amniskin
-    - https://www.facebook.com/aniskin
     - https://www.linkedin.com/in/aaron-niskin
     - https://plus.google.com/+AaronNiskin
     - https://github.com/amniskin
@@ -131,13 +130,12 @@ avatarurl: "https://secure.gravatar.com/avatar/5267e8bc17bebc6f6e39eab09457eeb5"
 navigation_header:
   Home: / # Elements: /elements/
   Blog: /blog/ ##
-  Riddles: /riddles/ ## Categories: /categories/ # Search: /search/ 
+  Riddles: /riddles/ ## Categories: /categories/ # Search: /search/
   Resume: https://github.com/amniskin/resume/raw/master/Niskin_Resume.pdf # # Resume: /assets/files/Niskin_Resume.pdf # Search: /search/
 
 social_links:
   Twitter: https://twitter.com/amniskin
   LinkedIn: https://www.linkedin.com/in/aaron-niskin
-  Google+: https://plus.google.com/+AaronNiskin
   GitHub: https://github.com/amniskin
   link: http://aaron.niskin.org
 
