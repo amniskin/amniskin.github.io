@@ -7,7 +7,7 @@ tags:
 - Riddle
 - puzzles
 - riddles
-feature_image: "/assets/pics/2018/04/12_banner.jpg"
+feature_image: "/assets/pics/2019/07/infinite-hallway.jpg"
 ---
 
 This post is going to be something of a combination riddle and blog post.
