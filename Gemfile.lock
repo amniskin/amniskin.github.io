@@ -93,4 +93,4 @@ DEPENDENCIES
   bundler (~> 1.12)
 
 BUNDLED WITH
-   1.16.2
+   2.0.2
