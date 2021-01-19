@@ -1,2 +1,0 @@
-I"<p>There are N people indexed by $1,..,N$ (because down with the zero-indexers! Long live <a href="https://en.wikipedia.org/wiki/Peano_axioms">Peano!</a>) standing in a circle. They’re standing such that $i$ is between $i-1$ and $i+1$ (unless $i \in{1,N}$, for obvious reasons).</p>
-:ET
