@@ -13,7 +13,6 @@ tags:
 - Autoregressive
 - Theory
 banner: /assets/images/2017/10/25_banner.jpg
-mathjax: true
 ---
 
 # Autoregression

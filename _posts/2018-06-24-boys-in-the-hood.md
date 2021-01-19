@@ -9,6 +9,7 @@ tags:
 - fun&games
 - pokeaneyeout
 banner: /assets/images/2018/06/24_Knave_of_Hearts_Mother_Goose2.jpg
+mathjax: true
 ---
 
 This post is really several riddles that get progressively more difficult. So don't be dissuaded if you find the first few too easy (or if you don't).
@@ -78,28 +79,28 @@ The whole paradoxical part of the problem goes away once we know the position of
 So it's 50/50.
 </div>
 
-## What if I told you that Pat has 2 kids, and one is a boy born in summer?
+## Summertime
+
+Now Pat has 2 kids and one is a boy born in summer. What's the probability that the other is a boy as well?
 
 <div class="hint" markdown="1">
 This is where it gets a little tricky. The states are now:
 
-far too many to list. But, basically, it's
+| Child 1 | Child 2 |
+| :------ | :------ |
+| B (1 season) | G (4 seasons) |
+| G (4 season) | B (1 seasons) |
+| B (3[^three-not-four] season) | B (1 seasons) |
+| B (1 season) | B (4 seasons) |
 
-\\[
-B\cdot\{1 \text{ seasons}\}, G\cdot\{4 \text{ seasons}} \\\\\\
-G\cdot\{4 \text{ seasons}\}, B\cdot\{1 \text{ seasons}} \\\\\\
-B\cdot\{3 \text{ seasons}\}, B\cdot\{1 \text{ seasons}} \\\\\\
-B\cdot\{1 \text{ seasons}\}, B\cdot\{4 \text{ seasons}}
-\\]
+[^three-not-four]: We write 3 and not four because we don't want to double count the case where both are boys born in summer.
 
-Note that we're not double counting the case where both are boys born in summer.
-
-So there are a total of 15 possible outcomes, and 7 of them have a boy as the second child. So it's \\(\frac{7}{15}\\).
+So there are a total of 15 possible outcomes, and 7 of them have a boy as the second child. So it's $\frac{7}{15}$.
 </div>
 
 ## What if we only know that one child is a boy born on December 23rd?
 
-Or we could consider something a bit more general with probability \\(q\\).
+Or we could consider something a bit more general with probability $q$.
 
 ### Solution
 
@@ -129,7 +130,7 @@ So we have:
 \end{align}
 \\]
 
-And we can see, as \\(q\to0\\), \\(\mathbb{P}\to p\\), and as \\(q\to1\\), \\(\mathbb{P}\to \frac{p}{2-p}\\)
+And we can see, as $q\to0$, $\mathbb{P}\to p$, and as $q\to1$, $\mathbb{P}\to \frac{p}{2-p}$
 
 The closest thing I can give toward intuition here is this: let's take the boy-in-summer example, and assume there's a 25% chance of being born in summer. Then our universe of possibilities is restricting the known child to 1/4 of the possibilities otherwise, but there is no such restriction on the other child. So in that way, it's in a sense down-weighting the effect of the known child (by scaling up all of the other possibilities).
 </div>
