@@ -8,7 +8,6 @@ tags:
 - puzzles
 - riddles
 banner: /assets/images/2019/07/the_office_guns.gif
-mathjax: true
 ---
 
 There are N people indexed by $1,..,N$ (because down with the zero-indexers! Long live [Peano!](https://en.wikipedia.org/wiki/Peano_axioms)) standing in a circle. They're standing such that $i$ is between $i-1$ and $i+1$ (unless $i \in\{1,N\}$, for obvious reasons).
