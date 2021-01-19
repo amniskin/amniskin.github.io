@@ -9,7 +9,6 @@ tags:
 - fun&games
 - pokeaneyeout
 banner: /assets/images/2018/06/02_blue_eyed_cat.jpg
-mathjax: true
 ---
 
 ## The scenario:

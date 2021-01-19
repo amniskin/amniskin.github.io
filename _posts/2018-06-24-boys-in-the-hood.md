@@ -9,7 +9,6 @@ tags:
 - fun&games
 - pokeaneyeout
 banner: /assets/images/2018/06/24_Knave_of_Hearts_Mother_Goose2.jpg
-mathjax: true
 ---
 
 This post is really several riddles that get progressively more difficult. So don't be dissuaded if you find the first few too easy (or if you don't).

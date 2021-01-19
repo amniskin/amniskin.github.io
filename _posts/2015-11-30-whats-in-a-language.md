@@ -10,7 +10,6 @@ tags:
 - language
 - math
 banner: /assets/images/2015/11/Romance-lg-classification-en.png
-mathjax: true
 ---
 
 ## Languages in abstraction

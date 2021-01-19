@@ -11,7 +11,6 @@ excerpt: >-
     Linear Regression is the bedrock of Machine Learning. We cover the basics
     therein, some theory involved, and give some relevant examples."
 banner: /assets/images/2017/02/21-banner.png
-mathjax: true
 ---
 
 
