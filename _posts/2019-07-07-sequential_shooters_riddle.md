@@ -10,9 +10,9 @@ tags:
 banner: /assets/images/2019/07/the_office_guns.gif
 ---
 
-There are N people indexed by $1,..,N$ (because down with the zero-indexers! Long live [Peano!](https://en.wikipedia.org/wiki/Peano_axioms)) standing in a circle. They're standing such that $i$ is between $i-1$ and $i+1$ (unless $i \in\{1,N\}$, for obvious reasons).
+There are N people indexed by \\( 1,..,N \\) (because down with the zero-indexers! Long live [Peano!](https://en.wikipedia.org/wiki/Peano_axioms)) standing in a circle. They're standing such that \\( i \\) is between \\( i-1 \\) and \\( i+1 \\) (unless \\( i \in\{1,N\} \\), for obvious reasons).
 
-Then starting with $1$ and going around the circle in turn, each person shoots the person directly to their left. This stops when there's only one person left alive. For example: if $N=5$, it would go:
+Then starting with \\( 1 \\) and going around the circle in turn, each person shoots the person directly to their left. This stops when there's only one person left alive. For example: if \\( N=5 \\), it would go:
 
 <!-- more -->
 
@@ -25,14 +25,16 @@ and only 3 remains.
 
 ## The task
 
-Given $N$, what is the index (1-indexed, unfortunately) of the last shooter standing? For example: if $N=5$, the answer is $3$.
+Given \\( N \\), what is the index (1-indexed, unfortunately) of the last shooter standing? For example: if \\( N=5 \\), the answer is \\( 3 \\).
 
 ## Solution:
 
-<div class="hint" markdown="1">
-Every number $N$ can be written uniquely as $2^i + \lambda$, where $i,\lambda\in\mathbb{N}_{\geq 0}$ and $\lambda$ is minimal (hence $i$ maximal).
+### The Theoretical Solution
 
-The answer to the riddle is $1 + 2\lambda$ for this particular $\lambda$.
+<div class="hint" markdown="1">
+Every number \\( N \\) can be written uniquely as \\( 2^i + \lambda \\), where \\( i,\lambda\in\mathbb{N}\_{\geq 0} \\) and \\( \lambda \\) is minimal (hence \\( i \\) maximal).
+
+The answer to the riddle is \\( 1 + 2\lambda \\) for this particular \\( \lambda \\).
 
 So full disclosure, I kinda cheated on this one. We'll get to that in a bit; but first let's go through the motions and let me walk you through my thought process (as if that's super valuable).
 
@@ -40,26 +42,26 @@ Firsty, we can immediately tell that every time there are an even number of peop
 
 From there we can conclude that any power of two should end on 1. e.g.
 
-if $N = 2^1 = 2$ we have:
+if \\( N = 2^1 = 2 \\) we have:
 
 1. 1 shoots 2
 
-if $N = 2^2 = 4$
+if \\( N = 2^2 = 4 \\)
 
 1. 1 shoots 2
 1. 3 shoots 4
-and we're left in pretty much the same scenario as $N=2$.
+and we're left in pretty much the same scenario as \\( N=2 \\).
 
-If $N=8$,
+If \\( N=8 \\),
 
 1. 1 shoots 2
 1. 3 shoots 4
 1. 5 shoots 6
 1. 7 shoots 8
 
-and we're left in pretty much the same scenario as $N=4$. In fact, for $2^{i+1}$, the first iteration will wipe out half of the people and leave us starting on 1 again -- thereby leaving us in an analogous scenario as $2^i$.
+and we're left in pretty much the same scenario as \\( N=4 \\). In fact, for \\( 2^{i+1} \\), the first iteration will wipe out half of the people and leave us starting on 1 again -- thereby leaving us in an analogous scenario as \\( 2^i \\).
 
-What about the other cases? Well, naively we can see that every shot moves the head forward by two slots (when 1 shoots 2, the round robbin starts again at 3 but with one fewer player). We now have to prove that this sort of thing reaches parity at $2^i$ and not beforehand. But I'm feeling lazy and I'm pretty confident that it's correct, so I'll just show that it's true for the first few programmatically...
+What about the other cases? Well, naively we can see that every shot moves the head forward by two slots (when 1 shoots 2, the round robbin starts again at 3 but with one fewer player). We now have to prove that this sort of thing reaches parity at \\( 2^i \\) and not beforehand. But I'm feeling lazy and I'm pretty confident that it's correct, so I'll just show that it's true for the first few programmatically...
 </div>
 
 ### The Programmatic Solution
