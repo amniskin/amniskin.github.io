@@ -1,7 +1,6 @@
 ---
-title: "Decomposition of Autoregressive Models"
-date: 2017-10-25 15:52:39.000000000 -05:00
-type: post
+layout: post
+title: Decomposition of Autoregressive Models
 excerpt: |
   We discuss the decomposition of AR models into components, and how eigenvalues are involved (because they always are).
 categories:
@@ -13,7 +12,7 @@ tags:
 - Autoregression
 - Autoregressive
 - Theory
-feature_image: "/assets/pics/2017/10/25_banner.jpg"
+banner: /assets/images/2017/10/25_banner.jpg
 ---
 
 # Autoregression
@@ -110,7 +109,7 @@ $$ B := \left[\begin{matrix} 1 \\ 0 \\ \vdots \\ 0 \end{matrix}\right] $$
 
 $$ X_t = AX_{t-1} + BW_t $$
 
-and 
+and
 
 $$ \forall t \in \mathbb{N}_{>p} (X_t[0] = x_t) $$
 

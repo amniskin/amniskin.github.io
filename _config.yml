@@ -1,84 +1,21 @@
-# {{{ outline
-# Site configuration
-# 0. GLOBAL CONFIG
-# 1. BUILD COMMAND OPTIONS      # 1. Files excluded from Jekyll builds
-# 2. Installed Gems
-# 3. Gem settings
-# 4. Jekyll settings
-# 5. Collections
-# 6. Jekyll collections settings
-# 7. Site settings
-# 8. Site navigation
-# }}}
-
-# 1. Files excluded from Jekyll builds
+# For technical reasons, this file is *NOT* reloaded automatically when you
+# use 'bundle exec jekyll serve'. If you change this file, please restart
+# the server process.
 #
-# {{{ 0. GLOBAL CONFIG
-exclude:
-- README.md  # - screenshot.png
-- LICENSE
-- CNAME
-- Gemfile
-- Gemfile.lock
-- assets/notebooks/*
-- alembic-jekyll-theme.gemspec
-timezone: America/Los_Angeles # New_York # Timezone for blog posts and alike
-encoding: utf-8 # Make sure the encoding is right
-defaults:
-  -
-    scope:
-      path: ""
-      type: pages
-    values:
-      layout: page # Default layout
-      image: "/assets/pics/logo.png" # Default image for sharing
-      feature_image: "/assets/pics/skyplane.JPG" # "https://unsplash.it/1300/400?image=1067"
-  -
-    scope:
-      path: ""
-      type: posts
-    values:
-      layout: post # Default layout    image: "/assets/pics/logo.png" # Default image for sharing
-      feature_image: "/assets/pics/coming_soon.jpg" # "https://unsplash.it/1300/400?image=1067"
-      author: "Aaron Niskin"
-  -
-    scope:
-      path: ""
-      type: riddles
-    values:
-      layout: post # Default layout    image: "/assets/pics/logo.png" # Default image for sharing
-      paginate_path: riddles/page:num # jekyll-paginate > blog page permalink: /riddle/:year/:month/:day/:title:output_ext  # pretty  # Permalink style (/YYYY/MM/DD/page-name/)
-      feature_image: "/assets/pics/puzzles.jpg" # "https://unsplash.it/1300/400?image=1067"
-      author: "Aaron Niskin"
-# }}}
+# Site settings
+# These are used to personalize your new site. If you look in the HTML files,
+# you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
+# You can create any custom variable you would like, and they will be accessible
+# in the templates via {{ site.myvariable }}.
 
-# {{{ 1. BUILD COMMAND OPTIONS
-show_drafts: false
-unpublished: false
-profile:     true
-# }}}
-
-# {{{ 2. SERVE COMMAND OPTIONS
-# }}}
-
-# {{{ 2. Installed Gems
-gems:
-- jekyll-sitemap
-- jekyll-mentions
-- jekyll-paginate
-- jekyll-seo-tag
-- jekyll-redirect-from
-- jekyll-feed
-- jemoji
-# }}}
-
-# {{{ 3. Gem settings
-paginate: 4 # jekyll-paginate > items per page
-paginate_path: blog/page:num # jekyll-paginate > blog page
-jekyll-mentions: https://twitter.com # jekyll-mentions > service used when @replying
+title: amniskin
+email: aaron@niskin.org
+author: amniskin
 twitter:
-  username: amniskin # jekyll-seo-tag > Owners twitter username
-author: amniskin # jekyll-seo-tag > default author
+  card: summary
+  username: amniskin
+
+logo: "/favicon.ico"
 social: # jekyll-seo-tag > social overrides
   name: Aaron Niskin # jekyll-seo-tag > real name
   links:  # jekyll-seo-tag > social aliases (sameAs)
@@ -86,68 +23,137 @@ social: # jekyll-seo-tag > social overrides
     - https://www.linkedin.com/in/aaron-niskin
     - https://plus.google.com/+AaronNiskin
     - https://github.com/amniskin
-# }}}
-
-# {{{ 4. Jekyll settings
-sass:
-  style: compressed # Style compression
-excerpt_separator: <!-- more --> # Marks end of excerpt in posts
-# }}}
-
-# {{{ 5. Collections
-collections:
-  posts:
-    title: Posts # Needed for Siteleaf
-    output: true
-    description: "My thoughts and ideas" # The post list page content
-    feature_text: |
-      Welcome to the blog
-    feature_image: "/assets/pics/skyplane.JPG" # "https://unsplash.it/1300/400?image=1067"
-    permalink: /blog/:year/:month/:day/:title:output_ext  # pretty  # Permalink style (/YYYY/MM/DD/page-name/)
-  riddles:
-    title: Riddles # Needed for Siteleaf
-    output: true
-    description: "Having fun with riddles!" # The post list page content
-    feature_text: |
-      Just fun riddles
-    feature_image: "/assets/pics/puzzles.jpg" # "https://unsplash.it/1300/400?image=1067"
-    permalink: /riddles/:title:output_ext  # pretty  # Permalink style (/YYYY/MM/DD/page-name/)
-# }}}
-
-# {{{ 7. Site settings
-title: "Aaron Niskin's Blog" # Site name or title, also used in jekyll-seo-tag
-logo: "/assets/pics/logo.png" # Site logo, also used in jekyll-seo-tag
-description: "Not just another mathy blog! Now with more... Aaron!" # also used in jekyll-seo-tag
-url: "http://aaron.niskin.org" # Site url, also used in jekyll-seo-tag
-repo: "https://github.com/amniskin.github.io"
-email: "aaron@niskin.org"
-### disqus: ""
-### avatarurl: "/assets/pics/logo.png"
-avatarurl: "https://secure.gravatar.com/avatar/5267e8bc17bebc6f6e39eab09457eeb5" # Uses avatars for favicons to get multple sites, eg Gravatar, Twitter, GitHub
-#}}}
-
-# {{{ 8. Site navigation
-navigation_header:
-  Home: / # Elements: /elements/
-  Blog: /blog/ ##
-  Riddles: /riddles/ ## Categories: /categories/ # Search: /search/
-  Resume: https://github.com/amniskin/resume/raw/master/Niskin_Resume.pdf # # Resume: /assets/files/Niskin_Resume.pdf # Search: /search/
 
 social_links:
   Twitter: https://twitter.com/amniskin
   LinkedIn: https://www.linkedin.com/in/aaron-niskin
   GitHub: https://github.com/amniskin
-  link: http://aaron.niskin.org
 
-sharing_links:
-  Twitter: "#1DA1F2"
-  facebook: "#3B5998"
-  Google+: "#DC4E41"
-  Pinterest: "#BD081C"
-  LinkedIn: "#0077B5"
-  tumblr: "#36465D"
-  Reddit: "#FF4500"
-  Hacker News: "#ff6600"
-  Designer News: "#2D72D9"
-  Email: ""
-# }}}
+copyright: Copyright © 2008-2021
+tagline: Aaron Niskin's personal blog
+description: >- # this means to ignore newlines until "baseurl:"
+  Home of a MathemaNiskin. This is a place for me to rant about whatever I feel
+  like ranting about. Hopefully more math and fun than otherwise.
+
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "https://aaron.niskin.org"
+favicon: "/favicon.ico"
+
+# refer to https://shopify.github.io/liquid/filters/date/ if you want to customize this
+yat:
+  date_format: "%a, %b %d, %Y"
+
+# If you want more debug log, you can set true
+# debug: false
+
+header_transparent: true
+
+google_analytics: "UA-67291006-1"
+enableDNT: "false"
+sitemap: true
+lang: "en"
+
+# langs refer to https://cloud.google.com/translate/docs/languages
+translate_langs:
+  - lang: en
+    img: https://www.countryflags.io/us/flat/64.png
+    text: English
+  - lang: es
+    img: https://www.countryflags.io/es/flat/64.png
+    text: Spanish
+  - lang: iw
+    img: https://www.countryflags.io/il/flat/64.png
+    text: Hebrew
+  - lang: fr
+    img: https://www.countryflags.io/fr/flat/64.png
+    text: French
+  - lang: zh-CN
+    img: https://www.countryflags.io/cn/flat/64.png
+    text: Chinese(Simple)
+  - lang: zh-TW
+    img: https://www.countryflags.io/tw/flat/64.png
+    text: Chinese(Traditional)
+  - lang: ja
+    img: https://www.countryflags.io/jp/flat/64.png
+    text: Japanese
+  - lang: ko
+    img: https://www.countryflags.io/kr/flat/64.png
+    text: Korean
+  - lang: ru
+    img: https://www.countryflags.io/ru/flat/64.png
+    text: Russian
+
+# You can choose a theme color
+# Default theme colors as below:
+# coolblack: #090a0b
+# spacegrey: #353535
+# snowwhite: #ffffff
+#
+# theme_color: snowwhite
+theme_color: spacegrey
+#
+# Custom color as below:
+# theme_color: "#882250"
+
+# Night/Dark mode
+# Default mode is "auto", "auto" is for auto nightshift
+# (19:00 - 07:00), "manual" is for manual toggle, and
+# "on/off" is for default on/off.
+#
+# Whatever the user's choice is, it will supersede the
+# default setting of the site and be kept during the
+# visit (session). Only the dark mode setting is"manual",
+# it will be always kept on every visit (i.e. no matter
+# the browser is closed or not)
+#
+# night_mode: "auto"
+night_mode: "on"
+
+# Code badge setting
+# You can enable or disable the code badge and so on
+code_badge:
+  enabled: "true"
+  color: "#353535"
+  background_color: "#ff4e00"
+  text_transform: "uppercase"  # ("uppercase", "lowercase", "capitalize")
+
+header_pages:
+  - about.html
+  - archives.html
+  - categories.html
+  - tags.html
+
+# Page default value
+# defaults:
+#   home:
+#     heading: "Your awesome heading"
+#     subheading: "Your awesome subheading"
+#     banner: "Your image url"
+
+# Pagination setting
+paginate: 10
+
+# Disqus comments
+disqus:
+  shortname: "aaron-niskin-org"
+
+# Gitment comments
+# gitment:
+#   username: "Your GitHub username"
+#   repo: "The repo to store comments"
+#   client_id: "Your client ID"
+#   client_secret: "Your client secret"
+#   redirect_uri: "Your redirect url"   # If you use a custom domain name
+
+# Build settings
+# highlighter: none
+markdown: kramdown
+kmarkdown:
+  input: GFM
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-paginate
+  - jekyll-spaceship

@@ -1,37 +1,25 @@
 <!DOCTYPE html>
-<html lang="en-GB">
-	<head>
-		<!-- General meta -->
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		{% include jquery.html %}
-		{% include google-analytics.html %}
-		{% include mathjax.html %}
-		{% include hints.html %}
+<html lang="{{ page.lang | default: site.lang | default: "en" }}">
 
-		{% if page.indexing == false %}
-			<meta name="robots" content="noindex">
-		{% endif %}
+  {%- include head.html -%}
 
-		{% if page.collectionpage %}
-			{% seo title=false %}
+  <body>
 
-			{% assign collectiondata = site.collections | where: "label", page.collectionpage | first %}
-			<title>{{ collectiondata.title }} - {{ site.title }}</title>
-			<meta property="og:title" content="{{ collectiondata.title }}">
-			<meta name="description" content="{{ collectiondata.description }}">
-			<meta property="og:description" content="{{ collectiondata.description }}">
-		{% else %}
-			{% seo %}
-		{% endif %}
+    {%- include views/header.html -%}
 
-    <link rel="stylesheet" href="{{ "/assets/styles.css" | relative_url }}">
+    {%- include views/banner.html -%}
 
-		{% include site-favicons.html %}
-	</head>
-	<body class="layout-{{ page.layout }}  {{ page.title | slugify }}">
-		{% include site-icons.svg %}
+    {%- include extensions/hashlocate.html -%}
 
-		{{ content }}
+    {%- include extensions/theme-toggle.html -%}
 
-	</body>
+    <main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        {{ content }}
+      </div>
+    </main>
+
+    {%- include views/footer.html -%}
+
+  </body>
 </html>

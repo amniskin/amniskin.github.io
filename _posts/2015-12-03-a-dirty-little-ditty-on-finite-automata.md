@@ -1,4 +1,5 @@
 ---
+layout: post
 title: A dirty little ditty on Finite Automata
 category: Mathematics
 excerpt: |
@@ -13,7 +14,7 @@ tags:
 - maths
 - nfa
 - intro
-feature_image: "/assets/pics/2015/12/03-DFA_banner.PNG"
+banner: /assets/images/2015/12/03-DFA_banner.PNG
 ---
 
 This post builds on the previous post about [Formal Languages]({{ site.baseurl }}/mathematics/2015/11/30/whats-in-a-language/).
@@ -60,16 +61,16 @@ Let's construct a  DFA that accepts only strings beginning with a 1 that, when i
 
 #### A Nondeterministic Finite Automata (NFA) is
 
-	
+
 
 - A set \\(  \mathcal{Q} \\) called "states"
 - A set \\(  \Sigma \\) called "symbols"
 - A function \\(  \delta_N:\mathcal{Q}\times\Sigma \to \mathcal{P}\left(\mathcal{Q}\right) \\)
 - A designated state \\(  q_0\in\mathcal{Q} \\) called the start point
 - A subset \\(  F\subseteq\mathcal{Q} \\) called the "accepting states"
-	
 
-	
+
+
 The NFA is then often referred to as the ordered quintuple \\(  A=(\mathcal{Q},\Sigma,\delta_N,q_0,F) \\).
 
 #### Defining how strings act on NFAs.

@@ -1,6 +1,6 @@
 ---
+layout: post
 title: Probability -- A Measure Theoretic Approach
-date: 2017-02-18 09:42:55.000000000 -05:00
 categories:
 - Probability
 tags:
@@ -9,7 +9,7 @@ tags:
 - Probability
 - statistics
 excerpt: "We cover probability from a measure theoretic approach"
-feature_image: "/assets/pics/2017/02/18_banner.png"
+banner: /assets/images/2017/02/18_banner.png
 ---
 
 ## Probability using Measure Theory
@@ -32,21 +32,19 @@ If \\(  \Omega \\) is countable (or finite), a function \\(  \mathbb{P}:\Omega\r
 
 - For each \\(  x \in \Omega \\), \\(  \mathbb{P}(x) \geq 0 \\)
 
-- If \\(  A_i\cap A_j = \emptyset \\), then \\(  \mathbb{P}(\bigcup\limits_0^\infty A_i) = \sum\limits_0^\infty\mathbb{P}(A_i) \\)
+- If \\(  A\_i\cap A\_j = \emptyset \\), then \\(  \mathbb{P}(\bigcup\limits\_0^\infty A\_i) = \sum\limits\_0^\infty\mathbb{P}(A\_i) \\)
 
 
 
 
-And if \\(  \Omega \\) is uncountable, a function \\(  F:\mathbb{R}\rightarrow\mathbb{R} \\) is called a **probability distribution**
- or a **cumulative distribution function**
- if it satisfies the following 3 conditions:
+And if \\(  \Omega \\) is uncountable, a function \\(  F:\mathbb{R}\rightarrow\mathbb{R} \\) is called a **probability distribution** or a **cumulative distribution function** if it satisfies the following 3 conditions:
 
 
 - For each \\(  a,b\in\mathbb{R} \\), \\(  a &lt; b \rightarrow F(a)\leq F(b) \\)
 
-- \\(  \lim\limits_{x\to -\infty}F(x) = 0 \\)
+- \\(  \lim\limits\_{x\to -\infty}F(x) = 0 \\)
 
-- \\(  \lim\limits_{x\to\infty}F(x) = 1 \\)
+- \\(  \lim\limits\_{x\to\infty}F(x) = 1 \\)
 
 
 
@@ -56,12 +54,10 @@ And if \\(  \Omega \\) is uncountable, a function \\(  F:\mathbb{R}\rightarrow\m
 What idea are we even trying to capture with these seemingly disparate definitions for the same thing? Well, with the two cases taken separately it&#039;s somewhat obvious, but they don&#039;t seem to marry very well. The discrete case is giving us a pointwise estimation of something akin to the proportion of observations that should correspond to a value (in a perfect world). The continuous case is the same thing, but instead of corresponding to that particular value (which doesn&#039;t really even make sense in this case), the proportion corresponds to the point in question and everything less than it. The shaded region in the top picture below and the curve in the picture directly below it denote the cumulative density function of a standard normal distribution (don&#039;t worry too much about what that means for this post, but if you&#039;re doing anything with statistics, you should probably know a bit about that).
 
 
-![pdf vs cdf for Normal distribution]({{ site.baseurl }}/assets/pics/2017/02/18-probability-a-measure-theoretic-approach_pdf-cdf1.png "PDF vs CDF for Normal Distribution")
+![pdf vs cdf for Normal distribution]({{ site.baseurl }}/assets/images/2017/02/18-probability-a-measure-theoretic-approach_pdf-cdf1.png "PDF vs CDF for Normal Distribution")
 
 
-Another way to define a continuous probability distribution is through something called a probability density function, which is closer to the discrete case definition of a probability distribution (or **probability mass function**
-). A **probability density function**
- is a function \\(  f:\mathbb{R}\rightarrow\mathbb{R}_+ \\) such that \\(  \int_{-\infty}^xf(t)dt = F(x) \\). In other words, \\(  \frac{dF}{dX} = f \\). This new function has some properties of our discrete case probability function, but lacks some others. On the one hand, they're both defined pointwise, but on the other, this one can be greater than one in some places -- meaning the value of the probability density function isn't really the probability of an event, but rather (as the name "suggests") the density therein.
+Another way to define a continuous probability distribution is through something called a probability density function, which is closer to the discrete case definition of a probability distribution (or **probability mass function**). A **probability density function** is a function \\( f:\mathbb{R}\rightarrow\mathbb{R}\_+ \\) such that \\(  \int_{-\infty}^xf(t)dt = F(x) \\). In other words, \\(  \frac{dF}{dX} = f \\). This new function has some properties of our discrete case probability function, but lacks some others. On the one hand, they're both defined pointwise, but on the other, this one can be greater than one in some places -- meaning the value of the probability density function isn't really the probability of an event, but rather (as the name "suggests") the density therein.
 
 ### Does it measure up?
 

@@ -1,0 +1,376 @@
+I"�O<h1 id="text--mc2">$$\text{???} = (MC)^2$$</h1>
+
+<h2 id="background">Background</h2>
+
+<p>What if we know the relative likelihood, but want the probability distribution?</p>
+
+<p>$$\mathbb{P}(X=x) = \frac{f(x)}{\int_{-\infty}^\infty f(x)dx}$$</p>
+
+<p>But what if \( \int f(x)dx \) is hard, or you can’t sample from \( f \) directly?</p>
+
+<p>This is the problem we will be trying to solve.</p>
+
+<!-- more -->
+
+<h2 id="first-approach">First approach</h2>
+<p>If space if bounded (integral is between \( a,b \)) we can use Monte Carlo to estimate \( \int\limits_a^b f(x)dx \)</p>
+
+<ol>
+  <li>Pick \( \alpha \in (a,b) \)</li>
+  <li>Compute \( f(\alpha)/(b-a) \)</li>
+  <li>Repeat as necessary</li>
+  <li>Compute the expected value of the computed values</li>
+</ol>
+
+<h2 id="what-if-its-a-big-ol-bag-of-nope">What if it’s a big ol’ bag of nope?</h2>
+
+<p>What if we can’t sample from \( f(x) \) but can only determine likelihood ratios?</p>
+
+<p>$$\frac{f(x)}{f(y)}$$</p>
+
+<p>Enter Markov Chain Monte Carlo</p>
+
+<h1 id="the-obligatory-basics">The obligatory basics</h1>
+
+<p>A <strong>Markov Chain</strong> is a stochastic process (a collection of indexed random variables) such that \( \mathbb{P}(X_n=x|X_0,X_1,…,X_{n-1}) = \mathbb{P}(X_n=x|X_{n-1}) \).</p>
+
+<p>In other words, the conditional probabilities only depend on the last state, not on any deeper history.</p>
+
+<p>We call the set of all possible values of \( X_i \) the <strong>state space</strong> and denote it by, \( \chi \).</p>
+
+<h3 id="transition-matrix">Transition Matrix</h3>
+<p>Let \( p_{ij} = \mathbb{P}(X_1 = j | X_0 = i) \). We call the matrix \( (p_{ij}) \) the <strong>Transition Matrix</strong> of \( X \) and denote it \( P \).</p>
+
+<p>Let \( \mu_n = \left(\mathbb{P}(X_n=0), \mathbb{P}(X_n=1),…, \mathbb{P}(X_n=l)\right) \) be the row vector corresponding to the “probabilities” of being at each state at the \( n \)th point in time (iteration).</p>
+
+<p>Claim: \( \mu_{i+1} = \mu_0P^{i+1} \)</p>
+
+<p>Proof:</p>
+
+<p>if \( i = 0 \):</p>
+
+<p>$$\begin{align} (\mu_0 P)_j =&amp; \sum\limits_{i=1}^l\mu_0(i)p_{ij}\\ =&amp;\sum\limits_{i=1}^l\mathbb{P}(X_0=i)\mathbb{P}(X_1=j | X_0=i)\\ =&amp;\mathbb{P}(X_1 = j)\\ =&amp;\mu_1(j) \end{align}$$</p>
+
+<p>So: \( \mu_1 = \mu_0P \)</p>
+
+<p>if \( i &gt; 0 \):</p>
+
+<p>Then, \( \mu_{i+1} = \mu_iP = (\mu_0P^i)P = \mu_0P^{i+1} \)</p>
+
+<h3 id="stationary-distributions">Stationary Distributions</h3>
+<p>We say that a distribution \( \pi \) is <strong>stationary</strong> if</p>
+
+<p>$$\begin{gather}\pi P = \pi\end{gather}$$</p>
+
+<h3 id="main-theorem">Main Theorem:</h3>
+<p>An irreducible, ergotic Markov Chain \( {X_n} \) has a unique stationary distribution, \( \pi \). The limiting distribution exists and is equal to \( \pi \). And furthermore, if \( g \) is any bounded function, then with probability 1:</p>
+
+<p>$$\lim\limits_{N\to\infty}\frac{1}{N}\sum\limits_{n=1}^Ng(X_n) \rightarrow E_\pi(g)$$</p>
+
+<p>This really just means that if our Markov Chain has certain properties (basically just that any state can be gotten to from any other state at any time), then we can sample from this Markov Chain, and it’ll have the same distribution as a generic sample from our desired distribution.</p>
+
+<h2 id="random-walk-metropolis---hastings">Random-Walk-Metropolis - Hastings:</h2>
+<p>Let \( f(x) \) be the relative likelihood function of our desired distribution.</p>
+
+<p>And \( q(y|x_i) \) the known distribution easily sampled from (generally taken to be \( N(x_i,b^2) \) )</p>
+
+<p>1) Given \( X_0,X_1,…,X_i \), pick \( Y \sim q(y|X_i) \)</p>
+
+<p>2) Compute \( r(X_i,Y) = \min\left(\frac{f(Y)q(X_i|Y)}{f(X_i)q(Y|X_i)}, 1\right) \)</p>
+
+<p>3) Pick \( a \sim U(0,1) \)</p>
+
+<p>4) Set</p>
+
+<p>$$ X_{i+1} = \begin{cases} Y &amp; \text{if } a &lt; r \\ X_i &amp; \text{otherwise}\end{cases} $$</p>
+
+<h2 id="the-confidence-builder">The Confidence Builder:</h2>
+<p>We would like to sample from and obtain a histogram of the Cauchy distribution:</p>
+
+<p>$$f(x) = \frac{1}{\pi}\frac{1}{1+x^2}$$</p>
+
+<p>[\begin{align<em>}
+q_{01} \sim&amp; N(x,0.1)<br />
+q_1 \sim&amp; N(x,1)<br />
+q_{10} \sim&amp; N(x,10)\end{align</em>}]</p>
+
+<p>Note: Since \( q \) is symmetric, \( q(x|y) = q(y|x) \).</p>
+
+<h2 id="pseudocode">Pseudocode:</h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">MC</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">X_i</span> <span class="o">=</span> <span class="n">initial_state</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_iters</span><span class="p">):</span>
+	<span class="n">Y</span> <span class="o">=</span> <span class="n">q</span><span class="p">(</span><span class="n">X_i</span><span class="p">)</span>
+	<span class="n">r</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">Y</span><span class="p">)</span><span class="o">/</span><span class="n">f</span><span class="p">(</span><span class="n">X_i</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span>
+	<span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">uniform</span><span class="p">()</span>
+	<span class="k">if</span> <span class="n">a</span> <span class="o">&lt;</span> <span class="n">r</span><span class="p">:</span>
+		<span class="n">X_i</span> <span class="o">=</span> <span class="n">Y</span>
+	<span class="n">MC</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">X_i</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h2 id="estimation">Estimation:</h2>
+
+<p>$$q(y|x) \sim N(x,b^2)$$</p>
+
+<p><img src="/assets/images/2017/04/18-MCMC-Cauchy-Estimation.png" alt="The many distributions" /></p>
+
+<p><img src="/assets/images/2017/04/18-MCMC-Cauchy-Estimation_TS.png" alt="png" /></p>
+
+<p>So you can clearly see that the different values of \( b \) lead to wildly different distributions, and therefore wildly different approximations of the end distribution. For example, if the standard deviation on our sampling distribution is very small, our prospective transitions won’t venture out very far, and hence the tails of our distribution will be woefully underrepresented. If, on the other hand, the standard deviation is too large, we will often venture our much further than we should, and the we’ll end up with something like a multi-modal distribution. Basically, the prospective transition states will often be too far out to accept, in which case the current state persists, or it will be just close enough to be accepted. What you end up with is far too many samples from the tails and not enough samples from the beafier parts of the distribution.</p>
+
+<p>Choosing the “best” value of \( b \) is more of an art than a science, really. This issue will poke its ugly head a little later. But even with that issue, we see clearly that something amazing is happening here.</p>
+
+<h2 id="how-is-this-happening">How is this happening?</h2>
+
+<p>A property called <strong>detailed balance</strong>, which means,</p>
+
+<p>$$\pi_ip_{ij} = p_{ji}\pi_j$$</p>
+
+<p>or in the continuous case:</p>
+
+<p>$$f(x)P_{xy} = f(y)P_{yx}$$</p>
+
+<h3 id="the-intuition">The intuition</h3>
+
+<p>Since what we’re really after is the distribution of the samples and not the order in which they were picked, it’s reasonable to require a notion of (what I’m going to call) equal hopportunity:</p>
+
+<p>$$f(x)p(y|x) = f(y)p(x|y)$$</p>
+
+<p>In other words, the probability of “hopping” from \( x \) to \( y \) should be the same as the reverse, because at the end of the day, both of these two scenarios only mean that \( x \) and \( y \) are in our sample.</p>
+
+<p>If you work out the math therein (as we will do below), you find that this ratio guarantees equal hopportunity.</p>
+
+<p>$$r(x,y) = \min\left(\frac{f(y)q(x|y)}{f(x)q(y|x)},1\right)$$</p>
+
+<h3 id="lets-prove-it">Let’s prove it!</h3>
+
+<p>To reiterate, the claim was that this detailed balance property ( \( f(x)P_{xy} = P_{yx}f(y) \) ) guarantees that our likelihood function \( f \) is the stable distribution for our Markov Chain.</p>
+
+<p>Let \( f \) be the desired distribution (in our example, it was the Cauchy Distribution), and let \( q(y|x) \) be the distribution we draw from.</p>
+
+<p>First we’ll show that detailed balance implies \( \pi \) (or \( f \) if the distribution is continuous) is the stable distribution!</p>
+
+<p>Let \( \pi_ip_{ij} = \pi_jp_{ji} \) for discrete or for continuous \( f(i)P_{ij}=P_{ji}f(j) \)</p>
+
+<p>[\begin{align<em>}
+(\pi P)_i =&amp; \sum\limits_j\pi_jP_{ji} &amp; (fP)(x)=&amp;\int f(y)p(x|y)dy<br />
+=&amp;\sum\limits_j\pi_iP_{ij} &amp; =&amp; \int f(x)p(y|x)dy<br />
+=&amp;\pi_i\sum\limits_jP_{ij} &amp; =&amp; f(x)\int p(y|x)dy<br />
+=&amp;\pi_i &amp; =&amp; f(x)
+\end{align</em>}]</p>
+
+<p>Now we’ll show that the Markov Chain defined by the Metropolis-Hastings algorithm has the detailed balance property (and hence \( f \) is the stable distribution).</p>
+
+<p>Without any loss of generality, we’ll assume \( f(x)q(y|x) &gt; f(y)q(x|y) \) (if this is not the case, the proof will follow the same with just symbolic changes).</p>
+
+<p>Note: Since \( f(x)q(y|x) &gt; f(y)q(x|y) \), we know, \( r(x,y) = \frac{f(y)q(x|y)}{f(x)q(y|x)} \), and \( r(y,x) = 1 \).</p>
+
+<p>Then,</p>
+
+<p>[\begin{align<em>}
+\pi_xp_{xy} =&amp; f(x)\mathbb{P}(X_1=y|X_0=x) &amp; \pi_yp_{yx} =&amp; f(y)\mathbb{P}(X_1=x|X_0=y)<br />
+=&amp; f(x)\left[q(y|x)\cdot r(x,y)\right] &amp; =&amp;f(y)\left[q(x|y)\cdot r(y,x)\right]<br />
+=&amp; f(x)\left[q(y|x)\cdot \frac{f(y)q(x|y)}{f(x)q(y|x)}\right] &amp; =&amp;f(y)\left[q(x|y)\cdot 1\right]<br />
+=&amp; f(y)q(x|y) &amp; =&amp;f(y)q(x|y)
+\end{align</em>}]</p>
+
+<h2 id="modeling-change-point-models-in-astrostatistics">Modeling Change Point Models in Astrostatistics.</h2>
+
+<p>This was taken from a Penn State statistics summer program website located at <a href="http://sites.stat.psu.edu/~mharan/MCMCtut/COUP551_rates.dat">stat.psu.edu</a>. A detailed walk-through of the process PSU took with this project can be found at that site. The data is a time series of light emission recorded and aggregated over periods of 10000 seconds (just under 3 hours). A plot of the time series can be seen below for your convenience.</p>
+
+<p><img src="/assets/images/2017/04/18_psu_ts.png" alt="png" /></p>
+
+<p>The idea (with this data) is that the emissions can be modeled by two Poisson distributions and a change point. The data will be modeled by the first Poisson until the change point, and then it switches to the second Poisson.</p>
+
+<p>So we start out with a multi-parameter model, and through some Bayesian inference you arrive at a pretty nasty looking posterior distribution. You’d like to sample this distribution to obtain, say, the mean \( k \) (change point) value along with a 95% confidence interval. Since you need that confidence interval, standard optimization methods won’t suffice: we’d need the distribution of \( k \)s. For this, we can use MCMC!</p>
+
+<p>The posterior distribution we would like to sample from is this:</p>
+
+<p>[\begin{align<em>}
+f(k,\theta,\lambda,b_1,b_2 | Y) \alpha&amp; \prod\limits_{i=1}^k\frac{\theta^{Y_i}e^{-\theta}}{Y_i!} \prod\limits_{i=k+1}^n\frac{\lambda^{Y_i}e^{-\lambda}}{Y_i!} <br />
+&amp;\times\frac{1}{\Gamma(0.5)b_1^{0.5}}\theta^{-0.5}e^{-\theta/b_1} \times\frac{1}{\Gamma(0.5)b_2^{0.5}}\theta^{-0.5}e^{-\theta/b_2}<br />
+&amp;\times\frac{e^{-1/b_1}}{b_1}\frac{e^{-1/b_2}}{b_2}\times \frac{1}{n}
+\end{align</em>}]</p>
+
+<p>This distribution is pretty gnarly and since I don’t really know how to sample from this (beyond a blind search), we would like to use MCMC. Metropolis-Hastings (at least how we’ve discussed it) clearly doesn’t work here because this is multidimensional. For that we introduce another MCMC algorithm: <strong>Gibbs Sampling</strong>.</p>
+
+<h3 id="gibbs-sampling">Gibbs Sampling</h3>
+
+<p>The basic pseudocode is this:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">X</span> <span class="o">=</span> <span class="n">initial_X</span>
+<span class="n">Y</span> <span class="o">=</span> <span class="n">initial_Y</span>
+<span class="p">...</span>
+<span class="n">Z</span> <span class="o">=</span> <span class="n">initial_Z</span>
+<span class="n">MC</span> <span class="o">=</span> <span class="p">[(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">,...,</span><span class="n">Z</span><span class="p">)]</span>
+<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_iters</span><span class="p">):</span>
+	<span class="o">//</span> <span class="k">for</span> <span class="n">each</span> <span class="n">variable</span> <span class="n">we</span> <span class="n">compute</span>
+	<span class="n">X</span> <span class="o">~</span> <span class="n">q_X</span><span class="p">(</span><span class="n">x</span><span class="o">|</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">,...,</span><span class="n">Z</span><span class="p">)</span>
+	<span class="o">//</span> <span class="n">We</span> <span class="n">do</span> <span class="n">this</span> <span class="k">for</span> <span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="p">...,</span> <span class="n">Z</span> <span class="ow">in</span> <span class="n">turn</span>
+</code></pre></div></div>
+
+<p>We can combine Gibbs with Metropolis quite easily:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">X</span> <span class="o">=</span> <span class="n">initial_X</span>
+<span class="n">Y</span> <span class="o">=</span> <span class="n">initial_Y</span>
+<span class="p">...</span>
+<span class="n">Z</span> <span class="o">=</span> <span class="n">initial_Z</span>
+<span class="n">MC</span> <span class="o">=</span> <span class="p">[(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">,...,</span><span class="n">Z</span><span class="p">)]</span>
+<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_iters</span><span class="p">):</span>
+	<span class="o">//</span> <span class="k">for</span> <span class="n">each</span> <span class="n">variable</span> <span class="n">we</span> <span class="n">compute</span>
+	<span class="n">prospect</span> <span class="o">~</span> <span class="n">q_X</span><span class="p">(</span><span class="n">x</span><span class="o">|</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">,...,</span><span class="n">Z</span><span class="p">)</span>
+	<span class="n">r</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">prospect</span><span class="p">)</span><span class="o">/</span><span class="n">f</span><span class="p">(</span><span class="n">X</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span>
+	<span class="n">a</span> <span class="o">~</span> <span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+	<span class="k">if</span> <span class="n">a</span> <span class="o">&lt;</span> <span class="n">r</span><span class="p">:</span>
+		<span class="n">X</span> <span class="o">=</span> <span class="n">prospect</span>
+	<span class="o">//</span> <span class="n">We</span> <span class="n">do</span> <span class="n">this</span> <span class="k">for</span> <span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="p">...,</span> <span class="n">Z</span> <span class="ow">in</span> <span class="n">turn</span>
+</code></pre></div></div>
+
+<p>So, basically, you update one at a time.</p>
+
+<p>Using this algorithm, we can analyze the data from the PSU website we mentioned above. In fact we did that very thing. Below you’ll find some graphs depicting the distribution of \( k \) values.</p>
+
+<!--
+```python
+def psu_mcmc(X, q, numIters=10000):
+    theta, lambd, k, b1, b2 = 1, 1, 20, 1, 1
+    thetas, lambds, ks, b1s, b2s = [], [], [], [], []
+    n = len(X)
+    def f_k(theta, lambd, k, b1, b2):
+        if 0 <= k and k <= n:
+            return theta**sum(X[:k])*lambd**sum(X[k:])*np.exp(-k*theta-(n-k)*lambd)
+        elif k < 0:
+            return lambd**sum(X)*np.exp(-n*lambd)
+        elif k > n:
+            return theta**sum(X)*np.exp(-n*theta)
+    def f_t(theta, k, b1):
+        return theta**(sum(X[:k])+0.5)*np.exp(-theta*(k+1.0)/b1)
+    def f_l(lambd, k, b2):
+        return lambd**(sum(X[k:])+0.5)*np.exp(-lambd*((n-k)+1.0)/b2)
+    def f_b(b, par):
+        return np.exp(-(1 + par) / b) / (b*np.sqrt(b))
+    for i in range(numIters):
+        tmp = q(theta)
+        if tmp < np.infty:
+            r = min(1, f_t(tmp,k,b1)/f_t(theta,k,b1))
+            if np.random.uniform(0,1) < r:
+                theta = tmp
+        tmp = q(lambd)
+        if tmp < np.infty:
+            r = min(1, f_l(tmp,k,b2)/f_l(lambd,k,b2))
+            if np.random.uniform(0,1) < r:
+                lambd = tmp
+        tmp = q(b1)
+        if tmp < np.infty:
+            r = min(1, f_b(tmp, theta)/f_b(b1, theta))
+            if np.random.uniform(0,1) < r:
+                b1 = tmp
+        tmp = q(b2)
+        if tmp < np.infty:
+            r = min(1, f_b(tmp, lambd)/f_b(b2, lambd))
+            if np.random.uniform(0,1) < r:
+                b2 = tmp
+        tmp = q(k)
+        if tmp < np.infty:
+            r = min(1, f_k(theta, lambd, tmp, b1, b2) /
+                    f_k(theta, lambd, k, b1,b2))
+            if np.random.uniform(0,1) < r:
+                k = tmp
+        thetas.append(theta)
+        lambds.append(lambd)
+        b1s.append(b1)
+        b2s.append(b2)
+        ks.append(k)
+    return np.array([thetas,lambds,ks,b1s,b2s])
+```
+
+
+```python
+%%bash
+if [ ! -f tmp/psu_data.tsv ]
+then
+wget http://sites.stat.psu.edu/~mharan/MCMCtut/COUP551_rates.dat -O tmp/psu_data.tsv
+fi
+```
+
+
+```python
+psu_data = []
+with open("tmp/psu_data.tsv", "r") as f:
+    title = f.readline()
+    for line in f:
+        tmpArr = [x.strip() for x in line.split(" ")]
+        psu_data.append([int(x) for x in tmpArr if x != ""][1])
+psu_data = np.array(psu_data)
+psu_data
+```
+
+
+
+
+    array([11,  3,  5,  9,  3,  4,  5,  5,  5,  5, 13, 18, 27,  8,  4, 10,  8,
+            3, 12, 10, 10,  3,  9,  8,  5,  9,  4,  6,  1,  5, 14,  7,  9, 10,
+            8, 13,  8, 11, 11, 10, 11, 13, 10,  3,  8,  5])
+
+
+
+
+```python
+mcmc2 = psu_mcmc(psu_data, q(1), 1000)
+
+fig = plt.figure()
+fig.suptitle("MCMC values for Change Point")
+plt.subplot(2,1,1)
+plt.hist(mcmc2[2] % len(psu_data), normed=True)
+plt.subplot(2,1,2)
+plt.plot(mcmc2[2])
+plb.savefig("tmp/psu_graphs1.png")
+plt.show()
+```
+-->
+
+<p><img src="/assets/images/2017/04/18_psu_graphs1.png" alt="png" /></p>
+
+<!--
+```python
+plt.plot(psu_data)
+plt.title("PSU Data")
+plb.savefig("tmp/psu_ts.png")
+plt.show()
+```
+-->
+
+<h2 id="summary">Summary</h2>
+
+<ul>
+  <li>Random-Walk-Metropolis-Hastings
+    <ul>
+      <li>Can be used to sample difficult univariate distributions relatively easily
+        <ul>
+          <li>Have to tune the sampling parameter</li>
+          <li>Curse of dimensionality in tuning parameters</li>
+        </ul>
+      </li>
+      <li>Requires \( f \) to be defined on all of \( \mathbb{R} \)
+        <ul>
+          <li>Transform as needed</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Gibbs Sampling
+    <ul>
+      <li>Turn high dimensional sampling into iterative one-dimensional sampling</li>
+    </ul>
+  </li>
+  <li>Gibbs with Metropolis-Hastings
+    <ul>
+      <li>Lovely</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="bibliography">Bibliography</h2>
+<p><a href="http://sites.stat.psu.edu/~mharan/MCMCtut/MCMC.html">Summer School in Astrostatistics</a></p>
+:ET

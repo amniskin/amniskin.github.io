@@ -1,0 +1,42 @@
+I"q<p>So this post is going to be a bit more terse than most. In fact, the objective of this post will be to develop the theory of Homotopy very briefly, with the goal of proving the Fundamental Theorem of Algebra.</p>
+
+<h1 id="homotopy">Homotopy</h1>
+
+<p>Given two continuous maps \(f,g : \mathbb{R}^n\to\mathbb{R}m\), a homotopy between \(f,\) and $g$ is a continuous map $h: \mathbb{I}\times\mathbb{R}^n\to\mathbb{R}^m$ such that $h(0,x)=f(x)$ and $h(1,x) = g(x)$. Basically it’s a continuous deformation of one map into the other. It’s a bit stronger than just homeomorphism of topological spaces. You can see this because two interlocked rings are topologically homeomorphic to non-interlocked rings, but they’re not homotopic because you’d have to split one of the rings.</p>
+
+<p>Enough of all that! Let’s get to the proof already!</p>
+
+<h1 id="the-fundamental-theorem-of-algebra">The Fundamental Theorem of Algebra</h1>
+
+<h3 id="the-statement">The statement</h3>
+
+<p><em>If $p\in\mathbb{C}[x]$ is a non-constant polynomial, then it has at least one root in $\mathbb{C}$.</em></p>
+
+<p>A consequence of this theorem is that any non-constant polynomial over $\mathbb{C}$ has all of its roots in $\mathbb{C}$. Or equivalently, any polynomial of degree $n$ over $\mathbb{C}$ has $n$ roots in $\mathbb{C}$.</p>
+
+<h3 id="the-proof">The proof</h3>
+
+<p>Let $p(x) = \sum\limits_{i=1}^n a_i x^i \in\mathbb{C}[x]$ be a polynomial without any roots in $\mathbb{C}$. For simplicity, we assume that the leading coefficient is 1. There is no loss of generality in doing so. We then define a function</p>
+
+<p>$$f_r(s) = \frac{ p(re^{2\pi is}) / p(r)}{ |p(re^{2\pi is}) / p(r)| }$$</p>
+
+<p>Then for each $r$ in $\mathbb{C}$, $f_r:\mathbb{C}\to S^1$ is a map from $\mathbb{C}$ to $S^1$. Furthermore, given $r_0,r_1\in\mathbb{C}$, we can define a homotopy from $f_{r_0}$ to $f_{r_1}$ as $g(t,s) = f_{r_0+t(r_1-r_0)}(s)$. So for all $r\in\mathbb{C}$, $f_r$ is homotopic to $f_0$. Since $f_0(s) = 1$ for all $s\in\mathbb{C}$, we have that $f_r$ are all in the same homotopy class as the constant function on $S^1$.</p>
+
+<p>We now pick $z,r$ such that $|z| = r \gt \max(1,\sum |a_i| )$. We then note that Cauchy-Schwarz gives us the following:</p>
+
+\[\begin{align}
+\|z\|^n =&amp; \|z\|\cdot \|z\|^{n-1}\\
+&gt;&amp; (\sum\|a_i\|)\|z\|^{n-1}\\
+=&amp; (\sum\|a_i\|\|z\|^{n-1})\\
+&gt;=&amp; (\sum\|a_iz^{n-1}\|)\\
+&gt;&amp; (\sum\|a_iz^i\|)
+\end{align}\]
+
+<p>Which means $|z^n - \sum a_i z^i \neq 0|$. So, we can define yet another function $q(t,z) = z^n +t(\sum\limits_{i=1}^{n-1}a_iz^i)$. Then $q$ is a homotopy between $z^n$ and $p(z)$. We now note that when $t=1$, if we make a similar construction to $f_r$ but with this parameterized polynomial instead of $p$, we get a homotopy between $f_r$ and just going around the circle $n$ times (with $t=0$). But since $f_r$ is homotopic to a point on $S^1$, and going around the circle any non-zero number of times is not homotopic to a point, we know that $n=0$.</p>
+
+<p>So the only polynomials without roots in $\mathbb{C}$ are constant.</p>
+
+<p>Kinda cool, huh?</p>
+
+<p>This proof was courtesy of <em>Algebraic Topology</em> by Allen Hatcher.</p>
+:ET

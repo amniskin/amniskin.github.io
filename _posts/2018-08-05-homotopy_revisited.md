@@ -1,6 +1,6 @@
 ---
-title: "Let's Cover Homotopy (an apologetic revisionary tale)"
-type: post
+layout: post
+title: Let's Cover Homotopy (an apologetic revisionary tale)
 excerpt: Munkres will surely save us our trespasses this once, but NEVER AGAIN!
 category: Mathematics
 tags:
@@ -10,7 +10,7 @@ tags:
 - Topology
 - Algebra
 - Theory
-feature_image: "/assets/pics/2018/08/05_homotopy.jpg"
+banner: "/assets/images/2018/08/05_homotopy.jpg"
 ---
 
 ## What am I doing?

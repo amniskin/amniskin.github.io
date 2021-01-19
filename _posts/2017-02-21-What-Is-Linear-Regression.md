@@ -1,14 +1,16 @@
 ---
+layout: post
 title: Linear Regression -- The Basics
-date: 2017-02-21 02:24:43.000000000 -05:00
 categories:
 - Statistics
 tags:
 - Statistics
 - Prediction
 - Regression
-excerpt: "Linear Regression is the bedrock of Machine Learning. We cover the basics therein, some theory involved, and give some relevant examples."
-feature_image: "/assets/pics/2017/02/21-banner.png"
+excerpt: >-
+    Linear Regression is the bedrock of Machine Learning. We cover the basics
+    therein, some theory involved, and give some relevant examples."
+banner: /assets/images/2017/02/21-banner.png
 ---
 
 
@@ -30,7 +32,7 @@ other tactics. Let's just get right into it, shall we?
 Let's say you have some data from the real world (and hence riddled with
 real-world error). A basic example for us to start with is this one:
 
-![Data suitable for Linear Regression]({{ site.baseurl }}/assets/pics/2017/02/21-linear-regression_scatterPoints.png "Some Example Data")
+![Data suitable for Linear Regression]({{ site.baseurl }}/assets/images/2017/02/21-linear-regression_scatterPoints.png "Some Example Data")
 
 There's clearly a linear trend there, but how do we pick which linear trend would be the best? Well, one thing we could do is pick the line that has the least amount of error from the prediction to the actual data-point. To do that, we have to say what we mean by "least amount of error". For this post, we'll calculate that error by squaring the difference between the predicted value and the actual value for every point in our data set, then averaging those values. This standard is called the Mean-Squared-Error (MSE). We can write the MSE as:
 
@@ -65,7 +67,7 @@ N\bar Y\bar X -N\beta(\bar X)^2 + \beta\sum\limits_{i=1}^NX_i^2 - \sum\limits_{i
 \beta =& \frac{\sum\limits_{i=1}^NY_iX_i - N\bar Y\bar X}{\sum\limits_{i=1}^NX_i^2 - N(\bar X)^2}
 \end{align*}$$
 
-But note: 
+But note:
 
 $$\text{VAR}(X) = \frac{1}{N}\sum\limits_{i=1}^NX_i^2 - (\bar X)^2$$
 
@@ -88,7 +90,7 @@ $$\beta = \frac{\text{COV}(X,Y)}{\text{VAR}(X)}$$
 
 And then we can find \\( \alpha \\) by substituting in our approximation of \\( \beta \\). Using those coefficients, we can plot the line below, and as you can see, it really is a good approximation.
 
-![Data With Linear Regression Line]({{ site.baseurl }}/assets/pics/2017/02/21-linear-regression_scatterPoints_withLine.png "Some Example Data With Regression Line")
+![Data With Linear Regression Line]({{ site.baseurl }}/assets/images/2017/02/21-linear-regression_scatterPoints_withLine.png "Some Example Data With Regression Line")
 
 ### Now we have it
 
@@ -136,8 +138,11 @@ similar formula would work... Let's figure it out...
 
 Firstly, we need to know what a derivative is in \\( \mathbb{R}^n \\). Well, if
 \\( f:\mathbb{R}^n\to\mathbb{R}^m \\) is a differentiable function, then for
-any \\( x \\) in the domain, \\( f'(x) \\) is the linear map \\(
-A:\mathbb{R}^n\to\mathbb{R}^m \\) such that \\( \text{lim}_{h\to 0}\frac{||f(x+h) - f(x) - Ah||}{||h||} = 0 \\). Basically, \\( f'(x) \\) is the tangent plane.
+any \\( x \\) in the domain,
+\\( f'(x) \\) is the linear map
+\\( A: \mathbb{R}^n \to \mathbb{R}^m \\) such that
+\\( \text{lim}\_{h \to 0}\frac{||f(x+h) - f(x) - Ah||}{||h||} = 0 \\\\).
+Basically, \\( f'(x) \\) is the tangent plane.
 
 So, now that we got that out of the way, let's use it! We want to find the
 linear function that minimizes the Euclidean norm of the error terms (just like
@@ -150,17 +155,11 @@ That \\( \alpha=0 \\). We can do this safely by simply appending (or
 prepending) a 1 to the rows of our data (thereby creating a constant term). So
 for the following, assume we've done that.
 
-$$ \begin{align*}\langle\epsilon, \epsilon\rangle =& (Y - X\beta)^T(Y - X\beta) \\
- \langle\epsilon, \epsilon\rangle =& (Y^T - \beta^TX^T)(Y - X\beta) \\
- \langle\epsilon, \epsilon\rangle =& Y^TY - 2Y^TX\beta + \beta^TX^TX\beta \end{align*} $$
+$$\begin{align} \langle\epsilon, \epsilon\rangle =& (Y - X\beta)^T(Y - X\beta) \\ \langle\epsilon, \epsilon\rangle =& (Y^T - \beta^TX^T)(Y - X\beta) \\ \langle\epsilon, \epsilon\rangle =& Y^TY - 2Y^TX\beta + \beta^TX^TX\beta \end{align}$$
 
 So, let's find the \\( \beta \\) that minimizes that.
 
-$$\begin{align*}
-0=&\lim\limits_{h\to0}\frac{||(Y^TY - 2Y^TX(\beta+h) + (\beta+h)^TX^TX(\beta+h)) - (Y^TY - 2Y^TX\beta + \beta^TX^TX\beta) - Ah||}{||h||} \\
-0=&\lim\limits_{h\to0}\frac{||- 2Y^TXh + 2\beta^TX^TXh + h^TX^TXh - Ah||}{||h||}\\
-0=&\lim\limits_{h\to0}||- 2Y^TX + 2\beta^TX^TX + h^TX^TX - A||\frac{||h||}{||h||}\\
-0=&\lim\limits_{h\to0}||- 2Y^TX + 2\beta^TX^TX - A|| \end{align*}$$
+$$\begin{align} 0=&\lim\limits_{h\to0}\frac{\|\|(Y^TY - 2Y^TX(\beta+h) + (\beta+h)^TX^TX(\beta+h)) - (Y^TY - 2Y^TX\beta + \beta^TX^TX\beta) - Ah\|\|}{\|\|h\|\|} \\ 0=&\lim\limits_{h\to0}\frac{\|\|- 2Y^TXh + 2\beta^TX^TXh + h^TX^TXh - Ah\|\|}{\|\|h\|\|}\\ 0=&\lim\limits_{h\to0}\|\|- 2Y^TX + 2\beta^TX^TX + h^TX^TX - A\|\|\frac{\|\|h\|\|}{\|\|h\|\|}\\ 0=&\lim\limits_{h\to0}\|\|- 2Y^TX + 2\beta^TX^TX - A\|\| \end{align}$$
 
 So, now we see that the derivative is \\( -2Y^TX + 2\beta^TX^TX \\) and we want to find where our error is minimized, so we want to set that derivative to zero:
 

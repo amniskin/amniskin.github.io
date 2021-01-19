@@ -1,0 +1,91 @@
+I"�<h2 id="probability-using-measure-theory">Probability using Measure Theory</h2>
+
+<p>A mathematically rigorous definition of probability, and some examples therein.</p>
+
+<!-- more -->
+
+<h3 id="the-traditional-definition">The Traditional Definition:</h3>
+
+<p>Consider a set \(  \Omega \) (called the <strong>sample space</strong>
+), and a function \(  X:\Omega\rightarrow\mathbb{R} \) (called a <strong>random variable</strong>
+.</p>
+
+<p>If \(  \Omega \) is countable (or finite), a function \(  \mathbb{P}:\Omega\rightarrow\mathbb{R} \) is called a <strong>probability distribution</strong>
+ if it satisfies the following 2 conditions:</p>
+
+<ul>
+  <li>
+    <p>For each \(  x \in \Omega \), \(  \mathbb{P}(x) \geq 0 \)</p>
+  </li>
+  <li>
+    <p>If \(  A_i\cap A_j = \emptyset \), then \(  \mathbb{P}(\bigcup\limits_0^\infty A_i) = \sum\limits_0^\infty\mathbb{P}(A_i) \)</p>
+  </li>
+</ul>
+
+<p>And if \(  \Omega \) is uncountable, a function \(  F:\mathbb{R}\rightarrow\mathbb{R} \) is called a <strong>probability distribution</strong> or a <strong>cumulative distribution function</strong> if it satisfies the following 3 conditions:</p>
+
+<ul>
+  <li>
+    <p>For each \(  a,b\in\mathbb{R} \), \(  a &lt; b \rightarrow F(a)\leq F(b) \)</p>
+  </li>
+  <li>
+    <p>\(  \lim\limits_{x\to -\infty}F(x) = 0 \)</p>
+  </li>
+  <li>
+    <p>\(  \lim\limits_{x\to\infty}F(x) = 1 \)</p>
+  </li>
+</ul>
+
+<h3 id="the-intuition">The Intuition:</h3>
+
+<p>What idea are we even trying to capture with these seemingly disparate definitions for the same thing? Well, with the two cases taken separately it's somewhat obvious, but they don't seem to marry very well. The discrete case is giving us a pointwise estimation of something akin to the proportion of observations that should correspond to a value (in a perfect world). The continuous case is the same thing, but instead of corresponding to that particular value (which doesn't really even make sense in this case), the proportion corresponds to the point in question and everything less than it. The shaded region in the top picture below and the curve in the picture directly below it denote the cumulative density function of a standard normal distribution (don't worry too much about what that means for this post, but if you're doing anything with statistics, you should probably know a bit about that).</p>
+
+<p><img src="/assets/images/2017/02/18-probability-a-measure-theoretic-approach_pdf-cdf1.png" alt="pdf vs cdf for Normal distribution" title="PDF vs CDF for Normal Distribution" /></p>
+
+<p>Another way to define a continuous probability distribution is through something called a probability density function, which is closer to the discrete case definition of a probability distribution (or <strong>probability mass function</strong>). A <strong>probability density function</strong> is a function \( f:\mathbb{R}\rightarrow\mathbb{R}_+ \) such that \(  \int_{-\infty}^xf(t)dt = F(x) \). In other words, \(  \frac{dF}{dX} = f \). This new function has some properties of our discrete case probability function, but lacks some others. On the one hand, they’re both defined pointwise, but on the other, this one can be greater than one in some places – meaning the value of the probability density function isn’t really the probability of an event, but rather (as the name “suggests”) the density therein.</p>
+
+<h3 id="does-it-measure-up">Does it measure up?</h3>
+
+<p>Now let’s check out the measure theoretic approach…</p>
+
+<p>Let \(  \Omega \) be our sample space, \(  S \) be the \(  \sigma \)-algebra on \(  \Omega \) (so \(  S \) is the collection of measurable subsets of \(  \Omega \)), and \(  \mu:S\to\mathbb{R} \) a measure on that measure space. Let \(  X:\Omega\rightarrow\mathbb{E} \) be a random variable (\(  \mathbb{E} \) is generally taken to be \(  \mathbb{R} \) or \(  \mathbb{R}^n \)). We define the function \(  \mathbb{P}:\mathcal{P}(\mathbb{E})\rightarrow\mathbb{R} \) (where \(  \mathcal{P}(\mathbb{E}) \) is the powerset of \(  \mathbb{E} \) – the set of all subsets) such that if \(  A\subseteq\mathbb{E} \), we have \(  \mathbb{P}(A)=\mu(X^{-1}(A)) \). We call \(  \mathbb{P} \) a <strong>probability distribution</strong>
+ if the following conditions hold:</p>
+
+<ul>
+  <li>
+    <p>\(  \mu(\Omega) = 1 \)</p>
+  </li>
+  <li>
+    <p>for each \(  A\subseteq\mathbb{E} \) we have \(  X^{-1}(A)\in S \).</p>
+  </li>
+</ul>
+
+<h3 id="why-do-this">Why do this?</h3>
+
+<p>Well, right off the bat we have a serious benefit: we no longer have two disparate definitions of our probability distributions. Furthermore, there is the added benefit of having a natural separation of concerns: the measure \(  \mu \) determines the what we might intuitively consider to be the probability distribution while the random variable is used to encode the aspects of the events that we care about.</p>
+
+<p>To further illustrate this</p>
+
+<h3 id="the-examples">The Examples</h3>
+
+<h4 id="a-fair-die">A fair die</h4>
+
+<h5 id="all-even">All even</h5>
+
+<p>Let’s consider a fair die. Our sample space will be \(  {1,2,3,4,5,6} \). Since our die is fair, we’ll define our measure fairly: for any \(  x \) in our sample space, \(  \mu({x}) = \frac{1}{6} \). If we want to know, for instance, what the probability of getting each number is, we could use a very intuitive random variable \(  X(a) = a \) (so \(  X(1)=1 \), etc.). Then we see that \(  \mathbb{P}({1}) = \mu({1}) = \frac{1}{6} \), and the rest are found similarly.</p>
+
+<h5 id="odds-and-evens">Odds and Evens?</h5>
+
+<p>What if we want to consider the fair die of yester-paragraph, but we only care if the face of the die shows an odd or an even number? Well, since the actual distribution of the die hasn’t changed, we won’t have to change our measure. Instead we’ll change our random variable to capture just those aspects we care about. In particular, \(  X(a) = 0 \) if \(  a \) is even, and \(  X(a) = 1 \) if \(  a \) is odd. We then see \(  \mathbb{P}(1) = \mu({1,3,5}) = \frac{1}{2} \) and \(  \mathbb{P}(0) = \mu({2,4,6}) = \frac{1}{2} \)</p>
+
+<h4 id="getting-loaded">Getting loaded</h4>
+
+<h5 id="all-even-1">All even</h5>
+
+<p>Now let’s consider the same scenario of wanting to know the probability of getting each number, but now our die is loaded. Being as how we’re changing the distribution itself and not just the aspects we’re choosing to care about, we’re going to want to change the measure this time. For simplicity, let’s consider a kind of degenerate case scenario. Let our measure be: \(  \mu(A) = 1 \) if \(  1\in A \) and \(  \mu(A)=0 \) if \(  1\notin A \). Basically, we’re defining our probability to be such that the only possible outcome is a roll of 1. So since we are concerned with the same things we were concerned with last time, we can take that same random variable. We note \(  \mathbb{P}(1) = 1 \) and \(  \mathbb{P}(a) = 0 \) for any \(  a \neq 1 \).</p>
+
+<h5 id="odds-or-evens">Odds or evens</h5>
+
+<p>Try to do this one yourself. I’m going to go get some sleep now. Please feel free to contact me with any questions. I love doing this stuff, so don’t be shy!</p>
+
+:ET

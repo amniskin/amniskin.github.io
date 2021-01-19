@@ -1,0 +1,55 @@
+I"z<h2 id="the-scenario">The scenario:</h2>
+
+<p>\(n\) people are in line ready to board a full plane (so \(n\) people in \(n\) seats). The first person in line lost his boarding pass, so he just sits in any random old seat (but specifically not his own). From then on, the people boarding are so nice that they won’t confront someone sitting in their respective seats; instead, they’ll just take a random empty one. What’s the probability that the last person gets to sit in his or her own seat?</p>
+
+<p>What you know:</p>
+
+<ol>
+  <li>There are \(n\) seats on the plane</li>
+  <li>There are \(n\) passengers about to board the plane</li>
+  <li>The first passenger sits in the wrong seat</li>
+  <li>Every passenger after sits in his/her own seat if it’s available</li>
+  <li>Every passenger sits in a random available seat if his/her seat is not available.</li>
+</ol>
+
+<p>You need to find out what the probability that the last person gets to sit in his/her own seat.</p>
+
+<h3 id="hints-click-to-unblur">Hints (click to unblur)</h3>
+
+<ol>
+  <li>
+    <p class="hint">It might be best to start with the base case (\(n\) = 3)</p>
+  </li>
+  <li>
+    <p class="hint">What if the first person sat in a totally random seat (instead of specifically not his own)?</p>
+  </li>
+</ol>
+
+<h2 id="a-solution">A solution</h2>
+
+<h3 id="a-description">A description</h3>
+<p class="hint">\[ \mathbb{P}\left(\cdot | n\right) = \frac{n-2}{2(n-1)} ]</p>
+
+<h3 id="the-strategy">The strategy</h3>
+<div class="hint">
+  <p>Firstly, if \(n = 1\), the game is ill defined, if \(n=2\), the probability is 0 (because the first person always takes the wrong seat). If \(n&gt;2\), then:</p>
+
+  <p>There’s a \(\frac{1}{n-1}\) chance that the first person takes the last person’s seat, thereby sealing the eternal aerial fate of the last boarder. So there’s a \(\frac{n-2}{n-1}\) chance that the first jerk doesn’t take the last shlemazel’s seat. Every person after that either sits in their own seat (thereby not changing the odds for our lone hero of the skies), or sits in a random seat. When sitting in a random seat, they either:</p>
+
+  <ol>
+    <li>Sit in the first person’s seat thereby closing the book on this whole debacle, assuring the vacancy of the posterior protector for our helpless late-boarder.</li>
+    <li>They sit in the last person’s seat, thereby ensuring their own place in hell along with our hero’s long lost comfort that only comes from sitting in your very own assigned seat.</li>
+    <li>Or they sit in someone else’s seat, thereby passing the buck on to someone else and not changing the results at all.</li>
+  </ol>
+
+  <p>So, there’s a 50/50 shot (once we get past the first person, and assuming \(n&gt;2\)).</p>
+
+  <p>To summarize: there’s a \(\frac{n-1}{n-2}\) probability that the last person’s seat is open after the first person takes a seat, then every turn after that has an equal probability of ending the game in a positive or a negative way. So the end formula is
+\[ \mathbb{P}\left(\cdot | n\right) = \frac{n-2}{n-1}\cdot\frac{1}{2} = \frac{n-2}{2(n-1)} ]</p>
+</div>
+
+<h3 id="the-experiment">The experiment</h3>
+
+<p class="hint">I essentially played this game 10,000 times for each \(n\) between 3 and 100, then plotted the mean for a particular \(n\) vs that \(n\), along with our theoretical value derived kinda loosely above.
+<img src="/assets/images/2018/06/10_percentagePlot.png" alt="percentage plot" /></p>
+:ET

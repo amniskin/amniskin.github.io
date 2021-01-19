@@ -1,13 +1,13 @@
 ---
+layout: post
 title: "Quantile Regression and Quantiles of Loss"
-type: post
 category: Mathematics
 tags:
 - Statistics
 - Mathematics
 - Theory
 - Intuition
-feature_image: "/assets/pics/2018/04/12_banner.jpg"
+banner: /assets/images/2018/04/12_banner.jpg
 ---
 
 # Background
@@ -24,7 +24,7 @@ $$
 \begin{align*}
 L_q : \mathbb{R}^n& \to \mathbb{R} \\
 L_q(r) =& \begin{cases} qr & r > 0 \\ (1-q)(-r) & r \leq 0\end{cases} \\
-=& \begin{cases} q|r| & r > 0 \\ (1-q)|r| & r \leq 0\end{cases}
+=& \begin{cases} q\|r\| & r > 0 \\ (1-q)\|r\| & r \leq 0\end{cases}
 \end{align*}
 $$
 
@@ -43,7 +43,7 @@ $$
 0 =& \frac{\partial L}{\partial r}(r) \\\\
 =& \sum_{r\in\omega_0}q + \sum_{r \in\omega_1}(1-q) \\\\
 =& q\sum_{r\in\omega_0}1 + (1-q)\sum_{r \in\omega_1}1 \\\\
-=& q|\omega_0| + (1-q)|\omega_1| \iff \\\\
+=& q\|\omega_0\| + (1-q)\|\omega_1\| \iff \\\\
 \omega_1 =& q(\omega_0 - \omega_1) \iff \\\\
 q =& \frac{\omega_1}{\omega_0 - \omega_1}
 \end{align*}

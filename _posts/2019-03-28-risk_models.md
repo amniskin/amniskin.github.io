@@ -1,6 +1,6 @@
 ---
+layout: post
 title: "A little geometric walk down risk model lane"
-type: post
 excerpt: Let's talk about the geometry of risk models
 category: Finance
 tags:
@@ -8,7 +8,7 @@ tags:
 - Statistics
 - Mathematics
 - Finance
-feature_image: "/assets/pics/2019/03/28_banner.jpg"
+banner: /assets/images/2019/03/28_banner.jpg
 ---
 
 # Prerequisites
@@ -20,8 +20,8 @@ Furthermore, an inner product defines a norm and it defines angles. Specifically
 
 $$
 \begin{align*}
-\left |\left| u\right|\right| = \sqrt{\langle u, u\rangle} \\\\
-\cos(\theta) = \frac{\langle u, v\rangle}{||u||\cdot||v||}
+\left \|\left\| u\right\|\right\| = \sqrt{\langle u, u\rangle} \\\\
+\cos(\theta) = \frac{\langle u, v\rangle}{\|\|u\|\|\cdot\|\|v\|\|}
 \end{align*}
 $$
 ## Standard deviation
@@ -29,7 +29,7 @@ The next thing to understand is that standard deviation is a norm. It's easily s
 
 $$
 \begin{align*}
-\sqrt{\frac{1}{n-1}\sum(x_i - \mu)^2} =& \sqrt{\frac{n}{n-1}}||x - \mu||\\\\
+\sqrt{\frac{1}{n-1}\sum(x_i - \mu)^2} =& \sqrt{\frac{n}{n-1}}\|\|x - \mu\|\|\\\\
 =& \sqrt{\frac{n}{n-1}}\sqrt{\langle x-\mu, x-\mu\rangle}
 \end{align*}
 $$
@@ -47,27 +47,27 @@ $$
 Let $u,v\in\mathbb{R}^n$. Given an inner product $\langle\cdot,\cdot\rangle$ (and the associated norm), the **projection** (sometimes called **vector projection**) of $u$ onto $v$ (denoted as $\text{proj}_vu$)is defined as:
 
 $$
-\text{proj}_vu := \frac{\langle u, v\rangle}{||v||} \frac{v}{||v||}
+\text{proj}_vu := \frac{\langle u, v\rangle}{\|\|v\|\|} \frac{v}{\|\|v\|\|}
 $$
 
 Another way to see the definition, given our definition of $\cos$ is:
 
 $$
 \begin{align*}
-\text{proj}_vu =& \frac{\langle u, v\rangle}{||v||} \frac{v}{||v||} \\\\
-=& \frac{||u||\langle u, v\rangle}{||u||\cdot||v||} \frac{v}{||v||} \\\\
-=& ||u||\cos(\theta) \frac{v}{||v||}
+\text{proj}_vu =& \frac{\langle u, v\rangle}{\|\|v\|\|} \frac{v}{\|\|v\|\|} \\\\
+=& \frac{\|\|u\|\|\langle u, v\rangle}{\|\|u\|\|\cdot\|\|v\|\|} \frac{v}{\|\|v\|\|} \\\\
+=& \|\|u\|\|\cos(\theta) \frac{v}{\|\|v\|\|}
 \end{align*}
 $$
 
 Geometrically, this gives us the component of $u$ in the $v$ direction. See figure below.
 
-![visual of a vector projection]({{ site.baseurl }}/assets/pics/2019/03/28_projection.png "Visual of a vector projection")
+![visual of a vector projection]({{ site.baseurl }}/assets/images/2019/03/28_projection.png "Visual of a vector projection")
 
 If you're wondering why I specified that it's the "**vector** projection" rather than just "projection", it's because there is a notion of a *scaler projection* too: The **scaler projection** of $u$ onto $v$ is simply the coefficient part of the projection:
 
 $$
-\text{scaler-proj}_vu = \frac{\langle u, v\rangle}{||v||}
+\text{scaler-proj}_vu = \frac{\langle u, v\rangle}{\|\|v\|\|}
 $$
 
 But since they're so similar and we really only care about the latter, I'll abuse notation here and generally use $\text{proj}_vu$ to mean "scaler-projection" unless otherwise noted.
@@ -122,7 +122,7 @@ MCAR(i) :=& \frac{\partial \sigma}{\partial u_i} \\\\
 =& \frac{1}{2\sqrt{\langle u, u\rangle}}\cdot \frac{\partial u'Vu}{\partial u_i} \text{ -- definition of our inner product}\\\\
 =& \frac{(u'V + u'V')u_i}{2\sqrt{\langle u, u\rangle}} \text{ -- computing the derivative}\\\\
 =& \frac{u'Vu_i}{\sqrt{\langle u, u\rangle}} \text{ -- $V$ is symmetric}\\\\
-=& \frac{\langle u, u_i\rangle}{\left|\left|u\right|\right|} \text{ -- Replacing with the geometric notion}\\\\
+=& \frac{\langle u, u_i\rangle}{\left\|\left\|u\right\|\right\|} \text{ -- Replacing with the geometric notion}\\\\
 \end{align*}
 $$
 

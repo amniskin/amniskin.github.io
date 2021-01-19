@@ -1,6 +1,6 @@
 ---
+layout: post
 title: "Let's Cover The Fundamental Group (pt 1)"
-type: post
 excerpt: Munkres saves the day and explains the fundamental secrets behind the most invariant of groups!
 category: Mathematics
 tags:
@@ -10,7 +10,7 @@ tags:
 - Topology
 - Algebra
 - Theory
-feature_image: "/assets/pics/2018/08/12_fundamental_group_torus.png"
+banner: /assets/images/2018/08/12_fundamental_group_torus.png
 ---
 
 ## Jumping right in
@@ -59,7 +59,7 @@ Let's get into the questions!
 <div class="hint" markdown="1">
 Let $a\in A$ be one of the points that make the set star convex. Our task now is to show:
 
-1. For any $x,y\in A$, there is a path entirely within $A$ connecting $x$ and $y$, and 
+1. For any $x,y\in A$, there is a path entirely within $A$ connecting $x$ and $y$, and
 1. $\pi_1(A,a)$ is trivial.
 
 For the first: just let $x,y\in A$ and let $f_x,f_y$ be the paths connecting them to $a$. Then note that $f_x \star \bar f_y$ is a path connecting $x$ to $y$.

@@ -1,13 +1,13 @@
 ---
+layout: post
 title: "The sequential shooters"
-type: post
 category: Mathematics
 tags:
 - Mathematics
 - Riddle
 - puzzles
 - riddles
-feature_image: "/assets/pics/2019/07/the_office_guns.gif"
+banner: /assets/images/2019/07/the_office_guns.gif
 ---
 
 There are N people indexed by $1,..,N$ (because down with the zero-indexers! Long live [Peano!](https://en.wikipedia.org/wiki/Peano_axioms)) standing in a circle. They're standing such that $i$ is between $i-1$ and $i+1$ (unless $i \in\{1,N\}$, for obvious reasons).

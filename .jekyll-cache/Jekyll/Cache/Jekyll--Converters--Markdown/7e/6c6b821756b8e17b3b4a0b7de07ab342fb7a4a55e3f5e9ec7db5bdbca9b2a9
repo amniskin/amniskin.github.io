@@ -1,0 +1,34 @@
+I"�<h2 id="the-scenario">The scenario:</h2>
+
+<p>You’re on a game show and they show you three doors (they’re all shut). They tell you behind two of these doors are goats, and behind one of them is a brand new car! They say you get to pick one door, then they’ll open up one of the remaining doors to reveal a goat, then ask you if you want to change your choice. What do you say?</p>
+
+<p>What you know:</p>
+
+<ol>
+  <li>There are three doors</li>
+  <li>Only one has the prize</li>
+  <li>All doors have equal probability at the onset</li>
+  <li>You choose one door</li>
+  <li>The host shows a goat behind one of the other doors</li>
+  <li>You’re asked if you want to change your choice to the last remaining door</li>
+</ol>
+
+<h3 id="hints-click-to-unblur">Hints (click to unblur)</h3>
+
+<ol>
+  <li>
+    <p class="hint">Just work out the probabilities</p>
+  </li>
+  <li>
+    <p class="hint">Think of the microstates</p>
+  </li>
+</ol>
+
+<h2 id="a-solution">A solution</h2>
+
+<h3 id="a-strategy">A Strategy</h3>
+<p class="hint">You do switch. The door you picked only has 1/3 probability of having the prize while the other door has 2/3 probability.</p>
+
+<h3 id="a-description">A Description</h3>
+<p class="hint">Let’s pretend like there are two different games: one where you pick one door and no chance to change your mind, and one where you pick two doors and if the car is behind either one you win. Obviously the first has a 1/3 probability and the second has a 2/3 probability of success. You can think of the strategy where you don’t switch as playing the first game and the one where you do switch as playing the second game. In the switching strategy, the first door you pick will never be the one you end with, so really, you’re not picking that door as much as you’re picking the other two and letting the host weed one out. At the end of the day, though, if you play with the switching strategy, then if the prize is behind either of the two doors you picked, you win! So it’s a 2/3 probability if you switch.</p>
+:ET

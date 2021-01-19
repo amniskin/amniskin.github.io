@@ -1,6 +1,6 @@
 ---
+layout: post
 title: What's in a language?
-date: 2015-11-30 01:36:29.000000000 -05:00
 categories:
 - Mathematics
 excerpt: "The basics of the theory of formal languages"
@@ -9,7 +9,7 @@ tags:
 - intro
 - language
 - math
-feature_image: "/assets/pics/2015/11/Romance-lg-classification-en.png"
+banner: /assets/images/2015/11/Romance-lg-classification-en.png
 ---
 
 ## Languages in abstraction
@@ -31,8 +31,8 @@ Consider an alphabet (some finite set of characters), for example we can conside
 ## Some Examples
 
 - The alphabet: \\(  \Sigma=\{0, 1\} \\) <br />
-The language: \\(  \{x\in\Sigma|x \text{ is prime}\} \\)  (all prime numbers in binary)<br />
-Some strings from the language: \\(  10, 11, 101... \\) 
+The language: \\(  \{x\in\Sigma\|x \text{ is prime}\} \\)  (all prime numbers in binary)<br />
+Some strings from the language: \\(  10, 11, 101... \\)
 - The alphabet: ASCII characters<br />
 The language: All syntactically correct Clojure programs (the source code)
 - The alphabet: All Clojure functions, operators, etc, and list \\(  \{x, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0\} \\) <br />
