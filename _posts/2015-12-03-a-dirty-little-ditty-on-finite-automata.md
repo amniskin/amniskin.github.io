@@ -18,7 +18,7 @@ banner: /assets/images/2015/12/03-DFA_banner.PNG
 mathjax: true
 ---
 
-This post builds on the previous post about [Formal Languages]({{ site.baseurl }}/mathematics/2015/11/30/whats-in-a-language/).
+This post builds on the previous post about [Formal Languages]({{ site.baseurl }}/mathematics/2015/11/30/whats-in-a-language.html).
 
 ### Some Formal Definitions
 
