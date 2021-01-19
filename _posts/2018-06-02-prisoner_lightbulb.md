@@ -9,6 +9,7 @@ tags:
 - fun&games
 - pokeaneyeout
 banner: /assets/images/2018/06/02_light_bulb.jpg
+mathjax: true
 ---
 
 ## The scenario:
@@ -62,8 +63,8 @@ So, you pick a number, say, 10. Then, you say make the following rules:
 - Everybody keeps a record in their own respective cells of the value they currently have.
 - When a prisoner enters the room, if the light is on, the prisoner turns it off and adds the current day's value to their own.
 	- Then, the prisoner writes out the value they have in binary.
-	- The value of the light bulb progresses to the next day's value, let's call it \\(\lambda\\).
-	- If the prisoner has a "1" in the \\(\lambda\\) place of the binary description of his or her own value, they turn on the light and decrease their own value by \\(\lambda\\).
+	- The value of the light bulb progresses to the next day's value, let's call it $\lambda$.
+	- If the prisoner has a "1" in the $\lambda$ place of the binary description of his or her own value, they turn on the light and decrease their own value by $\lambda$.
 
 So, for example, let's pick 10 as our number of days per value thing. Then if today is the 9th day in the full cycle, then today's value is 1 (and so is tomorrow's). So if the light is on when I get in, I turn it off and increment my value. Let's assume the light is on and I have a value of 20 (or 0010100, in our description). Then I turn off the light and find that I have a value of 21. Since tomorrow's value is 1, and my binary description is 0010101, I return that point and turn on the light bulb, leaving me with 0010100. If on the other hand, it had been the tenth day and tomorrow's value were 2, since I'd have a 0 in the 2's place, I'd keep the point.
 

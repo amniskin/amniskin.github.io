@@ -9,6 +9,7 @@ tags:
 - fun&games
 - pokeaneyeout
 banner: /assets/images/2018/06/02_blue_eyed_cat.jpg
+mathjax: true
 ---
 
 ## The scenario:
@@ -36,15 +37,13 @@ What happens?
 ## A solution
 
 ### The Solution
-If there are \\(n\\) many blue eyed people in the town (assuming blue eyed people are the minority), then on the \\(n^\text{th}\\) days, all the blue eyed people kill themselves, so it goes.
+If there are $n$ many blue eyed people in the town (assuming blue eyed people are the minority), then on the $n^\text{th}$ days, all the blue eyed people kill themselves, so it goes.
 {: .hint}
 
 ### The Explanation
-<div class='hint'>
-<div markdown="1">
+<div class='hint' markdown="1">
 If there is only 1 blue eyed person, then (s)he looks around after the speaker leaves and says, "there are no blue eyed people here!", then quickly realizes that (s)he must be the only blue eyed person and (s)he goes to the town square the next day and commits suicide, so it goes.
 
 
-If there are \\(n+1\\) many blue eyed people, then each looks around and sees only \\(n\\) and therefore concludes that \\(n\\) days from now all of those poor bastards are going to kill themselves, so it goes. But then the \\(n^\text{th}\\) day comes and none of them commit suicide (because they each think they're not blue eyed, but the other \\(n\\) are). Then they each come to the conclusion that there must be another blue-eyed person around, and since they don't see one, they each conclude that it's themself. So on the \\(n+1^\text{th}\\) day, they all go to the town square, so it goes.
-</div>
+If there are $n+1$ many blue eyed people, then each looks around and sees only $n$ and therefore concludes that $n$ days from now all of those poor bastards are going to kill themselves, so it goes. But then the $n^\text{th}$ day comes and none of them commit suicide (because they each think they're not blue eyed, but the other $n$ are). Then they each come to the conclusion that there must be another blue-eyed person around, and since they don't see one, they each conclude that it's themself. So on the $n+1^\text{th}$ day, they all go to the town square, so it goes.
 </div>
