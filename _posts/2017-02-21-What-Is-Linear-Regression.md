@@ -11,6 +11,7 @@ excerpt: >-
     Linear Regression is the bedrock of Machine Learning. We cover the basics
     therein, some theory involved, and give some relevant examples."
 banner: /assets/images/2017/02/21-banner.png
+mathjax: true
 ---
 
 
@@ -38,15 +39,15 @@ There's clearly a linear trend there, but how do we pick which linear trend woul
 
 $$\frac{1}{N}\sum\limits_{i=1}^N\left(\hat Y_i - Y_i\right)^2$$
 
-where \\( \hat Y_i\\) is our predicted value of \\(Y_i\\) for a give \\(X_i\\). Being as how we want a linear model (for simplicity and extensibility), we can write the above equation as,
+where $\hat Y_i$ is our predicted value of $Y_i$ for a give $X_i$. Being as how we want a linear model (for simplicity and extensibility), we can write the above equation as,
 
 $$ \sum\limits_{i=1}^N\left(\alpha + \beta X_i - Y_i\right)^2 $$
 
-for some \\( \alpha, \beta \\) that we don't yet know. But since we want to minimize that error, we can take some derivatives and solve for \\( \alpha, \beta \\)! Let's go ahead and do that! We want to minimize
+for some $\alpha, \beta$ that we don't yet know. But since we want to minimize that error, we can take some derivatives and solve for $\alpha, \beta$! Let's go ahead and do that! We want to minimize
 
 $$ \sum\limits_{i=1}^N\left(\alpha + \beta X_i - Y_i\right)^2 $$
 
-We can start by finding the \\( \hat\alpha \\) such that, \\( \frac{d}{d\alpha}\sum\limits_{i=1}^N\left(\alpha + \beta X_i - Y_i\right)^2 = 0 \\). And as long as we don't forget the chain rule, we'll be alright...
+We can start by finding the $\hat\alpha$ such that, $\frac{d}{d\alpha}\sum\limits_{i=1}^N\left(\alpha + \beta X_i - Y_i\right)^2 = 0$. And as long as we don't forget the chain rule, we'll be alright...
 
 $$\begin{align*}
 \sum\limits_{i=1}^N2\left(\alpha + \beta X_i - Y_i\right) =& 0\Longrightarrow\\
@@ -54,7 +55,7 @@ $$\begin{align*}
 N\alpha + N\beta\bar X - N\bar Y =& 0\Longrightarrow\\
 \alpha =& \bar Y - \beta\bar X \end{align*}$$
 
-and we'll find the \\( \beta \\) such that \\( \frac{d}{d\beta}\sum\limits_{i=1}^N\left(\alpha + \beta X_i - Y_i\right)^2 = 0 \\)
+and we'll find the $\beta$ such that $\frac{d}{d\beta}\sum\limits_{i=1}^N\left(\alpha + \beta X_i - Y_i\right)^2 = 0$
 
 And following a similar pattern we find (sorry for the editing... Wordpress.com isn't the greatest therein):
 
@@ -88,7 +89,7 @@ So,
 
 $$\beta = \frac{\text{COV}(X,Y)}{\text{VAR}(X)}$$
 
-And then we can find \\( \alpha \\) by substituting in our approximation of \\( \beta \\). Using those coefficients, we can plot the line below, and as you can see, it really is a good approximation.
+And then we can find $\alpha$ by substituting in our approximation of $\beta$. Using those coefficients, we can plot the line below, and as you can see, it really is a good approximation.
 
 ![Data With Linear Regression Line]({{ site.baseurl }}/assets/images/2017/02/21-linear-regression_scatterPoints_withLine.png "Some Example Data With Regression Line")
 
@@ -100,9 +101,8 @@ really all it means. And sometimes, as we'll see later, reading too much into
 that can really get you into trouble.
 
 But using this model we can now predict other data outside the model.  So, for
-instance, in the model pictured above, if we were to try and predict \\( Y \\)
-when \\( X=2 \\), we wouldn't do so bad by picking something around 10 for \\(
-Y \\).
+instance, in the model pictured above, if we were to try and predict $Y$
+when $X=2$, we wouldn't do so bad by picking something around 10 for $Y$.
 
 ### An example, perhaps?
 
@@ -112,7 +112,7 @@ this model is used to assess volatility, but that's neither here nor there.
 Right now, we're really only interested in the model itself. But without
 further ado, I present you with, the CAPM (Capital Asset Pricing Model):
 
-$$ r = \alpha + \beta r_m + \epsilon $$ (where \\( \epsilon \\) is the error in
+$$ r = \alpha + \beta r_m + \epsilon $$ (where $\epsilon$ is the error in
 our predictions).
 
 And you can fit this using historical data or what-have-you. There are a bunch
@@ -132,41 +132,53 @@ we fit a linear model to our data given some set of predictors and a single
 response variable? The only difference is that this time our linear model
 doesn't have to be one dimensional. Let's get right into it, shall we?
 
-So let's say you have \\( k \\) many predictors arranged in a vector (in other
-words, our predictor is a vector in \\( \mathbb{R}^n \\)). Well, I wonder if a
+So let's say you have $k$ many predictors arranged in a vector (in other
+words, our predictor is a vector in $\mathbb{R}^n$). Well, I wonder if a
 similar formula would work... Let's figure it out...
 
-Firstly, we need to know what a derivative is in \\( \mathbb{R}^n \\). Well, if
-\\( f:\mathbb{R}^n\to\mathbb{R}^m \\) is a differentiable function, then for
-any \\( x \\) in the domain,
-\\( f'(x) \\) is the linear map
-\\( A: \mathbb{R}^n \to \mathbb{R}^m \\) such that
-\\( \text{lim}\_{h \to 0}\frac{||f(x+h) - f(x) - Ah||}{||h||} = 0 \\\\).
-Basically, \\( f'(x) \\) is the tangent plane.
+Firstly, we need to know what a derivative is in $\mathbb{R}^n$. Well, if
+$f:\mathbb{R}^n\to\mathbb{R}^m$ is a differentiable function, then for
+any $x$ in the domain,
+$f'(x)$ is the linear map
+$A: \mathbb{R}^n \to \mathbb{R}^m$ such that
+$\text{lim}\_{h \to 0}\frac{\|\|f(x+h) - f(x) - Ah\|\|}{\|\|h\|\|} = 0$.
+Basically, $f'(x)$ is the tangent plane.
 
 So, now that we got that out of the way, let's use it! We want to find the
 linear function that minimizes the Euclidean norm of the error terms (just like
-before). But note: the error term is \\( \epsilon = Y - \hat Y = Y - \alpha
--\beta X \\), for some vector \\( \alpha \\) and some matrix \\( \beta \\).
+before). But note: the error term is $\epsilon = Y - \hat Y = Y - \alpha
+-\beta X$, for some vector $\alpha$ and some matrix $\beta$.
 Now, since it's easier and it'll give us the same answer, we're going to
 minimize the squared error term instead of just the error term (like we did in
 the one dimensional version). We're also going to make one more simplification:
-That \\( \alpha=0 \\). We can do this safely by simply appending (or
+That $\alpha=0$. We can do this safely by simply appending (or
 prepending) a 1 to the rows of our data (thereby creating a constant term). So
 for the following, assume we've done that.
 
-$$\begin{align} \langle\epsilon, \epsilon\rangle =& (Y - X\beta)^T(Y - X\beta) \\ \langle\epsilon, \epsilon\rangle =& (Y^T - \beta^TX^T)(Y - X\beta) \\ \langle\epsilon, \epsilon\rangle =& Y^TY - 2Y^TX\beta + \beta^TX^TX\beta \end{align}$$
+$$
+\begin{align} \langle\epsilon, \epsilon\rangle =& (Y - X\beta)^T(Y - X\beta) \\
+\langle\epsilon, \epsilon\rangle =& (Y^T - \beta^TX^T)(Y - X\beta) \\
+\langle\epsilon, \epsilon\rangle =& Y^TY - 2Y^TX\beta + \beta^TX^TX\beta \end{align}$$
 
-So, let's find the \\( \beta \\) that minimizes that.
+So, let's find the $\beta$ that minimizes that.
 
-$$\begin{align} 0=&\lim\limits_{h\to0}\frac{\|\|(Y^TY - 2Y^TX(\beta+h) + (\beta+h)^TX^TX(\beta+h)) - (Y^TY - 2Y^TX\beta + \beta^TX^TX\beta) - Ah\|\|}{\|\|h\|\|} \\ 0=&\lim\limits_{h\to0}\frac{\|\|- 2Y^TXh + 2\beta^TX^TXh + h^TX^TXh - Ah\|\|}{\|\|h\|\|}\\ 0=&\lim\limits_{h\to0}\|\|- 2Y^TX + 2\beta^TX^TX + h^TX^TX - A\|\|\frac{\|\|h\|\|}{\|\|h\|\|}\\ 0=&\lim\limits_{h\to0}\|\|- 2Y^TX + 2\beta^TX^TX - A\|\| \end{align}$$
+$$
+\begin{align}
+0=&\lim\limits_{h\to0}\frac{\|(Y^TY - 2Y^TX(\beta+h) + (\beta+h)^TX^TX(\beta+h)) - (Y^TY - 2Y^TX\beta + \beta^TX^TX\beta) - Ah\|}{\|h\|} \\
+0=&\lim\limits_{h\to0}\frac{\|- 2Y^TXh + 2\beta^TX^TXh + h^TX^TXh - Ah\|}{\|h\|}\\
+0=&\lim\limits_{h\to0}\|- 2Y^TX + 2\beta^TX^TX + h^TX^TX - A\|\frac{\|h\|}{\|h\|}\\
+0=&\lim\limits_{h\to0}\|- 2Y^TX + 2\beta^TX^TX - A\|
+\end{align}
+$$
 
-So, now we see that the derivative is \\( -2Y^TX + 2\beta^TX^TX \\) and we want to find where our error is minimized, so we want to set that derivative to zero:
+So, now we see that the derivative is $-2Y^TX + 2\beta^TX^TX$ and we want to find where our error is minimized, so we want to set that derivative to zero:
 
-$$\begin{align*}
-	0=&- 2Y^TX + 2\beta^TX^TX \\
-	X^TX\beta =& X^TY \\
-	\beta =& (X^TX)^{-1}X^TY \end{align*}$$
+$$
+\begin{align*}
+0=&- 2Y^TX + 2\beta^TX^TX \\
+X^TX\beta =& X^TY \\
+\beta =& (X^TX)^{-1}X^TY
+\end{align*}$$
 
 And there we have it. That's called the <strong>normal equation</strong> for linear regression.
 
