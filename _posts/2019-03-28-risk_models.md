@@ -27,7 +27,7 @@ The next thing to understand is that standard deviation is a norm. It's easily s
 
 $$
 \begin{align*}
-\sqrt{\frac{1}{n-1}\sum(x_i - \mu)^2} =& \sqrt{\frac{n}{n-1}}\|\|x - \mu\|\|\\\\
+\sqrt{\frac{1}{n-1}\sum(x_i - \mu)^2} =& \sqrt{\frac{n}{n-1}}\|x - \mu\|\\\\
 =& \sqrt{\frac{n}{n-1}}\sqrt{\langle x-\mu, x-\mu\rangle}
 \end{align*}
 $$
@@ -45,16 +45,16 @@ $$
 Let $u,v\in\mathbb{R}^n$. Given an inner product $\langle\cdot,\cdot\rangle$ (and the associated norm), the **projection** (sometimes called **vector projection**) of $u$ onto $v$ (denoted as $\text{proj}_vu$)is defined as:
 
 $$
-\text{proj}_vu := \frac{\langle u, v\rangle}{\|\|v\|\|} \frac{v}{\|\|v\|\|}
+\text{proj}_vu := \frac{\langle u, v\rangle}{\|v\|} \frac{v}{\|v\|}
 $$
 
 Another way to see the definition, given our definition of $\cos$ is:
 
 $$
 \begin{align*}
-\text{proj}_vu =& \frac{\langle u, v\rangle}{\|\|v\|\|} \frac{v}{\|\|v\|\|} \\\\
-=& \frac{\|\|u\|\|\langle u, v\rangle}{\|\|u\|\|\cdot\|\|v\|\|} \frac{v}{\|\|v\|\|} \\\\
-=& \|\|u\|\|\cos(\theta) \frac{v}{\|\|v\|\|}
+\text{proj}_vu =& \frac{\langle u, v\rangle}{\|v\|} \frac{v}{\|v\|} \\\\
+=& \frac{\|u\|\langle u, v\rangle}{\|u\|\cdot\|v\|} \frac{v}{\|v\|} \\\\
+=& \|u\|\cos(\theta) \frac{v}{\|v\|}
 \end{align*}
 $$
 
@@ -65,7 +65,7 @@ Geometrically, this gives us the component of $u$ in the $v$ direction. See figu
 If you're wondering why I specified that it's the "**vector** projection" rather than just "projection", it's because there is a notion of a *scaler projection* too: The **scaler projection** of $u$ onto $v$ is simply the coefficient part of the projection:
 
 $$
-\text{scaler-proj}_vu = \frac{\langle u, v\rangle}{\|\|v\|\|}
+\text{scaler-proj}_vu = \frac{\langle u, v\rangle}{\|v\|}
 $$
 
 But since they're so similar and we really only care about the latter, I'll abuse notation here and generally use $\text{proj}_vu$ to mean "scaler-projection" unless otherwise noted.
