@@ -15,7 +15,7 @@ banner: /assets/images/2021/01/19-longitudinal-bears-banner.jpg
 
 > You're standing on the surface of the earth (as opposed to whatever your usual hangouts are), and walk a mile south, a mile east, and then a mile north. You see a bear. What color is the bear?
 
-You've heard this one before, but just in case, the answer is: <span class=hint>White. He's at the north pole and it was a polar bear</span>. But that's not the only point that it could be. The riddle is, can you describe the solutions?
+You've heard this one before, but just in case, the answer is: <span class=hint>White. You are at the north pole and it was a polar bear</span>. But that's not the only point that it could be. The riddle is, can you describe the full set of solutions?
 
 ## Solution
 

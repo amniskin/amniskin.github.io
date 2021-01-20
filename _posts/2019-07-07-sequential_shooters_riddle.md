@@ -32,11 +32,11 @@ Given $N$, what is the index (1-indexed, unfortunately) of the last shooter stan
 ### The Theoretical Solution
 
 <div class="hint" markdown="1">
-Every number $N$ can be written uniquely as $2^i + \lambda$, where $i,\lambda\in\mathbb{N}\_{\geq 0}$ and $\lambda$ is minimal (hence $i$ maximal).
+Every number $N$ can be written uniquely as $2^i + \lambda$, where $i,\lambda\in\mathbb{N}\_{\geq 0}$ and $\lambda \lt 2^i$ (hence $\lambda$ is minimal and $i$ maximal).
 
-The answer to the riddle is $1 + 2\lambda$ for this particular $\lambda$.
+The answer to the riddle is $\equiv 1 + 2\lambda \pmod{N}$ for this particular $\lambda$.
 
-So full disclosure, I kinda cheated on this one. We'll get to that in a bit; but first let's go through the motions and let me walk you through my thought process (as if that's super valuable).
+So full disclosure, I kinda cheated on this one by writing a program to "prove" my thesis before I did so mathematically. We'll get to that in a bit; but first let's go through the motions and write out this solution.
 
 Firsty, we can immediately tell that every time there are an even number of people in the circle, that round will end up at the same person it started with (as in if there are 6 people in the circle, then 2, 4, and 6 are killed in the first round and we start round two on 1 again.
 
@@ -61,7 +61,9 @@ If $N=8$,
 
 and we're left in pretty much the same scenario as $N=4$. In fact, for $2^{i+1}$, the first iteration will wipe out half of the people and leave us starting on 1 again -- thereby leaving us in an analogous scenario as $2^i$.
 
-What about the other cases? Well, naively we can see that every shot moves the head forward by two slots (when 1 shoots 2, the round robbin starts again at 3 but with one fewer player). We now have to prove that this sort of thing reaches parity at $2^i$ and not beforehand. But I'm feeling lazy and I'm pretty confident that it's correct, so I'll just show that it's true for the first few programmatically...
+In the case that $\lambda \gt 0$, we know that once $\lambda$ people have been shot, we'll have $2^i$ people left. So whoever is the first shooter after $\lambda$ people have been shot will be the winner. The task now is to find out who is shooter number $\lambda + 1$. Since each shot progresses to the next odd number shooter (1 shoots 2 and 3 is next, etc.), we know it should be:
+
+$$2\cdot(\lambda + 1)-1 = 1 + 2\lambda$$
 </div>
 
 ### The Programmatic Solution
