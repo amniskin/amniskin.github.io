@@ -42,9 +42,11 @@ Well, a number $m$ is toggled exactly once per divisor. For instance, the number
 
 So how many divisors does a given number have? For that, we'll use some beautiful number theory (the number theory we're using isn't deep or anything, but any number theory is beautiful really). So any counting number $m$ can be written as a product of unique primes to non-negative integer exponents. So, mathematically, what I'm saying is:
 
-$$\begin{align*}
+$$
+\begin{align*}
 m =& \prod p_i^{\alpha_i}
-\end{align*}$$
+\end{align*}
+$$
 
 Since every number can be written that way, all $m$'s divisors can be written that way too. By definition, any divisor of $m$ must be $\prod p_i^{\lambda_i}$ such that for each $i$, $0 \leq \lambda_i \leq \alpha_i$ -- and each such collection of $\lambda_i$ determines a unique divisor. So how many such numbers can we create? Clearly: $\prod\limits_i(\alpha_i + 1)$ because we can have up to $\alpha_i$ powers of $p_i$, but we could also have 0 of them. So there are $\alpha_i + 1$ many.
 
