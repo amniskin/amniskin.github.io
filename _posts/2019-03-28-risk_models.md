@@ -18,7 +18,7 @@ Furthermore, an inner product defines a norm and it defines angles. Specifically
 
 $$
 \begin{align*}
-\left \|\left\| u\right\|\right\| = \sqrt{\langle u, u\rangle} \\\\
+\left\| u\right\| = \sqrt{\langle u, u\rangle} \\\\
 \cos(\theta) = \frac{\langle u, v\rangle}{\|u\|\cdot\|v\|}
 \end{align*}
 $$
@@ -121,7 +121,7 @@ MCAR(i) :=& \frac{\partial \sigma}{\partial u_i} \\\\
 =& \frac{1}{2\sqrt{\langle u, u\rangle}}\cdot \frac{\partial u'Vu}{\partial u_i} \text{ -- definition of our inner product}\\\\
 =& \frac{(u'V + u'V')u_i}{2\sqrt{\langle u, u\rangle}} \text{ -- computing the derivative}\\\\
 =& \frac{u'Vu_i}{\sqrt{\langle u, u\rangle}} \text{ -- $V$ is symmetric}\\\\
-=& \frac{\langle u, u_i\rangle}{\left\|\left\|u\right\|\right\|} \text{ -- Replacing with the geometric notion}\\\\
+=& \frac{\langle u, u_i\rangle}{\left\|u\right\|} \text{ -- Replacing with the geometric notion}\\\\
 \end{align*}
 $$
 
