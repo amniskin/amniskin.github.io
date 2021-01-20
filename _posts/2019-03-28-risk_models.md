@@ -22,6 +22,7 @@ $$
 \cos(\theta) = \frac{\langle u, v\rangle}{\|u\|\cdot\|v\|}
 \end{align*}
 $$
+
 ## Standard deviation
 The next thing to understand is that standard deviation is a norm. It's easily seen from the formula:
 
