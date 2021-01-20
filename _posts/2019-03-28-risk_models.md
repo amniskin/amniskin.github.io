@@ -11,8 +11,6 @@ tags:
 banner: /assets/images/2019/03/28_banner.jpg
 ---
 
-# Prerequisites
-
 ## inner products
 So the first thing to understand is that as long as we have an inner-product defined, we have a geometry. And in case you're unfamiliar with the term inner-product, you can think of it like a slightly more general dot-product.
 
@@ -21,7 +19,7 @@ Furthermore, an inner product defines a norm and it defines angles. Specifically
 $$
 \begin{align*}
 \left \|\left\| u\right\|\right\| = \sqrt{\langle u, u\rangle} \\\\
-\cos(\theta) = \frac{\langle u, v\rangle}{\|\|u\|\|\cdot\|\|v\|\|}
+\cos(\theta) = \frac{\langle u, v\rangle}{\|u\|\cdot\|v\|}
 \end{align*}
 $$
 ## Standard deviation
