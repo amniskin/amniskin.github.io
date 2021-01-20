@@ -164,8 +164,9 @@ jekyll-spaceship:
     src:
       - https://polyfill.io/v3/polyfill.min.js?features=es6
       - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+        # - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js
     config:
-      tex:
+      tex2jax:
         inlineMath:
           - ['$','$']
         displayMath:
