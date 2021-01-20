@@ -8,7 +8,7 @@ tags:
 - mathematics
 - geology
 - riddles
-banner: /assets/images/2019/03/28_banner.jpg
+banner: /assets/images/2021/01/19-longitudinal-bears-banner.jpg
 ---
 
 ## The scenario
