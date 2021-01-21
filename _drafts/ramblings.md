@@ -1,11 +1,11 @@
 ---
-title: "Data Science Revolution (pt 1) -- Or how we learned to learn and know what we know"
+title: Data Science and inference
 type: post
 excerpt: That's a super convoluted title, but let's revel in it.
 category: Misc
 tags:
 - misc
-- Thoughts
+- thoughts
 feature_image: "/assets/pics/2019/11/27_banner.jpg"
 ---
 

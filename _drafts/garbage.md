@@ -1,32 +1,17 @@
 ---
-title: "Let's Cover Homology (pt 2)"
+title: "Let's garbage it up"
 type: post
 excerpt: Let's cover HOMOLOGY! And some of that sweet Betti number goodness.
 category: Mathematics
 tags:
-- Data Visualization
-- Statistics
-- Mathematics
-- Topology
-- Algebra
-- Theory
+- data visualization
+- statistics
+- mathematics
+- topology
+- algebra
+- theory
 feature_image: "/assets/pics/2018/04/12_banner.jpg"
 ---
-
-<style>
-.bar {
-    fill: green;
-}
-
-.highlight {
-    fill: red;
-}
-
-.title {
-    fill: blue;
-    font-weight: bold;
-}
-</style>
 
 <script src = "https://d3js.org/d3.v4.min.js"></script>
 

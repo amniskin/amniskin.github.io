@@ -1,32 +1,17 @@
 ---
-title: "Let's Cover Homology (pt 2)"
-type: post
-excerpt: Let's cover HOMOLOGY! And some of that sweet Betti number goodness.
+title: testing d3
+layout: post
 category: Mathematics
 tags:
-- Data Visualization
-- Statistics
-- Mathematics
-- Topology
-- Algebra
-- Theory
-feature_image: "/assets/pics/2018/04/12_banner.jpg"
+- data-visualization
+- data-viz
+- statistics
+- mathematics
+- topology
+- algebra
+- theory
+feature_image: /assets/images/2018/04/12_banner.jpg
 ---
-
-<style>
-.bar {
-    fill: green;
-}
-
-.highlight {
-    fill: red;
-}
-
-.title {
-    fill: blue;
-    font-weight: bold;
-}
-</style>
 
 <script src = "https://d3js.org/d3.v4.min.js"></script>
 
@@ -108,16 +93,16 @@ feature_image: "/assets/pics/2018/04/12_banner.jpg"
             .attr("fill", d => color(d.length));
 
     }
-    console.log(d3.version)
+    console.log('d3-version', d3.version)
     var data = d3.csv(data_path)
         .row(function(d) {
             return {x: Number(d.carat), y: Number(d.price)};
         })
         .get(function(error, rows) {
             if (error) {
-                return console.warn(error);
+                return console.warn('warning', error);
             }
-            console.log(rows);
+            console.log('rows = ', rows);
             update_bins(rows);
         });
 

@@ -105,7 +105,7 @@ night_mode: "on"
 code_badge:
   enabled: "true"
   color: "#353535"
-  background_color: "#ff4e00"
+  background_color: "#00B3FF"
   text_transform: "uppercase"  # ("uppercase", "lowercase", "capitalize")
 
 header_pages:
@@ -147,4 +147,3 @@ plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
   - jekyll-paginate
-    # - jekyll-spaceship
