@@ -3,8 +3,8 @@ layout: post
 title: "The Sequential Doors and The Data Science Analogue"
 category: Riddle
 tags:
-- Mathematics
-- Riddle
+- mathematics
+- riddle
 - puzzles
 - riddles
 banner: /assets/images/2019/07/infinite-hallway.jpg
