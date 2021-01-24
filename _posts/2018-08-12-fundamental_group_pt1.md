@@ -34,7 +34,7 @@ In addition to the previous post, the following are mathematical definitions you
 
 __Definition__:
 
-Given a path $\alpha$ from $x_0$ to $x_1$ in $X$, we define $\hat\alpha:\pi_1(X,x_0)\to\pi_1(X,x_1)$ as follows:
+Given a path $\alpha$ from $x\_0$ to $x\_1$ in $X$, we define $\hat\alpha:\pi\_1(X,x\_0)\to\pi\_1(X,x\_1)$ as follows:
 
 $$\hat\alpha([f]) = [\bar\alpha]\star[f]\star[\alpha]$$
 
@@ -42,11 +42,11 @@ And it's a theorem that $\hat\alpha$ is a group isomorphism.
 
 __Definition__:
 
-Given a continuous map $h:(X,x_0)\to(Y,y_0)$, we define:
+Given a continuous map $h:(X,x\_0)\to(Y,y\_0)$, we define:
 
-$h_\star:\pi_1(X,x_0)\to\pi_1(Y,y_0)$ as follows:
+$h\_\star:\pi\_1(X,x\_0)\to\pi\_1(Y,y\_0)$ as follows:
 
-$$h_\star([f]) = [h\circ f]$$
+$$h\_\star([f]) = [h\circ f]$$
 
 And with that...
 
@@ -62,9 +62,9 @@ Let's get into the questions!
 Let $a\in A$ be one of the points that make the set star convex. Our task now is to show:
 
 1. For any $x,y\in A$, there is a path entirely within $A$ connecting $x$ and $y$, and
-1. $\pi_1(A,a)$ is trivial.
+1. $\pi\_1(A,a)$ is trivial.
 
-For the first: just let $x,y\in A$ and let $f_x,f_y$ be the paths connecting them to $a$. Then note that $f_x \star \bar f_y$ is a path connecting $x$ to $y$.
+For the first: just let $x,y\in A$ and let $f\_x,f\_y$ be the paths connecting them to $a$. Then note that $f\_x \star \bar f\_y$ is a path connecting $x$ to $y$.
 
 For the second we can use the same straight-line homotopy that we used for the convex version: let $f$ be a path starting and ending at $a$ and let $H(s,t) = t\cdot a + (1-t)\cdot f(s)$.
 
@@ -73,12 +73,12 @@ Lastly, because part _a_ (that I didn't mention) is to find a set that's star co
 
 ### 2
 
-**Show that if $\alpha,\beta$ are paths from $x_0\to x_1\to x_2$ all in $X$ and $\gamma = \alpha\star\beta$ that $\hat\gamma = \hat\beta\circ\hat\alpha$.**
+**Show that if $\alpha,\beta$ are paths from $x\_0\to x\_1\to x\_2$ all in $X$ and $\gamma = \alpha\star\beta$ that $\hat\gamma = \hat\beta\circ\hat\alpha$.**
 
 <div class="hint" markdown="1">
 Since these are functions between equivalence classes, our job is now to show that the outputs for a given input are homotopic.
 
-So let $f$ be a path in $X$ starting and stopping at $x_0$. Then:
+So let $f$ be a path in $X$ starting and stopping at $x\_0$. Then:
 
 $$
 \begin{align*}
@@ -95,10 +95,10 @@ $$
 </div>
 
 ### 3
-**Show that if $x_0,x_1$ are points in a path-connected space $X$, $\pi_1(X,x_0)$ is abelian if and only if for every pair of paths from $\alpha,\beta$ from $x_0$ to $x_1$, $\hat\alpha = \hat\beta$.**
+**Show that if $x\_0,x\_1$ are points in a path-connected space $X$, $\pi\_1(X,x\_0)$ is abelian if and only if for every pair of paths from $\alpha,\beta$ from $x\_0$ to $x\_1$, $\hat\alpha = \hat\beta$.**
 
 <div class="hint" markdown="1">
-If $\pi_1(X,x_0)$ is abelian, we have:
+If $\pi\_1(X,x\_0)$ is abelian, we have:
 
 $$\begin{align*}
 \hat\alpha([f]) =& [\bar\alpha]\star[f]\star[\alpha]\\
@@ -114,62 +114,54 @@ $$\begin{align*}
 
 ### 4
 
-**Let $A\subset X$ and let $r:X\to A$ be a retraction. Show that for $a_0\in A$, $r_\star:\pi_1(X,a_0)\to\pi_1(A,a_0)$ is surjective.**
+**Let $A\subset X$ and let $r:X\to A$ be a retraction. Show that for $a\_0\in A$, $r\_\star:\pi\_1(X,a\_0)\to\pi\_1(A,a\_0)$ is surjective.**
 
 <div class="hint" markdown="1">
-Well, any path $\alpha$ in $A$ starting and stopping at $a_0$ will also be a path in $X$ (because $A\subset X$). So $r_\star([\alpha]_X) = [\alpha]_A$. It's surjective because it's the identity map when we restrict paths to $A$.
+Well, any path $\alpha$ in $A$ starting and stopping at $a\_0$ will also be a path in $X$ (because $A\subset X$). So $r\_\star([\alpha]\_X) = [\alpha]\_A$. It's surjective because it's the identity map when we restrict paths to $A$.
 
 </div>
 
 ### 5
-**Let $A\subset\mathbb{R}^n$ and $h:(A,a_0)\to(Y,y_0)$. Show that if $h$ is extendable to a continuous map $\tilde h:\mathbb{R}^n\to Y$, then $h_\star$ is trivial (i.e. sends everybody to the class of the constant loop).**
+**Let $A\subset\mathbb{R}^n$ and $h:(A,a\_0)\to(Y,y\_0)$. Show that if $h$ is extendable to a continuous map $\tilde h:\mathbb{R}^n\to Y$, then $h\_\star$ is trivial (i.e. sends everybody to the class of the constant loop).**
 
 <div class="hint" markdown="1">
-Let $G=\pi_1(A,a_0), H=\pi_1(Y,y_0)$. Then, as a reminder, $h_\star:G\to H$ such that $h_\star([\alpha]) = [h\circ\alpha]$.
+Let $G=\pi\_1(A,a\_0), H=\pi\_1(Y,y\_0)$. Then, as a reminder, $h\_\star:G\to H$ such that $h\_\star([\alpha]) = [h\circ\alpha]$.
 
-So let $\alpha,\beta$ be paths in $(A,a_0)$. Since $\alpha,\beta$ were arbitrary, it is sufficient to show that $h_\star([\alpha])$ is homotopic to $h_\star([\beta])$.
+So let $\alpha,\beta$ be paths in $(A,a\_0)$. Since $\alpha,\beta$ were arbitrary, it is sufficient to show that $h\_\star([\alpha])$ is homotopic to $h\_\star([\beta])$.
 
 Consider $F:I\times I\to \mathbb{R}^n$ given by $F(s,t) = t\alpha(s) + (1-t)\beta(s)$ (the straight line homotopy between the two loops). But since $h$ is extendible to $\tilde h:\mathbb{R}^n\to Y$, we know that even $F$ is a homotopy that leaves $A$ (into some other part of $\mathbb{R}^n$), $\tilde h\circ F$ is a homotopy between $h(\alpha),h(\beta)$ that stays entirely in $Y$. Hence $[\tilde h\circ \alpha] = [\tilde h\circ \beta]$.
 </div>
 
+### 6
 
-<!--
-### Let $X$ be path connected, $h:X\to Y$ be continuous with $h(x_0) = y_0$ and $h(x_1)=y_1$; let $\alpha$ be a path in $X$ from $x_0$ to $x_1$, and $\beta = h\circ\alpha$. Show that
+Let $X$ be path connected, $h:X\to Y$ be continuous with $h(x\_0) = y\_0$ and $h(x\_1)=y\_1$; let $\alpha$ be a path in $X$ from $x\_0$ to $x\_1$, and $\beta = h\circ\alpha$. Show that
 
-$$\hat\beta\circ(h_{x_0})_\star = (h_{x_1})_\star\circ\hat\alpha$$
+$$\hat\beta\circ(h\_{x\_0})\_\star = (h\_{x\_1})\_\star\circ\hat\alpha$$
 
 As in, show that the following diagram commutes:
 
 $$
 \newcommand{\ra}[1]{\xrightarrow{\quad#1\quad}}
-\newcommand{\da}[1]{\left\downarrow{\scriptstyle#1}\vphantom{\displaystyle\int_0^1}\right.}
-\newcommand{\sea}[1]{\left\searrow{\scriptstyle#1}\vphantom{\displaystyle\int_0^1}\right.}
+\newcommand{\da}[1]{\left\downarrow{\scriptstyle#1}\vphantom{\displaystyle\int\_0^1}\right.}
+\newcommand{\sea}[1]{\left\searrow{\scriptstyle#1}\vphantom{\displaystyle\int\_0^1}\right.}
 $$
 
 $$
 \begin{array}{ccc}
-\pi_1(X,x_0) & \ra{(h_{x_0})_\star} & \pi_1(Y,y_0) \\
+\pi\_1(X,x\_0) & \ra{(h\_{x\_0})\_\star} & \pi\_1(Y,y\_0) \\
 \da{\hat\alpha} & & \da{\hat\beta} \\
-\pi_1(X,x_1) & \ra{(h_{x_1})_\star} & \pi_1(Y,y_1) \\
+\pi\_1(X,x\_1) & \ra{(h\_{x\_1})\_\star} & \pi\_1(Y,y\_1) \\
 \end{array}
 $$
 
-
 <div class="hint" markdown="1">
-Let
-$$\begin{align*}
-f=&\hat\beta\circ (h_{x_0})_\star & \text{and}& & g=&(h_{x_1})_\star\circ\hat\alpha
-\end{align*}$$
+Let $f=\hat\beta\circ (h_{x_0})\_\star$ and $g=(h_{x_1})\_\star\circ\hat\alpha$. The claim is now that
 
-The claim is now that
-
-$$\forall a \in \pi_1(X,x_0), f(a) = g(a)$$
+$$\forall a \in \pi\_1(X,x\_0), f(a) = g(a)$$
 
 _Proof_:
 
-Let $b_0 \in f(a) = \hat\beta\circ(h_{x_0})_\star (c)$. That means $b$ is a particular path in $(Y,y_1)$ such that $b_0 = \bar\beta\star(h(c))\star\beta$, whereas $g(a) \ni b_1 = h(\bar\alpha\star d \star\alpha)$ with $c,d$ homotopic.
+Let $b\_0 \in f(a) = \hat\beta\circ(h\_{x\_0})\_\star (c)$. That means $b$ is a particular path in $(Y,y\_1)$ such that $b\_0 = \bar\beta\star(h(c))\star\beta$, whereas $g(a) \ni b\_1 = h(\bar\alpha\star d \star\alpha)$ with $c,d$ homotopic.
 
-Let $\alpha$ be a path in $(X,x_0)$ and $\beta = h\circ\alpha$ -- hence a path in $(Y,y_1)$.
+Let $\alpha$ be a path in $(X,x\_0)$ and $\beta = h\circ\alpha$ -- hence a path in $(Y,y\_1)$.
 </div>
-
--->
