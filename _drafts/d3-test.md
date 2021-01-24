@@ -10,100 +10,103 @@ tags:
 - topology
 - algebra
 - theory
-feature_image: /assets/images/2018/04/12_banner.jpg
+banner: /assets/images/2018/04/12_banner.jpg
 ---
 
-<script src = "https://d3js.org/d3.v4.min.js"></script>
+## Idea
 
-<script src="https://d3js.org/d3-hexbin.v0.2.min.js"></script>
+This is a template of how to get responsive graphs in d3.
 
-<svg id="graph_svg" width = "1000" height = "500">
-</svg>
+<script src="https://d3js.org/d3.v3.js"></script>
+
+<div id="chart"></div>
+<style>
+#chart {
+  width: 100%;
+}
+.bar {
+  fill: steelblue;
+}
+
+.bar:hover {
+  fill: brown;
+}
+
+.axis {
+  font: 10px sans-serif;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.x.axis path {
+  display: none;
+}
+</style>
 
 <script>
+var data = [
+{% for chart in site.data.bar-chart %}
+  {
+    "letter": "{{ chart.year }}",
+    "frequency": "{{ chart.frequency }}"
+  }{% if forloop.last == false %},{% endif %}
+{% endfor %}]
+var div = document.getElementById("chart");
+var svg = d3.select(div).append('svg');
 
-	var margin = {top: 20, right: 20, bottom: 30, left: 40},
-		svg = d3.select("svg#graph_svg"),
-		width = svg.attr('width'),
-		height = Math.max(640, width),
-		radius = 8,
-		data_path = "https://gist.githubusercontent.com/mbostock/d63e6019c63887e39e44646696abfb69/raw/5b2b15b4c652167f6c038e717bbe3385dbb9bb99/diamonds.csv";
+function redraw() {
+  var width = div.clientWidth,
+    height = width * 0.3;
 
-    function update_bins(data) {
-        y = d3.scaleLog()
-            .domain(d3.extent(data, d => d.y))
-            .rangeRound([height - margin.bottom, margin.top]);
+  svg.attr('width', width).attr('height', height);
 
-        x = d3.scaleLog()
-            .domain(d3.extent(data, d => d.x))
-            .range([margin.left, width - margin.right]);
+  var x = d3.scale.ordinal()
+    .rangeRoundBands([0, width], .1);
 
-        hexbin = d3.hexbin()
-                .x(d => x(d.x))
-                .y(d => y(d.y))
-                .radius(radius * width / 964)
-                .extent([[margin.left, margin.top], [width - margin.right, height - margin.bottom]]);
+  var y = d3.scale.linear()
+    .range([height, 0]);
 
-        bins = hexbin(data);
+  var xAxis = d3.svg.axis()
+    .scale(x)
+    .orient("bottom");
 
-        color = d3.scaleSequential(d3.interpolateBuPu)
-            .domain([0, d3.max(bins, d => d.length) / 2]);
+  var yAxis = d3.svg.axis()
+    .scale(y)
+    .orient("left")
+    .ticks(10);
 
-        yAxis = g => g
-            .attr("transform", `translate(${margin.left},0)`)
-            .call(d3.axisLeft(y).ticks(null, ".1s"))
-            .call(g => g.select(".domain").remove())
-            .call(g => g.append("text")
-                .attr("x", 4)
-                .attr("y", margin.top)
-                .attr("dy", ".71em")
-                .attr("fill", "currentColor")
-                .attr("font-weight", "bold")
-                .attr("text-anchor", "start")
-                .text(data.y));
+  x.domain(data.map(function(d) { return d.letter; }));
+  y.domain([0, d3.max(data, function(d) { return d.frequency; })]);
 
-        xAxis = g => g
-            .attr("transform", `translate(0,${height - margin.bottom})`)
-            .call(d3.axisBottom(x).ticks(width / 80, ""))
-            .call(g => g.select(".domain").remove())
-            .call(g => g.append("text")
-                .attr("x", width - margin.right)
-                .attr("y", -4)
-                .attr("fill", "currentColor")
-                .attr("font-weight", "bold")
-                .attr("text-anchor", "end")
-                .text(data.x));
+  svg.append("g")
+    .attr("class", "x axis")
+    .attr("transform", "translate(0," + height + ")")
+    .call(xAxis);
 
-        svg.attr("viewBox", [0, 0, width, height]);
+  svg.append("g")
+    .attr("class", "y axis")
+    .call(yAxis)
+    .append("text")
+    .attr("transform", "rotate(-90)")
+    .attr("y", 6)
+    .attr("dy", ".71em")
+    .style("text-anchor", "end")
+    .text("Number of Years");
 
-        svg.append("g")
-            .call(xAxis);
-
-        svg.append("g")
-            .call(yAxis);
-
-        svg.append("g")
-            .attr("stroke", "#000")
-            .attr("stroke-opacity", 0.1)
-            .selectAll("path")
-            .data(bins)
-            // .join("path")
-            .attr("d", hexbin.hexagon())
-            .attr("transform", d => `translate(${d.x},${d.y})`)
-            .attr("fill", d => color(d.length));
-
-    }
-    console.log('d3-version', d3.version)
-    var data = d3.csv(data_path)
-        .row(function(d) {
-            return {x: Number(d.carat), y: Number(d.price)};
-        })
-        .get(function(error, rows) {
-            if (error) {
-                return console.warn('warning', error);
-            }
-            console.log('rows = ', rows);
-            update_bins(rows);
-        });
-
+  svg.selectAll(".bar")
+    .data(data)
+    .enter().append("rect")
+    .attr("class", "bar")
+    .attr("x", function(d) { return x(d.letter); })
+    .attr("width", x.rangeBand())
+    .attr("y", function(d) { return y(d.frequency); })
+    .attr("height", function(d) { return height - y(d.frequency); });
+}
+redraw();
+window.addEventListener("resize", redraw);
 </script>

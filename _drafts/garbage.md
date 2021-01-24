@@ -1,6 +1,6 @@
 ---
 title: "Let's garbage it up"
-type: post
+layout: post
 excerpt: Let's cover HOMOLOGY! And some of that sweet Betti number goodness.
 category: Mathematics
 tags:
@@ -10,29 +10,27 @@ tags:
 - topology
 - algebra
 - theory
-feature_image: "/assets/pics/2018/04/12_banner.jpg"
+banner: /assets/images/2018/04/12_banner.jpg
 ---
 
 <script src = "https://d3js.org/d3.v4.min.js"></script>
-
-<svg id="graph_svg" width = "1000" height = "500">
-</svg>
+<svg id="graph_svg" width="1000" height = "500"></svg>
 
 <script>
     var svg = d3.select("svg#graph_svg"),
         margin = 200,
         width = svg.attr("width") - margin,
         height = svg.attr("height") - margin,
-		n = 3, // number of layers
-	    m = 200, // number of samples per layer
-		k = 10, // number of bumps per layer
-		offset = 'stackOffsetWiggle',
-		order = 'stackOrderNone';
+        n = 3, // number of layers
+        m = 200, // number of samples per layer
+        k = 10, // number of bumps per layer
+        offset = 'stackOffsetWiggle',
+        order = 'stackOrderNone';
 
 	stack = d3.stack()
-		.keys(d3.range(n))
-		.offset(d3[offset])
-		.order(d3[order])
+        .keys(d3.range(n))
+        .offset(d3[offset])
+        .order(d3[order])
 
     // Inspired by Lee Byron’s test data generator.
     function bump(a, n) {
@@ -85,5 +83,4 @@ feature_image: "/assets/pics/2018/04/12_banner.jpg"
             .duration(1500)
             .attr("d", area);
     }, 2500);
-
 </script>
