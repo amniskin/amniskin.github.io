@@ -1,13 +1,11 @@
 ---
 layout: post
 title: "Boys in the hood"
+category: Riddles
 excerpt: What's the probability the other one is a boy?
 tags:
-- puzzles
 - riddles
-- stats
-- fun&games
-- pokeaneyeout
+- statistics
 banner: /assets/images/2018/06/24_Knave_of_Hearts_Mother_Goose2.jpg
 ---
 

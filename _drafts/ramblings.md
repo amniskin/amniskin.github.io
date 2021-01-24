@@ -1,6 +1,6 @@
 ---
 title: Data Science and inference
-type: post
+layout: post
 excerpt: That's a super convoluted title, but let's revel in it.
 category: Misc
 tags:

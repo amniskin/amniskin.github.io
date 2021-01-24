@@ -1,12 +1,11 @@
 ---
 layout: post
 title: Linear Regression -- The Basics
-categories:
-- Statistics
+category: Statistics
 tags:
-- Statistics
-- Prediction
-- Regression
+- statistics
+- regression
+- machine-learning
 excerpt: >-
     Linear Regression is the bedrock of Machine Learning. We cover the basics
     therein, some theory involved, and give some relevant examples."

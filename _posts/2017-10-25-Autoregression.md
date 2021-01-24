@@ -3,15 +3,11 @@ layout: post
 title: Decomposition of Autoregressive Models
 excerpt: |
   We discuss the decomposition of AR models into components, and how eigenvalues are involved (because they always are).
-categories:
-- Statistics
+category: Statistics
 tags:
-- Time Series
-- Statistics
-- Stochastic
-- Autoregression
-- Autoregressive
-- Theory
+- time-series
+- statistics
+- theory
 banner: /assets/images/2017/10/25_banner.jpg
 ---
 

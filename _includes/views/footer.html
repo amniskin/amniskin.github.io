@@ -3,10 +3,10 @@
 
   <div class="wrapper">
     <div class="site-footer-inner row">
-      <div class="md-col">{{ site.copyright }} {% if site.author %}@{{ site.author | escape }}{% endif %}
+      <div class="col-md">{{ site.copyright }} {% if site.author %}@{{ site.author | escape }}{% endif %}
       </div>
-      <div class="md-col">{% include views/social-links.html %}</div>
-      <div class="footer-col rss-subscribe md-col">Subscribe <a href="{{ "/feed.xml" | relative_url }}">via RSS</a></div>
+      <div class="col-md">{% include views/social-links.html %}</div>
+      <div class="footer-col rss-subscribe col-md">Subscribe <a href="{{ "/feed.xml" | relative_url }}">via RSS</a></div>
     </div>
   </div>
 </footer>

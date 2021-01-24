@@ -1,12 +1,10 @@
 ---
 layout: post
 title: "N people on a plane"
+category: Riddles
 excerpt: In a world of seat stealing curmudgeons, will you get yours?!
 tags:
-- puzzles
 - riddles
-- fun&games
-- pokeaneyeout
 banner: /assets/images/2018/06/10_banner.jpg
 ---
 

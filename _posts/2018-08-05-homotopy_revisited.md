@@ -4,12 +4,12 @@ title: Let's Cover Homotopy (an apologetic revisionary tale)
 excerpt: Munkres will surely save us our trespasses this once, but NEVER AGAIN!
 category: Mathematics
 tags:
-- Data Visualization
-- Statistics
-- Mathematics
-- Topology
-- Algebra
-- Theory
+- data-visualization
+- statistics
+- mathematics
+- topology
+- algebra
+- theory
 banner: "/assets/images/2018/08/05_homotopy.jpg"
 ---
 

@@ -5,6 +5,10 @@ twitter:
   card: summary
   username: amniskin
 
+exclude:
+  - amniskin-blog-gem.gemspec
+  - LICENSE.txt
+
 # logo: "/favicon.ico"
 avatarurl: "https://secure.gravatar.com/avatar/5267e8bc17bebc6f6e39eab09457eeb5"
 social: # jekyll-seo-tag > social overrides
@@ -31,13 +35,7 @@ url: "https://aaron.niskin.org"
 # favicon: "/favicon.ico"
 favicon: "https://secure.gravatar.com/avatar/5267e8bc17bebc6f6e39eab09457eeb5"
 
-# refer to https://shopify.github.io/liquid/filters/date/ if you want to customize this
-yat:
-  date_format: "%a, %b %d, %Y"
-
 # debug: false
-
-header_transparent: true
 
 google_analytics: "UA-67291006-1"
 enableDNT: "false"
@@ -74,30 +72,12 @@ translate_langs:
     img: https://www.countryflags.io/ru/flat/64.png
     text: Russian
 
-# You can choose a theme color
-# Default theme colors as below:
-# coolblack: #090a0b
 # spacegrey: #353535
-# snowwhite: #ffffff
-#
-# theme_color: snowwhite
-theme_color: spacegrey
-#
-# Custom color as below:
-# theme_color: "#882250"
-
-# Night/Dark mode
-# Default mode is "auto", "auto" is for auto nightshift
-# (19:00 - 07:00), "manual" is for manual toggle, and
-# "on/off" is for default on/off.
-#
-# Whatever the user's choice is, it will supersede the
-# default setting of the site and be kept during the
-# visit (session). Only the dark mode setting is"manual",
-# it will be always kept on every visit (i.e. no matter
-# the browser is closed or not)
-#
-# night_mode: "auto"
+# refer to https://shopify.github.io/liquid/filters/date/ if you want to customize this
+yat:
+  date_format: "%a, %b %d, %Y"
+header_transparent: true
+theme_color: "#353535"
 night_mode: "on"
 
 # Code badge setting

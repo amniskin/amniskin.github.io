@@ -3,9 +3,7 @@ layout: post
 title: "The sequential shooters"
 category: Mathematics
 tags:
-- Mathematics
-- Riddle
-- puzzles
+- mathematics
 - riddles
 banner: /assets/images/2019/07/the_office_guns.gif
 ---
@@ -63,7 +61,9 @@ and we're left in pretty much the same scenario as $N=4$. In fact, for $2^{i+1}$
 
 In the case that $\lambda \gt 0$, we know that once $\lambda$ people have been shot, we'll have $2^i$ people left. So whoever is the first shooter after $\lambda$ people have been shot will be the winner. The task now is to find out who is shooter number $\lambda + 1$. Since each shot progresses to the next odd number shooter (1 shoots 2 and 3 is next, etc.), we know it should be:
 
-$$2\cdot(\lambda + 1)-1 = 1 + 2\lambda$$
+$$
+2(\lambda + 1)-1 = 1 + 2\lambda
+$$
 </div>
 
 ### The Programmatic Solution

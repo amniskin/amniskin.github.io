@@ -1,14 +1,12 @@
 ---
 layout: post
 title: What's in a language?
-categories:
-- Mathematics
+category: Mathematics
 excerpt: "The basics of the theory of formal languages"
 tags:
-- Formal language
 - intro
-- language
-- math
+- linguistics
+- mathematics
 banner: /assets/images/2015/11/Romance-lg-classification-en.png
 ---
 

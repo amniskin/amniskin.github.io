@@ -4,12 +4,12 @@ title: "Let's Cover The Fundamental Group (pt 1)"
 excerpt: Munkres saves the day and explains the fundamental secrets behind the most invariant of groups!
 category: Mathematics
 tags:
-- Data Visualization
-- Statistics
-- Mathematics
-- Topology
-- Algebra
-- Theory
+- data-visualization
+- statistics
+- mathematics
+- topology
+- algebra
+- theory
 banner: /assets/images/2018/08/12_fundamental_group_torus.png
 ---
 

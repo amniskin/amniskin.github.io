@@ -4,8 +4,8 @@ title: Probability -- A Measure Theoretic Approach
 categories:
 - Probability
 tags:
-- math
-- measure theory
+- mathematics
+- measure-theory
 - probability
 - statistics
 excerpt: "We cover probability from a measure theoretic approach"

@@ -4,7 +4,7 @@ layout: post
 excerpt: Let's cover HOMOLOGY! And some of that sweet Betti number goodness.
 category: Mathematics
 tags:
-- data visualization
+- data-visualization
 - statistics
 - mathematics
 - topology

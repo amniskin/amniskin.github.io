@@ -1,13 +1,13 @@
 ---
 layout: post
 title: "The Monty Hall Problem"
+category: Riddles
 excerpt: |
   The infamous Monty Hall! You're on a gameshow with three doors, two have goats and one has a brand new car! What will you win?!
 tags:
-- puzzles
 - riddles
-- fun&games
-- pokeaneyeout
+- statistics
+- probability
 banner: /assets/images/2018/06/03_monty_hall.png
 ---
 

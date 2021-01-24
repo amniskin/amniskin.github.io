@@ -1,12 +1,10 @@
 ---
 layout: post
 title: "Getting across the river"
+category: Riddles
 excerpt: The river-crosser's union problem set \#1
 tags:
-- puzzles
 - riddles
-- fun&games
-- pokeaneyeout
 banner: /assets/images/2018/06/26_river_crossing.jpg
 ---
 

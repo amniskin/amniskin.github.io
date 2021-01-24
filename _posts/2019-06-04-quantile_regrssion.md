@@ -3,10 +3,11 @@ layout: post
 title: "Quantile Regression and Quantiles of Loss"
 category: Mathematics
 tags:
-- Statistics
-- Mathematics
-- Theory
-- Intuition
+- statistics
+- mathematics
+- regression
+- machine-learning
+- theory
 banner: /assets/images/2018/04/12_banner.jpg
 ---
 

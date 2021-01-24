@@ -3,10 +3,8 @@ layout: post
 title: "A mile south, east, and north"
 category: Riddles
 tags:
-- geometry
-- geography
 - mathematics
-- geology
+- geometry
 - riddles
 banner: /assets/images/2021/01/19-longitudinal-bears-banner.jpg
 ---

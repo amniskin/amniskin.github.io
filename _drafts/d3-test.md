@@ -4,7 +4,6 @@ layout: post
 category: Mathematics
 tags:
 - data-visualization
-- data-viz
 - statistics
 - mathematics
 - topology

@@ -5,14 +5,10 @@ category: Mathematics
 excerpt: |
   A basic yet formal introduction to Finite Automata and how strings act on them.
 tags:
-- dfa
-- dfa nfa equivalence
-- finite automata
-- formal languages
-- math
+- finite-automata
+- formal-languages
 - mathematics
-- maths
-- nfa
+- linguistics
 - intro
 banner: /assets/images/2015/12/03-DFA_banner.PNG
 ---
