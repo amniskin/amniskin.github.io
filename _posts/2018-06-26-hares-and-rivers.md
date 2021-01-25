@@ -39,15 +39,15 @@ First let's define the sides as $A$ and $B$ (we're on side $A$).
 
 ## Part 2
 
-### Pesky children and over-protective parents
+### The riddle
 
-#### This riddle is courtesy of Tazo Lezhava
+This riddle is courtesy of [@TazoLezhava](https://www.linkedin.com/in/tazo-lezhava-7a5583a5)
 
 Now 5 cannibalistic parents stand on the edge of a riverbed each with their first-born child. These parents are very over-protective and won't let their kids be with any of the other parents if they're not there as well. There is a boat that can take 3 people at a time. How do they use that boat to get all 10 people (the 5 cannibalistic parents and their first-borns) to the other side of the river without any kids getting eaten?
 
 ### Solution:
 
-#### Solution courtesy of Andrew Robinson
+Solution courtesy of [@AndrewRobinson](https://www.linkedin.com/in/andrew-robinson-8b25a454/)
 
 <div class="hint" markdown="1">
 Again, let's call them sides $A$ and $B$, and we're on $A$. Let's also call the children be denoted by the numbers $1,2,3,4,5$, and the parents by the letters $a,b,c,d,e$, where $a$ is $1$'s parent and so on.
