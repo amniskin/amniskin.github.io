@@ -33,28 +33,68 @@ You need to find out what the probability that the last person gets to sit in hi
 ## A solution
 
 ### A description
-\\[ \mathbb{P}\left(\cdot | n\right) = \frac{n-2}{2(n-1)} \\]
-{: .hint}
+<div class="hint" markdown="1">
+if $n > 2$, then
+
+$$ \mathbb{P}\left(\cdot | n\right) = \frac{1}{2} $$
+
+If $n = 2$, then $\mathbb{P}\left(\cdot | 2\right) = 0$.
+</div>
 
 
-### The strategy
+### The explanation
 <div class='hint' markdown='1'>
-Firstly, if $n = 1$, the game is ill defined, if $n=2$, the probability is 0 (because the first person always takes the wrong seat). If $n>2$, then:
-
-There's a $\frac{1}{n-1}$ chance that the first person takes the last person's seat, thereby sealing the eternal aerial fate of the last boarder. So there's a $\frac{n-2}{n-1}$ chance that the first jerk doesn't take the last shlemazel's seat. Every person after that either sits in their own seat (thereby not changing the odds for our lone hero of the skies), or sits in a random seat. When sitting in a random seat, they either:
+Firstly, if $n = 1$, the game is ill defined, if $n=2$, the probability is 0 (because the first person always takes the wrong seat). If $n>2$, then at every point the choices are,
 
 1. Sit in the first person's seat thereby closing the book on this whole debacle, assuring the vacancy of the posterior protector for our helpless late-boarder.
 1. They sit in the last person's seat, thereby ensuring their own place in hell along with our hero's long lost comfort that only comes from sitting in your very own assigned seat.
 1. Or they sit in someone else's seat, thereby passing the buck on to someone else and not changing the results at all.
 
-So, there's a 50/50 shot (once we get past the first person, and assuming $n>2$).
-
-To summarize: there's a $\frac{n-1}{n-2}$ probability that the last person's seat is open after the first person takes a seat, then every turn after that has an equal probability of ending the game in a positive or a negative way. So the end formula is
-\\[ \mathbb{P}\left(\cdot | n\right) = \frac{n-2}{n-1}\cdot\frac{1}{2} = \frac{n-2}{2(n-1)} \\]
+So it's either 50/50, or it's postponed with the same choices later. So it's 50/50 in the end.
 </div>
 
 ### The experiment
 
-I essentially played this game 10,000 times for each $n$ between 3 and 100, then plotted the mean for a particular $n$ vs that $n$, along with our theoretical value derived kinda loosely above.
+<div class="hint" markdown="1">
+
+I essentially played this game 10,000 times for each $n$ between 2 and 100, then plotted the mean for a particular $n$ vs that $n$, along with our theoretical value derived kinda loosely above.
+
+```python
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+from numba import jit, prange
+np.random.seed(1234)
+
+@jit("int8(int16)", nopython=True)
+def play(n):
+    for i in range(n - 1, 1, -1):
+        new = np.random.randint(0, i)
+        if new == i - 1:
+            return 1
+        elif new == 0:
+            return 0
+    return 0
+
+@jit("float32(int16,int32)")
+def play_n(n, b):
+    running_sum = 0
+    running_num = 0
+    for _ in prange(b):
+        running_sum = running_sum + play(n)
+        running_num += 1
+    return float(running_sum / running_num)
+
+result = {i: play_n(i, 10000) for i in range(2, 100)}
+df = pd.DataFrame({'experimental': pd.Series(result)})
+
+df['theoretical'] = pd.Series({k: 1/2 if k > 2 else 0 for k in df.index})
+
+plt.figure(figsize=(13,8))
+df.plot(ax=plt.gca(), title='$P(\cdot | n)$ vs $n$')
+plt.xlabel('$n$')
+plt.ylabel('$P(\cdot | n)$');
+```
+
 ![percentage plot](/assets/images/2018/06/10_percentagePlot.png)
-{: .hint}
+</div>
