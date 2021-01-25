@@ -118,6 +118,7 @@ disqus:
 
 # Build settings
 # highlighter: none
+show_drafts: true
 markdown: kramdown
 kmarkdown:
   input: GFM

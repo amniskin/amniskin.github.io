@@ -8,20 +8,17 @@ POSTS_DIR = os.path.join(_BASE_DIR, '_posts')
 
 
 def draft():
-    post_name = ' '.join(sys.argv[1:])
-    print(post_name)
-    """
-    post_name = input("Please enter the name of your post (spaces will be "
-                      "replaced with slashes):")
-    """
-    slugged = post_name.replace(' ', '-')
+    name_list = sys.argv[1:]
+    slugged = '-'.join(map(lambda x: x.lower(), name_list))
     with open(os.path.join(DRAFTS_DIR, slugged + '.md'), 'w') as f:
         f.write('---\n')
         f.write('layout: post\n')
-        f.write('title: ' + post_name + '\n')
+        f.write('title: ' + ' '.join(map(lambda x: x.capitalize(), name_list))
+                + '\n')
         f.write('description:\n')
         f.write('category:\n')
         f.write('tags:\n')
+        f.write('banner:\n')
         f.write('---\n')
 
 

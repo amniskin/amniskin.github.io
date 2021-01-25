@@ -7,6 +7,7 @@ tags:
 - misc
 - thoughts
 feature_image: "/assets/pics/2019/11/27_banner.jpg"
+published: false
 ---
 
 # The Preamble
