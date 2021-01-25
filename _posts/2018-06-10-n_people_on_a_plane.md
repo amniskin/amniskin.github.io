@@ -97,4 +97,6 @@ plt.ylabel('$P(\cdot | n)$');
 ```
 
 ![percentage plot](/assets/images/2018/06/10_percentagePlot.png)
+
+Download the notebook [here](/assets/notebooks/2018/06/10_n_people_plane/notebook.ipynb).
 </div>
