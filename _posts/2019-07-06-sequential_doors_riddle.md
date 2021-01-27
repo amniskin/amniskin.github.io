@@ -18,9 +18,11 @@ There are $N$ doors indexed by $1,..,N$ along a wall and they're all closed. The
 
 For example, if $N=4$, then the following is the sequence of events:
 1. Open every door.
-2. Open doors 2 and 4
-3. Open door 3
-3. Close door 4
+2. Close doors 2 and 4
+3. Close door 3
+3. Open door 4
+
+It results in 1 and 4 are open, while 2 and 3 are closed.
 
 ## The task
 
