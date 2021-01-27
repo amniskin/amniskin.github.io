@@ -25,7 +25,6 @@ Given a scaler $q\in[0,1]$, let $l_q:\mathbb{R}\to\mathbb{R}_+$ be:
 
 $$
 \begin{align*}
-l_q : \mathbb{R}^n& \to \mathbb{R} \\
 l_q(r) =& r\cdot\left(q - \mathbb{I}_{r < 0}\right) \\
 =& \begin{cases} qr & r > 0 \\ (q-1)(r) & r \leq 0\end{cases} \\
 =& \begin{cases} qr & r > 0 \\ (1-q)(-r) & r \leq 0\end{cases} \\
