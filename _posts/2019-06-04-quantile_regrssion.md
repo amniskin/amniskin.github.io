@@ -19,8 +19,9 @@ If you've ever read any papers referring to quantile regression (QR), you undoub
 
 [^misleading]: I find their phrasing to be particularly misleading. A regression does **not** *yield* the distribution of residuals. That's a characteristic of the fitting process. The regression *yields* coefficients -- or more generally, a model. Hopefully if you have the same issue I had, this post will help clarify things.
 
-## What is it?
+## Quantile Regression
 
+### Definition
 Given a scaler $q\in[0,1]$, let $l_q:\mathbb{R}\to\mathbb{R}_+$ be:
 
 $$
@@ -40,11 +41,11 @@ L_q(r) =& \sum\limits_{i=0}^{n-1}l_q(r_i)
 \end{align*}
 $$
 
-### In words
+#### In words
 
 Basically, the loss is very much like MAE (A.K.A. $L_1$ loss) but we weight the absolute errors based on whether they are above or below zero. We can see by inspection that $L_{0.5} = MAE$. This is looking good, because if $L_q$ yields quantiles, MAE yields medians, and the $0.5$ quantile is the median, than these two should be the same.
 
-## Relation to Quantiles
+### Relation to Quantiles
 
 A natural question to ask at this point is, when are you getting to your point? Er, I mean, what does this have to do with quantiles?
 
@@ -52,8 +53,8 @@ To answer this, let's investigate, when will the derivative of $L_q$ equal zero 
 
 $$
 \begin{align*}
-0 =& \frac{\partial L}{\partial r}(r) \\\\
-=& \frac{\partial L}{\partial r}\left(\sum_{r\gt 0}qr + \sum_{r \le 0}(1-q)(-r)\right) \\\\
+0 =& \frac{\partial L_q}{\partial r}L_q(r) \\\\
+=& \frac{\partial L_q}{\partial r}\left(\sum_{r\gt 0}qr + \sum_{r \le 0}(1-q)(-r)\right) \\\\
 =& \sum_{r\gt 0}q + \sum_{r \le 0}(q - 1) \\\\
 =& q\omega_0 + (q - 1)\omega_1 \\\\
 =& -\omega_1 + q(\omega_0 + \omega_1) \iff \\\\
@@ -65,6 +66,34 @@ $$
 So we can see that the Quantile Regression optimization problem attempts to over-estimate $q$ percent of the observations. In particular, if $q = 0.5$, then the QR loss attempts to ensure that there are just as many over-estimations as under-estimations.
 
 But if $q=0.9$, for instance, then this loss will attempt to ensure your model under-estimates about 90% of the observations and over-estimates about 10% of them.
+
+## MSE
+
+### Definition
+
+The **Mean Squared Error** loss (MSE) is defined as the function $L:\mathbb{R}^n\to\mathbb{R}_+$ such that:
+
+$$
+\begin{align*}
+L(r) =& \frac{1}{2n}\sum\limits_{i=0}^{n-1}r_i^2 \\
+\end{align*}
+$$
+
+We include the 2 in the denominator to make the next part easy. But since this is a constant across all observations, it wouldn't affect the results if we'd left it out.
+
+### Relation to Means
+
+$$
+\begin{align*}
+0 =& \frac{\partial L}{\partial r}L(r) \\
+=& \frac{\partial L}{\partial r}\frac{1}{2n}r^2 \\
+=& \frac{1}{2n}2r \\
+=& \frac{1}{n}r \\
+=& \bar r
+\end{align*}
+$$
+
+So we see that much like how QR *yields* quantiles, MSE *yields* means.
 
 ## Practice
 
