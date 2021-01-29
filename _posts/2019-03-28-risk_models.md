@@ -11,49 +11,103 @@ tags:
 banner: /assets/images/2019/03/28_banner.jpg
 ---
 
-## inner products
-So the first thing to understand is that as long as we have an inner-product defined, we have a geometry. And in case you're unfamiliar with the term inner-product, you can think of it like a slightly more general dot-product.
+## Background
 
-Furthermore, an inner product defines a norm and it defines angles. Specifically,
+Earlier today I asked a colleague what the formal definition of a Unit Factor Portfolio is. He told me "it's a portfolio with unit exposure to the factor, and orthogonalized to all the others." That didn't make sense to me, so I'm going to dig in here.
+
+We (quants) tend to use some form of a **risk model** to optimize our portfolios[^kahn-apf] given a vector of alphas[^outperf-measure]. This post assumes that you know what a risk model is. Today we'll be going over risk models from a geometric point of view.
+
+[^kahn-apf]: See [Active Portfolio Management](https://www.amazon.com/Active-Portfolio-Management-Quantitative-Controlling/dp/0070248826) by Richard Grinold and Ron Kahn for more information on this optimization.
+
+[^outperf-measure]: If you let $y$ be the vector of per-period returns of your fund, let $X$ be the vector of benchmark returns (say Market Cap Weighted S&P 500), then the $y = X \beta + \alpha$ regression yields the amount that your fund outperformed the benchmark and the correlation between the two. See my post on [linear regression]({{ site.baseurl }}{% post_url 2017-02-21-what-is-linear-regression %}) for more info.
+
+## Mathematical Background
+
+### Inner Products
+If you've spent time in a university's Math department, you may have heard someone saying, "as long as we have an inner-product[^inner-prod] defined, we have a geometry". What that means is: if you have an inner product defined, we can define distances and angles using that inner product. Here is how we can define a norm (measure of "size"), distance between two points, and an angle using only inner products (letting $\theta$ be the angle between two vectors $u,v$):
+
+[^inner-prod]: If you're unfamiliar with the term "inner-product", you can think of it as a more general version of a dot-product or see [math-world](https://mathworld.wolfram.com/InnerProduct.html)'s definition.
+
+$$
+\begin{align}
+\left\| u\right\| =& \sqrt{\langle u, u\rangle} \\
+d(x, y) =& \left\| x - y \right\| \\
+\cos(\theta) =& \frac{\langle u, v\rangle}{\|u\|\cdot\|v\|}
+\end{align}
+$$
+
+### Covariance
+
+The covariance between two random variables, $X,Y \in \mathbb{R}^n$, is defined as:
 
 $$
 \begin{align*}
-\left\| u\right\| = \sqrt{\langle u, u\rangle} \\\\
-\cos(\theta) = \frac{\langle u, v\rangle}{\|u\|\cdot\|v\|}
+\rho(X,Y) =& \sum\limits_{i=0}^{n}(X_i - \mu_X)(Y_i - \mu_Y) \\
+=& \langle X-\mu_X, Y - \mu_Y\rangle
 \end{align*}
 $$
 
-## Standard deviation
-The next thing to understand is that standard deviation is a norm. It's easily seen from the formula:
+In fact, if we have a covariance matrix defined and we want to compute the covariance between two vectors, the formula changes to $\rho(u,v) = u'Vv$, which is still an inner product as long as $V$ is positive-definite[^inner-prod-pos-def]. In this light, the covariance matrix $V$ is seen as a linear isomorphism $V:\mathbb{R}^n\to\mathbb{R}^n$. Basically, it's just reshaping the space to more accurately represent the covariance structure we see. $Vv$ is the transformation of $v$ into something that makes a bit more geometric sense than the coordinate structure we started with.
+
+[^inner-prod-pos-def]: There is an additional requirement that $V$ be Hermitian, but $V$ is real valued, so it's necessarily Hermitian.
+
+So what does the **positive-definite** part mean geometrically? Well, that means that all the eigenvalues are positive, but what does *that* mean? That means that if you look at the vectors before and after transforming them, non of them have completely flipped. This is good, because if one *did* manage to flip, we'd find that a vector was negatively correlated with itself!
+
+### Standard deviation
+
+Since $\sigma_X = \rho(X,X)$, we already know that the standard deviation of $X$ is just the norm of $X$. So standard deviation is a norm. The two are equivalent. Sweet. Let's move on.
+
+## Risk
+
+When we talk about how *risky* a portfolio is, intuitively you probably understand that as "what's the probability that I lose all of my money", and you're not wrong. That would be what we call **downside risk**. Unfortunately, that's not so easy to compute (at least not on paper), and there isn't much in the way of mathematical research built up on the notion of downside risk. Maybe in a later post, I'll go over how downside risk relates to the Information Ratio, but not today. There is, however, a lot of research built up on *standard deviation*, and that's somewhat related ("how irregular are your returns" is not too bad of a proxy). So we define a portfolio's **risk** as the standard deviation of the portfolio's realized alpha (returns above the benchmark).[^std-risk]
+
+[^std-risk]: Perhaps a better solution would be to consider the standard deviation of the residual of the predicted returns against the realized returns. In practice, the predicted returns tend to be at least an order of magnitude smaller than realized returns, so this is not likely to be immediately fruitful.
+
+### Estimations
+
+Now comes the wonderful task of predicting future risk. This involves estimating a covariance matrix of asset-level returns. But if you're in the equities world (and even more-so if you're in the quantitative equities world), the covariance matrix is very large (often on the order of 5,000 by 5,000) and non-stationary[^non-stationary]. This means we need a lot of data to fit a good covariance matrix, which means it's slow to update and will inherently leave out newer assets. Clearly there is a place for a lower dimensional estimator of risk. We call such an estimator a *risk model*. There are several versions of a risk model, but this is meant to be a short post, so we'll only go over Barra style factor models.
+
+[^non-stationary]: A non-stationarity distribution is one that changes over time. A lot of non-stationarity means your data from long ago is of an essentially different distribution and is not particularly helpful for estimating covariances.
+
+### Factor Risk Models
+
+A factor risk model takes the following form:
 
 $$
-\begin{align*}
-\sqrt{\frac{1}{n-1}\sum(x_i - \mu)^2} =& \sqrt{\frac{n}{n-1}}\|x - \mu\|\\\\
-=& \sqrt{\frac{n}{n-1}}\sqrt{\langle x-\mu, x-\mu\rangle}
-\end{align*}
+(Xh)'V(Xh) + D h
 $$
 
-So standard deviation is a norm. The two are equivalent. Sweet. Let's move on.
+Where $h \in \mathbb{R}^n$ is our **holdings** (of $n$ many assets) vector, $X \in \mathbb{R}^{m\times n}$ is called our **factor exposure matrix** (usually shortened to simply, "exposure matrix"), $V \in \mathbb{R}^{m\times m}$ is called our **factor covariance matrix**, and $D \in \mathbb{R}^{n}$ is the **specific risk** vector. The exposure matrix is computed using endogenous data (as opposed to modeled data) like the stock's N-day momentum, the stock's market cap, number of employees, industry, etc.
 
-## Covariance is an inner product
-If we have a linear transformation $X$ defines a linear transformation from $X:\mathbb{R}^m\to\mathbb{R}^n$, and with our covariance matrix $V$, we have an inner product defined on the image. Specifically, if $u,v\in\mathbb{R}^n$ are two portfolios already mapped to risk space, the inner product is (the estimated covariance):
+If $m \ll n$, the covariance matrix can be computed more efficiently than the full $n\times n$ covariance matrix. This is not a silver bullet, though, as we've just segmented our problem into two parts: creating factor exposures and estimating factor risk. There are other types of risk models (such as statistical, shrunken, etc.), but generally they involve the same decomposition: a lower dimensional embedding, then covariance in that lower dimensional space[^shrunk].
+
+[^shrunk]: This is not really true with the shrunk (Ledoit-Wolf) covariance matrix, but the same effect is achieved by "shrinking" the covariance matrix to a diagonal one. For more information on that, see [Honey, I Shrunk the Sample Covariance Matrix](http://www.ledoit.net/honey.pdf).
+
+We can look at this style of risk model in a geometric way too. Let's focus entirely on the first part ($(Xh)'V(Xh)$) for now, and furthermore let's assume that we've fit the model already -- meaning we've already computed $X$ and $V$ -- the factor exposures and covariances.
+
+The first step is to embed $h$ into the lower $m$ dimensional space via $X$. This means the factor model is not -- in fact, can not -- be a real covariance matrix. It's rank is at most $m \lt n$ and hence it's not positive definite. Given that we're measuring covariance in factor space, the efficacy of the risk model rests heavily on how representative the factor exposures are.
+
+### Marginal contribution to risk
+
+One common task is to attribute some amount of the total risk to a particular factor. By that I mean that we have a portfolio and we would like to express the total risk of this portfolio in terms of the risk factors from our risk model. The theory suggests that we want the **marginal contribution to risk** (MCTR). One way of thinking about this is if we have our factor set $F$, then we would like to first express the risk budget as the idiosyncratic risk plus a linear combination of the factor risks, then the MCTR for a given factor is that factor's coefficient.
+
+$$\sigma = \sigma_I + \sum\limits_{f\in F}\sigma_ff$$
+
+But first, let's go over a bit of mathematical prerequisites.
+
+#### Projections
+
+Let $u,v\in\mathbb{R}^n$. Given an inner product $\langle\cdot,\cdot\rangle$ (and the associated norm), the **vector projection** of $u$ onto $v$ (denoted as $\vec{\text{proj}}_vu$) is defined as:
 
 $$
-\langle u, v\rangle := u'Vv
-$$
-
-## Projections
-Let $u,v\in\mathbb{R}^n$. Given an inner product $\langle\cdot,\cdot\rangle$ (and the associated norm), the **projection** (sometimes called **vector projection**) of $u$ onto $v$ (denoted as $\text{proj}_vu$)is defined as:
-
-$$
-\text{proj}_vu := \frac{\langle u, v\rangle}{\|v\|} \frac{v}{\|v\|}
+\vec{\text{proj}}_vu := \frac{\langle u, v\rangle}{\|v\|} \frac{v}{\|v\|}
 $$
 
 Another way to see the definition, given our definition of $\cos$ is:
 
 $$
 \begin{align*}
-\text{proj}_vu =& \frac{\langle u, v\rangle}{\|v\|} \frac{v}{\|v\|} \\\\
+\vec{\text{proj}}_vu =& \frac{\langle u, v\rangle}{\|v\|} \frac{v}{\|v\|} \\\\
 =& \frac{\|u\|\langle u, v\rangle}{\|u\|\cdot\|v\|} \frac{v}{\|v\|} \\\\
 =& \|u\|\cos(\theta) \frac{v}{\|v\|}
 \end{align*}
@@ -63,106 +117,84 @@ Geometrically, this gives us the component of $u$ in the $v$ direction. See figu
 
 ![visual of a vector projection]({{ site.baseurl }}/assets/images/2019/03/28_projection.png "Visual of a vector projection")
 
-If you're wondering why I specified that it's the "**vector** projection" rather than just "projection", it's because there is a notion of a *scaler projection* too: The **scaler projection** of $u$ onto $v$ is simply the coefficient part of the projection:
+The **scaler-projection** of $u$ onto $v$ is the coefficient of the vector projection and is denoted as (without the little vector hat):
 
-$$
-\text{scaler-proj}_vu = \frac{\langle u, v\rangle}{\|v\|}
-$$
+$$\text{proj}_vu := \frac{\langle u, v\rangle}{\|v\|}$$
 
-But since they're so similar and we really only care about the latter, I'll abuse notation here and generally use $\text{proj}_vu$ to mean "scaler-projection" unless otherwise noted.
+#### MCTR
 
-## Risk
-
-When we talk about how *risky* a portfolio is, intuitively you probably understand that as "what's the probability that I lose all of my money", and you're not wrong. That would be what we call **downside risk**. Unfortunately, that's not so easy to compute (at least not on paper), and there isn't much in the way of mathematical research built up on the notion of downside risk. Maybe in a later post, I'll go over how downside risk relates to the Information Ratio, but not today. There is, however, a lot of research built up on *standard deviation*, and that's somewhat related ("how irregular are your returns" is not too bad of a proxy). So we define a portfolio's **risk** as the standard deviation of the portfolio's returns.
-
-# The problem
-
-Now comes the wonderful task of predicting future risk. This involves estimating a covariance matrix of asset-level returns. But if you're in the equities world (and even more-so if you're in the quantitative equities world), the covariance matrix is very large (often on the order of 5,000 by 5,000) and somewhat non-stationary (meaning the data we have deteriorates in value over time). So these covariance matrices take quite a lot of data to fit, and they will inherently leave out newer stocks. Clearly, there is a place for a lower dimensional estimator of risk. We call such an estimator a *risk model*. There are several versions of a risk model, but this is meant to be a short post, so we'll only go over the Barra style risk model...
-
-## Barra
-
-The barra risk model takes the following form:
-
-$$
-(Xh)'V(Xh) + D\cdot h
-$$
-
-Where $h \in \mathbb{R}^m$ is our **holdings** (of $m$ many assets) vector, $X \in \mathbb{R}^{n\times m}$ is called our **factor exposure matrix** (usually shortened to simply, "exposure matrix"), $V \in \mathbb{R}^{n\times n}$ is called our **factor covariance matrix**, and $D \in \mathbb{R}^{m}$ is our **specific risk** vector. The exposure matrix is computed based off of real-world things like the stock's N-day momentum, the stock's market cap, volatility (yet another word for standard deviation) of returns, etc.
-
-If $n \ll m$ the covariance matrix can be computed with a lot more efficacy and the exposures are computed from external things like official SEC filings, etc. so as to reduce the amount of over-fitting here. So Barra generally regresses the exposures against returns (with some universe filtering and time weighting, etc.) to get "factor returns". We can then compute the factor covariance matrix, and we're done!
-
-## The geometric view
-
-We can view this style of risk model in a geometric way for some added clarity. Let's focus entirely on the first part ($(Xh)'V(Xh)$) for now, and furthermore let's assume that we've fit the model already -- meaning we've already computed $X$ and $V$. It's clear to see that we're using a lower dimensional embedding of our portfolios and computing the risk in the embedded space, then projecting back.
-Formally, we have an inner product defined in $\mathbb{R}^n$ given by:
-
-$$
-\langle u, v\rangle = u'Fv
-$$
-
-So our factor risk is the norm of our vector in this space. But now we want to see how seeing things the geometric way can benefit us.
-
-## Marginal contribution to risk
-One common task is to attribute some amount of the total risk to a particular factor. By that I mean that we have a portfolio and we would like to express the total risk of this portfolio in terms of the risk factors from our risk model. The theory suggests that we want the **marginal contribution to risk** ($MCAR$) which is defined as:
+The typical way to define **marginal contribution to risk** ($MCTR$) is as the partial derivative of the total risk with respect to our factor in question.
 
 $$
 \begin{align*}
-MCAR(i) :=& \frac{\partial \sigma}{\partial u_i}
+MCTR(i) :=& \frac{\partial \sigma}{\partial f_i}
 \end{align*}
 $$
 
-It's the partial derivative of the total risk with respect to our factor in question (denoted above as $u_i$). And we can compute this somewhat easily:
+But if we want to look at this geometrically, we'd ask, what's the coefficient of this basis vector (factor)? Meaning, what's $\sigma_f$ for this $\sigma$ in the following formula?
+
+$$\sigma = \sigma_I + \sum\limits_{f\in F}\sigma_ff$$
+
+The typical way to do this is via projections. As you may recall from your Linear Algebra course, you find what the projection of $\sigma$ onto a given vector $f_i$ is, and that's the coefficient you're looking for. So now we just have to show that this version leads us to the old definition.
 
 $$
 \begin{align*}
-MCAR(i) :=& \frac{\partial \sigma}{\partial u_i} \\\\
-=& \frac{\partial \sqrt{\langle u, u\rangle}}{\partial u_i} \text{ -- risk is the inner product}\\\\
-=& \frac{1}{2\sqrt{\langle u, u\rangle}}\cdot \frac{\partial \langle u, u\rangle}{\partial u_i} \text{ -- chain rule}\\\\
-=& \frac{1}{2\sqrt{\langle u, u\rangle}}\cdot \frac{\partial u'Vu}{\partial u_i} \text{ -- definition of our inner product}\\\\
-=& \frac{(u'V + u'V')u_i}{2\sqrt{\langle u, u\rangle}} \text{ -- computing the derivative}\\\\
-=& \frac{u'Vu_i}{\sqrt{\langle u, u\rangle}} \text{ -- $V$ is symmetric}\\\\
-=& \frac{\langle u, u_i\rangle}{\left\|u\right\|} \text{ -- Replacing with the geometric notion}\\\\
+\text{proj}_ff_i =& \frac{\langle f, f_i\rangle}{\left\|f\right\|} \\\\
+=& \frac{f'Vf_i}{\|f\|} \\\\
+=& \frac{(f'V + f'V')f_i}{2\|f\|} \\\\
+=& \frac{1}{2\|f\|}\cdot \frac{\partial f'Vf}{\partial f_i} \\\\
+=& \frac{1}{2\sqrt{\langle f, f\rangle}}\cdot \frac{\partial \langle f, f\rangle}{\partial f_i} \\\\
+=& \frac{\partial \sqrt{\langle f, f\rangle}}{\partial f_i} \\\\
+=& \frac{\partial \sigma}{\partial f_i} \\\\
+=& MCTR(i)
 \end{align*}
 $$
 
-But man, is this not illuminating. Why would we even want the derivative to begin with? Are we really concerned with such an extremely local property here or are we trying to find some more global thing? It seems to me that what we want is more about explaining our current position rather than how our position could change with infinitesimal changes in other values. You may have noticed that the end formula above is the same as the projection formula from the *prerequisites* section. That's no coincidence.
+So it very literally finds the amount of $\sigma$ that is explained by $f_i$. And it comes with the all the geometric intuition we all know and love.
 
-If we instead look at MCAR as trying to explain how much of our total portfolio risk can be explained by the portion of our portfolio in the direction of a chosen basis vector (factor), we end up with the same formula. In order to see how much the portion of $u$ in the direction of a particular basis explains the total risk, we compute the projection of $u_i$ onto $u$, which would look like:
+## Extras
+### Specific risk
+So how do we interpret specific risk (what we called $D$) in the factor models? Can we simply add a column to our covariance matrix for specific risk -- even if it is mostly zeros? It turns out, no.
+
+One way to see the difference is that the covariance part is a bilinear form, whereas the specific risk is linear. But let's do a more qualitative investigation (it's pretty rare for me to look specifically for a qualitative approach, but hey, every now and then...).
+
+We have a surjective map $X:\mathbb{R}^n\to\mathbb{R}^m$ where $m\lt n$, so we know that the dimension of the kernel (the elements that go to 0) is $n - m$. So there is an $m$ dimensional subspace of holdings space that matters -- as far as factors are concerned -- and $n-m$ dimensions that don't. We project that parts that do matter into factor space and compute the magnitude of risk there where we know the geometry, and ignore the $m-n$ dimensions that we haven't modeled by these factors.
+
+If we left it at that, we would have two main problems:
+1. We'd have a whole bunch of portfolios with reportedly zero risk, and non-zero holdings. This is an unacceptable result that would mean the end of portfolio optimization.
+2. We'd have a far less accurate risk model.
+
+So we add a vector of asset level offsets, and call it **specific risk**.
+
+Basically, a risk model is a quadratic form, and the specific risk is the linear term.
+
+### UFPs
+
+A **Unit Factor Portfolio**, sometimes called a **Factor Mimicking Portfolio**, is the characteristic portfolio with unit exposure to a given factor, and zero exposure to all others[^ufp-def]. But what does that mean? Are they correlated? Are the returns correlated?
+
+[^ufp-def]: For more information, see the following [bloomberg](https://www.bloomberg.com/professional/blog/optimize-portfolio-make-factor-bet/) article.
+
+Given a factor embedding $X$, factor covariance matrix $V$, factor $f_i$, and the associated indicator variable $\mathbb{I}_i$, we'll get as close as we can to computing a UFP. A UFP is the result of the following Legrangian optimization:
+
+$$
+UFP_i = \text{argmin}_{h,\lambda}\left( (Xh)'V(Xh) + D h + \lambda (Xh - \mathbb{I}_i)\right)
+$$
+
+Because we know $Xh = \mathbb{I}_i$, we can reduce this down to:
 
 $$
 \begin{align*}
-\text{proj}_uu_i =& \frac{\langle u, u_i\rangle}{\left|\left|u\right|\right|}
+UFP_i =& \text{argmin}\left(\sigma_i + D h\right) \\
+=& \text{argmin}\left(D h\right)
 \end{align*}
 $$
 
-And it comes with the all the geometric intuition we all know and love.
+Subject to the restriction that $Xh = \mathbb{I}_i$. Since the kernel of $X$ is non-trivial, we know it doesn't have a left inverse, so we can't just left-multiply this whole thing away.
 
-## U.F.P.'s
+So are the holdings from different UFPs correlated? Almost certainly, but not necessarily predictably so.
 
-\[edit\]
-See note below.
-\[end edit\]
-
-What the hell are they? The standard definition of a **UFP** is: the characteristic portfolio with unit exposure to a particular factor, and zero exposure to all the others. What does this mean? How are we guaranteed that such a thing always exists, and just, what? Well, yet again, our geometric interpretation can come to our rescue...
-
-Let's pick a particular factor $i$. Now let's construct an ortho-normal basis (perhaps using Gram-Schmidt) in factor space starting with every other factor *but* $i$, leaving $i$ for last. That last basis vector would be, by construction, orthogonal to every other factor (hence zero exposure to them) and have some exposure to our chosen factor. We can now take that last basis vector, rescale it as appropriately and we have ourselves a sweet UFP.
-
-\[edit\]
-### NOTE
-The information above about *UFP* is actually incorrect. A **UFP** is actually just the returns of the momentum vector. If you're more comfortable thinking in portfolio space, it's the returns of a fictitious portfolio that, when projected to factor space, is one of our basis vectors. What I wrote below is a bit more complicated, but provides an interesting and potentially useful insight into factor performance. I personally couldn't really care too much less about factors, but if that's what you're into, looking at both the "real" UFPs and what I was calling UFPs can give you a much more complete view of things.
-
-Let me explain:
-
-The risk of a "real" UFP has a portion explained by other factors. So if momentum is on a tear, it could just be a coalescence of other factors ripping it but the part that makes momentum unique is actually quite negative. One way to see that is to plot the performance of the "real" UFPs along with my UFPs. If you see the "real" UFP is positive but my UFP is negative (for a give factor), you can conclude we're in a situation like I described above. And so on.
-\[end edit\]
-
-## Specific risk
-So how do we interpret specific risk (what we called $D$) in the geometric way? Can we simply add a column to our risk model for specific risk -- even if it is mostly zeros? It turns out, no. For one, the specific risk is stock-specific (hence the name), but also, the thing we want to measure -- variance -- is not linear. So what is specific risk?
-
-Well, one way to interpret it is as the norm of the projection of our vector in holdings space onto the kernel of our embedding. Let me explain what I mean there...
-
-We have a surjective map $X:\mathbb{R}^n\to\mathbb{R}^m$ where $n\lt m$. Since the dimension of the domain is larger than the dimension of the range we know that several dimensions have to be in the kernel. In particular, since the map is surjective we know exactly that the dimension of the kernel is $m-n$. So there is an $n$ dimensional substructure of our holdings space that matters -- as far as factors are concerned -- and $m-n$ dimensions that don't. We project that parts that do matter into factor space and compute their magnitude there where we know the geometry, and compute the magnitude in ambient space of the part that doesn't map to factor-space. It's that latter piece that we call **specific risk**.
+Are their returns correlated? If the risk model is any good, neglecting specific risk, the correlation between returns of $UFP_i$ and $UFP_j$ should be close to $V_{i,j}$ -- the covariance between the two factors.
 
 ## Summary
 
-So, in particular, if $h_1$ is a particular risk factor, we get the typical risk-decomposition formula we all know and love, but without messing with any of the unmotivated calculus. What's nice is it also illuminates the place for non-linear manifold approximations: at the end of the day, they're all just defining the geometry we're going to use to assess our portfolio.
+The purpose of this post was to work through some ideas on UFPs, and I think we did that.
