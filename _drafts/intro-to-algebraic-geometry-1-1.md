@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Playing with Algebraic Geometry
+title: Intro to Algebraic Geometry, 1.1
 description: Going over Algebraic Geometry by Serge Lange
 category: Studies
 tags:
@@ -122,6 +122,8 @@ A **valuation ring** of $K$ is a ring $R\subseteq K$ such that $\forall a \in K,
 Let $a, b\in R$ be non-units, and let $\lambda \in R$ be arbitrary.
 1. Addition: Since this is a valuation ring, if $ab^{-1}\notin R$, then $a^{-1}b\in R$. Without loss of generality, assume $ab^{-1}\in R$. Then, $1 + ab^{-1} = (a + b)b^{-1}\in R$. If $(a + b)^{-1}\in R$, then $b^{-1}\in R$. Since $b^{-1}\notin R$ ($b$ is a non-unit of $R$), $a+b$ is a non-unit of $R$.
 1. Multiplication: If $(\lambda a)^{-1}$ is in $R$, then necessarily $\lambda(\lambda a)^{-1}$ is as well, and hence, $a^{-1}$. But $a$ is not a unit in $R$, so $\lambda a$ is not either.
+
+## Summary
 
 So valuation rings and places are somewhat interchangeable (at least up to equivalence of places[^equivalence-of-places]). And now we're caught up to half-way down page 3.
 
