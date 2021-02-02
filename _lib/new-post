@@ -7,9 +7,13 @@ DRAFTS_DIR = os.path.join(_BASE_DIR, '_drafts')
 POSTS_DIR = os.path.join(_BASE_DIR, '_posts')
 
 
-def draft():
+def draft(repl_chars=['.'], del_chars=[',']):
     name_list = sys.argv[1:]
     slugged = '-'.join(map(lambda x: x.lower(), name_list))
+    for char in del_chars:
+        slugged = slugged.replace(char, '')
+    for char in repl_chars:
+        slugged = slugged.replace(char, '-')
     with open(os.path.join(DRAFTS_DIR, slugged + '.md'), 'w') as f:
         f.write('---\n')
         f.write('layout: post\n')

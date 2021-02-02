@@ -23,6 +23,23 @@ We (quants) tend to use some form of a **risk model** to optimize our portfolios
 
 ## Mathematical Background
 
+### Random Variables
+
+A continuous, real valued, random variable[^continuous-rv] $X$ can be seen as a vector in $\mathbb{R}^n$, where $n$ is the number of observations you have. So if I take 7 samples of a normally distributed random variable, it might look like this:
+
+[^continuous-rv]: There are other types of random variables, but we won't be going into those for this post.
+
+
+```python
+>>> import numpy as np
+>>> rnd = np.random.RandomState(42)
+>>> rnd.normal(size=(7,))
+array([ 0.49671415, -0.1382643 ,  0.64768854,  1.52302986, -0.23415337,
+       -0.23413696,  1.57921282])
+```
+
+As you can see, this is just a vector in $\mathbb{R}^7$.
+
 ### Inner Products
 If you've spent time in a university's Math department, you may have heard someone saying, "as long as we have an inner-product[^inner-prod] defined, we have a geometry". What that means is: if you have an inner product defined, we can define distances and angles using that inner product. Here is how we can define a norm (measure of "size"), distance between two points, and an angle using only inner products (letting $\theta$ be the angle between two vectors $u,v$):
 
@@ -42,7 +59,7 @@ The covariance between two random variables, $X,Y \in \mathbb{R}^n$, is defined 
 
 $$
 \begin{align*}
-\rho(X,Y) =& \sum\limits_{i=0}^{n}(X_i - \mu_X)(Y_i - \mu_Y) \\
+\text{cov}(X,Y) =& \sum\limits_{i=0}^{n}(X_i - \mu_X)(Y_i - \mu_Y) \\
 =& \langle X-\mu_X, Y - \mu_Y\rangle
 \end{align*}
 $$
@@ -55,7 +72,17 @@ So what does the **positive-definite** part mean geometrically? Well, that means
 
 ### Standard deviation
 
-Since $\sigma_X = \rho(X,X)$, we already know that the standard deviation of $X$ is just the norm of $X$. So standard deviation is a norm. The two are equivalent. Sweet. Let's move on.
+Since $\sigma_X = \sqrt{\text{cov}(X,X)}$, we already know that the standard deviation of $X$ is just the norm of $X$. So standard deviation is a norm. The two are equivalent. Sweet. Let's move on.
+
+### Correlation
+
+The geometric interpretation of the correlation between two random variables, $X,Y$ is the cosine of the angle between them.
+
+$$\begin{align*}
+\rho(X,Y) =& \frac{\text{cov}(X,Y)}{\sigma_X\sigma_Y} \\
+=& \frac{\langle X,Y\rangle}{\|X\|\cdot \|Y\|} \\
+=& \cos(\theta)
+\end{align*}$$
 
 ## Risk
 

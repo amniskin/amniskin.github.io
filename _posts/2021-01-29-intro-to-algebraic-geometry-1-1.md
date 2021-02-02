@@ -19,7 +19,7 @@ It starts out with the theory of *Places*. The idea being that homomorphisms bet
 1. $\forall a,b \in F, \varphi(a \cdot b) = \varphi(a) \cdot \varphi(b)$
 1. $\varphi(0) = 0$, and $\varphi(1) = 1$
 
-Although number 3 need not be an axiom as it is an immediate corollary of the first two axioms.
+Axiom 3 only guarantees that the homomorphism doesn't send every element to 0.
 
 ### Field homomorphisms are injective
 #### Computational proof
