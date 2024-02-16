@@ -11,7 +11,6 @@ tags:
   - Language Model
   - Transformer
 banner: /assets/images/2024/02/15-ai-metamorphosis.jpeg
-published: true
 ---
 
 If you're anything like me, while trying to implement transformers, you've read the original [attention is all you need](https://arxiv.org/abs/1706.03762) paper, [the annotated transformer](http://nlp.seas.harvard.edu/2018/04/03/attention.html), [the updated version](http://nlp.seas.harvard.edu/annotated-transformer/), [d2l.ai](https://d2l.ai/chapter_attention-mechanisms-and-transformers/transformer.html), and had to cobble them all together to get something going. This post is an attempt to make that proccess easier for people like me in a short and to-the-point style. You can think of this as a bare-bones implementation with a whole lot of documentation.
