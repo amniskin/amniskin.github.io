@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Another annotated transformer
-description: Transforming the transformer implementation game
+excerpt: We implement transformers from scratch using jax!
 category: Machine Learning
 tags:
   - Machine Learning
