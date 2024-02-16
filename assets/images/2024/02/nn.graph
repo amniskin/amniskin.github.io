@@ -1,0 +1,31 @@
+digraph G {
+  rankdir=LR
+	splines=line
+  node [fixedsize=true, label=""];
+  subgraph cluster_0 {
+    color=white;
+    node [style=solid,color=black, shape=circle];
+    x1 x2 x3;
+    label = "input";
+  }
+
+	subgraph cluster_1 {
+		color=white;
+		node [style=solid,color=black, shape=circle];
+		o1 o2 o3 o4;
+		label = "output";
+	}
+
+  x1 -> o1 [color="red"];
+  x1 -> o2 [color="red"];
+  x1 -> o3 [color="blue"];
+  x1 -> o4 [color="blue"];
+  x2 -> o1 [color="red"];
+  x2 -> o2 [color="red"];
+  x2 -> o3 [color="blue"];
+  x2 -> o4 [color="blue"];
+  x3 -> o1 [color="red"];
+  x3 -> o2 [color="red"];
+  x3 -> o3 [color="blue"];
+  x3 -> o4 [color="blue"];
+}
