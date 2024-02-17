@@ -20,7 +20,7 @@ Notes:
 2. This post assumes the reader understands what is meant by **training** a model, **parameters** and **hyperparameters**, **dense layers**, and so on.
 3. We'll be using [jax](https://jax.readthedocs.io/en/latest/index.html) and [flax](https://flax.readthedocs.io/en/latest/index.html) for this implementation.
 
-# Overview
+## Overview
 
 The following is the transformer architecture diagram taken from the original paper. We'll be referring back to it often in this post.
 
@@ -488,11 +488,11 @@ num_params(params['params'])
 
 
 
-# Decoder
+## Decoder
 
 The decoder generates new sequences given some input state sequence (maybe the output of the `Encoder`). You build up a sequence by iteratively asking the model for the next token until either some stop criteria or you get a token signifying the end of the sequence (we're using `"<pad>"` for this). This iterative approach cannot be parallelized efficiently.
 
-## Causal masking
+### Causal masking
 
 Transformers can train on full sequences without the recursion, but it requires the clever so called, **causal masking**. When computing gradients, it's important that output token $i$ cannot attend to any later output token $i+k$ as they won't be available in production.
 
@@ -504,9 +504,6 @@ def causal_mask(shape):
 causal_mask((1, 5, 5))
 ```
 
-
-
-
     Array([[[False,  True,  True,  True,  True],
             [False, False,  True,  True,  True],
             [False, False, False,  True,  True],
@@ -515,7 +512,7 @@ causal_mask((1, 5, 5))
 
 
 
-## DecoderLayer
+### DecoderLayer
 
 ![image.png](/assets/images/2024/02/decoder-layer-circled.png)
 
@@ -599,17 +596,17 @@ del layer_fn, mdl, batch, kv, enc_mask, params
     num_params(params) = 91291
 
 
-# Flavors
+## Flavors
 Transformers come in three main flavors.
 
-## Encoder-only
+### Encoder-only
 ![image.png](/assets/images/2024/02/encoder-circled.png)
 
 * These take in a sequence and output state features.
 * It's mostly useful for tasks like text classification, sentiment analysis, stuff like that.
 * One notable example is Google's [bert](https://en.wikipedia.org/wiki/BERT_(language_model)).
 
-## Decoder-only
+### Decoder-only
 
 ![image.png](/assets/images/2024/02/decoder-circled.png)
 
@@ -622,7 +619,7 @@ Decoder only transformers remove the middle multi-head attention (the cross-atte
 
 [^transformer_uses]: This fact is very quickly becoming outdated.
 
-## Encoder-decoder
+### Encoder-decoder
 
 ![image.png](/assets/images/2024/02/tformer.png)
 
@@ -705,9 +702,9 @@ del mdl, X, y, mask, params
 
     num_params(params) = 31903
 
-# Example
+## Example
 
-## Rot13
+### Rot13
 
 We're going to train our transformer to encrypt words via [rot13](https://en.wikipedia.org/wiki/ROT13). Rot13 is an old-school encryption algorithm where each character is shifted by 13 characters (see below).
 
@@ -831,23 +828,13 @@ while (Y[:, -1] != vocab['<pad>']).any():
 ids2strs(list(Y))
 ```
 
-
-
-
     ['url', 'gurer', 'zn', 'qbbq']
-
-
 
 
 ```python
 [rot13(x) for x in ids2strs(list(Y))]
 ```
 
-
-
-
     ['hey', 'there', 'ma', 'dood']
-
-
 
 And that's all folks! You can now transform with the best of 'em!

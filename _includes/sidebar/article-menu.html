@@ -28,7 +28,7 @@
       var h = headings[i];
       menuHTML += (
         '<li class="h-' + h.tagName.toLowerCase() + '">'
-        + '<a href="#h-' + h.getAttribute('id') + '">' + h.textContent + '</a></li>');
+        + '<a href="#' + h.getAttribute('id') + '">' + h.textContent + '</a></li>');
     }
 
     menuContent.innerHTML = '<ul>' + menuHTML + '</ul>';
@@ -96,7 +96,7 @@
         var headerHeight = Math.floor(headerRect.height);
         var headerHeight = headerTop + headerHeight + 20;
         if (headingRect.top <= headerHeight) {
-          var id = 'h-' + h.getAttribute('id');
+          var id = h.getAttribute('id');
           var a = menuContent.querySelector('a[href="#' + id  + '"]');
           var curActive = a.parentNode;
           if (curActive) {
