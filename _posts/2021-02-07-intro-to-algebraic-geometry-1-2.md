@@ -8,7 +8,6 @@ tags:
   - geometry
   - algebra
   - self-study
-banner:
 ---
 
 ## Intro
