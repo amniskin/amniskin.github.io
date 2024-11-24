@@ -24,11 +24,10 @@ social_links:
   LinkedIn: https://www.linkedin.com/in/aaron-niskin
   GitHub: https://github.com/amniskin
 
-copyright: Copyright © 2008-2021
+copyright: Copyright © 2008-2025
 tagline: Aaron Niskin's personal blog
 description: >- # this means to ignore newlines until "baseurl:"
-  Home of a MathemaNiskin. This is a place for me to rant about whatever I feel
-  like ranting about. Hopefully more math and fun than otherwise.
+  Home of a MathemaNiskin.
 
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://aaron.niskin.org"
@@ -89,7 +88,7 @@ code_badge:
   text_transform: "uppercase"  # ("uppercase", "lowercase", "capitalize")
 
 header_pages:
-  - about.html
+  - resume.md
   - archives.html
   - categories.html
   - tags.html

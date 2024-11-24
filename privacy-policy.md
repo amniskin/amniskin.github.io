@@ -1,5 +1,5 @@
 ---
-layout: about
+layout: framework
 title: Privacy Policy
 # banner: /assets/images/banners/skytrees.jpg
 comments: false
