@@ -1,6 +1,6 @@
 ---
 layout: post
-title: High dimensional human politics
+title: The absurdity of large democracies... via math!
 excerpt: |
   What does the concentration of measure have to say about politics?
 category: Mathematics
