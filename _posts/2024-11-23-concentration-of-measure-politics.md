@@ -1,8 +1,8 @@
 ---
 layout: post
-title: The absurdity of large democracies... via math!
+title: The absurdity of diverse democracies... via math!
 excerpt: |
-  What does the concentration of measure have to say about politics?
+  What does the concentration of measure have to say about democracy and large governments?
 category: Mathematics
 tags:
 - mathematics
