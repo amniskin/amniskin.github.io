@@ -1,6 +1,7 @@
 ---
 layout: framework
 sidebar: category-list
+title: Categories
 ---
 
 {%- if site.posts.size > 0 -%}

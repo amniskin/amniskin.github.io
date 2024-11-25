@@ -1,6 +1,7 @@
 ---
 layout: framework
 sidebar: archive-list
+title: History
 ---
 
 {%- if site.posts.size > 0 -%}

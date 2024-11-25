@@ -1,6 +1,7 @@
 ---
 layout: framework
 sidebar: tag-list
+title: Tags
 ---
 
 {%- if site.posts.size > 0 -%}
@@ -14,3 +15,4 @@ sidebar: tag-list
   {%- include views/segments.html -%}
 
 {%- endif -%}
+

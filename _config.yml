@@ -89,9 +89,9 @@ code_badge:
 
 header_pages:
   - resume.md
-  - archives.html
-  - categories.html
-  - tags.html
+  - archives.md
+  - categories.md
+  - tags.md
 
 # Page default value
 # defaults:
