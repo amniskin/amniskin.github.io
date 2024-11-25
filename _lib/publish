@@ -1,6 +1,0 @@
-#!/bin/bash
-
-directory=$(cd `dirname $0`/.. && pwd)
-filename=$(basename $1)
-
-mv "$directory/_drafts/$filename" "$directory/_posts/$(date +%Y-%m-%d)-$filename"

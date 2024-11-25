@@ -1,5 +1,5 @@
 ---
-layout: framework
+layout: main
 sidebar: archive-list
 title: History
 ---

@@ -41,37 +41,6 @@ enableDNT: "false"
 sitemap: true
 lang: "en"
 
-# langs refer to https://cloud.google.com/translate/docs/languages
-translate_langs:
-  - lang: en
-    img: https://www.countryflags.io/us/flat/64.png
-    text: English
-  - lang: es
-    img: https://www.countryflags.io/es/flat/64.png
-    text: Spanish
-  - lang: iw
-    img: https://www.countryflags.io/il/flat/64.png
-    text: Hebrew
-  - lang: fr
-    img: https://www.countryflags.io/fr/flat/64.png
-    text: French
-  - lang: zh-CN
-    img: https://www.countryflags.io/cn/flat/64.png
-    text: Chinese(Simple)
-  - lang: zh-TW
-    img: https://www.countryflags.io/tw/flat/64.png
-    text: Chinese(Traditional)
-  - lang: ja
-    img: https://www.countryflags.io/jp/flat/64.png
-    text: Japanese
-  - lang: ko
-    img: https://www.countryflags.io/kr/flat/64.png
-    text: Korean
-  - lang: ru
-    img: https://www.countryflags.io/ru/flat/64.png
-    text: Russian
-
-# spacegrey: #353535
 # refer to https://shopify.github.io/liquid/filters/date/ if you want to customize this
 yat:
   date_format: "%a, %b %d, %Y"
@@ -117,7 +86,7 @@ disqus:
 
 # Build settings
 # highlighter: none
-show_drafts: true
+show_drafts: false
 markdown: kramdown
 kmarkdown:
   input: GFM

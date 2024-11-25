@@ -1,5 +1,5 @@
 ---
-layout: framework
+layout: main
 title: Resume
 # banner: /assets/images/banners/skytrees.jpg
 comments: false

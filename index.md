@@ -1,10 +1,10 @@
 ---
-layout: framework
+layout: main
 sidebar: category-list
 title: Home
-# banner: "/assets/images/banners/home.jpeg"
 # banner: "/assets/images/banners/skytrees.jpg"
-banner: "/assets/pics/puzzles.jpg"
+banner: "/assets/images/banners/skyplane.jpg"
+# banner: "/assets/pics/puzzles.jpg"
 heading: The blog
 subheading: My blog, to be exact
 ---
@@ -16,5 +16,3 @@ subheading: My blog, to be exact
 
   {% include views/pagination.html %}
 </div>
-
-

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang | default: "en" }}">
+  <head>
+    {%- include head.html -%}
+  </head>
+  <body>
+    {%- include views/header.html -%}
+    {%- include views/banner.html -%}
+    {%- include extensions/hashlocate.html -%}
+    {%- include extensions/theme-toggle.html -%}
+    <main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <div class="framework">
+          <section class="main">
+            {{ content }}
+          </section>
+          <section class="sidebar" style="margin-left: 15px;">
+            <!-- Get sidebar items -->
+            {%- if page.sidebar -%}
+              {%- assign sidebar = page.sidebar -%}
+            {%- elsif site.defaults[page.layout].sidebar -%}
+              {%- assign sidebar = site.defaults[page.layout].sidebar -%}
+            {%- elsif layout.sidebar -%}
+              {%- assign sidebar = layout.sidebar -%}
+            {%- endif -%}
+
+            {%- for item in sidebar -%}
+
+              {%- assign file = item -%}
+              {%- assign array = file | split: '.' -%}
+              {%- if array.size == 1 -%}
+                {%- assign file = file | append: '.html' -%}
+              {%- endif -%}
+
+              {%- assign file = 'sidebar/' | append: file -%}
+
+              {%- include {{ file }} %}
+
+            {%- endfor -%}
+          </section>
+        </div>
+      </div>
+    </main>
+    {%- include views/footer.html -%}
+  </body>
+</html>

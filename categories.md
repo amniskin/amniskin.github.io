@@ -1,5 +1,5 @@
 ---
-layout: framework
+layout: main
 sidebar: category-list
 title: Categories
 ---
