@@ -19,3 +19,8 @@ $theme-color: map-get($theme-colors, "snowwhite");
 }
 
 @import "yat";
+
+.footnotes::before {
+  display: block;
+  content: "Footnotes:";
+}

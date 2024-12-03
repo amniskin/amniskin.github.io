@@ -22,28 +22,37 @@ sidebar:
     {%- if banner == nil and result.size == 0 -%}
     {%- include views/post-header.html -%}
     {%- endif -%}
+    <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+      <div class="post-content e-content" itemprop="articleBody">
+        {{ content | twitterify }}
+      </div>
+    </article>
 
-    {%- include views/article.html -%}
 
-    {%- assign result = hidden | where_exp: "item", "item == 'navigator'" -%}
+    {%- assign result = hidden | where_exp: "item", "item == 'share-bar'" -%}
+    {%- if result.size == 0 -%}
+      {% include views/share-bar.html %}
+    {%- endif -%}
+
+    <!-- {%- assign result = hidden | where_exp: "item", "item == 'navigator'" -%}
     {%- if result.size == 0 -%}
     <div class="post-nav">
       {%- if page.previous -%}
         <a class="previous" href="{{ page.previous.url | relative_url }}" title="{{
           page.previous.title | escape }}">{{ page.previous.title | escape | truncatewords: 6 }}</a>
       {%- else -%}
-      <span></span>
+        <span></span>
       {%- endif -%}
 
       {%- if page.next -%}
         <a class="next" href="{{ page.next.url | relative_url }}" title="{{ page.next.title | escape }}">{{ page.next.title | escape | truncatewords: 6 }}</a>
       {%- else -%}
-      <span></span>
+        <span></span>
       {%- endif -%}
     </div>
-    {%- endif -%}
+    {%- endif -%} -->
 
-    {%- assign result = hidden | where_exp: "item", "item == 'related_posts'" -%}
+    <!-- {%- assign result = hidden | where_exp: "item", "item == 'related_posts'" -%}
     {%- if result.size == 0 -%}
     <div class="post-related">
       <div>Related Articles</div>
@@ -54,29 +63,7 @@ sidebar:
         {%- endfor -%}
       </ul>
     </div>
-    {%- endif -%}
-
-    {%- assign result = hidden | where_exp: "item", "item == 'share-bar'" -%}
-    {%- if result.size == 0 -%}
-      {% include views/share-bar.html %}
-    {%- endif -%}
-
-    {%- assign result = hidden | where_exp: "item", "item == 'comments'" -%}
-    {%- if result.size == 0 -%}
-    <div class="post-comments">
-      {%- if page.comments != false -%}
-
-      {%- if site.disqus.shortname -%}
-      {%- include extensions/comments/disqus.html -%}
-      {%- endif -%}
-
-      {%- if site.gitment.username -%}
-      {%- include extensions/comments/gitment.html -%}
-      {%- endif -%}
-
-      {%- endif -%}
-    </div>
-    {%- endif -%}
+    {%- endif -%} -->
 
   </section>
 </div>
