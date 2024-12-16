@@ -15,9 +15,13 @@ banner: /assets/images/2024/11/25-sisyphus-jeffrey-hummel.jpeg
 ## Intro
 
 As we all know, on October 7<sup>th</sup> Palestinians broke through the border,
-massacred over 1,200 civilians, and kidnapped somewhere between 240 and 254.
-Israel's response to this barbary set records for minimizing the civilian to
-combatant kill ratio in urban warfare, and yet has seen no end of criticism.
+massacred over 1,200 civilians, and kidnapped somewhere between 240 and 254
+more.  Israel's response to this barbary set records for minimizing the civilian
+to combatant kill ratio in urban warfare[^civ_comb][^henryjackson], and yet has seen no end of
+criticism.
+
+[^civ_comb]: See <https://washingtonstand.com/commentary/israel-estimates-approximately-11-civiliancombatant-death-ratio-in-gaza>
+[^henryjackson]: See <https://henryjacksonsociety.org/publications/questionable-counting/>
 
 One of the main complications of this war is that there is no clear delineation
 between civilian and combattant.  Hamas and friends use human shields and they
