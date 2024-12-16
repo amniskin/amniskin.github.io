@@ -110,11 +110,11 @@ from statistics like that, so let's dig in and paint a picture.
 
 #### Terrorism is central to Palestinian identity
 
-Terrorism is also a major industry in the Palestinian territories.  There are
-dozens of functioning terrorist organizations[^tals_post] that operate
-throughout Palestinian society.  Jihadis are a part of all levels of government,
-schools, and mosques.  They have terrorist training camps in every neighborhood.
-The heads of the top terrorist groups meet in Gaza once a year to coordinate
+Terrorism is a major industry in the Palestinian territories.  There are dozens
+of functioning terrorist organizations[^tals_post] that operate throughout
+Palestinian society.  Jihadis are a part of all levels of government, schools,
+and mosques.  They have terrorist training camps in every neighborhood.  The
+heads of the top terrorist groups meet in Gaza once a year to coordinate
 efforts.  Terrorism is a "legitimate" vocation in Palestinian culture.
 
 [^tals_post]: X.com post by Tal Hagin, <https://x.com/talhagin/status/1724895795831304444>
