@@ -2,7 +2,9 @@
 layout: post
 title: On the Israel/Hamas war
 excerpt: |
-    Government has three primary functions. It should provide for military defense of the nation. It should enforce contracts between individuals. It should protect citizens from crimes against themselves or their property. When government-- in pursuit of good intentions tries to rearrange the economy, legislate morality, or help special interests, the cost come in inefficiency, lack of motivation, and loss of freedom. Government should be a referee, not an active player.
+    The Israeli vs Palestinians conflict has gone on long enough. We need a
+    durable peace. The worst idea at this point is yet another attempt at
+    coexistence.
 category: Politics
 tags:
 - politics
