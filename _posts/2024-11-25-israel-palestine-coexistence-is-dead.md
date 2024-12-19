@@ -12,6 +12,7 @@ tags:
 - Palestinians
 - terrorism
 banner: /assets/images/2024/11/25-sisyphus-jeffrey-hummel.jpeg
+draft: true
 ---
 
 ## Intro
